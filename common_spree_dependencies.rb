@@ -3,9 +3,11 @@
 # the one component of Spree.
 source 'https://rubygems.org'
 
+gem 'ddtrace'
 gem 'sass-rails'
 gem 'sqlite3', '~> 1.4.0', platforms: [:ruby, :mingw, :mswin, :x64_mingw]
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+
 
 platforms :jruby do
   gem 'jruby-openssl'

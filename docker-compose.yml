@@ -1,0 +1,34 @@
+version: '3'
+services:
+  agent:
+    image: "datadog/agent:6.13.0"
+    environment:
+      - DD_API_KEY
+      - DD_APM_ENABLED=true
+      - DD_LOGS_ENABLED=true
+      - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
+      - DD_PROCESS_AGENT_ENABLED=true
+      - DD_TAGS='env:ruby-shop'
+    ports:
+      - "8126:8126"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "datadog-agent", "service": "agent"}]'
+  frontend:
+    environment:
+      - DATADOG_SERVICE_NAME=ecommerce-frontend
+      - DATADOG_TRACE_AGENT_HOSTNAME=agent
+      - DD_LOGS_INJECTION=true
+      - DD_ANALYTICS_ENABLED=true
+    build: .
+    command: sh docker-entrypoint.sh
+    ports:
+      - "3000:3000"
+    depends_on:
+      - agent
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "ruby", "service": "frontend"}]'
+  

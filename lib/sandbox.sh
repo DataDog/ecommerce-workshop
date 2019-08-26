@@ -54,6 +54,7 @@ cat <<RUBY >> Gemfile
 gem 'spree', path: '..'
 $SPREE_AUTH_DEVISE_GEM
 $SPREE_GATEWAY_GEM
+gem 'ddtrace'
 
 group :test, :development do
   gem 'bullet'
