@@ -3,7 +3,7 @@ unless ENV['SKIP_SAMPLE_IMAGES']
   Spree::Sample.load_sample('variants')
   products = {}
   products[:ror_baseball_jersey] = Spree::Product.find_by!(name: 'Ruby on Rails Baseball Jersey')
-  products[:ror_tote] = Spree::Product.find_by!(name: 'Ruby on Rails Tote')
+  products[:ror_tote] = Spree::Product.find_by!(name: 'Datadog Tote')
   products[:ror_bag] = Spree::Product.find_by!(name: 'Ruby on Rails Bag')
   products[:ror_jr_spaghetti] = Spree::Product.find_by!(name: 'Ruby on Rails Jr. Spaghetti')
   products[:ror_mug] = Spree::Product.find_by!(name: 'Ruby on Rails Mug')

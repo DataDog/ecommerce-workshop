@@ -5,7 +5,7 @@ categories = Spree::Taxonomy.find_by!(name: I18n.t('spree.taxonomy_categories_na
 brands = Spree::Taxonomy.find_by!(name: I18n.t('spree.taxonomy_brands_name'))
 
 products = {
-  ror_tote: 'Ruby on Rails Tote',
+  ror_tote: 'Datadog Tote',
   ror_bag: 'Ruby on Rails Bag',
   ror_mug: 'Ruby on Rails Mug',
   ror_stein: 'Ruby on Rails Stein',

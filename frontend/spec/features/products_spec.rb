@@ -213,7 +213,7 @@ describe 'Visiting Products', type: :feature, inaccessible: true do
   end
 
   context 'an out of stock product without variants' do
-    let(:product) { Spree::Product.find_by(name: 'Ruby on Rails Tote') }
+    let(:product) { Spree::Product.find_by(name: 'Datadog Tote') }
 
     before do
       product.master.stock_items.update_all count_on_hand: 0, backorderable: false
@@ -235,7 +235,7 @@ describe 'Visiting Products', type: :feature, inaccessible: true do
   end
 
   context 'product with taxons' do
-    let(:product) { Spree::Product.find_by(name: 'Ruby on Rails Tote') }
+    let(:product) { Spree::Product.find_by(name: 'Datadog Tote') }
     let(:taxon) { product.taxons.first }
 
     it 'displays breadcrumbs for the default taxon when none selected' do
@@ -280,7 +280,7 @@ describe 'Visiting Products', type: :feature, inaccessible: true do
     expect(page).to have_css('#products .product-list-item').exactly(3).times
     tmp = page.all('#products .product-list-item a').map(&:text).flatten.compact
     tmp.delete('')
-    expect(tmp.sort!).to eq(['Ruby on Rails Mug', 'Ruby on Rails Stein', 'Ruby on Rails Tote'])
+    expect(tmp.sort!).to eq(['Ruby on Rails Mug', 'Ruby on Rails Stein', 'Datadog Tote'])
   end
 
   it 'is able to display products priced between 15 and 18 dollars across multiple pages' do

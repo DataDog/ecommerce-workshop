@@ -92,7 +92,7 @@ describe 'viewing products', type: :feature, inaccessible: true do
                'Ruby on Rails Mug',
                'Ruby on Rails Ringer T-Shirt',
                'Ruby on Rails Stein',
-               'Ruby on Rails Tote']
+               'Datadog Tote']
       expect(tmp.sort!).to eq(array)
     end
 
@@ -142,7 +142,7 @@ describe 'viewing products', type: :feature, inaccessible: true do
       expect(page).to have_css('#products .product-list-item').twice
       tmp = page.all('#products .product-list-item a').map(&:text).flatten.compact
       tmp.delete('')
-      expect(tmp.sort!).to eq(['Ruby on Rails Bag', 'Ruby on Rails Tote'])
+      expect(tmp.sort!).to eq(['Ruby on Rails Bag', 'Datadog Tote'])
     end
   end
 end

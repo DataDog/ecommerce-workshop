@@ -33,7 +33,7 @@ products =
       'Fit' => 'Loose',
       'Gender' => 'Men\'s'
     },
-    'Ruby on Rails Tote' =>
+    'Datadog Tote' =>
     {
       'Type' => 'Tote',
       'Size' => %{15' x 18' x 6'},

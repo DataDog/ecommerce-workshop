@@ -5,7 +5,7 @@ clothing = Spree::TaxCategory.find_by!(name: 'Clothing')
 
 products = [
   {
-    name: 'Ruby on Rails Tote',
+    name: 'Datadog Tote',
     tax_category: clothing,
     price: 15.99,
     eur_price: 14

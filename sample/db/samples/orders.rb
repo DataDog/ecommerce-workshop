@@ -23,7 +23,7 @@ end
 
 unless orders[0].line_items.any?
   orders[0].line_items.new(
-    variant: Spree::Product.find_by!(name: 'Ruby on Rails Tote').master,
+    variant: Spree::Product.find_by!(name: 'Datadog Tote').master,
     quantity: 1,
     price: 15.99
   ).save!

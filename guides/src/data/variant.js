@@ -3,7 +3,7 @@ import IMAGE from './image'
 
 export default {
   id: 1,
-  name: 'Ruby on Rails Tote',
+  name: 'Datadog Tote',
   sku: 'ROR-00011',
   price: '15.99',
   weight: null,

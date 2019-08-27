@@ -2,7 +2,7 @@ Spree::Sample.load_sample('option_values')
 Spree::Sample.load_sample('products')
 
 ror_baseball_jersey = Spree::Product.find_by!(name: 'Ruby on Rails Baseball Jersey')
-ror_tote = Spree::Product.find_by!(name: 'Ruby on Rails Tote')
+ror_tote = Spree::Product.find_by!(name: 'Datadog Tote')
 ror_bag = Spree::Product.find_by!(name: 'Ruby on Rails Bag')
 ror_jr_spaghetti = Spree::Product.find_by!(name: 'Ruby on Rails Jr. Spaghetti')
 ror_mug = Spree::Product.find_by!(name: 'Ruby on Rails Mug')
