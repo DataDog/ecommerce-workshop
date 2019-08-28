@@ -1,7 +1,7 @@
 Spree::Sample.load_sample('option_values')
 Spree::Sample.load_sample('products')
 
-product = Spree::Product.find_by(name: 'Ruby on Rails Baseball Jersey')
+product = Spree::Product.find_by(name: 'Datadog Baseball Jersey')
 size = Spree::OptionValue.find_by(name: 'Small')
 color = Spree::OptionValue.find_by(name: 'Red')
 eligible_values = "#{size.id},#{color.id}"

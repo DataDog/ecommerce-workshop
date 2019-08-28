@@ -86,12 +86,12 @@ describe 'viewing products', type: :feature, inaccessible: true do
       expect(page).to have_css('#products .product-list-item').exactly(7).times
       tmp = page.all('#products .product-list-item a').map(&:text).flatten.compact
       tmp.delete('')
-      array = ['Ruby on Rails Bag',
-               'Ruby on Rails Baseball Jersey',
-               'Ruby on Rails Jr. Spaghetti',
-               'Ruby on Rails Mug',
-               'Ruby on Rails Ringer T-Shirt',
-               'Ruby on Rails Stein',
+      array = ['Datadog Bag',
+               'Datadog Baseball Jersey',
+               'Datadog Jr. Spaghetti',
+               'Datadog Mug',
+               'Datadog Ringer T-Shirt',
+               'Datadog Stein',
                'Datadog Tote']
       expect(tmp.sort!).to eq(array)
     end
@@ -102,7 +102,7 @@ describe 'viewing products', type: :feature, inaccessible: true do
       expect(page).to have_css('#products .product-list-item').once
       tmp = page.all('#products .product-list-item a').map(&:text).flatten.compact
       tmp.delete('')
-      expect(tmp.sort!).to eq(['Ruby Baseball Jersey'])
+      expect(tmp.sort!).to eq(['Datadog Baseball Jersey'])
     end
 
     it 'is able to visit brand Apache' do
@@ -121,10 +121,10 @@ describe 'viewing products', type: :feature, inaccessible: true do
       tmp = page.all('#products .product-list-item a').map(&:text).flatten.compact
       tmp.delete('')
       expect(tmp.sort!).to eq(['Apache Baseball Jersey',
-                               'Ruby Baseball Jersey',
-                               'Ruby on Rails Baseball Jersey',
-                               'Ruby on Rails Jr. Spaghetti',
-                               'Ruby on Rails Ringer T-Shirt'])
+                               'Datadog Baseball Jersey',
+                               'Datadog Baseball Jersey',
+                               'Datadog Jr. Spaghetti',
+                               'Datadog Ringer T-Shirt'])
     end
 
     it 'is able to visit category Mugs' do
@@ -133,7 +133,7 @@ describe 'viewing products', type: :feature, inaccessible: true do
       expect(page).to have_css('#products .product-list-item').twice
       tmp = page.all('#products .product-list-item a').map(&:text).flatten.compact
       tmp.delete('')
-      expect(tmp.sort!).to eq(['Ruby on Rails Mug', 'Ruby on Rails Stein'])
+      expect(tmp.sort!).to eq(['Datadog Mug', 'Datadog Stein'])
     end
 
     it 'is able to visit category Bags' do
@@ -142,7 +142,7 @@ describe 'viewing products', type: :feature, inaccessible: true do
       expect(page).to have_css('#products .product-list-item').twice
       tmp = page.all('#products .product-list-item a').map(&:text).flatten.compact
       tmp.delete('')
-      expect(tmp.sort!).to eq(['Ruby on Rails Bag', 'Datadog Tote'])
+      expect(tmp.sort!).to eq(['Datadog Bag', 'Datadog Tote'])
     end
   end
 end

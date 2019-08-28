@@ -6,21 +6,21 @@ brands = Spree::Taxonomy.find_by!(name: I18n.t('spree.taxonomy_brands_name'))
 
 products = {
   ror_tote: 'Datadog Tote',
-  ror_bag: 'Ruby on Rails Bag',
-  ror_mug: 'Ruby on Rails Mug',
-  ror_stein: 'Ruby on Rails Stein',
-  ror_baseball_jersey: 'Ruby on Rails Baseball Jersey',
-  ror_jr_spaghetti: 'Ruby on Rails Jr. Spaghetti',
-  ror_ringer: 'Ruby on Rails Ringer T-Shirt',
-  spree_stein: 'Spree Stein',
-  spree_mug: 'Spree Mug',
+  ror_bag: 'Datadog Bag',
+  ror_mug: 'Datadog Mug',
+  ror_stein: 'Datadog Stein',
+  ror_baseball_jersey: 'Datadog Baseball Jersey',
+  ror_jr_spaghetti: 'Datadog Jr. Spaghetti',
+  ror_ringer: 'Datadog Ringer T-Shirt',
+  spree_stein: 'Monitoring Stein',
+  spree_mug: 'Monitoring Mug',
   spree_ringer: 'Spree Ringer T-Shirt',
   spree_baseball_jersey: 'Spree Baseball Jersey',
   spree_tote: 'Spree Tote',
   spree_bag: 'Spree Bag',
   spree_jr_spaghetti: 'Spree Jr. Spaghetti',
   apache_baseball_jersey: 'Apache Baseball Jersey',
-  ruby_baseball_jersey: 'Ruby Baseball Jersey'
+  ruby_baseball_jersey: 'Datadog Baseball Jersey'
 }
 
 products.each do |key, name|

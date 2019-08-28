@@ -13,7 +13,7 @@ describe 'Visiting Products', type: :feature, inaccessible: true do
   end
 
   it 'is able to show the shopping cart after adding a product to it', js: true do
-    click_link 'Ruby on Rails Ringer T-Shirt'
+    click_link 'Datadog Ringer T-Shirt'
     expect(page).to have_content('$19.99')
 
     expect(page).to have_selector('form#add-to-cart-form')
@@ -23,12 +23,12 @@ describe 'Visiting Products', type: :feature, inaccessible: true do
   end
 
   describe 'correct displaying of microdata' do
-    let(:product) { Spree::Product.find_by(name: 'Ruby on Rails Ringer T-Shirt') }
+    let(:product) { Spree::Product.find_by(name: 'Datadog Ringer T-Shirt') }
 
     it 'on products page' do
       within("#product_#{product.id}") do
         within('[itemprop=name]') do
-          expect(page).to have_content('Ruby on Rails Ringer T-Shirt')
+          expect(page).to have_content('Datadog Ringer T-Shirt')
         end
         expect(page).to have_css("[itemprop='price'][content='19.99']")
         expect(page).to have_css("[itemprop='priceCurrency'][content='USD']")
@@ -41,7 +41,7 @@ describe 'Visiting Products', type: :feature, inaccessible: true do
       click_link product.name
       within('[data-hook=product_show]') do
         within('[itemprop=name]') do
-          expect(page).to have_content('Ruby on Rails Ringer T-Shirt')
+          expect(page).to have_content('Datadog Ringer T-Shirt')
         end
         expect(page).to have_css("[itemprop='price'][content='19.99']")
         expect(page).to have_css("[itemprop='priceCurrency'][content='USD']")
@@ -51,15 +51,15 @@ describe 'Visiting Products', type: :feature, inaccessible: true do
   end
 
   describe 'meta tags and title' do
-    let(:jersey) { Spree::Product.find_by(name: 'Ruby on Rails Baseball Jersey') }
-    let(:metas) { { meta_description: 'Brand new Ruby on Rails Jersey', meta_title: 'Ruby on Rails Baseball Jersey Buy High Quality Geek Apparel', meta_keywords: 'ror, jersey, ruby' } }
+    let(:jersey) { Spree::Product.find_by(name: 'Datadog Baseball Jersey') }
+    let(:metas) { { meta_description: 'Brand new Ruby on Rails Jersey', meta_title: 'Datadog Baseball Jersey Buy High Quality Geek Apparel', meta_keywords: 'ror, jersey, ruby' } }
 
     it 'returns the correct title when displaying a single product' do
       click_link jersey.name
-      expect(page).to have_title('Ruby on Rails Baseball Jersey - ' + store_name)
+      expect(page).to have_title('Datadog Baseball Jersey - ' + store_name)
       within('div#product-description') do
         within('h1.product-title') do
-          expect(page).to have_content('Ruby on Rails Baseball Jersey')
+          expect(page).to have_content('Datadog Baseball Jersey')
         end
       end
     end
@@ -74,7 +74,7 @@ describe 'Visiting Products', type: :feature, inaccessible: true do
     it 'displays title if set' do
       jersey.update metas
       click_link jersey.name
-      expect(page).to have_title('Ruby on Rails Baseball Jersey Buy High Quality Geek Apparel')
+      expect(page).to have_title('Datadog Baseball Jersey Buy High Quality Geek Apparel')
     end
 
     it "doesn't use meta_title as heading on page" do
@@ -89,7 +89,7 @@ describe 'Visiting Products', type: :feature, inaccessible: true do
     it 'uses product name in title when meta_title set to empty string' do
       jersey.update meta_title: ''
       click_link jersey.name
-      expect(page).to have_title('Ruby on Rails Baseball Jersey - ' + store_name)
+      expect(page).to have_title('Datadog Baseball Jersey - ' + store_name)
     end
   end
 
@@ -99,7 +99,7 @@ describe 'Visiting Products', type: :feature, inaccessible: true do
     end
 
     let!(:product) do
-      product = Spree::Product.find_by(name: 'Ruby on Rails Ringer T-Shirt')
+      product = Spree::Product.find_by(name: 'Datadog Ringer T-Shirt')
       product.price = 19.99
       product.tap(&:save)
     end
@@ -152,7 +152,7 @@ describe 'Visiting Products', type: :feature, inaccessible: true do
   end
 
   context 'a product with variants' do
-    let(:product) { Spree::Product.find_by(name: 'Ruby on Rails Baseball Jersey') }
+    let(:product) { Spree::Product.find_by(name: 'Datadog Baseball Jersey') }
     let(:option_value) { create(:option_value) }
     let!(:variant) { build(:variant, price: 5.59, product: product, option_values: []) }
 
@@ -197,7 +197,7 @@ describe 'Visiting Products', type: :feature, inaccessible: true do
   end
 
   context 'a product with variants, images only for the variants' do
-    let(:product) { Spree::Product.find_by(name: 'Ruby on Rails Baseball Jersey') }
+    let(:product) { Spree::Product.find_by(name: 'Datadog Baseball Jersey') }
     let(:variant1) { create(:variant, product: product, price: 9.99) }
     let(:variant2) { create(:variant, product: product, price: 10.99) }
 
@@ -280,7 +280,7 @@ describe 'Visiting Products', type: :feature, inaccessible: true do
     expect(page).to have_css('#products .product-list-item').exactly(3).times
     tmp = page.all('#products .product-list-item a').map(&:text).flatten.compact
     tmp.delete('')
-    expect(tmp.sort!).to eq(['Ruby on Rails Mug', 'Ruby on Rails Stein', 'Datadog Tote'])
+    expect(tmp.sort!).to eq(['Datadog Mug', 'Datadog Stein', 'Datadog Tote'])
   end
 
   it 'is able to display products priced between 15 and 18 dollars across multiple pages' do
@@ -305,10 +305,10 @@ describe 'Visiting Products', type: :feature, inaccessible: true do
     expect(page).to have_css('#products .product-list-item').exactly(4).times
     tmp = page.all('#products .product-list-item a').map(&:text).flatten.compact
     tmp.delete('')
-    expect(tmp.sort!).to eq(['Ruby on Rails Bag',
-                             'Ruby on Rails Baseball Jersey',
-                             'Ruby on Rails Jr. Spaghetti',
-                             'Ruby on Rails Ringer T-Shirt'])
+    expect(tmp.sort!).to eq(['Datadog Bag',
+                             'Datadog Baseball Jersey',
+                             'Datadog Jr. Spaghetti',
+                             'Datadog Ringer T-Shirt'])
   end
 
   it 'is able to put a product without a description in the cart', js: true do
@@ -332,12 +332,12 @@ describe 'Visiting Products', type: :feature, inaccessible: true do
   end
 
   it 'returns the correct title when displaying a single product' do
-    product = Spree::Product.find_by(name: 'Ruby on Rails Baseball Jersey')
+    product = Spree::Product.find_by(name: 'Datadog Baseball Jersey')
     click_link product.name
 
     within('div#product-description') do
       within('h1.product-title') do
-        expect(page).to have_content('Ruby on Rails Baseball Jersey')
+        expect(page).to have_content('Datadog Baseball Jersey')
       end
     end
   end

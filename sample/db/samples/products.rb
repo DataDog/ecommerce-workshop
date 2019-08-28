@@ -11,32 +11,32 @@ products = [
     eur_price: 14
   },
   {
-    name: 'Ruby on Rails Bag',
+    name: 'Datadog Bag',
     tax_category: clothing,
     price: 22.99,
     eur_price: 19
   },
   {
-    name: 'Ruby on Rails Baseball Jersey',
+    name: 'Datadog Baseball Jersey',
     tax_category: clothing,
     price: 19.99,
     eur_price: 16
   },
   {
-    name: 'Ruby on Rails Jr. Spaghetti',
+    name: 'Datadog Jr. Spaghetti',
     tax_category: clothing,
     price: 19.99,
     eur_price: 16
 
   },
   {
-    name: 'Ruby on Rails Ringer T-Shirt',
+    name: 'Datadog Ringer T-Shirt',
     tax_category: clothing,
     price: 19.99,
     eur_price: 16
   },
   {
-    name: 'Ruby Baseball Jersey',
+    name: 'Datadog Baseball Jersey',
     tax_category: clothing,
     price: 19.99,
     eur_price: 16
@@ -78,22 +78,22 @@ products = [
     eur_price: 19
   },
   {
-    name: 'Ruby on Rails Mug',
+    name: 'Datadog Mug',
     price: 13.99,
     eur_price: 12
   },
   {
-    name: 'Ruby on Rails Stein',
+    name: 'Datadog Stein',
     price: 16.99,
     eur_price: 14
   },
   {
-    name: 'Spree Stein',
+    name: 'Monitoring Stein',
     price: 16.99,
     eur_price: 14
   },
   {
-    name: 'Spree Mug',
+    name: 'Monitoring Mug',
     price: 13.99,
     eur_price: 12
   }
