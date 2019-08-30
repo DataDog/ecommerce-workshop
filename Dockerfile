@@ -6,6 +6,7 @@ RUN apt-get update -qq && \
 RUN mkdir /spree
 WORKDIR /spree
 ADD . /spree
+ENV DB=postgres
 RUN bundle install
 RUN bundle exec rake sandbox
 CMD ["sh", "docker-entrypoint.sh"]
