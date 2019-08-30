@@ -23,6 +23,9 @@ services:
       - DATADOG_TRACE_AGENT_HOSTNAME=agent
       - DD_LOGS_INJECTION=true
       - DD_ANALYTICS_ENABLED=true
+      - DB_USERNAME
+      - DB_PASSWORD
+      - DB_HOST
     build: .
     command: sh docker-entrypoint.sh
     ports:
