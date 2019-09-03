@@ -41,8 +41,6 @@ services:
     depends_on:
       - agent
       - db
-    volumes:
-      - ./config/database.yml:/spree/sandbox/config/database.yml
     labels:
       com.datadoghq.ad.logs: '[{"source": "ruby", "service": "frontend"}]'
   

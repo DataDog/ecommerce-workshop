@@ -8,4 +8,5 @@ WORKDIR /spree
 ADD . /spree
 RUN bundle install
 RUN bundle exec rake sandbox
+COPY ./config/database.yml /spree/sandbox/config/database.yml
 CMD ["sh", "docker-entrypoint.sh"]
