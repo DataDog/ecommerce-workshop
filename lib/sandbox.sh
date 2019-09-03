@@ -20,7 +20,7 @@ sqlite|'')
 esac
 
 rm -rf ./sandbox
-bundle exec rails new sandbox --database="$RAILSDB" \
+DB_HOST=127.0.0.1 bundle exec rails new sandbox --database="postgresql" \
   --skip-bundle \
   --skip-git \
   --skip-keeps \
@@ -65,8 +65,8 @@ end
 RUBY
 
 bundle install --gemfile Gemfile
-bundle exec rails db:drop || true
-bundle exec rails db:create
-bundle exec rails g spree:install --auto-accept --user_class=Spree::User --enforce_available_locales=true --copy_views=false
-bundle exec rails g spree:auth:install
-bundle exec rails g spree_gateway:install
+#bundle exec rails db:drop || true
+#bundle exec rails db:create
+#bundle exec rails g spree:install --auto-accept --user_class=Spree::User --enforce_available_locales=true --copy_views=false
+#bundle exec rails g spree:auth:install
+#bundle exec rails g spree_gateway:install
