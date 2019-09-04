@@ -29,6 +29,8 @@ services:
       - "3000:3000"
     depends_on:
       - agent
+    volumes:
+      - ./sandbox:/spree/sandbox
     labels:
       com.datadoghq.ad.logs: '[{"source": "ruby", "service": "frontend"}]'
   
