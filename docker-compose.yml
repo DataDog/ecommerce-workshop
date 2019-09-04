@@ -33,14 +33,23 @@ services:
       - DD_ANALYTICS_ENABLED=true
       - DB_USERNAME
       - DB_PASSWORD
-      - DB_HOST
-    build: .
+    image: "burningion/ecommerce-spree-observability:latest"
+    #build: .
     command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"
     depends_on:
       - agent
       - db
+    volumes:
+      - ./sandbox:/spree/sandbox
     labels:
       com.datadoghq.ad.logs: '[{"source": "ruby", "service": "frontend"}]'
-  
+  db:
+    image: postgres:11-alpine
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD
+      - POSTGRES_USER
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "postgres", "service": "postgres"}]'

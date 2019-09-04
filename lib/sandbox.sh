@@ -19,17 +19,17 @@ sqlite|'')
   ;;
 esac
 
-rm -rf ./sandbox
-DB_HOST=127.0.0.1 bundle exec rails new sandbox --database="postgresql" \
-  --skip-bundle \
-  --skip-git \
-  --skip-keeps \
-  --skip-rc \
-  --skip-spring \
-  --skip-test \
-  --skip-coffee \
-  --skip-javascript \
-  --skip-bootsnap
+#rm -rf ./sandbox
+#bundle exec rails new sandbox --database="$RAILSDB" \
+#  --skip-bundle \
+#  --skip-git \
+#  --skip-keeps \
+#  --skip-rc \
+#  --skip-spring \
+#  --skip-test \
+#  --skip-coffee \
+#  --skip-javascript \
+#  --skip-bootsnap
 
 if [ ! -d "sandbox" ]; then
   echo 'sandbox rails application failed'
