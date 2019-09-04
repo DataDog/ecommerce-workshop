@@ -42,6 +42,7 @@ gem 'spree', path: '..'
 gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: 'master'
 gem 'spree_gateway', github: 'spree/spree_gateway', branch: 'master'
 gem 'ddtrace'
+gem 'httparty'
 
 group :test, :development do
   gem 'bullet'
