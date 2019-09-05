@@ -1,6 +1,7 @@
 class DiscountsController < ApplicationController
   def get
-    response = HTTParty.get('http://discounts:5001/discount')
+    reponse = Net::HTTP.get_response(URI('http://discounts:5001/discount'))
+
     logger.info response.body
   end
 
