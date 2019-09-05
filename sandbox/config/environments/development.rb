@@ -10,13 +10,21 @@ Rails.application.configure do
 
   # We are asking here to log in RAW (which are actually ruby hashes). The Ruby logging is going to take care of the JSON formatting.
   config.lograge.formatter = Lograge::Formatters::Raw.new
-
+  config.colorize_logging = false
   # This is useful if you want to log query parameters
   config.lograge.custom_options = lambda do |event|
-    { :ddsource => ["ruby"],
+    # Retrieves trace information for current thread
+    correlation = Datadog.tracer.active_correlation
+  
+    {
+      # Adds IDs as tags to log output
+      :dd => {
+        :trace_id => correlation.trace_id,
+        :span_id => correlation.span_id
+      },
+      :ddsource => ["ruby"],
       :params => event.payload[:params].reject { |k| %w(controller action).include? k }
     }
-  config.colorize_logging = false
   end
 
   # Do not eager load code on boot.
