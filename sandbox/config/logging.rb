@@ -7,7 +7,7 @@ Logging::Rails.configure do |config|
   Logging.format_as :json
 
   # The default layout used by the appenders.
-  layout = Logging.layouts.pattern(:pattern => '[%d] %-5l %c : %m\n')
+  layout = Logging.layouts.pattern(:pattern => '%m\n')
 
   # Setup a color scheme called 'bright' than can be used to add color codes
   # to the pattern layout. Color schemes should only be used with appenders
@@ -31,9 +31,7 @@ Logging::Rails.configure do |config|
   Logging.appenders.stdout( 'stdout',
     :auto_flushing => true,
     :layout => Logging.layouts.pattern(
-      :pattern => '[%d] %-5l %c : %m\n',
-      :color_scheme => 'bright'
-    )
+      :pattern => '%m\n',    )
   ) if config.log_to.include? 'stdout'
 
   # Configure an appender that will write log events to a file. The file will
