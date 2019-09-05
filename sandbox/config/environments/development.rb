@@ -9,7 +9,7 @@ Rails.application.configure do
   config.lograge.enabled = true
 
   # We are asking here to log in RAW (which are actually ruby hashes). The Ruby logging is going to take care of the JSON formatting.
-  config.lograge.formatter = Lograge::Formatters::Raw.new
+  config.lograge.formatter = Lograge::Formatters::Json.new
   config.colorize_logging = false
   # This is useful if you want to log query parameters
   config.lograge.custom_options = lambda do |event|
