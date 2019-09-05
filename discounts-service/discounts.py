@@ -24,6 +24,8 @@ def status():
     if flask_request.method == 'GET':
         discounts = Discount.query.all()
         app.logger.info(f"Discounts available: {len(discounts)}")
+        # adding a half sleep to test something
+        time.sleep(.5)
         return jsonify([b.serialize() for b in discounts])
     elif flask_request.method == 'POST':
         # create a new discount with random name and value
