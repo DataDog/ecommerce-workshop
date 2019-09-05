@@ -17,6 +17,7 @@
 </div>
 
 <% if products.any? %>
+<% render :template => "discounts/get" %>
   <div id="products" class="row d-flex" data-hook>
     <%= render partial: 'spree/products/product', collection: products, locals: { taxon: @taxon } %>
   </div>
