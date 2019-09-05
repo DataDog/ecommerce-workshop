@@ -1,6 +1,6 @@
 class DiscountsController < ApplicationController
   def get
-    response = HTTParty.get('https://www.google.com')
+    response = HTTParty.get('http://discounts/discount')
     logger.info response.body
   end
 

@@ -17,7 +17,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 @app.route('/')
 def hello():
-    return Response({'Hello from Oxygenation Pumps': 'world'}, mimetype='application/json')
+    return Response({'Hello from Discounts!': 'world'}, mimetype='application/json')
 
 @app.route('/discount', methods=['GET', 'POST'])
 def status():

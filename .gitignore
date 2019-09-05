@@ -6,3 +6,4 @@
 .project
 .vscode
 sandbox/tmp/
+__pycache__
