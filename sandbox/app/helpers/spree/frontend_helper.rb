@@ -93,7 +93,7 @@ module Spree
     end
 
     def get_discounts
-      @discounts = Net::HTTP.get_response(URI('http://discounts:5001/discount')).body
-    end 
+      @discounts = JSON.parse(Net::HTTP.get_response(URI('http://discounts:5001/discount')).body)
+    end
   end
 end

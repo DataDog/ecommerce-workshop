@@ -8,7 +8,7 @@ module Spree
       @products = @searcher.retrieve_products
       @products = @products.includes(:possible_promotions) if @products.respond_to?(:includes)
       @taxonomies = Spree::Taxonomy.includes(root: :children)
-      @discounts = helpers.get_discounts
+      @discounts = helpers.get_discounts.sample
     end
   end
 end
