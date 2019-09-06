@@ -46,7 +46,9 @@ services:
       - DD_ANALYTICS_ENABLED=true
       - DB_USERNAME
       - DB_PASSWORD
+    # below image runs in dev mode
     image: "burningion/ecommerce-spree-observability:latest"
+    # build below runs in production mode
     #build: .
     command: sh docker-entrypoint.sh
     ports:
@@ -55,6 +57,7 @@ services:
       - agent
       - db
       - discounts
+    # comment out volumes below for speed
     volumes:
       - ./sandbox:/spree/sandbox
     labels:

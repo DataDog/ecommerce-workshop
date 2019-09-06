@@ -3,4 +3,5 @@ Datadog.configure do |c|
   c.use :rails
   c.tracer hostname: 'agent'
   c.tracer env: 'ruby-shop'
+  c.tracer service: 'shop-frontend'
 end
