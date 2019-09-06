@@ -1,8 +1,8 @@
 class DiscountsController < ApplicationController
   def get
-    reponse = Net::HTTP.get_response(URI('http://discounts:5001/discount'))
-
-    logger.info response.body
+    @discounts = Net::HTTP.get_response(URI('http://discounts:5001/discount')).body
+    logger.info @discounts
+    render json: @discounts
   end
 
   def add

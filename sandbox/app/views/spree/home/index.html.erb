@@ -1,6 +1,6 @@
 <% @body_id = 'home-page' %>
-<% render :template => "discounts/get" %>
 <% content_for :sidebar do %>
+  <%= @discounts %>
   <div data-hook="homepage_sidebar_navigation">
     <%= render partial: 'spree/shared/taxonomies' %>
   </div>
