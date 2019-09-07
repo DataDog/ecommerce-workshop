@@ -57,11 +57,33 @@ services:
       - agent
       - db
       - discounts
+      - advertisements
     # comment out volumes below for speed
     volumes:
       - ./sandbox:/spree/sandbox
     labels:
       com.datadoghq.ad.logs: '[{"source": "ruby", "service": "frontend"}]'
+  advertisements:
+    environment:
+      - FLASK_APP=ads.py
+      - FLASK_DEBUG=1
+      - POSTGRES_PASSWORD
+      - POSTGRES_USER
+      - DATADOG_SERVICE_NAME=advertisements-service
+      - DATADOG_TRACE_AGENT_HOSTNAME=agent
+      - DD_LOGS_INJECTION=true
+      - DD_ANALYTICS_ENABLED=true
+    build: ./ads-service
+    command: ddtrace-run flask run --port=5002 --host=0.0.0.0
+    ports:
+      - "5002:5002"
+    volumes:
+      - "./ads-service:/app"
+    depends_on:
+      - agent
+      - db
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "python", "service": "ads-service"}]'
   db:
     image: postgres:11-alpine
     restart: always
