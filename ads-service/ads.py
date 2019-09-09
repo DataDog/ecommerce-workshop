@@ -35,7 +35,7 @@ def status():
         # create a new advertisement with random name and value
         advertisements_count = len(Advertisement.query.all())
         new_advertisement = Advertisement('Advertisement ' + str(discounts_count + 1), 
-                                'https://www.google.com/',
+                                '/',
                                 random.randint(10,500))
         app.logger.info(f"Adding advertisement {new_advertisement}")
         db.session.add(new_advertisement)
