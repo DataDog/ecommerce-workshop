@@ -24,6 +24,14 @@ def banner_image(banner):
     app.logger.info(f"attempting to grab banner at {banner}")
     return send_from_directory('ads', banner)
 
+@app.route('/weighted-banners/<float:weight>')
+def weighted_image(weight):
+    app.logger.info(f"attempting to grab banner weight of less than {weight}")
+    advertisements = Advertisement.query.all()
+    for ad in advertisements:
+        if ad.weight < weight:
+            return jsonify(ad.serialize())
+
 @app.route('/ads', methods=['GET', 'POST'])
 def status():
     if flask_request.method == 'GET':
