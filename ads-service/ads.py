@@ -17,6 +17,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 @app.route('/')
 def hello():
+    app.logger.info("home url for ads called")
     return Response({'Hello from Advertisements!': 'world'}, mimetype='application/json')
 
 @app.route('/banners/<path:banner>')
