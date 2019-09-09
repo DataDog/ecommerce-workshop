@@ -21,13 +21,14 @@ def hello():
 
 @app.route('/banners/<path:banner>')
 def banner_image(banner):
-    return send_from_directory('banners', banner)
+    app.logger.info(f"attempting to grab banner at {banner}")
+    return send_from_directory('ads', banner)
 
 @app.route('/ads', methods=['GET', 'POST'])
 def status():
     if flask_request.method == 'GET':
         advertisements = Advertisement.query.all()
-        app.logger.info(f"Advertisements available: {len(advertisements)}")
+        app.logger.info(f"Total advertisements available: {len(advertisements)}")
         # adding a half sleep to test something
         time.sleep(2.5)
         return jsonify([b.serialize() for b in advertisements])
