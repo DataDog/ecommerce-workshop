@@ -4,7 +4,7 @@ import time
 
 from random_word import RandomWords
 
-from flask import Flask, Response, jsonify
+from flask import Flask, Response, jsonify, send_from_directory
 from flask import request as flask_request
 
 from bootstrap import create_app
@@ -18,6 +18,10 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 @app.route('/')
 def hello():
     return Response({'Hello from Advertisements!': 'world'}, mimetype='application/json')
+
+@app.route('/banners/<path:banner>')
+def banner_image(banner):
+    return send_from_directory('banners', banner)
 
 @app.route('/ads', methods=['GET', 'POST'])
 def status():
