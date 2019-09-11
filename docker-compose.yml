@@ -27,7 +27,8 @@ services:
       - DATADOG_TRACE_AGENT_HOSTNAME=agent
       - DD_LOGS_INJECTION=true
       - DD_ANALYTICS_ENABLED=true
-    build: ./discounts-service
+    image: "burningion/ecommerce-spree-discounts:latest"
+    #build: ./discounts-service
     command: ddtrace-run flask run --port=5001 --host=0.0.0.0
     ports:
       - "5001:5001"
@@ -73,7 +74,8 @@ services:
       - DATADOG_TRACE_AGENT_HOSTNAME=agent
       - DD_LOGS_INJECTION=true
       - DD_ANALYTICS_ENABLED=true
-    build: ./ads-service
+    image: "burningion/ecommerce-spree-ads:latest"
+    #build: ./ads-service
     command: ddtrace-run flask run --port=5002 --host=0.0.0.0
     ports:
       - "5002:5002"
