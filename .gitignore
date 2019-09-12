@@ -5,5 +5,5 @@
 .loadpath
 .project
 .vscode
-sandbox/tmp/
+store-frontend/tmp/
 __pycache__

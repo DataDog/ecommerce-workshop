@@ -27,7 +27,7 @@ services:
       - discounts
       - advertisements
     volumes:
-      - ./sandbox:/spree/sandbox
+      - ./store-frontend:/spree/sandbox
   advertisements:
     environment:
       - FLASK_APP=ads.py
