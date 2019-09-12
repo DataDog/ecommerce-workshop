@@ -9,7 +9,6 @@
 <% end %>
 
 <div data-hook="homepage_products">
-<br /><center><a href="<%= @ads['url'] %>"><img src="data:image/png;base64,<%= @ads['base64'] %>" /></a></center>
   <% cache(cache_key_for_products) do %>
     <%= render partial: 'spree/shared/products', locals: { products: @products } %>
   <% end %>
