@@ -48,9 +48,9 @@ services:
       - DB_USERNAME
       - DB_PASSWORD
     # below image runs in dev mode
-    image: "burningion/ecommerce-spree-observability:latest"
+    #image: "burningion/ecommerce-spree-observability:latest"
     # build below runs in production mode
-    #build: .
+    build: .
     command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"

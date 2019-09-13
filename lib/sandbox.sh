@@ -55,6 +55,7 @@ gem 'spree', path: '..'
 $SPREE_AUTH_DEVISE_GEM
 $SPREE_GATEWAY_GEM
 gem 'ddtrace'
+gem 'sassc', '~> 2.1.0'
 
 group :test, :development do
   gem 'bullet'
@@ -64,6 +65,7 @@ group :test, :development do
 end
 RUBY
 
+bundle update sassc
 bundle install --gemfile Gemfile
 #bundle exec rails db:drop || true
 #bundle exec rails db:create

@@ -7,7 +7,7 @@ RUN mkdir /spree
 WORKDIR /spree
 ADD . /spree
 RUN bundle install
-RUN bundle exec rake sandbox
+RUN bundle update sassc && bundle exec rake sandbox
 # COPY ./config/database.yml /spree/sandbox/config/database.yml
 COPY ./sandbox /spree/sandbox
 CMD ["sh", "docker-entrypoint.sh"]
