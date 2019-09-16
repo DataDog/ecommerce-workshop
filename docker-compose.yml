@@ -40,7 +40,6 @@ services:
       com.datadoghq.ad.logs: '[{"source": "python", "service": "discounts-service"}]'
   frontend:
     environment:
-      - DATADOG_SERVICE_NAME=ecommerce-frontend
       - DATADOG_TRACE_AGENT_HOSTNAME=agent
       - DD_LOGS_INJECTION=true
       - DD_ANALYTICS_ENABLED=true
@@ -56,7 +55,7 @@ services:
       - discounts
       - advertisements
     volumes:
-      - ./sandbox:/spree/sandbox
+      - ./store-frontend:/spree/sandbox
     labels:
       com.datadoghq.ad.logs: '[{"source": "ruby", "service": "frontend"}]'
   advertisements:
