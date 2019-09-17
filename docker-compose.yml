@@ -45,7 +45,7 @@ services:
       - DD_ANALYTICS_ENABLED=true
       - DB_USERNAME
       - DB_PASSWORD
-    image: "burningion/ecommerce-spree-observability:latest"
+    image: "burningion/ecommerce-spree-observability:cpu-workaround"
     command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"
