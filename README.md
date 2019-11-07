@@ -19,11 +19,13 @@ The application itself is split up into a few different branches, to showcase th
 
 `instrumented-fixed` - An instrumented, fixed application, ready to see the difference in Datadog between a properly functioning app and a bad deployment.
 
-Feel free to [follow along](https://www.katacoda.com/burningion/scenarios/ecommerce-observability) with the scenario, or to use the raw markdown as your guide.
+Feel free to [follow along](https://www.katacoda.com/burningion/scenarios/ecommerce-observability) with the scenario, or to run the application locally.
 
 ## Running the Application Locally
 
-The application itself runs on `docker-compose`. Install Docker along with docker-compose. Then create a trial Datadog account, and grab your API key from the Integrations->API tab. Finally:
+The application itself runs on `docker-compose`. First, install Docker along with docker-compose. Then sign up with a trial [Datadog account](https://www.datadoghq.com/), and grab your API key from the Integrations->API tab. 
+
+Finally:
 
 ```bash
 $ git clone https://github.com/burningion/ecommerce-observability/
@@ -33,9 +35,13 @@ $ POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=<YOUR_API_KEY> do
 
 With this, the docker images will be pulled, and you'll be able to visit the (broken), instrumented app.
 
+When you go to the homepage, you'll notice that, although the site takes a while to load, it mostly looks as if it works. Indeed, there are only a few views that are broken. Try navigating around the site to see if you can't discover the broken pieces.
+
 ## Creating Example Traffic To Your Site
 
 The Katacoda scenario uses `gor` to spin up traffic our own (dysfunctional) stores, and then diagnose and fix them with replayed live traffic.
+
+This way, we don't have to manually click around the site to see all the places where our site is broken.
 
 You can reuse the recorded traffic I've already kept with a:
 
@@ -43,6 +49,6 @@ You can reuse the recorded traffic I've already kept with a:
 $ ./gor --input-file-loop --input-file requests_0.gor --output-http "http://localhost:3000"
 ```
 
-This assumes our application is running locally on port 3000.
+This command opens up my traffic recording, and ships all the requests to `localhost`, at port 3000. After running this traffic generator for a while, we'll be able to see the services that make up our application within Datadog.
 
-## Viewing Our Broken Services
+## Viewing Our Broken Services in Datadog
