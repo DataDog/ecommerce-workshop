@@ -59,7 +59,7 @@ Once we've spun up our site, and ship traffic with `gor`, we can then view the h
 
 ![Datadog Service Map](https://github.com/burningion/ecommerce-observability/raw/master/images/service-map.png)
 
-Here, we can see we've gota `store-frontend` service, that appears to connect to SQLite as its datastore. Downstream, we've got a `discounts-service`, along with an `advertisements-service`, both of which connect to the same PostgreSQL server.
+Here, we can see we've got a `store-frontend` service, that appears to connect to SQLite as its datastore. Downstream, we've got a `discounts-service`, along with an `advertisements-service`, both of which connect to the same PostgreSQL server.
 
 With this architecture in mind, we can then head over to the Services page, and see where the errors might be coming from. Is it one of the new microservices?
 
@@ -79,7 +79,7 @@ With this, we've got a line number that appears to be generating our errors. Che
 
 ## Finding a Bottleneck
 
-Once we've applied the fix for the wrong file, we still see slow behavior. We can drill down into a service and see where the bottleneck is by sorting via latancy on the Services Page:
+Once we've applied the fix for the wrong file, we still see slow behavior. We can drill down into a service and see where the bottleneck is by sorting via latency on the Services Page:
 
 ![Bottleneck](https://github.com/burningion/ecommerce-observability/raw/master/images/bottleneck.gif)
 
