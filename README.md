@@ -109,3 +109,13 @@ Once we've applied the fix for the wrong file, we still see slow behavior. We ca
 
 ![Bottleneck](https://github.com/burningion/ecommerce-observability/raw/master/images/bottleneck.gif)
 
+From here, we can see that our two microservices, (`discounts` and `ads`) are both taking a significant amount of time. 
+
+Clicking into each service, we can see the specific URL taking the majority of time.
+
+Open up the Flask app for each, and see if you can spot the problem.
+
+## Suggesting New Features / Contributing
+
+This repository exists to provide examples of observability in practice. If you have a suggestion, feel free to create a Github issue. 
+
