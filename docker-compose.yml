@@ -57,7 +57,7 @@ services:
     volumes:
       - ./store-frontend:/spree/sandbox
     labels:
-      com.datadoghq.ad.logs: '[{"source": "ruby", "service": "frontend"}]'
+      com.datadoghq.ad.logs: '[{"source": "ruby", "service": "store-frontend"}]'
   advertisements:
     environment:
       - FLASK_APP=ads.py
