@@ -77,7 +77,31 @@ We _could_ click one level down and view one of the endpoints that's generating 
 
 ![Trace Errors](https://github.com/burningion/ecommerce-observability/raw/master/images/error-traces.gif)
 
-With this, we've got a line number that appears to be generating our errors. Checking across multiple traces, we can see the same behavior. It looks like the new advertisement call was pushed to the wrong file.
+With this, we've got a line number that appears to be generating our errors. Checking across multiple traces, we can see the same behavior. It looks like the new advertisement call was pushed to the wrong template file.
+
+Let's get rid of that part of the template so we can get the site back up and running while figuring out what happened.
+
+Open `store-frontend/app/views/spree/layouts/spree_application.html.erb` and delete the line under `<div class="container">`. It should begin with a <br /> and end with a </center>.
+
+The banner ads were meant to be put under `store-frontend/app/views/spree/products/show.html.erb` and `store-frontend/app/views/spree/home/index.html.erb`.
+
+For the index.html.erb, under <div data-hook="homepage_products"> add the code:
+
+```html
+<br /><center><a href="<%= @ads['url'] %>"><img src="data:image/png;base64,<%= @ads['base64'] %>" /></a></center>
+```
+
+And for the show.html.erb at the very bottom add:
+
+```html
+<br /><center><a href="<%= @ads['url'] %>"><img src="data:image/png;base64,<%= @ads['base64'] %>" /></a></center><br />
+```
+
+With that, our project should be up and running. Keep sending traffic to watch the error rate go down for the service.
+
+Next, let's see if there's anything else going on causing that high latency.
+
+
 
 ## Finding a Bottleneck
 
