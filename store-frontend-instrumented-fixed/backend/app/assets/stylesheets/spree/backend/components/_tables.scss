@@ -1,0 +1,97 @@
+table.table {
+  font-size: $font-size-sm;
+
+  thead {
+    th {
+      text-transform: uppercase;
+      font-size: $small-font-size;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      vertical-align: top;
+      border-top: 0;
+
+      a {
+        .glyphicon {
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        vertical-align: middle;
+
+        .filterable {
+          font-size: .8em;
+          margin-left: .2em;
+          color: white; // hidden, but space is reserved for the icon
+          cursor: pointer;
+        }
+      }
+
+      &:hover td .filterable {
+        color: #666;
+      }
+    }
+  }
+}
+
+.table-active-filters {
+  display: none;
+  margin: -.5em 0 .9em;
+
+  .badge {
+    display: inline-block;
+    margin-right: .5em;
+    margin-bottom: .5em;
+
+    &:hover {
+      opacity: .8;
+    }
+
+    span.icon {
+      margin: .3em 0 0 .6em;
+      font-size: 80%;
+      cursor: pointer;
+    }
+  }
+}
+
+.card {
+  > .table,
+  .table-responsive > .table {
+  	border-right: 0;
+  	border-left: 0;
+    margin-bottom: 0;
+
+    &:last-child, &:last-of-type {
+			border-bottom: 0;
+		}
+
+  	td:first-child,
+		th:first-child {
+			border-left: 0;
+		}
+
+  	td:last-child,
+		th:last-child {
+			border-right: 0;
+		}
+
+  	tr:first-child td,
+		tr:first-child th {
+			border-top: 0;
+		}
+
+  	tr:last-child td {
+			border-bottom: 0;
+		}
+	}
+
+  .card-header + .table,
+  .card-header + .table-responsive > .table {
+    border-top: 0;
+	}
+}

@@ -1,0 +1,13 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:taxons) %>
+<% end %>
+
+<div class="taxon-products-view">
+  <div class="form-group">
+    <%= text_field_tag :taxon_id %>
+  </div>
+
+  <ul id="taxon_products" class="taxon"></ul>
+
+  <%= render partial: "spree/admin/products/autocomplete", formats: :js %>
+</div>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head data-hook="admin_inside_head">
+    <%= render partial: 'spree/admin/shared/head' %>
+  </head>
+
+  <body class="admin">
+
+    <%#-------------------------------------------------%>
+    <%# Loading progress bars                           %>
+    <%#-------------------------------------------------%>
+    <div id="progress">
+      <div class="alert alert-info alert-progress">
+        <div class="spinner"><%= Spree.t(:loading) %>...</div>
+        <div class="progress-message"><%= Spree.t(:loading) %>...</div>
+      </div>
+    </div>
+
+    <%#-------------------------------------------------%>
+    <%# Header navbar                                   %>
+    <%#-------------------------------------------------%>
+    <%= render partial: 'spree/admin/shared/header' %>
+
+    <%#-------------------------------------------------%>
+    <%# Main content                                    %>
+    <%#-------------------------------------------------%>
+    <div id="wrapper" class="container-fluid <%= wrapper_classes %>">
+      <div class="row">
+
+        <%#-------------------------------------------------%>
+        <%# Sidebar                                         %>
+        <%#-------------------------------------------------%>
+        <aside
+          class="<%= main_sidebar_classes %> sidebar position-fixed d-flex justify-content-between flex-column px-0"
+          id="main-sidebar"
+          data-hook="admin_tabs">
+          <%= render partial: 'spree/admin/shared/main_menu' %>
+
+          <%= render partial: 'spree/admin/shared/version' %>
+        </aside>
+
+        <%#-------------------------------------------------%>
+        <%# Content                                         %>
+        <%#-------------------------------------------------%>
+        <main class="<%= main_part_classes %> main" id="main-part" role="main">
+
+          <%#-------------------------------------------------%>
+          <%# Content header (page title/actions)             %>
+          <%#-------------------------------------------------%>
+          <%= render partial: 'spree/admin/shared/content_header' %>
+
+          <div class="row">
+            <%#-------------------------------------------------%>
+            <%# Alerts                                          %>
+            <%#-------------------------------------------------%>
+            <%= flash_alert(flash) %>
+
+            <%#-------------------------------------------------%>
+            <%# Main content                                    %>
+            <%#-------------------------------------------------%>
+            <div class="<%= content_for?(:sidebar) ? 'with-sidebar col-8 col-md-9' : 'col-12'  %>" id="content" data-hook>
+              <%= render partial: 'spree/admin/shared/table_filter' if content_for?(:table_filter)%>
+              <%= yield %>
+            </div>
+
+            <%#-------------------------------------------------%>
+            <%# Inner aside                                     %>
+            <%#-------------------------------------------------%>
+            <% if content_for?(:sidebar) %>
+              <div class="col-4 col-md-3">
+                <%= render partial: 'spree/admin/shared/sidebar' %>
+              </div>
+            <% end %>
+          </div>
+
+
+        </main>
+      </div>
+    </div>
+
+    <%#-------------------------------------------------%>
+    <%# Insert footer scripts here                      %>
+    <%#-------------------------------------------------%>
+    <div data-hook="admin_footer_scripts"></div>
+  </body>
+</html>
