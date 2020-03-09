@@ -1,0 +1,85 @@
+.sidebar {
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  background-color: $gray-100;
+  border-right: 1px solid $gray-200;
+  margin-top: 50px;
+  height: calc(100% - 50px);
+  z-index: 999;
+
+  a.sidebar-submenu-item:hover {
+    text-decoration: none;
+    background-color: $gray-200;
+    cursor: pointer
+  }
+
+  ul.nav-sidebar {
+    > li {
+      > a {
+        color: $gray-700;
+
+        &:hover,
+        &[aria-expanded="true"] {
+          text-decoration: none;
+          background-color: $gray-200;
+        }
+
+        .icon-chevron-left,
+        .icon-chevron-down {
+          font-size: .5rem;
+          line-height: 2;
+          right: 1rem;
+          top: 50%;
+          margin-top: -.5rem;
+        }
+      }
+    }
+  }
+}
+
+#wrapper.sidebar-minimized #main-sidebar {
+  width: 50px;
+  overflow: visible;
+
+  li {
+    &:hover, &.menu-active {
+      background-color: $gray-100;
+    }
+  }
+
+  .icon-link, [data-toggle="collapse"] {
+    text-align: center;
+
+    .icon {
+      padding: 0;
+    }
+
+    .text, .icon-chevron-left, .icon-chevron-down {
+      display: none;
+    }
+  }
+
+  ul.collapse.in {
+    display: none;
+  }
+
+  .submenu-active {
+    display: block !important;
+    height: auto !important;
+    position: fixed;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    z-index: 1000;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    left: 50px;
+    min-width: 180px;
+    visibility: visible;
+    background-color: $gray-100;
+    border-top: none;
+    border-right: 1px solid $gray-200;
+    padding-top: 5px;
+  }
+}

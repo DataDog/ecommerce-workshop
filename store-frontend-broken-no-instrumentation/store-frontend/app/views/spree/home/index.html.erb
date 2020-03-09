@@ -1,0 +1,16 @@
+<% @body_id = 'home-page' %>
+<% content_for :sidebar do %>
+  <p>
+  <h3><%= @discounts['name'] %>!</h3><br /> <strong>Enter coupon code '<%= @discounts['code']%>'
+  at checkout for a $<%= '%.2f' % @discounts['value'] %> discount</strong></p>
+  <div data-hook="homepage_sidebar_navigation">
+    <%= render partial: 'spree/shared/taxonomies' %>
+  </div>
+<% end %>
+
+<div data-hook="homepage_products">
+  <% cache(cache_key_for_products) do %>
+    <%= render partial: 'spree/shared/products', locals: { products: @products } %>
+  <% end %>
+</div>
+
