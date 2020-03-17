@@ -1,0 +1,25 @@
+.btn,
+.nav-pills > li > a {
+  vertical-align: middle;
+  transition: color 0.1s linear 0s, background-color 0.1s linear 0s, opacity 0.2s linear 0s !important;
+}
+
+.btn {
+  text-align: center;
+
+  .glyphicon {
+    padding-right: 3px;
+  }
+
+  .ship { color: #fff; }
+}
+
+.btn-sm .glyphicon { padding: 0; }
+
+.btn.action-void { @extend .btn-danger; }
+.btn.action-capture { @extend .btn-success; }
+.btn.payment-action-edit {
+  @extend .btn-primary;
+
+  color: $white !important;
+}

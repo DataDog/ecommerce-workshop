@@ -1,0 +1,13 @@
+<% content_for :page_title do %>
+  <%= link_to Spree.t(:tax_categories), spree.admin_tax_categories_url %> /
+  <%= Spree.t(:new_tax_category) %>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/error_messages', locals: { target: @tax_category } %>
+
+<%= form_for [:admin, @tax_category] do |f| %>
+  <fieldset>
+    <%= render partial: 'form', locals: { f: f } %>
+    <%= render partial: 'spree/admin/shared/new_resource_links' %>
+  </fieldset>
+<% end %>

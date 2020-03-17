@@ -1,0 +1,17 @@
+.row {
+  padding: 0 0 15px 0;
+}
+
+.is-hidden {
+  display: none;
+}
+
+// No-margin and no-padding helper classes
+@each $side in top bottom left right {
+  .no-margin-#{$side}  { margin-#{side}: 0; }
+  .no-padding-#{$side} { padding-#{side}: 0; }
+}
+
+.alert-error {
+  @extend .alert-danger;
+}

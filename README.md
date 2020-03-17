@@ -9,33 +9,37 @@ In this hypothetical scenario, we've got a [Spree](https://spreecommerce.org/) w
 
 We'll take that broken application, instrument it with Datadog, and then deploy a fix. After deploying a fix, we'll look into Datadog to ensure our deploy worked, and that our systems are actually functioning properly.
 
-## Structure of the Application
+## Structure of the repository
 
-The `master` branch that you are on now is used to build Docker images that are used in the [Katacoda scenario](https://www.katacoda.com/DataDog/scenarios/ecommerce-observability). None of the example pieces of the app live within this branch.
+This repository is used to build the Docker images to run the application in the different states. The folders that build each of the images are the following:
 
-The application itself is split up into a few different branches, to showcase three specific steps:
+* `ads-service`- The advertisement microservice. There is only one state of this service.
+* `discounts-service`- The discounts microservice. There is only one state of this service.
+* `store-frontend-broken-no-instrumentation`- The Spree application in a broken state and with no instrumentation. This is the initial scenario.
+* `store-frontend-broken-instrumented`- The Spree application in a broken state but instrumented with Datadog APM. This is the second scenario.
+* `store-frontend-instrumented-fixed`- The Spree application instrumented with Datadog APM and fixed. This is the final scenario.
 
-`no-instrumentation` - A broken, uninstrumented distributed app. Trying to emulate a team moving to microservices, and having a bad deploy.
+To build any of the images you should `cd` into each of the folders and run:
 
-`instrumented` - A now instrumented, but still broken app. Used to debug and diagnose what is broken within Datadog.
-
-`instrumented-fixed` - An instrumented, fixed application, ready to see the difference in Datadog between a properly functioning app and a bad deployment.
+```
+docker build .
+```
 
 Feel free to [follow along](https://www.katacoda.com/DataDog/scenarios/ecommerce-observability) with the scenario, or to run the application locally.
 
 ## Running the Application Locally
 
-The application itself runs on `docker-compose`. First, install Docker along with docker-compose. Then sign up with a trial [Datadog account](https://www.datadoghq.com/), and grab your API key from the Integrations->API tab. 
+The application itself runs on `docker-compose`. First, install Docker along with docker-compose. Then sign up with a trial [Datadog account](https://www.datadoghq.com/), and grab your API key from the Integrations->API tab.
 
-Finally:
+Each of the scenarios use a different `docker-compose` file in the `docker-compose-files` folder. To run any of the scenarios:
 
 ```bash
-$ git clone https://github.com/DataDog/ecommerce-observability/
-$ git checkout instrumented
-$ POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=<YOUR_API_KEY> docker-compose up
+$ git clone https://github.com/DataDog/ecommerce-workshop.git
+$ cd docker-compose-files
+$ POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=<YOUR_API_KEY> docker-compose -f <docker_compose_with_your_selected_scenario> up
 ```
 
-With this, the docker images will be pulled, and you'll be able to visit the (broken), instrumented app.
+With this, the docker images will be pulled, and you'll be able to visit the app.
 
 When you go to the homepage, you'll notice that, although the site takes a while to load, it mostly looks as if it works. Indeed, there are only a few views that are broken. Try navigating around the site to see if you can't discover the broken pieces.
 

@@ -1,0 +1,153 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: datadog-secret
+  namespace: datadog
+  labels:
+    app: "datadog"
+type: Opaque
+data:
+  api-key: <replace_with_base64_of_your_api_key> 
+---
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: datadog-agent
+  namespace: datadog
+spec:
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: datadog-agent
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: datadog-agent
+      name: datadog-agent
+    spec:
+      containers:
+      - env:
+        - name: DD_API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: api-key
+              name: datadog-secret
+        - name: DD_CLUSTER_AGENT_AUTH_TOKEN 
+          valueFrom:
+            secretKeyRef:
+              key: token
+              name: datadog-auth-token 
+        - name: DD_SITE
+          value: datadoghq.com
+        - name: DD_DOGSTATSD_NON_LOCAL_TRAFFIC
+          value: "true"
+        - name: KUBERNETES
+          value: "true"
+        - name: DD_HEALTH_PORT
+          value: "5555"
+        - name: DD_COLLECT_KUBERNETES_EVENTS
+          value: "false"
+        - name: DD_LEADER_ELECTION
+          value: "false"
+        - name: DD_APM_ENABLED
+          value: "true"
+        - name: DD_CLUSTER_NAME
+          value: kubernetes-cluster 
+        - name: DD_KUBELET_TLS_VERIFY
+          value: "false"
+        - name: DD_LOGS_ENABLED
+          value: "false"
+        - name: DD_TAGS
+          value: "env:ruby-shop"
+        - name: DD_ENV
+          value: "ruby-shop"
+        - name: DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL
+          value: "false"
+        - name: DD_CRI_SOCKET_PATH
+          value: /var/run/crio/crio.sock
+        - name: DD_KUBERNETES_KUBELET_HOST
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.hostIP
+        image: datadog/agent:latest
+        imagePullPolicy: Always
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /health
+            port: 5555
+            scheme: HTTP
+          initialDelaySeconds: 15
+          periodSeconds: 15
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: datadog-agent
+        ports:
+        - containerPort: 8125
+          hostPort: 8125
+          name: dogstatsdport
+          protocol: UDP
+        - containerPort: 8126
+          hostPort: 8126
+          name: traceport
+          protocol: TCP
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "200m"
+          limits:
+            cpu: 200m
+            memory: 256Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /var/run/crio/crio.sock
+          name: runtimesocket
+        - mountPath: /host/proc
+          name: procdir
+          readOnly: true
+        - mountPath: /host/sys/fs/cgroup
+          name: cgroups
+          readOnly: true
+        - mountPath: /var/run/s6
+          name: s6-run
+        - mountPath: /var/log/pods
+          name: logpodpath
+        - mountPath: /var/lib/docker/containers
+          name: logcontainerpath
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: datadog-agent
+      serviceAccountName: datadog-agent
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - hostPath:
+          path: /var/run/crio/crio.sock
+          type: ""
+        name: runtimesocket
+      - hostPath:
+          path: /proc
+          type: ""
+        name: procdir
+      - hostPath:
+          path: /sys/fs/cgroup
+          type: ""
+        name: cgroups
+      - emptyDir: {}
+        name: s6-run
+      - hostPath:
+          path: /var/log/pods
+          type: ""
+        name: logpodpath
+      - hostPath:
+          path: /var/lib/docker/containers
+          type: ""
+        name: logcontainerpath
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate

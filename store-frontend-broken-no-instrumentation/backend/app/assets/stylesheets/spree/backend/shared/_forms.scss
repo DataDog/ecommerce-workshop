@@ -1,0 +1,26 @@
+label {
+  font-size: $font-size-sm;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+span.or {
+  @extend label;
+
+  padding: 0 10px;
+}
+
+.form-group {
+  &.withError {
+    label, .formError, .required {
+      color: $danger;
+    }
+
+    input,
+    .select2-choice {
+      border-color: $danger;
+    }
+  }
+}

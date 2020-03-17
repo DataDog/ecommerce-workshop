@@ -1,0 +1,137 @@
+require: rubocop-rspec
+
+inherit_from: '.rubocop-disabled.yml'
+
+AllCops:
+  TargetRubyVersion: 2.5
+  Exclude:
+    - '**/sandbox/**/*'
+    - '**/db/migrate/*'
+    - '**/Gemfile'
+    - '**/Gemfile.lock'
+    - '**/Rakefile'
+    - '**/rails'
+    - 'guides/**/*'
+    - '**/*.gemspec'
+    - '**/dummy/**/*'
+    - '**/vendor/**/*'
+    - '**/spec_helper.rb'
+    - '**/templates/**/*'
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+AlignParameters:
+  Enabled: false
+
+ClassLength:
+  CountComments: false
+  Max: 150
+
+ModuleLength:
+  CountComments: false
+  Max: 250
+  Exclude:
+    - '**/spec/**/*'
+
+Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 150
+  Exclude:
+    - '**/spec/**/*'
+
+MethodLength:
+  CountComments: false
+  Max: 50
+
+BlockLength:
+  CountComments: false
+  Max: 50
+  Exclude:
+    - '**/spec/**/*'
+    - '**/*.rake'
+    - '**/factories/**/*'
+    - '**/config/routes.rb'
+
+Metrics/AbcSize:
+ Max: 45
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Layout/DotPosition:
+  EnforcedStyle: trailing
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Style/WordArray:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
+Style/BarePercentLiterals:
+  Enabled: false
+
+Style/MutableConstant:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Naming/VariableNumber:
+  Enabled: false
+
+Performance/RegexpMatch:
+  Enabled: false
+
+Style/UnneededPercentQ:
+  Enabled: false
+
+Lint/ParenthesesAsGroupedExpression:
+  Enabled: false
+
+Style/NumericPredicate:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/AndOr:
+  Exclude:
+    - '**/*controller.rb'
+
+RSpec/NestedGroups:
+  Max: 7
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - '**/spec/**/*'
+
+Style/NumericLiterals:
+  Enabled: false
