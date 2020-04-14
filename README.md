@@ -35,7 +35,7 @@ Each of the scenarios use a different `docker-compose` file in the `docker-compo
 
 ```bash
 $ git clone https://github.com/DataDog/ecommerce-workshop.git
-$ cd docker-compose-files
+$ cd ecommerce-workshop/docker-compose-files
 $ POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=<YOUR_API_KEY> docker-compose -f <docker_compose_with_your_selected_scenario> up
 ```
 
