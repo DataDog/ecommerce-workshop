@@ -7,3 +7,4 @@
 .vscode
 sandbox/tmp/
 __pycache__
+.terraform
