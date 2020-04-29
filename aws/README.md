@@ -10,7 +10,7 @@ This set of Terraform files deploys the eCommerce application into AWS.
 
 ## Create the instance
 
-tbd.
+tbd. hmmm, I think [https://www.terraform.io/docs/providers/aws/d/ecs_task_definition.html](ECS task definitions) probably make the most sense.
 
 ## Delete the instance
 
