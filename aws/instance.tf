@@ -1,20 +1,33 @@
-resource "aws_instance" "ecommerce" {
-  ami           = "ami-085925f297f89fce1" # ubuntu image
-  instance_type = "t2.micro"
+resource "aws_ecs_cluster" "ecommerce-microservices" {
+    name = "ecommerce-microservices"
+}
 
-  tags = {
-      Name = "eCommerce Monolith"
-  }
+resource "aws_ecs_task_definition" "ecommerce" {
+      family = "ecommerce"
 
-  provisioner "file" {
-      source = "provision.sh"
-      destination = "/tmp/provision.sh"
+      container_definitions = <<DEFINITION
+[
+  {
+    "cpu": 128,
+    "environment": [{
+      "name": "SECRET",
+      "value": "KEY"
+    }],
+    "essential": true,
+    "image": "arapulido/ecommerce-spree-discounts:latest",
+    "memory": 512,
+    "memoryReservation": 256,
+    "name": "ecommerce-frontend"
   }
+]
+DEFINITION
+}
 
-  provisioner "remote-exec" {
-      inline = [
-          "chmod +x /tmp/provision.sh",
-          "/tmp/script.sh ${var.dd_api_key}"
-      ]
-  }
+resource "aws_ecs_service" "ecommerce" {
+  name          = "ecommerce"
+  cluster       = "aws_ecs_cluster.ecommerce-microservices.id"
+  desired_count = 2
+
+  # Track the latest ACTIVE revision
+  task_definition = "aws_ecs_task_definition.ecommerce.family"
 }
