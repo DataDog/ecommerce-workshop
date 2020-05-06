@@ -14,10 +14,7 @@ resource "aws_ecs_task_definition" "ecommerce" {
     {
       "dnsSearchDomains": null,
       "logConfiguration": null,
-      "entryPoint": [
-        "sh",
-        "docker-entrypoint.sh"
-      ],
+      "entryPoint": null,
       "portMappings": [
         {
           "hostPort": 3000,
@@ -25,7 +22,10 @@ resource "aws_ecs_task_definition" "ecommerce" {
           "containerPort": 3000
         }
       ],
-      "command": null,
+      "command": [
+        "sh",
+        "docker-entrypoint.sh"
+      ],
       "linuxParameters": null,
       "cpu": 0,
       "environment": [
