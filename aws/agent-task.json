@@ -1,0 +1,173 @@
+{
+    "ipcMode": null,
+    "executionRoleArn": "<YOUR TASK EXECUTION ROLE ARN HERE>",
+    "containerDefinitions": [
+        {
+            "dnsSearchDomains": null,
+            "logConfiguration": null,
+            "entryPoint": null,
+            "portMappings": [
+                {
+                    "hostPort": 8126,
+                    "protocol": "tcp",
+                    "containerPort": 8126
+                },
+                {
+                    "hostPort": 8125,
+                    "protocol": "tcp",
+                    "containerPort": 8125
+                }
+            ],
+            "command": null,
+            "linuxParameters": null,
+            "cpu": 10,
+            "environment": [
+                {
+                    "name": "DD_ECS_COLLECT_RESOURCE_TAGS_EC2",
+                    "value": "true"
+                },
+                {
+                    "name": "SD_BACKEND",
+                    "value": "docker"
+                },
+                {
+                    "name": "DD_APM_NON_LOCAL_TRAFFIC",
+                    "value": "true"
+                },
+                {
+                    "name": "DD_API_KEY",
+                    "value": "<INSERT YOUR API KEY HERE>"
+                },
+                {
+                    "name": "DD_PROCESS_AGENT_ENABLED",
+                    "value": "true"
+                },
+                {
+                    "name": "DD_APM_ENABLED",
+                    "value": "true"
+                },
+                {
+                    "name": "DD_LOGS_ENABLED",
+                    "value": "true"
+                },
+                {
+                    "name": "DD_TAGS",
+                    "value": "'env:ruby-shop'"
+                },
+                {
+                    "name": "DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL",
+                    "value": "true"
+                },
+                {
+                    "name": "DD_DOGSTATSD_NON_LOCAL_TRAFFIC",
+                    "value": "true"
+                }
+            ],
+            "resourceRequirements": null,
+            "ulimits": null,
+            "dnsServers": null,
+            "mountPoints": [
+                {
+                    "readOnly": true,
+                    "containerPath": "/var/run/docker.sock",
+                    "sourceVolume": "docker_sock"
+                },
+                {
+                    "readOnly": true,
+                    "containerPath": "/host/sys/fs/cgroup",
+                    "sourceVolume": "cgroup"
+                },
+                {
+                    "readOnly": true,
+                    "containerPath": "/host/proc",
+                    "sourceVolume": "proc"
+                },
+                {
+                    "readOnly": false,
+                    "containerPath": "/opt/datadog-agent/run",
+                    "sourceVolume": "pointdir"
+                }
+            ],
+            "workingDirectory": null,
+            "secrets": null,
+            "dockerSecurityOptions": null,
+            "memory": 256,
+            "memoryReservation": null,
+            "volumesFrom": [],
+            "stopTimeout": null,
+            "image": "datadog/agent:latest",
+            "startTimeout": null,
+            "firelensConfiguration": null,
+            "dependsOn": null,
+            "disableNetworking": null,
+            "interactive": null,
+            "healthCheck": null,
+            "essential": true,
+            "links": null,
+            "hostname": null,
+            "extraHosts": null,
+            "pseudoTerminal": null,
+            "user": null,
+            "readonlyRootFilesystem": null,
+            "dockerLabels": null,
+            "systemControls": null,
+            "privileged": null,
+            "name": "datadog-agent"
+        }
+    ],
+    "memory": null,
+    "taskRoleArn": "<INSERT YOUR TASK ROLE ARN HERE>",
+    "family": "datadog-agent-task",
+    "pidMode": null,
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "networkMode": "bridge",
+    "cpu": null,
+    "inferenceAccelerators": [],
+    "proxyConfiguration": null,
+    "volumes": [
+        {
+            "efsVolumeConfiguration": null,
+            "name": "docker_sock",
+            "host": {
+                "sourcePath": "/var/run/docker.sock"
+            },
+            "dockerVolumeConfiguration": null
+        },
+        {
+            "efsVolumeConfiguration": null,
+            "name": "proc",
+            "host": {
+                "sourcePath": "/proc/"
+            },
+            "dockerVolumeConfiguration": null
+        },
+        {
+            "efsVolumeConfiguration": null,
+            "name": "cgroup",
+            "host": {
+                "sourcePath": "/cgroup/"
+            },
+            "dockerVolumeConfiguration": null
+        },
+        {
+            "efsVolumeConfiguration": null,
+            "name": "passwd",
+            "host": {
+                "sourcePath": "/etc/passwd"
+            },
+            "dockerVolumeConfiguration": null
+        },
+        {
+            "efsVolumeConfiguration": null,
+            "name": "pointdir",
+            "host": {
+                "sourcePath": "/opt/datadog-agent/run"
+            },
+            "dockerVolumeConfiguration": null
+        }
+    ],
+    "placementConstraints": [],
+    "tags": []
+}
