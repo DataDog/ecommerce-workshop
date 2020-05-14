@@ -1,0 +1,319 @@
+{
+    "ipcMode": null,
+    "executionRoleArn": null,
+    "containerDefinitions": [
+      {
+        "dnsSearchDomains": null,
+        "logConfiguration": null,
+        "entryPoint": [],
+        "portMappings": [
+          {
+            "hostPort": 3000,
+            "protocol": "tcp",
+            "containerPort": 3000
+          }
+        ],
+        "command": [
+          "sh",
+          "docker-entrypoint.sh"
+        ],
+        "linuxParameters": null,
+        "cpu": 0,
+        "environment": [
+          {
+            "name": "DB_PASSWORD",
+            "value": "<YOUR PASSWORD>"
+          },
+          {
+            "name": "DB_USERNAME",
+            "value": "postgres"
+          },
+          {
+            "name": "DD_AGENT_HOST",
+            "value": "<PRIVATE IP OF THE EC2 INSTANCE>"
+          },
+          {
+            "name": "DD_ANALYTICS_ENABLED",
+            "value": "true"
+          },
+          {
+            "name": "DD_APM_ENABLED",
+            "value": "true"
+          },
+          {
+            "name": "DD_ENV",
+            "value": "ruby-shop"
+          },
+          {
+            "name": "DD_LOGS_INJECTION",
+            "value": "true"
+          }
+        ],
+        "resourceRequirements": null,
+        "ulimits": null,
+        "dnsServers": null,
+        "mountPoints": [],
+        "workingDirectory": null,
+        "secrets": null,
+        "dockerSecurityOptions": null,
+        "memory": 512,
+        "memoryReservation": null,
+        "volumesFrom": [],
+        "stopTimeout": null,
+        "image": "burningion/ecommerce-spree-observability:aws-ecs-broken-1",
+        "startTimeout": null,
+        "firelensConfiguration": null,
+        "dependsOn": null,
+        "disableNetworking": null,
+        "interactive": null,
+        "healthCheck": null,
+        "essential": true,
+        "links": [
+          "db",
+          "discounts",
+          "advertisements"
+        ],
+        "hostname": null,
+        "extraHosts": null,
+        "pseudoTerminal": null,
+        "user": null,
+        "readonlyRootFilesystem": null,
+        "dockerLabels": null,
+        "systemControls": null,
+        "privileged": null,
+        "name": "frontend"
+      },
+      {
+        "dnsSearchDomains": null,
+        "logConfiguration": null,
+        "entryPoint": null,
+        "portMappings": [
+          {
+            "hostPort": 5001,
+            "protocol": "tcp",
+            "containerPort": 5001
+          }
+        ],
+        "command": [
+          "ddtrace-run",
+          "flask",
+          "run",
+          "--port=5001",
+          "--host=0.0.0.0"
+        ],
+        "linuxParameters": null,
+        "cpu": 0,
+        "environment": [
+          {
+            "name": "DATADOG_SERVICE_NAME",
+            "value": "discounts-service"
+          },
+          {
+            "name": "DD_AGENT_HOST",
+            "value": "<PRIVATE IP OF THE EC2 INSTANCE>"
+          },
+          {
+            "name": "DD_ANALYTICS_ENABLED",
+            "value": "true"
+          },
+          {
+            "name": "DD_LOGS_INJECTION",
+            "value": "true"
+          },
+          {
+            "name": "FLASK_APP",
+            "value": "discounts.py"
+          },
+          {
+            "name": "POSTGRES_PASSWORD",
+            "value": "<YOUR PASSWORD>"
+          },
+          {
+            "name": "POSTGRES_USER",
+            "value": "postgres"
+          }
+        ],
+        "resourceRequirements": null,
+        "ulimits": null,
+        "dnsServers": null,
+        "mountPoints": [],
+        "workingDirectory": null,
+        "secrets": null,
+        "dockerSecurityOptions": null,
+        "memory": null,
+        "memoryReservation": null,
+        "volumesFrom": [],
+        "stopTimeout": null,
+        "image": "arapulido/ecommerce-spree-discounts:latest",
+        "startTimeout": null,
+        "firelensConfiguration": null,
+        "dependsOn": null,
+        "disableNetworking": null,
+        "interactive": null,
+        "healthCheck": null,
+        "essential": true,
+        "links": [
+          "db"
+        ],
+        "hostname": null,
+        "extraHosts": null,
+        "pseudoTerminal": null,
+        "user": null,
+        "readonlyRootFilesystem": null,
+        "dockerLabels": null,
+        "systemControls": null,
+        "privileged": null,
+        "name": "discounts"
+      },
+      {
+        "dnsSearchDomains": null,
+        "logConfiguration": null,
+        "entryPoint": null,
+        "portMappings": [],
+        "command": null,
+        "linuxParameters": null,
+        "cpu": 0,
+        "environment": [
+          {
+            "name": "POSTGRES_PASSWORD",
+            "value": "<YOUR PASSWORD>"
+          },
+          {
+            "name": "POSTGRES_USER",
+            "value": "postgres"
+          }
+        ],
+        "resourceRequirements": null,
+        "ulimits": null,
+        "dnsServers": null,
+        "mountPoints": [],
+        "workingDirectory": null,
+        "secrets": null,
+        "dockerSecurityOptions": null,
+        "memory": null,
+        "memoryReservation": null,
+        "volumesFrom": [],
+        "stopTimeout": null,
+        "image": "postgres:11-alpine",
+        "startTimeout": null,
+        "firelensConfiguration": null,
+        "dependsOn": null,
+        "disableNetworking": null,
+        "interactive": null,
+        "healthCheck": null,
+        "essential": true,
+        "links": null,
+        "hostname": null,
+        "extraHosts": null,
+        "pseudoTerminal": null,
+        "user": null,
+        "readonlyRootFilesystem": null,
+        "dockerLabels": null,
+        "systemControls": null,
+        "privileged": null,
+        "name": "db"
+      },
+      {
+        "dnsSearchDomains": null,
+        "logConfiguration": null,
+        "entryPoint": null,
+        "portMappings": [
+          {
+            "hostPort": 5002,
+            "protocol": "tcp",
+            "containerPort": 5002
+          }
+        ],
+        "command": [
+          "ddtrace-run",
+          "flask",
+          "run",
+          "--port=5002",
+          "--host=0.0.0.0"
+        ],
+        "linuxParameters": null,
+        "cpu": 0,
+        "environment": [
+          {
+            "name": "DATADOG_SERVICE_NAME",
+            "value": "advertisements-service"
+          },
+          {
+            "name": "DD_AGENT_HOST",
+            "value": "<PRIVATE IP OF THE EC2 INSTANCE>"
+          },
+          {
+            "name": "DD_ANALYTICS_ENABLED",
+            "value": "true"
+          },
+          {
+            "name": "DD_LOGS_INJECTION",
+            "value": "true"
+          },
+          {
+            "name": "FLASK_APP",
+            "value": "ads.py"
+          },
+          {
+            "name": "POSTGRES_PASSWORD",
+            "value": "<YOUR PASSWORD>"
+          },
+          {
+            "name": "POSTGRES_USER",
+            "value": "postgres"
+          }
+        ],
+        "resourceRequirements": null,
+        "ulimits": null,
+        "dnsServers": null,
+        "mountPoints": [],
+        "workingDirectory": null,
+        "secrets": null,
+        "dockerSecurityOptions": null,
+        "memory": null,
+        "memoryReservation": null,
+        "volumesFrom": [],
+        "stopTimeout": null,
+        "image": "arapulido/ecommerce-spree-ads:latest",
+        "startTimeout": null,
+        "firelensConfiguration": null,
+        "dependsOn": null,
+        "disableNetworking": null,
+        "interactive": null,
+        "healthCheck": null,
+        "essential": true,
+        "links": [
+          "db"
+        ],
+        "hostname": null,
+        "extraHosts": null,
+        "pseudoTerminal": null,
+        "user": null,
+        "readonlyRootFilesystem": null,
+        "dockerLabels": null,
+        "systemControls": null,
+        "privileged": null,
+        "name": "advertisements"
+      }
+    ],
+    "placementConstraints": [],
+    "memory": "800",
+    "taskRoleArn": null,
+    "compatibilities": [
+      "EC2"
+    ],
+    "taskDefinitionArn": "<YOUR TASK DEFINITION ARN HERE>",
+    "family": "first-ecommerce-shop",
+    "requiresAttributes": [],
+    "pidMode": null,
+    "requiresCompatibilities": [
+      "EC2"
+    ],
+    "networkMode": null,
+    "cpu": "800",
+    "revision": 14,
+    "status": "ACTIVE",
+    "inferenceAccelerators": null,
+    "proxyConfiguration": null,
+    "volumes": []
+  }
