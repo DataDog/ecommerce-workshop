@@ -45,7 +45,9 @@ services:
       - DD_ANALYTICS_ENABLED=true
       - DB_USERNAME
       - DB_PASSWORD
-    image: "arapulido/ecommerce-storefront-fixed:new-images"
+      - DD_CLIENT_TOKEN
+      - DD_APPLICATION_ID
+    image: "burningion/ecommerce-spree-observability:rum-fixed"
     command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"
