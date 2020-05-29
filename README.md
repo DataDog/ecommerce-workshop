@@ -43,6 +43,22 @@ With this, the docker images will be pulled, and you'll be able to visit the app
 
 When you go to the homepage, you'll notice that, although the site takes a while to load, it mostly looks as if it works. Indeed, there are only a few views that are broken. Try navigating around the site to see if you can't discover the broken pieces.
 
+## Enabling Real User Monitoring (RUM)
+
+Real User Monitoring is enabled for the `docker-compose-fixed-instrumented.yml` docker compose. 
+
+To enable it, you'll need to log into Datadog, navigate to RUM Applications, and create a new application.
+
+Once created, you'll get a piece of Javascript with an `applicationId` and a `clientToken`.
+
+Pass these environment variables to docker-compose:
+
+```
+$ DD_API_KEY=<YOUR_API_KEY> DD_CLIENT_TOKEN=<CLIENT_TOKEN> DD_APPLICATION_ID=<APPLICATION_ID> POSTGRES_USER=<POSTGRES_USER> POSTGRES_PASSWORD=<POSTGRES_PASSWORD> docker-compose -f docker-compose-fixed-instrumented.yml up
+```
+
+After the site comes up, you shold be able to navigate around, and then see your Real User Monitoring traffic show up.
+
 ## Creating Example Traffic To Your Site
 
 The Katacoda scenario uses `gor` to spin up traffic our own (dysfunctional) stores, and then diagnose and fix them with replayed live traffic.
