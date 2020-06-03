@@ -45,7 +45,7 @@ When you go to the homepage, you'll notice that, although the site takes a while
 
 ## Enabling Real User Monitoring (RUM)
 
-Real User Monitoring is enabled for the `docker-compose-fixed-instrumented.yml` docker compose. 
+Real User Monitoring is enabled for the `docker-compose-fixed-instrumented.yml` docker compose and the Kubernetes `frontend.yaml` deployment.
 
 To enable it, you'll need to log into Datadog, navigate to RUM Applications, and create a new application.
 
@@ -55,6 +55,16 @@ Pass these environment variables to docker-compose:
 
 ```
 $ DD_API_KEY=<YOUR_API_KEY> DD_CLIENT_TOKEN=<CLIENT_TOKEN> DD_APPLICATION_ID=<APPLICATION_ID> POSTGRES_USER=<POSTGRES_USER> POSTGRES_PASSWORD=<POSTGRES_PASSWORD> docker-compose -f docker-compose-fixed-instrumented.yml up
+```
+
+Or uncomment the following lines in the `frontend.yaml` if in Kubernetes, adding your `applicationID` and your `clientToken`:
+
+```
+# Enable RUM
+# - name: DD_CLIENT_TOKEN
+#   value: <your_client_token>
+# - name: DD_APPLICATION_ID
+#   value: <your_application_id>
 ```
 
 After the site comes up, you shold be able to navigate around, and then see your Real User Monitoring traffic show up.

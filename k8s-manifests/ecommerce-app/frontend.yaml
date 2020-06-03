@@ -43,7 +43,12 @@ spec:
           value: "true"
         - name: DD_ANALYTICS_ENABLED
           value: "true"
-        image: arapulido/ecommerce-spree-observability:dev
+        # Enable RUM
+        # - name: DD_CLIENT_TOKEN
+        #   value: <your_client_token>
+        # - name: DD_APPLICATION_ID
+        #   value: <your_application_id>
+        image: burningion/ecommerce-spree-observability:rum-fixed
         imagePullPolicy: Always
         name: ecommerce-spree-observability
         ports:
