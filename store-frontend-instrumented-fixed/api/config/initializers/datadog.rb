@@ -3,6 +3,5 @@ Datadog.configure do |c|
   c.use :rails, {'analytics_enabled': true}
   # Make sure requests are also instrumented
   c.use :http, {'analytics_enabled': true}
-  c.tracer hostname: 'agent'
   c.tracer env: 'ruby-shop'
 end
