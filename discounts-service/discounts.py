@@ -7,6 +7,8 @@ from random_word import RandomWords
 from flask import Flask, Response, jsonify
 from flask import request as flask_request
 
+from sqlalchemy.orm import joinedload
+
 from bootstrap import create_app
 from models import Discount, db
 
@@ -22,6 +24,8 @@ def hello():
 @app.route('/discount', methods=['GET', 'POST'])
 def status():
     if flask_request.method == 'GET':
+        # the below calls create an n+1, unless
+        # Discount.query.options(joinedload('*')).all()
         discounts = Discount.query.all()
         app.logger.info(f"Discounts available: {len(discounts)}")
         influencer_count = 0
