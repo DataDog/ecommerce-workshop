@@ -24,13 +24,8 @@ def hello():
 @app.route('/discount', methods=['GET', 'POST'])
 def status():
     if flask_request.method == 'GET':
-        # the below calls create an n+1, unless
-        # Discount.query.options(joinedload('*')).all()
-        discounts = Discount.query.all()
+        discounts = Discount.query.options(joinedload('*')).all()
         app.logger.info(f"Discounts available: {len(discounts)}")
-
-        # adding a half sleep to test something
-        time.sleep(2.5)
 
         influencer_count = 0
         for discount in discounts:
@@ -49,8 +44,6 @@ def status():
         db.session.commit()
         discounts = Discount.query.all()
 
-        # adding a half sleep to test something
-        time.sleep(2.5)
         return jsonify([b.serialize() for b in discounts])
     else:
         err = jsonify({'error': 'Invalid request method'})
