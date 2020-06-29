@@ -117,7 +117,7 @@ Once we've applied the fix for the wrong file, we still see slow behavior. We ca
 
 In the `discounts-service`, there is an N+1 query:
 
-![N+1 Query][https://github.com/DataDog/ecommerce-workshop/raw/master/images/nplus-query.png]
+![N+1 Query](https://github.com/DataDog/ecommerce-workshop/raw/master/images/nplus-query.png)
 
 The problem is a lazy lookup on a relational database. 
 
@@ -135,6 +135,6 @@ discounts = Discount.query.options(joinedload('*')).all()
 
 We eager load the `discount_type` relation on the `discount`, and can grab all information without multiple trips to the database:
 
-![N+1 Solved][https://github.com/DataDog/ecommerce-workshop/raw/master/images/solved-nplus.png]
+![N+1 Solved](https://github.com/DataDog/ecommerce-workshop/raw/master/images/solved-nplus.png)
 
 The N+1 query example lives in `discounts-service/`, and the fixed version lives in `discounts-service-fixed/`.
