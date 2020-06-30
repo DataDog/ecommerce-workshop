@@ -21,7 +21,7 @@ services:
       - POSTGRES_USER
       - DATADOG_SERVICE_NAME=discounts-service
 # add discounts env variables
-    image: "arapulido/ecommerce-spree-discounts:latest"
+    image: "ddtraining/discounts-service:latest"
     command: flask run --port=5001 --host=0.0.0.0
     ports:
       - "5001:5001"
@@ -36,7 +36,7 @@ services:
       - DB_USERNAME
       - DB_PASSWORD
 # add frontend env variables
-    image: "arapulido/ecommerce-storefront-instrumented:new-images"
+    image: "ddtraining/ecommerce-frontend:latest"
     command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"
@@ -56,7 +56,7 @@ services:
       - POSTGRES_USER
       - DATADOG_SERVICE_NAME=advertisements-service
 # add ads env variables
-    image: "arapulido/ecommerce-spree-ads:latest"
+    image: "ddtraining/advertisements-service:latest"
     command: flask run --port=5002 --host=0.0.0.0
     ports:
       - "5002:5002"
