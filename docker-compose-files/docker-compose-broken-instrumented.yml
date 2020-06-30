@@ -52,7 +52,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./store-frontend-broken-instrumented:/spree/sandbox
+      - ./store-frontend-broken-instrumented:/spree/store-frontend
     depends_on:
       - agent
       - db
