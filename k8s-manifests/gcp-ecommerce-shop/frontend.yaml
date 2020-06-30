@@ -44,10 +44,10 @@ spec:
         - name: DD_ANALYTICS_ENABLED
           value: "true"
         # Enable RUM
-        # - name: DD_CLIENT_TOKEN
-        #   value: <your_client_token>
-        # - name: DD_APPLICATION_ID
-        #   value: <your_application_id>
+        #- name: DD_CLIENT_TOKEN
+        #  value: ""
+        #- name: DD_APPLICATION_ID
+        #  value: ""
         image: ddtraining/ecommerce-frontend:latest
         imagePullPolicy: Always
         name: ecommerce-spree-observability
@@ -75,4 +75,13 @@ spec:
   selector:
     service: frontend
     app: ecommerce
-  type: ClusterIP
+  type: LoadBalancer
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: basic-ingress
+spec:
+  backend:
+    serviceName: frontend
+    servicePort: 3000
