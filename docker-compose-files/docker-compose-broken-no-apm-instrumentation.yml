@@ -36,7 +36,7 @@ services:
       - DB_USERNAME
       - DB_PASSWORD
 # add frontend env variables
-    image: "ddtraining/ecommerce-frontend:latest"
+    image: "ddtraining/ecommerce-frontend-broken:latest"
     command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"
@@ -46,7 +46,7 @@ services:
       - discounts
       - advertisements
     volumes:
-      - ./store-frontend:/spree/sandbox
+      - ./store-frontend-broken-instrumented:/spree/store-frontend
 # add frontend log labels
   advertisements:
     environment:
