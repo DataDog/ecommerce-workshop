@@ -31,6 +31,8 @@ services:
     command: ddtrace-run flask run --port=5001 --host=0.0.0.0
     ports:
       - "5001:5001"
+    volumes:
+      - "./discounts-service:/app"
     depends_on:
       - agent
       - db
@@ -49,6 +51,8 @@ services:
     command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"
+    volumes:
+      - ./store-frontend-broken-instrumented:/spree/sandbox
     depends_on:
       - agent
       - db
@@ -70,6 +74,8 @@ services:
     command: ddtrace-run flask run --port=5002 --host=0.0.0.0
     ports:
       - "5002:5002"
+    volumes:
+      - "./ads-service:/app"
     depends_on:
       - agent
       - db
