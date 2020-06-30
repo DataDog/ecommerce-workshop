@@ -71,7 +71,7 @@ services:
       - DD_AGENT_HOST=agent
       - DD_LOGS_INJECTION=true
       - DD_ANALYTICS_ENABLED=true
-    image: "arapulido/ecommerce-spree-ads:latest"
+    image: "ddtraining/advertisements-service:latest"
     command: ddtrace-run flask run --port=5002 --host=0.0.0.0
     ports:
       - "5002:5002"
