@@ -46,7 +46,7 @@ services:
       - discounts
       - advertisements
     volumes:
-      - "../store-frontend-broken-instrumented:/spree/store-frontend"
+      - "../store-frontend-broken-instrumented/store-frontend:/spree/store-frontend"
 # add frontend log labels
   advertisements:
     environment:

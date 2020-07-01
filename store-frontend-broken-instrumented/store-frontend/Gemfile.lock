@@ -183,7 +183,7 @@ GEM
     fast_jsonapi (1.5)
       activesupport (>= 4.2)
     ffaker (2.12.0)
-    ffi (1.11.1)
+    ffi (1.13.1)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
     globalid (0.4.2)
