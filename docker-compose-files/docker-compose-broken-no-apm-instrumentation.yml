@@ -26,7 +26,7 @@ services:
     ports:
       - "5001:5001"
     volumes:
-      - "./discounts-service:/app"
+      - "../discounts-service:/app"
     depends_on:
       - agent
       - db
@@ -46,7 +46,7 @@ services:
       - discounts
       - advertisements
     volumes:
-      - ./store-frontend-broken-instrumented:/spree/store-frontend
+      - "../store-frontend-broken-instrumented:/spree/sandbox"
 # add frontend log labels
   advertisements:
     environment:
@@ -61,7 +61,7 @@ services:
     ports:
       - "5002:5002"
     volumes:
-      - "./ads-service:/app"
+      - "../ads-service:/app"
     depends_on:
       - agent
       - db

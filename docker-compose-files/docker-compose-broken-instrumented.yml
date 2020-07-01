@@ -32,7 +32,7 @@ services:
     ports:
       - "5001:5001"
     volumes:
-      - "./discounts-service:/app"
+      - "../discounts-service:/app"
     depends_on:
       - agent
       - db
@@ -52,7 +52,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./store-frontend-broken-instrumented:/spree/store-frontend
+      - "../store-frontend-broken-instrumented:/spree/sandbox"
     depends_on:
       - agent
       - db
@@ -75,7 +75,7 @@ services:
     ports:
       - "5002:5002"
     volumes:
-      - "./ads-service:/app"
+      - "../ads-service:/app"
     depends_on:
       - agent
       - db
