@@ -1,0 +1,26 @@
+-- Don't display the "helpful" message on startup.
+\set QUIET 1
+
+-- psql writes to a temporary file before then moving that temporary file on top of the old history file
+-- a bind mount of a file only bind mounts the inode, so a rename like this won't ever work
+\set HISTFILE /var/log/psql_history/.psql_history
+
+-- Show how long each query takes to execute
+\timing
+
+-- Use best available output format
+\x auto
+
+-- Verbose error reports
+\set VERBOSITY verbose
+
+-- If a command is run more than once in a row,
+-- only store it once in the history
+\set HISTCONTROL ignoredups
+\set COMP_KEYWORD_CASE upper
+
+-- By default, NULL displays as an empty space. Is it actually an empty
+-- string, or is it null? This makes that distinction visible
+\pset null '[NULL]'
+
+\unset QUIET

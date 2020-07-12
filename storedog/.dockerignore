@@ -1,0 +1,43 @@
+#
+# Git + Readme
+#
+.git
+.gitignore
+README.md
+
+#
+# OS X
+#
+.DS_Store
+
+#
+# Rails
+#
+.env
+.env.sample
+*.rbc
+capybara-*.html
+log
+tmp
+test
+db/*.sqlite3
+db/*.sqlite3-journal
+public/system
+coverage/
+spec/tmp
+**.orig
+
+#
+# NodeJS
+#
+node_modules
+yarn-error.log
+public/packs
+public/packs-test
+
+#
+# Ruby
+#
+.bundle
+.ruby-version
+.ruby-gemset
