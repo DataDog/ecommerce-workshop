@@ -16,7 +16,7 @@ services:
     environment:
       - DB_USERNAME
       - DB_PASSWORD
-    image: "ddtraining/ecommerce-frontend:latest"
+    image: "ddtraining/ecommerce-frontend-broken:latest"
     command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"
