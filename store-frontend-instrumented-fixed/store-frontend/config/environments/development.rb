@@ -11,6 +11,10 @@ Rails.application.configure do
   # We are asking here to log in RAW (which are actually ruby hashes). The Ruby logging is going to take care of the JSON formatting.
   config.lograge.formatter = Lograge::Formatters::Json.new
   config.colorize_logging = false
+  Rails.application.configure do
+    config.lograge.base_controller_class = ['ActionController::API', 'ActionController::Base', 'Spree::Preference', 'Spree::Base', 'Spree::Api::Base', 'Spree::Admin::Base', 'Spree::Core::Base', 'Spree::Preference::Base']
+  end
+
   # This is useful if you want to log query parameters
   config.lograge.custom_options = lambda do |event|
     # Retrieves trace information for current thread

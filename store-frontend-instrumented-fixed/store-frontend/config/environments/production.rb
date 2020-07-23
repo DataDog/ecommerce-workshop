@@ -22,6 +22,15 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
+  # Lograge config
+  config.lograge.enabled = true
+
+  # We are asking here to log in RAW (which are actually ruby hashes). The Ruby logging is going to take care of the JSON formatting.
+  config.lograge.formatter = Lograge::Formatters::Json.new
+  config.colorize_logging = false
+  Rails.application.configure do
+    config.lograge.base_controller_class = ['ActionController::API', 'ActionController::Base', 'Spree::Preference', 'Spree::Base', 'Spree::Api::Base', 'Spree::Admin::Base', 'Spree::Core::Base', 'Spree::Preference::Base']
+  end
   config.lograge.custom_options = lambda do |event|
     # Retrieves trace information for current thread
     correlation = Datadog.tracer.active_correlation
@@ -64,7 +73,7 @@ Rails.application.configure do
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
-  config.log_level = :debug
+  config.log_level = :warn
 
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
