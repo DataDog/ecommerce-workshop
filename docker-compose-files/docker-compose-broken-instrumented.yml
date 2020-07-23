@@ -16,7 +16,7 @@ services:
       - /proc/:/host/proc/:ro
       - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
     labels:
-      com.datadoghq.ad.logs: '[{"source": "datadog-agent", "service": "agent"}]'
+      com.datadoghq.ad.logs: '[{"source": "agent", "service": "agent"}]'
   discounts:
     environment:
       - FLASK_APP=discounts.py
@@ -88,4 +88,4 @@ services:
       - POSTGRES_PASSWORD
       - POSTGRES_USER
     labels:
-      com.datadoghq.ad.logs: '[{"source": "postgres", "service": "postgres"}]'
+      com.datadoghq.ad.logs: '[{"source": "postgresql", "service": "postgres"}]'
