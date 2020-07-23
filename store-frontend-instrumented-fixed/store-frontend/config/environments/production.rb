@@ -24,11 +24,12 @@ Rails.application.configure do
 
   # Lograge config
   config.lograge.enabled = true
+  config.logger = ActiveSupport::Logger.new(STDOUT)
 
   # We are asking here to log in RAW (which are actually ruby hashes). The Ruby logging is going to take care of the JSON formatting.
   config.lograge.formatter = Lograge::Formatters::Json.new
   config.colorize_logging = false
-  config.lograge.base_controller_class = ['ActionController::API', 'ActionController::Base', 'Spree::Preference', 'Spree::Base', 'Spree::Api::Base', 'Spree::Admin::Base', 'Spree::Core::Base', 'Spree::Preference::Base']
+  # config.lograge.base_controller_class = ['ActionController::API', 'ActionController::Base', 'Spree::Preference', 'Spree::Base', 'Spree::Api::Base', 'Spree::Admin::Base', 'Spree::Core::Base', 'Spree::Preference::Base']
   config.lograge.custom_options = lambda do |event|
     # Retrieves trace information for current thread
     correlation = Datadog.tracer.active_correlation
@@ -103,11 +104,6 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
-    logger.formatter = config.log_formatter
-    config.logger    = ActiveSupport::TaggedLogging.new(logger)
-  end
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
