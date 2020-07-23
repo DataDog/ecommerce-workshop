@@ -28,7 +28,7 @@ Rails.application.configure do
   # We are asking here to log in RAW (which are actually ruby hashes). The Ruby logging is going to take care of the JSON formatting.
   config.lograge.formatter = Lograge::Formatters::Json.new
   config.colorize_logging = false
-
+  config.lograge.base_controller_class = ['ActionController::API', 'ActionController::Base', 'Spree::Preference', 'Spree::Base', 'Spree::Api::Base', 'Spree::Admin::Base', 'Spree::Core::Base', 'Spree::Preference::Base']
   config.lograge.custom_options = lambda do |event|
     # Retrieves trace information for current thread
     correlation = Datadog.tracer.active_correlation
