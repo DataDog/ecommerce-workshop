@@ -5,31 +5,6 @@ Rails.application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
-  # Lograge config
-  config.lograge.enabled = true
-
-  # We are asking here to log in RAW (which are actually ruby hashes). The Ruby logging is going to take care of the JSON formatting.
-  config.lograge.formatter = Lograge::Formatters::Json.new
-  config.colorize_logging = false
-  Rails.application.configure do
-    config.lograge.base_controller_class = ['ActionController::API', 'ActionController::Base', 'Spree::Preference', 'Spree::Base', 'Spree::Api::Base', 'Spree::Admin::Base', 'Spree::Core::Base', 'Spree::Preference::Base']
-  end
-
-  # This is useful if you want to log query parameters
-  config.lograge.custom_options = lambda do |event|
-    # Retrieves trace information for current thread
-    correlation = Datadog.tracer.active_correlation
-  
-    {
-      # Adds IDs as tags to log output
-      :dd => {
-        :trace_id => correlation.trace_id,
-        :span_id => correlation.span_id
-      },
-      :ddsource => ["ruby"],
-      :params => event.payload[:params].reject { |k| %w(controller action).include? k }
-    }
-  end
 
   # Do not eager load code on boot.
   config.eager_load = false
@@ -77,6 +52,9 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  config.log_level = :info
+  config.log_tags = [proc { Datadog.tracer.active_correlation.to_s }]
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
@@ -85,7 +63,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Set the logging destination(s)
-  config.log_to = %w[stdout file]
+  config.log_to = %w[stdout]
 
   # Show the logging configuration on STDOUT
   config.show_log_configuration = true
