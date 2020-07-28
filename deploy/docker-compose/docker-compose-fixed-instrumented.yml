@@ -52,6 +52,7 @@ services:
       - DD_VERSION=1.1
       - DD_CLIENT_TOKEN
       - DD_APPLICATION_ID
+      - RAILS_SERVE_STATIC_FILES=true
     image: "ddtraining/storefront-fixed:latest"
     command: sh docker-entrypoint.sh
     ports:
