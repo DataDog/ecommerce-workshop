@@ -7,10 +7,25 @@
   type="text/javascript">
 </script>
 <script>
-  window.DD_RUM && window.DD_RUM.init({
+if (window.DD_RUM) {
+  window.DD_RUM.init({
     clientToken: '<%= ENV['DD_CLIENT_TOKEN'] %>',
     applicationId: '<%= ENV['DD_APPLICATION_ID'] %>',
+    sampleRate: 100,
+    trackInteractions: true,
+    service: 'storedog-ui',
+    env: 'production',
+    version: 1
   });
+
+  if (!window._DATADOG_SYNTHETICS_BROWSER) {
+    window.DD_RUM.setRumGlobalContext({'usr.handle': 'john@storedog.com'});
+  };
+
+  if (window.locatoin.href.includes('utm')) {
+    window.DD_RUM.setRumGlobalContext({'fromUtm': true});
+  };
+}
 </script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
