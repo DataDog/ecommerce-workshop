@@ -24,10 +24,10 @@ services:
       - FLASK_DEBUG=1
       - POSTGRES_PASSWORD
       - POSTGRES_USER
-      - DATADOG_SERVICE_NAME=discounts-service
+      - DD_SERVICE=discounts-service
       - DD_AGENT_HOST=agent
       - DD_LOGS_INJECTION=true
-      - DD_ANALYTICS_ENABLED=true
+      - DD_TRACE_ANALYTICS_ENABLED=true
     build: ../discounts-service/
     command: ddtrace-run flask run --port=5001 --host=0.0.0.0
     volumes:
@@ -43,8 +43,9 @@ services:
   frontend:
     environment:
       - DD_AGENT_HOST=agent
+      - DD_SERVICE=store-frontend
       - DD_LOGS_INJECTION=true
-      - DD_ANALYTICS_ENABLED=true
+      - DD_TRACE_ANALYTICS_ENABLED=true
       - DB_USERNAME
       - DB_PASSWORD
       - DD_CLIENT_TOKEN
@@ -67,10 +68,10 @@ services:
       - FLASK_DEBUG=1
       - POSTGRES_PASSWORD
       - POSTGRES_USER
-      - DATADOG_SERVICE_NAME=advertisements-service
+      - DD_SERVICE=advertisements-service
       - DD_AGENT_HOST=agent
       - DD_LOGS_INJECTION=true
-      - DD_ANALYTICS_ENABLED=true
+      - DD_TRACE_ANALYTICS_ENABLED=true
     image: "ddtraining/advertisements-service:latest"
     command: ddtrace-run flask run --port=5002 --host=0.0.0.0
     ports:
