@@ -15,7 +15,7 @@ if (window.DD_RUM) {
     trackInteractions: true,
     service: 'storedog-ui',
     env: 'production',
-    version: 1
+    version: 1.1
   });
 
   if (!window._DATADOG_SYNTHETICS_BROWSER) {
@@ -23,7 +23,7 @@ if (window.DD_RUM) {
   };
 
   if (window.locatoin.href.includes('utm')) {
-    window.DD_RUM.setRumGlobalContext({'fromUtm': true});
+    window.DD_RUM.addRumGlobalContext({'fromUtm': true});
   };
 }
 </script>
