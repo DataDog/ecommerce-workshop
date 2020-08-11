@@ -45,8 +45,8 @@ def status():
             return jsonify([b.serialize() for b in advertisements])
 
         except:
-            app.logger.error(f"An error occured while getting ad.")
-            err = jsonify({'error': 'Error getting ad'})
+            app.logger.error("An error occured while getting ad.")
+            err = jsonify({'error': 'Internal Server Error'})
             err.status_code = 500
             return err
 
@@ -69,8 +69,8 @@ def status():
 
         except:
 
-            app.logger.error(f"An error occured while creating a new ad.")
-            err = jsonify({'error': 'Error creating ad'})
+            app.logger.error("An error occured while creating a new ad.")
+            err = jsonify({'error': 'Internal Server Error'})
             err.status_code = 500
             return err
 
