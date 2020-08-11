@@ -36,25 +36,44 @@ def weighted_image(weight):
 @app.route('/ads', methods=['GET', 'POST'])
 def status():
     if flask_request.method == 'GET':
-        advertisements = Advertisement.query.all()
-        app.logger.info(f"Total advertisements available: {len(advertisements)}")
-        # adding a half sleep to test something
-        time.sleep(2.5)
-        return jsonify([b.serialize() for b in advertisements])
-    elif flask_request.method == 'POST':
-        # create a new advertisement with random name and value
-        advertisements_count = len(Advertisement.query.all())
-        new_advertisement = Advertisement('Advertisement ' + str(discounts_count + 1), 
-                                '/',
-                                random.randint(10,500))
-        app.logger.info(f"Adding advertisement {new_advertisement}")
-        db.session.add(new_advertisement)
-        db.session.commit()
-        advertisements = Advertisement.query.all()
 
-        # adding a half sleep to test something
-        time.sleep(2.5)
-        return jsonify([b.serialize() for b in advertisements])
+        try:
+            advertisements = Advertisement.query.all()
+            app.logger.info(f"Total advertisements available: {len(advertisements)}")
+            # adding a half sleep to test something
+            time.sleep(2.5)
+            return jsonify([b.serialize() for b in advertisements])
+
+        except:
+            app.logger.error(f"An error occured while getting ad.")
+            err = jsonify({'error': 'Error getting ad'})
+            err.status_code = 500
+            return err
+
+    elif flask_request.method == 'POST':
+
+        try:
+            # create a new advertisement with random name and value
+            advertisements_count = len(Advertisement.query.all())
+            new_advertisement = Advertisement('Advertisement ' + str(discounts_count + 1),
+                                    '/',
+                                    random.randint(10,500))
+            app.logger.info(f"Adding advertisement {new_advertisement}")
+            db.session.add(new_advertisement)
+            db.session.commit()
+            advertisements = Advertisement.query.all()
+
+            # adding a half sleep to test something
+            time.sleep(2.5)
+            return jsonify([b.serialize() for b in advertisements])
+
+        except:
+
+            app.logger.error(f"An error occured while creating a new ad.")
+            err = jsonify({'error': 'Error creating ad'})
+            err.status_code = 500
+            return err
+
     else:
         err = jsonify({'error': 'Invalid request method'})
         err.status_code = 405

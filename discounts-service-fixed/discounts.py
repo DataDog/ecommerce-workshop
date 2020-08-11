@@ -24,6 +24,7 @@ def hello():
 @app.route('/discount', methods=['GET', 'POST'])
 def status():
     if flask_request.method == 'GET':
+
         try:
             discounts = Discount.query.options(joinedload('*')).all()
             app.logger.info(f"Discounts available: {len(discounts)}")
@@ -35,23 +36,34 @@ def status():
             return jsonify([b.serialize() for b in discounts])
 
         except:
+
             app.logger.error(f"An error occured while getting discounts.")
-            err = jsonify({'error': 'Error getting discout'})
+            err = jsonify({'error': 'Error getting discount'})
             err.status_code = 500
             return err
 
     elif flask_request.method == 'POST':
-        # create a new discount with random name and value
-        discounts_count = len(Discount.query.all())
-        new_discount = Discount('Discount ' + str(discounts_count + 1),
-                                r.get_random_word(),
-                                random.randint(10,500))
-        app.logger.info(f"Adding discount {new_discount}")
-        db.session.add(new_discount)
-        db.session.commit()
-        discounts = Discount.query.all()
 
-        return jsonify([b.serialize() for b in discounts])
+        try:
+            # create a new discount with random name and value
+            discounts_count = len(Discount.query.all())
+            new_discount = Discount('Discount ' + str(discounts_count + 1),
+                                    r.get_random_word(),
+                                    random.randint(10,500))
+            app.logger.info(f"Adding discount {new_discount}")
+            db.session.add(new_discount)
+            db.session.commit()
+            discounts = Discount.query.all()
+
+            return jsonify([b.serialize() for b in discounts])
+
+        except:
+
+            app.logger.error(f"An error occured while creating a new discount.")
+            err = jsonify({'error': 'Error creating discount'})
+            err.status_code = 500
+            return err
+
     else:
         err = jsonify({'error': 'Invalid request method'})
         err.status_code = 405
