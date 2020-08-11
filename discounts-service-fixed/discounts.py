@@ -1,7 +1,6 @@
 import requests
 import random
 import time
-import traceback
 
 from random_word import RandomWords
 
