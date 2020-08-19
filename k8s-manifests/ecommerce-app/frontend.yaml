@@ -69,10 +69,23 @@ metadata:
   name: frontend
 spec:
   ports:
-  - port: 3000
+  - port: 80
     protocol: TCP
     targetPort: 3000
   selector:
     service: frontend
     app: ecommerce
   type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-external
+spec:
+  type: LoadBalancer
+  selector:
+    app: ecommerce
+  ports:
+  - name: http
+    port: 80
+    targetPort: 3000
