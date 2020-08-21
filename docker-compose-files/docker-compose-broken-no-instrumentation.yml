@@ -20,6 +20,8 @@ services:
     command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"
+    volumes:
+      - "../store-frontend-broken-instrumented/store-frontend:/spree/store-frontend"
     depends_on:
       - db
       - discounts
@@ -34,7 +36,10 @@ services:
     command: flask run --port=5002 --host=0.0.0.0
     ports:
       - "5002:5002"
+    volumes:
+      - "../ads-service:/app"
     depends_on:
+      - bling-bling
       - db
   db:
     image: postgres:11-alpine
@@ -42,3 +47,11 @@ services:
     environment:
       - POSTGRES_PASSWORD
       - POSTGRES_USER
+  bling-bling:
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_DEBUG=1
+    image: "ursuladd/bling-bling:latest"
+    command: flask run --port=5003 --host=0.0.0.0
+    ports:
+      - "5003:5003"

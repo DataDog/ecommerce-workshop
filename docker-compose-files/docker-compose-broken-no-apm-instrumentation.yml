@@ -64,6 +64,7 @@ services:
       - "../ads-service:/app"
     depends_on:
       - agent
+      - bling-bling
       - db
 # add ads log labels
   db:
@@ -74,3 +75,19 @@ services:
       - POSTGRES_USER
     labels:
       com.datadoghq.ad.logs: '[{"source": "postgres", "service": "postgres"}]'
+  bling-bling:
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_DEBUG=1
+      - DATADOG_SERVICE_NAME=bling-bling-service
+      - DD_AGENT_HOST=agent
+      - DD_LOGS_INJECTION=true
+      - DD_ANALYTICS_ENABLED=true
+    image: "ursuladd/bling-bling:latest"
+    command: ddtrace-run flask run --port=5003 --host=0.0.0.0
+    ports:
+      - "5003:5003"
+    depends_on:
+      - agent
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "python", "service": "bling-bling-service"}]'

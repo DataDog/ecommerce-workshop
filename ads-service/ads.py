@@ -1,10 +1,13 @@
-import requests
+import base64
+import io
+import json
 import random
+import requests
 import time
 
 from random_word import RandomWords
 
-from flask import Flask, Response, jsonify, send_from_directory
+from flask import Flask, Response, jsonify, safe_join, send_file, send_from_directory
 from flask import request as flask_request
 
 from bootstrap import create_app
@@ -22,8 +25,28 @@ def hello():
 
 @app.route('/banners/<path:banner>')
 def banner_image(banner):
-    app.logger.info(f"attempting to grab banner at {banner}")
-    return send_from_directory('ads', banner)
+    animated = flask_request.args.get('animated')
+
+    if animated:
+        filename = safe_join("ads", banner)
+        with open(filename, "rb") as f:
+            img_bytes = f.read()
+            b64encode_img_bytes = base64.b64encode(img_bytes)
+
+        payload = {
+            "spots": 20,
+            "image": b64encode_img_bytes.decode("utf-8")
+        }
+        response = requests.post('http://bling-bling:5003/place-bling', json=payload)
+        animated_img_bytes = base64.b64decode(response.text)
+
+        gif_file_object = io.BytesIO(animated_img_bytes)
+        gif_file_object.seek(0)
+        return send_file(gif_file_object, mimetype='image/gif')
+    else:
+        app.logger.info(f"attempting to grab banner at {banner}")
+        img_file = send_from_directory('ads', banner)
+        return img_file
 
 @app.route('/weighted-banners/<float:weight>')
 def weighted_image(weight):
