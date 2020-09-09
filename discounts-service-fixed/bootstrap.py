@@ -46,26 +46,26 @@ def initialize_database(app, db):
                                 discount_type)
             db.session.add(discount)
 
-        first_discount_type = DiscountType('Save with Sherry', 
+        first_discount_type = DiscountType('Save with Sherry',
                                            'price * .8',
                                            Influencer('Sherry'))
-        second_discount_type = DiscountType('Sunday Savings', 
+        second_discount_type = DiscountType('Sunday Savings',
                                            'price * .9',
                                            None)
         third_discount_type = DiscountType('Monday Funday',
                                            'price * .95',
                                            None)
-        first_discount = Discount('Black Friday', 
-                                  'BFRIDAY', 
+        first_discount = Discount('Black Friday',
+                                  'BFRIDAY',
                                   5.1,
                                   first_discount_type)
 
-        second_discount = Discount('SWEET SUNDAY', 
+        second_discount = Discount('SWEET SUNDAY',
                                    'OFF',
                                    300.1,
                                    second_discount_type)
-        third_discount = Discount('Monday Funday', 
-                                  'PARTY', 
+        third_discount = Discount('Monday Funday',
+                                  'PARTY',
                                   542.1,
                                   third_discount_type)
         db.session.add(first_discount)
