@@ -28,7 +28,20 @@ docker build .
 
 Feel free to [follow along](https://www.katacoda.com/DataDog/scenarios/ecommerce-workshop) with the scenario, or to run the application locally.
 
-## Running the Application Locally
+## Deploying the application
+
+The `deploy` folder contains the different tested ways in which this application can be deployed:
+
+* `aws`: Deployments to Amazon Web Services
+ * `aws/ecs`: Deployment to Amazon ECS
+* `gcp`: Deployments to Google Cloud Platform
+ * `gke`: Deployment to Google Kubernetes Engine
+ * `vms`: Deployment to GCP VMs using Terraform
+* `generic-k8s`: Generic Kubernetes manifests
+* `openshift`: Manifests to deploy the application to Openshift
+* `docker-compose`: Docker compose to run the application locally
+
+### Running the Application Locally
 
 The application itself runs on `docker-compose`. First, install Docker along with docker-compose. Then sign up with a trial [Datadog account](https://www.datadoghq.com/), and grab your API key from the Integrations->API tab.
 
