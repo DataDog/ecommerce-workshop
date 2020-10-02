@@ -14,7 +14,8 @@ We'll take that broken application, instrument it with Datadog, and then deploy 
 This repository is used to build the Docker images to run the application in the different states. The folders that build each of the images are the following:
 
 * `ads-service`- The advertisement microservice. There is only one state of this service.
-* `discounts-service`- The discounts microservice. There is only one state of this service.
+* `discounts-service`- The discounts microservice with an [N+1 query](#finding-an-n1-query).
+* `discounts-service-fixed`- The discounts microservice with the N+1 query fixed.
 * `store-frontend-broken-no-instrumentation`- The Spree application in a broken state and with no instrumentation. This is the initial scenario.
 * `store-frontend-broken-instrumented`- The Spree application in a broken state but instrumented with Datadog APM. This is the second scenario.
 * `store-frontend-instrumented-fixed`- The Spree application instrumented with Datadog APM and fixed. This is the final scenario.
@@ -27,7 +28,20 @@ docker build .
 
 Feel free to [follow along](https://www.katacoda.com/DataDog/scenarios/ecommerce-workshop) with the scenario, or to run the application locally.
 
-## Running the Application Locally
+## Deploying the application
+
+The `deploy` folder contains the different tested ways in which this application can be deployed:
+
+* `aws`: Deployments to Amazon Web Services
+ * `aws/ecs`: Deployment to Amazon ECS
+* `gcp`: Deployments to Google Cloud Platform
+ * `gke`: Deployment to Google Kubernetes Engine
+ * `vms`: Deployment to GCP VMs using Terraform
+* `generic-k8s`: Generic Kubernetes manifests
+* `openshift`: Manifests to deploy the application to Openshift
+* `docker-compose`: Docker compose to run the application locally
+
+### Running the Application Locally
 
 The application itself runs on `docker-compose`. First, install Docker along with docker-compose. Then sign up with a trial [Datadog account](https://www.datadoghq.com/), and grab your API key from the Integrations->API tab.
 
