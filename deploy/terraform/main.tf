@@ -1,3 +1,8 @@
+# Pin Terraform to at least latest
+terraform {
+  required_version = "~>0.13"
+}
+
 # DigitalOcean API Token. This can also be set via the
 # TF_VAR_do_token environment variable
 variable "do_token" {}
