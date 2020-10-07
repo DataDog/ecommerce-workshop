@@ -3,29 +3,29 @@
 variable "do_token" {}
 
 variable "do_region" {
-    default = "nyc1"
+  default = "nyc1"
 }
 
 provider "digitalocean" {
-    token = var.do_token
+  token = var.do_token
 }
 
 data "digitalocean_kubernetes_versions" "stable" {
-    version_prefix = "1.18."
+  version_prefix = "1.18."
 }
 
 resource "digitalocean_kubernetes_cluster" "ecommerce" {
-    name = "ecommerce"
-    region = var.do_region
-    auto_upgrade = true
-    version = data.digitalocean_kubernetes_versions.stable.latest_version
-    tags = ["development"]
+  name         = "ecommerce"
+  region       = var.do_region
+  auto_upgrade = true
+  version      = data.digitalocean_kubernetes_versions.stable.latest_version
+  tags         = ["development"]
 
-    node_pool {
-        name = "worker"
-        size = "s-2vcpu-2gb"
-        node_count = 3
-    }
+  node_pool {
+    name       = "worker"
+    size       = "s-2vcpu-2gb"
+    node_count = 3
+  }
 }
 
 provider "kubernetes" {
