@@ -13,3 +13,4 @@ __pycache__
 *.tfstate.backup
 *.tfstate.lock.info
 .terraform/
+kube_config_server.yaml
