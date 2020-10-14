@@ -73,6 +73,8 @@ resource "helm_release" "datadog" {
   namespace        = "datadog-agent"
   create_namespace = true
 
+  depends_on = [local_file.kube_config_server_yaml]
+
   set_sensitive {
     name  = "datadog.apiKey"
     value = var.dd_api_key
