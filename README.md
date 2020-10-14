@@ -13,9 +13,10 @@ We'll take that broken application, instrument it with Datadog, and then deploy 
 
 This repository is used to build the Docker images to run the application in the different states. The folders that build each of the images are the following:
 
-* `ads-service`- The advertisement microservice. There is only one state of this service.
-* `discounts-service`- The discounts microservice with an [N+1 query](#finding-an-n1-query).
-* `discounts-service-fixed`- The discounts microservice with the N+1 query fixed.
+* `ads-service`- The advertisement microservice with a couple of injected sleeps.
+* `ads-service-fixed`- The advertisement microservice with the sleeps removed.
+* `discounts-service`- The discounts microservice with an [N+1 query](#finding-an-n1-query) and a couple of sleeps.
+* `discounts-service-fixed`- The discounts microservice with the N+1 query fixed and the sleeps removed.
 * `store-frontend-broken-no-instrumentation`- The Spree application in a broken state and with no instrumentation. This is the initial scenario.
 * `store-frontend-broken-instrumented`- The Spree application in a broken state but instrumented with Datadog APM. This is the second scenario.
 * `store-frontend-instrumented-fixed`- The Spree application instrumented with Datadog APM and fixed. This is the final scenario.
@@ -126,6 +127,18 @@ With this, we've got a line number that appears to be generating our errors. Che
 Once we've applied the fix for the wrong file, we still see slow behavior. We can drill down into a service and see where the bottleneck is by sorting via latency on the Services Page:
 
 ![Bottleneck](https://github.com/DataDog/ecommerce-workshop/raw/master/images/bottleneck.gif)
+
+There are a couple of sleeps in both the discounts service and the advertisments service.
+
+Removing the lines that contains:
+
+```python
+time.sleep(2.5)
+```
+
+will fix the performance issue.
+
+The code with the leftover sleeps lives in `discounts-service` and `ads-service`, and the fixed versions live in `discounts-service-fixed` and `ads-service-fixed`.
 
 ## Finding an N+1 Query
 
