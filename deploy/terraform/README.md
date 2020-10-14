@@ -8,6 +8,10 @@ This area of the repo is dedicated to a terraform based deployment of the ecomme
 
 ## Initial Setup
 
+* Export the following environment variables:
+    * `TF_VAR_do_token` with your DigitalOcean API Token
+    * `TF_VAR_dd_api_key` with your Datadog API Key
+    * `TF_VAR_dd_app_key` with your Datadog Application Key
 * Run `terraform init` to install all of the needed terraform modules
 * Run `terraform apply` to spin up the cluster. The location of the cluster will output at the end.
 
