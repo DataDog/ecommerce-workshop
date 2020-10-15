@@ -75,29 +75,19 @@ resource "helm_release" "datadog" {
 
   depends_on = [local_file.kube_config_server_yaml]
 
-  set_sensitive {
-    name  = "datadog.apiKey"
-    value = var.dd_api_key
-  }
-
-  set_sensitive {
-    name  = "datadog.appKey"
-    value = var.dd_app_key
+  set {
+    name  = "agents.image.repository"
+    value = "datadog/agent"
   }
 
   set {
-    name  = "datadog.clusterName"
-    value = digitalocean_kubernetes_cluster.ecommerce.name
+    name  = "agents.image.tag"
+    value = "latest"
   }
 
   set {
-    name  = "datadog.processAgent.enabled"
-    value = "true"
-  }
-
-  set {
-    name  = "datadog.processAgent.processCollection"
-    value = "true"
+    name  = "agents.image.pullPolicy"
+    value = "Always"
   }
 
   set {
@@ -125,24 +115,19 @@ resource "helm_release" "datadog" {
     value = "true"
   }
 
-  set {
-    name  = "datadog.orchestratorExplorer.enabled"
-    value = "true"
+  set_sensitive {
+    name  = "datadog.apiKey"
+    value = var.dd_api_key
+  }
+
+  set_sensitive {
+    name  = "datadog.appKey"
+    value = var.dd_app_key
   }
 
   set {
-    name  = "agents.image.repository"
-    value = "datadog/agent"
-  }
-
-  set {
-    name  = "agents.image.tag"
-    value = "latest"
-  }
-
-  set {
-    name  = "agents.image.pullPolicy"
-    value = "Always"
+    name  = "datadog.clusterName"
+    value = digitalocean_kubernetes_cluster.ecommerce.name
   }
 
   set {
@@ -152,6 +137,26 @@ resource "helm_release" "datadog" {
 
   set {
     name  = "datadog.logs.containerCollectAll"
+    value = "true"
+  }
+
+  set {
+    name  = "datadog.orchestratorExplorer.enabled"
+    value = "true"
+  }
+
+  set {
+    name  = "datadog.processAgent.enabled"
+    value = "true"
+  }
+
+  set {
+    name  = "datadog.processAgent.processCollection"
+    value = "true"
+  }
+
+  set {
+    name  = "datadog.systemProbe.enabled"
     value = "true"
   }
 }
