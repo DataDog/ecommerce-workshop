@@ -8,7 +8,7 @@ terraform {
 variable "do_token" {}
 
 variable "dd_chart_version" {
-  default = "2.4.24"
+  default = "2.4.25"
 }
 
 variable "dd_api_key" {
