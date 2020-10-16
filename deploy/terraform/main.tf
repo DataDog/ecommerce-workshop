@@ -21,47 +21,28 @@ variable "dd_app_key" {
   description = "The Datadog Application Key required for the Cluster Agent"
 }
 
-variable "do_region" {
-  default = "nyc1"
-}
-
 provider "digitalocean" {
   token = var.do_token
 }
 
-data "digitalocean_kubernetes_versions" "stable" {
-  version_prefix = "1.18."
-}
+module "k8s_cluster" {
+  source = "./modules/k8s/digitalocean"
 
-resource "digitalocean_kubernetes_cluster" "ecommerce" {
-  name         = "ecommerce"
-  region       = var.do_region
-  auto_upgrade = true
-  version      = data.digitalocean_kubernetes_versions.stable.latest_version
-  tags         = ["development"]
-
-  node_pool {
-    name       = "worker"
-    size       = "s-2vcpu-2gb"
-    node_count = 3
-  }
+  cluster_name = "ecommerce"
+  region       = "nyc1"
 }
 
 provider "kubernetes" {
-  host  = digitalocean_kubernetes_cluster.ecommerce.endpoint
-  token = digitalocean_kubernetes_cluster.ecommerce.kube_config[0].token
-  cluster_ca_certificate = base64decode(
-    digitalocean_kubernetes_cluster.ecommerce.kube_config[0].cluster_ca_certificate
-  )
+  host                   = module.k8s_cluster.host
+  token                  = module.k8s_cluster.token
+  cluster_ca_certificate = module.k8s_cluster.cluster_ca_certificate
 }
 
 provider "helm" {
   kubernetes {
-    host  = digitalocean_kubernetes_cluster.ecommerce.endpoint
-    token = digitalocean_kubernetes_cluster.ecommerce.kube_config[0].token
-    cluster_ca_certificate = base64decode(
-      digitalocean_kubernetes_cluster.ecommerce.kube_config[0].cluster_ca_certificate
-    )
+    host                   = module.k8s_cluster.host
+    token                  = module.k8s_cluster.token
+    cluster_ca_certificate = module.k8s_cluster.cluster_ca_certificate
   }
 }
 
@@ -127,7 +108,7 @@ resource "helm_release" "datadog" {
 
   set {
     name  = "datadog.clusterName"
-    value = digitalocean_kubernetes_cluster.ecommerce.name
+    value = module.k8s_cluster.cluster_name
   }
 
   set {
