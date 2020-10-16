@@ -46,6 +46,8 @@ spec:
             value: "true"
           - name: DD_ANALYTICS_ENABLED
             value: "true"
+          - name: DD_PROFILING_ENABLED
+            value: "true"
         ports:
         - containerPort: 5001
         resources: {}
