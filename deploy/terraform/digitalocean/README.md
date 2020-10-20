@@ -4,10 +4,9 @@ This terraform module sets up and configures a k8s cluster as a deployment targe
 
 ## Initial Setup
 
-* Export the following environment variables:
+* Export the following environment variable:
     * `TF_VAR_do_token` with your DigitalOcean API Token
-    * `TF_VAR_dd_api_key` with your Datadog API Key
-    * `TF_VAR_dd_app_key` with your Datadog Application Key
+* Review the variables in the `variables.tf` file if you want to make any adjustments
 * Run `terraform init` to install all of the needed terraform modules
 * Run `terraform apply` to spin up the cluster. The location of the cluster will output at the end.
 

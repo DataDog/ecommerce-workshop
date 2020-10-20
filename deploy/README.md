@@ -8,6 +8,7 @@ This folder contains the different tested ways in which this application can be 
 * `generic-k8s`: Generic Kubernetes manifests
 * `openshift`: Manifests to deploy the application to Openshift
 * `docker-compose`: Docker compose to run the application locally
+* `terraform`: Terraform based deployments separated by platform
 
 ### Running the Application Locally
 

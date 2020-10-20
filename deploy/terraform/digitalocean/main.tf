@@ -3,16 +3,18 @@ data "digitalocean_kubernetes_versions" "stable" {
 }
 
 resource "digitalocean_kubernetes_cluster" "k8s_cluster" {
-  name         = var.cluster_name
-  region       = var.region
+  # See variables.tf for adjustable options
+  name   = var.cluster_name
+  region = var.region
+  # Set this to false if you want to disable automatic upgrading of your cluster
   auto_upgrade = true
   version      = data.digitalocean_kubernetes_versions.stable.latest_version
   tags         = ["development"]
 
   node_pool {
-    name       = "worker"
-    size       = "s-2vcpu-2gb"
-    node_count = 3
+    name       = var.node_pool_name
+    size       = var.node_size
+    node_count = var.node_count
   }
 }
 
