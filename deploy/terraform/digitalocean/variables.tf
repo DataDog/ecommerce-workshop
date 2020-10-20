@@ -1,3 +1,7 @@
+# DigitalOcean API Token. This can also be set via the
+# TF_VAR_do_token environment variable
+variable "do_token" {}
+
 variable "region" {
   description = "The DigitalOcean region to deploy the k8s cluster into"
   type        = string
