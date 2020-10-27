@@ -18,4 +18,22 @@ When you `terraform apply` and it is successful, this terraform configuration wi
 export KUBECONFIG="$(pwd)/kube_config_server.yaml"
 ```
 
-If you use [direnv](https://direnv.net/) you can put the above line into an `.envrc` in this directory to automatically load the config for you each time you visit this directory.
+If you use [direnv](https://direnv.net/) you can put the above line into an `.envrc` in this directory to automatically load the config for you each time you visit this directory. If you can't or don't want to do that, just make sure you export the KUBECONFIG variable like above, or put it in front of the kubectl command so it knows where to find the kubeconfig file.
+
+To verify you have this configured correctly, try the following command:
+
+```bash
+$ kubectl get pods
+```
+
+You should see output like this:
+
+```bash
+No resources found in default namespace.
+```
+
+Now that you have a working kubernetes cluster, you can deploy the Datadog HELM Chart or Ecommerce manifests to start monitoring. For those instructions, see the `README.md` in the deploy folder above this one.
+
+## A Note About Upgrading
+
+If you want to upgrade k8s versions on Digital Ocean, you will need at least two nodes or one larger node to perform this operation due to resource constraints in the upgrade process.
