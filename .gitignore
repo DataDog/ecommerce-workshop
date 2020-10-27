@@ -14,3 +14,6 @@ __pycache__
 *.tfstate.lock.info
 .terraform/
 kube_config_server.yaml
+
+# HELM
+helm-values.yaml
