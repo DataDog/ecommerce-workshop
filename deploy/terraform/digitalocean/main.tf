@@ -1,5 +1,5 @@
 data "digitalocean_kubernetes_versions" "stable" {
-  version_prefix = "1.18."
+  version_prefix = "1.19."
 }
 
 resource "digitalocean_kubernetes_cluster" "k8s_cluster" {
