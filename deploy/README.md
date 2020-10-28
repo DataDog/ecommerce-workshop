@@ -11,7 +11,7 @@ This folder contains the different tested ways in which this application can be 
 * `docker-compose`: Docker compose to run the application locally
 * `terraform`: Terraform based deployments separated by platform
 
-### Running the Application Locally
+## Running the Application Locally
 
 Look at the `docker-compose` folder README for details.
 

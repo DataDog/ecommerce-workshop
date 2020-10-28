@@ -19,15 +19,23 @@
 datadog:
   clusterName: "ecommerce"
 
+  apm:
+    enabled: true
+
   # Enable this block to get all logs from the pods/containers
   # logs:
   #   enabled: true
   #   containerCollectAll: true
 
+  # Enable this block for the Kubernetes Beta metrics
+  # orchestratorExplorer:
+  #   enabled: true
+
   # Enable this block for process collection. It is required for Kubernetes Beta metrics
   # processAgent:
   #   processCollection: true
 
-  # Enable this block for the Kubernetes Beta metrics
-  # orchestratorExplorer:
+  # Enable this block for network and DNS metric collection
+  # systemProbe:
   #   enabled: true
+  #   collectDNSStats: true
