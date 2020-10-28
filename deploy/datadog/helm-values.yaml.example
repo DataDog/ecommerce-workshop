@@ -12,7 +12,7 @@
 # clusterAgent:
 #   enabled: true
 #   image:
-#     repository: datadog/agent
+#     repository: datadog/cluster-agent
 #     tag: latest
 #     pullPolicy: Always
 
