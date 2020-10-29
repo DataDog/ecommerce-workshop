@@ -34,6 +34,8 @@ No resources found in default namespace.
 
 Now that you have a working kubernetes cluster, you can deploy the Datadog HELM Chart or Ecommerce manifests to start monitoring. For those instructions, see the `README.md` in the deploy folder above this one.
 
-## A Note About Upgrading
+## Important Notes
 
 If you want to upgrade k8s versions on Digital Ocean, you will need at least two nodes or one larger node to perform this operation due to resource constraints in the upgrade process.
+
+Once you destroy the cluster, check for any leftover load balancers in your DigitalOcean account. Any time you apply a k8s manifest containing a LoadBalancer service, they spin up an actual DigitalOcean load balancer for you which is unknown to Terraform and won't be cleared off when you destroy the k8s cluster.
