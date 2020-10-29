@@ -38,6 +38,8 @@ spec:
             value: "user"
           - name: DATADOG_SERVICE_NAME
             value: "advertisements-service"
+          - name: DD_TAGS
+            value: "env:ruby-shop"
           - name: DD_AGENT_HOST 
             valueFrom:
               fieldRef:
