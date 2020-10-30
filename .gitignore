@@ -7,3 +7,13 @@
 .vscode
 sandbox/tmp/
 __pycache__
+
+# Terraform
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
+.terraform/
+kube_config_server.yaml
+
+# HELM
+helm-values.yaml

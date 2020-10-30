@@ -1,0 +1,41 @@
+# This is a reasonable set of default HELM settings.
+# Enable/disable as you see fit for your deployment.
+
+# Enable this block if you want to use the newest agent
+# agents:
+  # image:
+  #   repository: datadog/agent
+  #   tag: latest
+  #   pullPolicy: Always
+
+# Enable this block to get Kubernetes Beta metrics (https://www.datadoghq.com/blog/explore-kubernetes-resources-with-datadog/)
+# clusterAgent:
+#   enabled: true
+#   image:
+#     repository: datadog/cluster-agent
+#     tag: latest
+#     pullPolicy: Always
+
+datadog:
+  clusterName: "ecommerce"
+
+  apm:
+    enabled: true
+
+  # Enable this block to get all logs from the pods/containers
+  # logs:
+  #   enabled: true
+  #   containerCollectAll: true
+
+  # Enable this block for the Kubernetes Beta metrics
+  # orchestratorExplorer:
+  #   enabled: true
+
+  # Enable this block for process collection. It is required for Kubernetes Beta metrics
+  # processAgent:
+  #   processCollection: true
+
+  # Enable this block for network and DNS metric collection
+  # systemProbe:
+  #   enabled: true
+  #   collectDNSStats: true
