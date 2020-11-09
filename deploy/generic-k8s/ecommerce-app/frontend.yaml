@@ -4,6 +4,7 @@ metadata:
   labels:
     service: frontend
     app: ecommerce
+    tags.datadoghq.com/env: "ruby-shop"
   name: frontend
 spec:
   replicas: 1
@@ -21,6 +22,7 @@ spec:
       labels:
         service: frontend
         app: ecommerce
+        tags.datadoghq.com/env: "ruby-shop"
     spec:
       containers:
       - args:
@@ -41,8 +43,10 @@ spec:
               fieldPath: status.hostIP
         - name: DD_LOGS_INJECTION
           value: "true"
-        - name: DD_TAGS
-          value: "env:ruby-shop"
+        - name: DD_ENV
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/env']
         - name: DD_ANALYTICS_ENABLED
           value: "true"
         # Enable RUM
