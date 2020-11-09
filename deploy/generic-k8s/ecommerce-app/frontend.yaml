@@ -82,4 +82,6 @@ spec:
   selector:
     service: frontend
     app: ecommerce
-  type: LoadBalancer
+  # Change this value to LoadBalancer for better public ingress routing to this
+  # pod on most k8s platforms.
+  type: ClusterIP
