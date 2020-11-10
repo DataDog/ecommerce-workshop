@@ -27,6 +27,7 @@ services:
       - DD_AGENT_HOST=agent
       - DD_LOGS_INJECTION=true
       - DD_TRACE_ANALYTICS_ENABLED=true
+      - DD_PROFILING_ENABLED=true
       - DD_VERSION=1.0
     image: "ddtraining/discounts-service:latest"
     command: ddtrace-run flask run --port=5001 --host=0.0.0.0
@@ -71,6 +72,7 @@ services:
       - DD_AGENT_HOST=agent
       - DD_LOGS_INJECTION=true
       - DD_TRACE_ANALYTICS_ENABLED=true
+      - DD_PROFILING_ENABLED=true
       - DD_VERSION=1.0
     image: "ddtraining/advertisements-service:latest"
     command: ddtrace-run flask run --port=5002 --host=0.0.0.0

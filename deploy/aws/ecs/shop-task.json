@@ -125,6 +125,10 @@
             "value": "discounts.py"
           },
           {
+            "name": "DD_PROFILING_ENABLED",
+            "value": "true"
+          },
+          {
             "name": "POSTGRES_PASSWORD",
             "value": "<YOUR PASSWORD>"
           },
@@ -253,6 +257,10 @@
           {
             "name": "FLASK_APP",
             "value": "ads.py"
+          },
+          {
+            "name": "DD_PROFILING_ENABLED",
+            "value": "true"
           },
           {
             "name": "POSTGRES_PASSWORD",
