@@ -4,6 +4,7 @@ metadata:
   labels:
     app: ecommerce
     service: discounts
+    tags.datadoghq.com/env: "ruby-shop"
   name: discounts
 spec:
   replicas: 1
@@ -18,6 +19,7 @@ spec:
       labels:
         service: discounts
         app: ecommerce
+        tags.datadoghq.com/env: "ruby-shop"
     spec:
       containers:
       - image: ddtraining/discounts-service:latest
@@ -38,7 +40,7 @@ spec:
             value: "user"
           - name: DATADOG_SERVICE_NAME
             value: "discountsservice"
-          - name: DD_AGENT_HOST 
+          - name: DD_AGENT_HOST
             valueFrom:
               fieldRef:
                 fieldPath: status.hostIP
@@ -46,10 +48,12 @@ spec:
             value: "true"
           - name: DD_ANALYTICS_ENABLED
             value: "true"
-          - name: DD_TAGS
-            value: "env:ruby-shop"
           - name: DD_PROFILING_ENABLED
             value: "true"
+          - name: DD_ENV
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.labels['tags.datadoghq.com/env']
         ports:
         - containerPort: 5001
         resources: {}

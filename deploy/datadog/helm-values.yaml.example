@@ -1,5 +1,7 @@
 # This is a reasonable set of default HELM settings.
 # Enable/disable as you see fit for your deployment.
+# Tested with version 2.4.31, if your release is 2.5.x or newer, check for
+# changes in the original chart values
 
 # Enable this block if you want to use the newest agent
 # agents:
