@@ -1,0 +1,32 @@
+# Default values for the ecommerce app
+# Follow the comments for the options you can deploy
+
+# Which environment is this being deployed to?
+# Options are: development | staging | production
+environment: development
+
+frontend:
+  replicas: 1
+  # These are defaults, but can be changed
+  # container:
+  #   image: ddtraining/ecommerce-frontend:latest
+  #   pullPolicy: Always
+  #   name: ecommerce-spree-observability
+  # Enable and configure for Real User Monitoring (RUM)
+  rum:
+    enabled: false
+    ddClientToken: <Datadog Client Token>
+    ddClientApplicationId: <Datadog Client Application ID>
+  service:
+    type: ClusterIP
+    port: http
+
+advertisements:
+  replicas: 1
+  # These are defaults, but can be changed
+  # container:
+  #   image: ddtraining/advertisements-service:latest
+  #   pullPolicy: Always
+  #   name: advertisements
+  service:
+    port: 5002

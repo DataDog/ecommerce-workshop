@@ -1,0 +1,8 @@
+apiVersion: v2
+name: ecommerce
+description: Helm chart to deploy the ecommerce demo app
+home: https://github.com/DataDog/ecommerce-workshop
+sources:
+    - https://github.com/DataDog/ecommerce-workshop
+type: application
+version: 0.1.0

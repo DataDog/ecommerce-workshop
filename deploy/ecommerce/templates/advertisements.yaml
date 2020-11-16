@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: advertisements
+    {{- include "ecommerce.labels" . | nindent 4 }}
+  name: advertisements 
+spec:
+  replicas: {{ .Values.advertisements.replicas }}
+  selector:
+    matchLabels:
+      service: advertisements
+      app: ecommerce
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        service: advertisements
+        {{- include "ecommerce.labels" . | nindent 4 }}
+    spec:
+      containers:
+      - image: {{ .Values.advertisements.container.image | default "ddtraining/advertisements-service:latest" }}
+        imagePullPolicy: {{ .Values.advertisements.container.pullPolicy | default "Always" }}
+        name: {{ .Values.advertisements.container.name | default "advertisements" }} 
+        command: ["ddtrace-run"]
+        args: ["flask", "run", "--port=5002", "--host=0.0.0.0"]
+        env:
+          - name: FLASK_APP
+            value: "ads.py"
+          - name: FLASK_DEBUG
+            value: "1"
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: pw
+                name: db-password
+          - name: POSTGRES_USER
+            value: "user"
+          - name: DATADOG_SERVICE_NAME
+            value: "advertisements-service"
+          - name: DD_AGENT_HOST 
+            valueFrom:
+              fieldRef:
+                fieldPath: status.hostIP
+          - name: DD_LOGS_INJECTION
+            value: "true"
+          - name: DD_ANALYTICS_ENABLED
+            value: "true"
+          - name: DD_ENV
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/env']
+        ports:
+        - containerPort: 5002
+        resources: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: advertisements
+    app: ecommerce
+  name: advertisements
+spec:
+  replicas: {{ .Values.advertisements.replicas }}
+  ports:
+  - port: {{ .Values.advertisements.service.port }}
+    protocol: TCP
+  selector:
+    service: advertisements
+    app: ecommerce
