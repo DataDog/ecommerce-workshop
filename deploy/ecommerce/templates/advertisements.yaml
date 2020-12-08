@@ -59,7 +59,7 @@ kind: Service
 metadata:
   labels:
     service: advertisements
-    app: ecommerce
+    {{- include "ecommerce.labels" . | nindent 4 }}
   name: advertisements
 spec:
   replicas: {{ .Values.advertisements.replicas }}
