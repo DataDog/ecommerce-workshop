@@ -16,7 +16,7 @@ spec:
     metadata:
       labels:
         service: advertisements
-        {{- include "ecommerce.labels" . | nindent 4 }}
+        {{- include "ecommerce.labels" . | nindent 8 }}
     spec:
       containers:
       - image: {{ .Values.advertisements.container.image }}
