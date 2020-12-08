@@ -5,4 +5,5 @@ home: https://github.com/DataDog/ecommerce-workshop
 sources:
     - https://github.com/DataDog/ecommerce-workshop
 type: application
+icon: https://datadog-live.imgix.net/img/dd_logo_70x75.png
 version: 0.1.0
