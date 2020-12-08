@@ -47,9 +47,9 @@ spec:
           - name: DD_ANALYTICS_ENABLED
             value: "true"
           - name: DD_ENV
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.labels['tags.datadoghq.com/env']
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.labels['tags.datadoghq.com/env']
         ports:
         - containerPort: 5002
         resources: {}
