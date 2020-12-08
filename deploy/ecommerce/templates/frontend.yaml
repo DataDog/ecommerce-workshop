@@ -73,9 +73,9 @@ metadata:
     app: ecommerce
   name: frontend
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ .Values.frontend.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
+    - port: {{ .Values.frontend.service.port }}
       targetPort: 3000
       protocol: TCP
       name: http
