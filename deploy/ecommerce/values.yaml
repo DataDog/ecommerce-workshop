@@ -7,11 +7,10 @@ environment: development
 
 frontend:
   replicas: 1
-  # These are defaults, but can be changed
-  # container:
-  #   image: ddtraining/ecommerce-frontend:latest
-  #   pullPolicy: Always
-  #   name: ecommerce-spree-observability
+  container:
+    image: ddtraining/ecommerce-frontend:latest
+    pullPolicy: Always
+    name: ecommerce-spree-observability
   # Enable and configure for Real User Monitoring (RUM)
   rum:
     enabled: false
@@ -23,20 +22,18 @@ frontend:
 
 advertisements:
   replicas: 1
-  # These are defaults, but can be changed
-  # container:
-  #   image: ddtraining/advertisements-service:latest
-  #   pullPolicy: Always
-  #   name: advertisements
+  container:
+    image: ddtraining/advertisements-service:latest
+    pullPolicy: Always
+    name: advertisements
   service:
     port: 5002
 
 discounts:
   replicas: 1
-  # These are defaults, but can be changed
-  # container:
-  #   image: ddtraining/discounts-service:latest
-  #   pullPolicy: Always
-  #   name: discounts
+  container:
+    image: ddtraining/discounts-service:latest
+    pullPolicy: Always
+    name: discounts
   service:
     port: 5001

@@ -19,9 +19,9 @@ spec:
         {{- include "ecommerce.labels" . | nindent 4 }}
     spec:
       containers:
-      - image: {{ .Values.advertisements.container.image | default "ddtraining/advertisements-service:latest" }}
-        imagePullPolicy: {{ .Values.advertisements.container.pullPolicy | default "Always" }}
-        name: {{ .Values.advertisements.container.name | default "advertisements" }} 
+      - image: {{ .Values.advertisements.container.image }}
+        imagePullPolicy: {{ .Values.advertisements.container.pullPolicy }}
+        name: {{ .Values.advertisements.container.name }} 
         command: ["ddtrace-run"]
         args: ["flask", "run", "--port=5002", "--host=0.0.0.0"]
         env:

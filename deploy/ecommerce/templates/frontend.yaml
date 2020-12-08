@@ -53,9 +53,9 @@ spec:
         - name: DD_APPLICATION_ID
           value: {{ .Values.frontend.rum.ddClientApplicationId }}
         {{- end }}
-        image: {{ .Values.frontend.container.image | default "ddtraining/ecommerce-frontend:latest" }}
-        imagePullPolicy: {{ .Values.frontend.container.pullPolicy | default "Always" }}
-        name: {{ .Values.frontend.container.name | default "ecommerce-spree-observability" }}
+        image: {{ .Values.frontend.container.image }}
+        imagePullPolicy: {{ .Values.frontend.container.pullPolicy }}
+        name: {{ .Values.frontend.container.name }}
         ports:
         - containerPort: 3000
           protocol: TCP
