@@ -30,3 +30,13 @@ advertisements:
   #   name: advertisements
   service:
     port: 5002
+
+discounts:
+  replicas: 1
+  # These are defaults, but can be changed
+  # container:
+  #   image: ddtraining/discounts-service:latest
+  #   pullPolicy: Always
+  #   name: discounts
+  service:
+    port: 5001
