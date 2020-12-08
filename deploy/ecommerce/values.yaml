@@ -14,8 +14,8 @@ frontend:
   # Enable and configure for Real User Monitoring (RUM)
   rum:
     enabled: false
-    ddClientToken: <Datadog Client Token>
-    ddClientApplicationId: <Datadog Client Application ID>
+    ddClientToken: DataDogClientToken
+    ddClientApplicationId: DataDogApplicationID
   service:
     type: ClusterIP
     port: http
