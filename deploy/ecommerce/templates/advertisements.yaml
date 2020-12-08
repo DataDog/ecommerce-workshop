@@ -4,7 +4,7 @@ metadata:
   labels:
     service: advertisements
     {{- include "ecommerce.labels" . | nindent 4 }}
-  name: advertisements 
+  name: advertisements
 spec:
   replicas: {{ .Values.advertisements.replicas }}
   selector:
@@ -21,7 +21,7 @@ spec:
       containers:
       - image: {{ .Values.advertisements.container.image }}
         imagePullPolicy: {{ .Values.advertisements.container.pullPolicy }}
-        name: {{ .Values.advertisements.container.name }} 
+        name: {{ .Values.advertisements.container.name }}
         command: ["ddtrace-run"]
         args: ["flask", "run", "--port=5002", "--host=0.0.0.0"]
         env:
@@ -38,7 +38,7 @@ spec:
             value: "user"
           - name: DATADOG_SERVICE_NAME
             value: "advertisements-service"
-          - name: DD_AGENT_HOST 
+          - name: DD_AGENT_HOST
             valueFrom:
               fieldRef:
                 fieldPath: status.hostIP

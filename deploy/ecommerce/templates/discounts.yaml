@@ -21,7 +21,7 @@ spec:
       containers:
       - image: {{ .Values.discounts.container.image }}
         imagePullPolicy: {{ .Values.discounts.container.pullPolicy }}
-        name: {{ .Values.discounts.container.name }} 
+        name: {{ .Values.discounts.container.name }}
         command: ["ddtrace-run"]
         args: ["flask", "run", "--port=5001", "--host=0.0.0.0"]
         env:
@@ -38,7 +38,7 @@ spec:
             value: "user"
           - name: DATADOG_SERVICE_NAME
             value: "discountsservice"
-          - name: DD_AGENT_HOST 
+          - name: DD_AGENT_HOST
             valueFrom:
               fieldRef:
                 fieldPath: status.hostIP
