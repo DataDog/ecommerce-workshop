@@ -58,7 +58,6 @@ metadata:
     {{- include "ecommerce.labels" . | nindent 4 }}
   name: discounts
 spec:
-  replicas: {{ .Values.discounts.replicas }}
   ports:
   - port: {{ .Values.discounts.service.port }}
     protocol: TCP

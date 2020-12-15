@@ -62,7 +62,6 @@ metadata:
     {{- include "ecommerce.labels" . | nindent 4 }}
   name: advertisements
 spec:
-  replicas: {{ .Values.advertisements.replicas }}
   ports:
   - port: {{ .Values.advertisements.service.port }}
     protocol: TCP
