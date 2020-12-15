@@ -18,7 +18,7 @@ frontend:
     ddClientApplicationId: DataDogApplicationID
   service:
     type: ClusterIP
-    port: http
+    port: 80
 
 advertisements:
   replicas: 1

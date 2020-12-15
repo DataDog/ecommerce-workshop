@@ -78,7 +78,6 @@ spec:
     - port: {{ .Values.frontend.service.port }}
       targetPort: 3000
       protocol: TCP
-      name: http
   selector:
     service: frontend
     {{- include "ecommerce.selectorLabels" . | nindent 4 }}
