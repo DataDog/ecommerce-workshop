@@ -35,6 +35,7 @@ Common labels
 */}}
 {{- define "ecommerce.labels" -}}
 helm.sh/chart: {{ include "ecommerce.chart" . }}
+app.kubernetes.io/name: ecommerce
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}

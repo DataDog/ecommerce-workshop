@@ -12,7 +12,7 @@ spec:
   selector:
     matchLabels:
       service: advertisements
-      app: ecommerce
+      {{- include "ecommerce.labels" . | nindent 6 }}
   strategy: {}
   template:
     metadata:

@@ -55,13 +55,13 @@ spec:
   selector:
     matchLabels:
       service: db
-      app: ecommerce
+      {{- include "ecommerce.labels" . | nindent 6 }}
   strategy: {}
   template:
     metadata:
       labels:
         service: db
-        app: ecommerce
+        {{- include "ecommerce.labels" . | nindent 8 }}
         {{- include "ecommerce.datadogLabels" . | nindent 8 }}
     spec:
       containers:

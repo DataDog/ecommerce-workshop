@@ -11,7 +11,7 @@ spec:
   selector:
     matchLabels:
       service: frontend
-      app: ecommerce
+      {{- include "ecommerce.labels" . | nindent 6 }}
   strategy:
     rollingUpdate:
       maxSurge: 25%
