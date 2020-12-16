@@ -2,7 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
+    app: ecommerce
     service: advertisements
+    {{- include "ecommerce.datadogLabels" . | nindent 4 }}
     {{- include "ecommerce.labels" . | nindent 4 }}
   name: advertisements
 spec:
@@ -16,6 +18,7 @@ spec:
     metadata:
       labels:
         service: advertisements
+        {{- include "ecommerce.datadogLabels" . | nindent 8 }}
         {{- include "ecommerce.labels" . | nindent 8 }}
     spec:
       containers:

@@ -4,6 +4,7 @@ metadata:
   labels:
     service: frontend
     {{- include "ecommerce.labels" . | nindent 4 }}
+    {{- include "ecommerce.datadogLabels" . | nindent 4 }}
   name: frontend
 spec:
   replicas: {{ .Values.frontend.replicas }}
@@ -20,7 +21,8 @@ spec:
     metadata:
       labels:
         service: frontend
-        {{- include "ecommerce.labels" . | nindent 4 }}
+        {{- include "ecommerce.labels" . | nindent 8 }}
+        {{- include "ecommerce.datadogLabels" . | nindent 8 }}
     spec:
       containers:
       - args:
@@ -80,4 +82,3 @@ spec:
       protocol: TCP
   selector:
     service: frontend
-    {{- include "ecommerce.selectorLabels" . | nindent 4 }}

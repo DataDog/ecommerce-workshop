@@ -48,6 +48,7 @@ metadata:
   labels:
     service: db
     app: ecommerce
+    {{- include "ecommerce.datadogLabels" . | nindent 4 }}
   name: db
 spec:
   replicas: 1
@@ -61,6 +62,7 @@ spec:
       labels:
         service: db
         app: ecommerce
+        {{- include "ecommerce.datadogLabels" . | nindent 8 }}
     spec:
       containers:
       - image: postgres:11-alpine

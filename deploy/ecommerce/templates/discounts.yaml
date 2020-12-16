@@ -4,6 +4,7 @@ metadata:
   labels:
     service: discounts
     {{- include "ecommerce.labels" . | nindent 4 }}
+    {{- include "ecommerce.datadogLabels" . | nindent 4 }}
   name: discounts
 spec:
   replicas: {{ .Values.discounts.replicas }}
@@ -16,7 +17,8 @@ spec:
     metadata:
       labels:
         service: discounts
-        {{- include "ecommerce.labels" . | nindent 4 }}
+        {{- include "ecommerce.labels" . | nindent 8 }}
+        {{- include "ecommerce.datadogLabels" . | nindent 8 }}
     spec:
       containers:
       - image: {{ .Values.discounts.container.image }}
