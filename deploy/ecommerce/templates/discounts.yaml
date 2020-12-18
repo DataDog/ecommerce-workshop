@@ -37,8 +37,6 @@ spec:
                 name: db-password
           - name: POSTGRES_USER
             value: "user"
-          - name: DATADOG_SERVICE_NAME
-            value: "discountsservice"
           - name: DD_AGENT_HOST
             valueFrom:
               fieldRef:
@@ -47,6 +45,14 @@ spec:
             value: "true"
           - name: DD_ANALYTICS_ENABLED
             value: "true"
+          - name: DD_ENV
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.labels['tags.datadoghq.com/env']
+          - name: DD_SERVICE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.labels['tags.datadoghq.com/service']
         ports:
         - containerPort: 5001
         resources: {}

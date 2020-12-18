@@ -8,7 +8,6 @@ kind: Secret
 metadata:
   name: db-password
   labels:
-    app: ecommerce
     service: db
 type: Opaque
 data:
@@ -47,6 +46,7 @@ kind: Deployment
 metadata:
   labels:
     service: db
+    tags.datadoghq.com/service: db
     {{- include "ecommerce.labels" . | nindent 4 }}
   name: db
 spec:
@@ -78,6 +78,14 @@ spec:
           value: "user"
         - name: PGDATA
           value: "/var/lib/postgresql/data/mydata"
+        - name: DD_ENV
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/env']
+        - name: DD_SERVICE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/service']
         resources: {}
         volumeMounts:
         - mountPath: /var/lib/postgresql/data
@@ -94,6 +102,8 @@ metadata:
   creationTimestamp: null
   labels:
     service: db
+    tags.datadoghq.com/service: db
+    {{- include "ecommerce.labels" . | nindent 4 }}
   name: db
 spec:
   ports:

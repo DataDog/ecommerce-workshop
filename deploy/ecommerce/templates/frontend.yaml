@@ -49,6 +49,10 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.labels['tags.datadoghq.com/env']
+        - name: DD_SERVICE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/service']
         {{- if .Values.frontend.rum.enabled }}
         - name: DD_CLIENT_TOKEN
           value: {{ .Values.frontend.rum.ddClientToken }}
