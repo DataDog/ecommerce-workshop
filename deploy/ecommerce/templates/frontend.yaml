@@ -2,7 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
+    # We should really call this "store" since that is what it does
     service: frontend
+    tags.datadoghq.com/service: frontend
     {{- include "ecommerce.labels" . | nindent 4 }}
   name: frontend
 spec:
@@ -19,6 +21,7 @@ spec:
     metadata:
       labels:
         service: frontend
+        tags.datadoghq.com/service: frontend
         {{- include "ecommerce.labels" . | nindent 8 }}
     spec:
       containers:
@@ -69,6 +72,7 @@ kind: Service
 metadata:
   labels:
     service: frontend
+    tags.datadoghq.com/service: frontend
   name: frontend
 spec:
   type: {{ .Values.frontend.service.type }}

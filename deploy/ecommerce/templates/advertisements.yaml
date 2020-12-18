@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   labels:
     service: advertisements
+    tags.datadoghq.com/service: advertisements
     {{- include "ecommerce.labels" . | nindent 4 }}
   name: advertisements
 spec:
@@ -15,6 +16,7 @@ spec:
     metadata:
       labels:
         service: advertisements
+        tags.datadoghq.com/service: advertisements
         {{- include "ecommerce.labels" . | nindent 8 }}
     spec:
       containers:
@@ -35,8 +37,6 @@ spec:
                 name: db-password
           - name: POSTGRES_USER
             value: "user"
-          - name: DATADOG_SERVICE_NAME
-            value: "advertisements-service"
           - name: DD_AGENT_HOST
             valueFrom:
               fieldRef:
@@ -58,6 +58,7 @@ kind: Service
 metadata:
   labels:
     service: advertisements
+    tags.datadoghq.com/service: service
     {{- include "ecommerce.labels" . | nindent 4 }}
   name: advertisements
 spec:

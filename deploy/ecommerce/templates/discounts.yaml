@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   labels:
     service: discounts
+    tags.datadoghq.com/service: discounts
     {{- include "ecommerce.labels" . | nindent 4 }}
   name: discounts
 spec:
@@ -15,6 +16,7 @@ spec:
     metadata:
       labels:
         service: discounts
+        tags.datadoghq.com/service: discounts
         {{- include "ecommerce.labels" . | nindent 8 }}
     spec:
       containers:
@@ -54,6 +56,7 @@ kind: Service
 metadata:
   labels:
     service: discounts
+    tags.datadoghq.com/service: discounts
     {{- include "ecommerce.labels" . | nindent 4 }}
   name: discounts
 spec:
