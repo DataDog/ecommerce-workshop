@@ -4,14 +4,12 @@ metadata:
   labels:
     service: frontend
     {{- include "ecommerce.labels" . | nindent 4 }}
-    {{- include "ecommerce.datadogLabels" . | nindent 4 }}
   name: frontend
 spec:
   replicas: {{ .Values.frontend.replicas }}
   selector:
     matchLabels:
       service: frontend
-      {{- include "ecommerce.labels" . | nindent 6 }}
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -22,7 +20,6 @@ spec:
       labels:
         service: frontend
         {{- include "ecommerce.labels" . | nindent 8 }}
-        {{- include "ecommerce.datadogLabels" . | nindent 8 }}
     spec:
       containers:
       - args:
@@ -72,7 +69,6 @@ kind: Service
 metadata:
   labels:
     service: frontend
-    app: ecommerce
   name: frontend
 spec:
   type: {{ .Values.frontend.service.type }}

@@ -35,18 +35,12 @@ Common labels
 */}}
 {{- define "ecommerce.labels" -}}
 helm.sh/chart: {{ include "ecommerce.chart" . }}
+tags.datadoghq.com/env: {{ .Values.environment }}
 app.kubernetes.io/name: ecommerce
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- end }}
-
-{{/*
-Datadog labels
-*/}}
-{{- define "ecommerce.datadogLabels" -}}
-tags.datadoghq.com/env: {{ .Values.environment }}
 {{- end }}
 
 {{/*

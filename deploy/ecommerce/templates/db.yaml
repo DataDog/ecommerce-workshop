@@ -47,22 +47,19 @@ kind: Deployment
 metadata:
   labels:
     service: db
-    app: ecommerce
-    {{- include "ecommerce.datadogLabels" . | nindent 4 }}
+    {{- include "ecommerce.labels" . | nindent 4 }}
   name: db
 spec:
   replicas: 1
   selector:
     matchLabels:
       service: db
-      {{- include "ecommerce.labels" . | nindent 6 }}
   strategy: {}
   template:
     metadata:
       labels:
         service: db
         {{- include "ecommerce.labels" . | nindent 8 }}
-        {{- include "ecommerce.datadogLabels" . | nindent 8 }}
     spec:
       containers:
       - image: postgres:11-alpine
@@ -96,7 +93,6 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: ecommerce
     service: db
   name: db
 spec:
@@ -105,7 +101,6 @@ spec:
     protocol: TCP
     targetPort: 5432
   selector:
-    app: ecommerce
     service: db
 status:
   loadBalancer: {}
