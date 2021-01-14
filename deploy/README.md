@@ -3,13 +3,13 @@ This folder contains the different tested ways in which this application can be 
 * `aws`: Deployments to Amazon Web Services
   * `aws/ecs`: Deployment to Amazon ECS
 * `datadog`: Deploying datadog via HELM or kubernetes manifests
-* `gcp`: Deployments to Google Cloud Platform
-* `gke`: Deployment to Google Kubernetes Engine
-* `vms`: Deployment to GCP VMs using Terraform
-* `generic-k8s`: Generic Kubernetes manifests
-* `openshift`: Manifests to deploy the application to Openshift
 * `docker-compose`: Docker compose to run the application locally
+* `gcp`: Deployments to Google Cloud Platform
+* `generic-k8s`: Generic Kubernetes manifests
+* `gke`: Deployment to Google Kubernetes Engine
+* `openshift`: Manifests to deploy the application to Openshift
 * `terraform`: Terraform based deployments separated by platform
+* `vms`: Deployment to GCP VMs using Terraform
 
 ## Running the Application Locally
 
