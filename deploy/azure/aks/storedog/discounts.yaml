@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ecommerce
+    service: discounts
+  name: discounts
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: discounts
+      app: ecommerce
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        service: discounts
+        app: ecommerce
+    spec:
+      containers:
+      - image: ddtraining/discounts-service:latest
+        name: discounts
+        command: ["ddtrace-run"]
+        args: ["flask", "run", "--port=5001", "--host=0.0.0.0"]
+        env:
+          - name: FLASK_APP
+            value: "discounts.py"
+          - name: FLASK_DEBUG
+            value: "1"
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: pw
+                name: db-password
+          - name: POSTGRES_USER
+            value: "user"
+          - name: DATADOG_SERVICE_NAME
+            value: "discountsservice"
+          - name: DD_AGENT_HOST 
+            valueFrom:
+              fieldRef:
+                fieldPath: status.hostIP
+          - name: DD_LOGS_INJECTION
+            value: "true"
+          - name: DD_ANALYTICS_ENABLED
+            value: "true"
+        ports:
+        - containerPort: 5001
+        resources: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: discounts
+    app: ecommerce
+  name: discounts
+spec:
+  ports:
+  - port: 5001
+    protocol: TCP
+    targetPort: 5001
+  selector:
+    service: discounts
+    app: ecommerce
+  sessionAffinity: None
+  type: ClusterIP
