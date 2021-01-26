@@ -6,8 +6,8 @@ metadata:
     service: discounts
     tags.datadoghq.com/env: "ruby-shop"
     tags.datadoghq.com/service: "discountsservice"
-    tags.datadoghq.com/version: "1.0"
-  name: discounts
+    tags.datadoghq.com/version: "2.0"
+  name: discounts-v2
 spec:
   replicas: 1
   selector:
@@ -23,7 +23,7 @@ spec:
         app: ecommerce
         tags.datadoghq.com/env: "ruby-shop"
         tags.datadoghq.com/service: "discountsservice"
-        tags.datadoghq.com/version: "1.0"
+        tags.datadoghq.com/version: "2.0"
     spec:
       containers:
       - image: ddtraining/discounts-service:latest
@@ -73,21 +73,3 @@ spec:
         ports:
         - containerPort: 5001
         resources: {}
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    service: discounts
-    app: ecommerce
-  name: discounts
-spec:
-  ports:
-  - port: 5001
-    protocol: TCP
-    targetPort: 5001
-  selector:
-    service: discounts
-    app: ecommerce
-  sessionAffinity: None
-  type: ClusterIP
