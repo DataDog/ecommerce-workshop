@@ -29,10 +29,10 @@ services:
       - DD_LOGS_INJECTION=true
       - DD_TRACE_ANALYTICS_ENABLED=true
       - DD_PROFILING_ENABLED=true
-    build: ../discounts-service/
+    build: ../../discounts-service/
     command: ddtrace-run flask run --port=5001 --host=0.0.0.0
     volumes:
-      - "../discounts-service:/app"
+      - "../../discounts-service:/app"
     ports:
       - "5001:5001"
     depends_on:

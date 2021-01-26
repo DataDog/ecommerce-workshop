@@ -1,0 +1,91 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: frontend
+    app: ecommerce
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: frontend
+      app: ecommerce
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        service: frontend
+        app: ecommerce
+    spec:
+      containers:
+      - args:
+        - docker-entrypoint.sh
+        command:
+        - sh
+        env:
+        - name: DB_USERNAME
+          value: user
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: pw
+              name: db-password
+        - name: DD_AGENT_HOST
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: DD_LOGS_INJECTION
+          value: "true"
+        - name: DD_ANALYTICS_ENABLED
+          value: "true"
+        # Enable RUM
+        # - name: DD_CLIENT_TOKEN
+        #   value: <your_client_token>
+        # - name: DD_APPLICATION_ID
+        #   value: <your_application_id>
+        image: ddtraining/ecommerce-frontend:latest
+        imagePullPolicy: Always
+        name: ecommerce-spree-observability
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: frontend
+    app: ecommerce
+  name: frontend
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    service: frontend
+    app: ecommerce
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-external
+spec:
+  type: LoadBalancer
+  selector:
+    app: ecommerce
+  ports:
+  - name: http
+    port: 80
+    targetPort: 3000

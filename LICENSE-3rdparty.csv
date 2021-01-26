@@ -1,0 +1,6 @@
+Component,Origin,License,Copyright
+Spree,https://github.com/spree/spree,Spree License,Copyright © 2007-2019 Spree Commerce Inc. and other contributors.
+Flask,https://github.com/pallets/flask/,BSD-3-Clause,Copyright 2010 Pallets
+Jinja,https://github.com/pallets/jinja,BSD-3-Clause,Copyright 2010 Pallets
+Requests,https://github.com/psf/requests,Apache-2.0,2004
+SQLAlchemy,https://github.com/sqlalchemy/sqlalchemy/,MIT,Copyright 2005-2020 SQLAlchemy authors and contributors
