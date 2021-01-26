@@ -4,6 +4,7 @@ This folder contains the different tested ways in which this application can be 
   * `aws/ecs`: Deployment to Amazon ECS
 * `datadog`: Deploying datadog via HELM or kubernetes manifests
 * `docker-compose`: Docker compose to run the application locally
+* `ecommerce`: HELM Chart to deploy ecommerce app easily to k3s/k8s environments
 * `gcp`: Deployments to Google Cloud Platform
 * `generic-k8s`: Generic Kubernetes manifests
 * `gke`: Deployment to Google Kubernetes Engine
@@ -22,16 +23,28 @@ Look at the `docker-compose` folder README for details.
 * Install [HELM v3](https://helm.sh/docs/intro/install/)
 * [Generate a Datadog API Key](https://app.datadoghq.com/account/settings#api)
 * Optionally [Generate a Datadog Application Key](https://app.datadoghq.com/account/settings#api) if you are deploying the cluster monitor
+* A kubernetes cluster configured with `kubectl`
 
 ### Installing
 
-* Make sure you have a working `kubectl`, you may need to switch to the platform folder first
+* Make sure you have a working `kubectl`, you may need to switch to the platform folder first (try running `kubectl get pods` as a test)
 * Run `helm repo add datadog https://helm.datadoghq.com` to track our official HELM repo
 * Run `helm repo update` to sync up the latest chart
 * Make your own copy of the `helm-values.yaml.example` in the datadog folder `cp datadog/helm-values.yaml.example datadog/helm-values.yaml` and make any changes you would like or just deploy the defaults
-* If you are not installing Cluster Agent, run `helm install datadog-agent --set datadog.apiKey=<YOUR DATADOG API KEY> --values datadog/helm-values.yaml`
-* If you are installing Cluster Agent, run `helm install datadog-agent datadog/datadog --set datadog.apiKey=<YOUR DATADOG API KEY> --set datadog.appKey=<YOUR DATADOG APP KEY> --values datadog/helm-values.yaml`
+* If you are not installing Cluster Agent, run `helm upgrade datadog-agent --install --set datadog.apiKey=<YOUR DATADOG API KEY> --values datadog/helm-values.yaml`
+* If you are installing Cluster Agent, run `helm upgrade datadog-agent datadog/datadog --install --set datadog.apiKey=<YOUR DATADOG API KEY> --set datadog.appKey=<YOUR DATADOG APP KEY> --values datadog/helm-values.yaml`
+* For upgrading the chart, you can use either of the commands above, it will work even on new installations because of the `--install` flag
 
-If you ever want to change the values in the chart, you can apply them via a HELM upgrade:
+## Installing ecommerce app via HELM Chart
 
-`helm upgrade datadog-agent datadog/datadog --set datadog.apiKey=<YOUR DATADOG API KEY> --set datadog.appKey=<YOUR DATADOG APP KEY> --values datadog/helm-values.yaml`
+### Requirements
+
+* Install [HELM v3](https://helm.sh/docs/intro/install/)
+* A kubernetes cluster configured with `kubectl`
+
+### Installing
+
+* Make sure you have a working `kubectl`, you may need to switch to the platform folder first (try running `kubectl get pods` as a test)
+* Change to the `ecommerce` directory
+* Run `helm install ecommerce .`
+  * If successful, you should see the various services for ecommerce app in `kubectl get pods` output

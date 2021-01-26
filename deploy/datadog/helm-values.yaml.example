@@ -38,6 +38,10 @@ datadog:
   #   processCollection: true
 
   # Enable this block for network and DNS metric collection
-  # systemProbe:
+  # networkMonitoring:
   #   enabled: true
+  #
+  # systemProbe:
   #   collectDNSStats: true
+  #   enableOOMKill: true
+  #   enableTCPQueueLength: true
