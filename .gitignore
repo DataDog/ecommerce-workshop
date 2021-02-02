@@ -7,7 +7,7 @@
 .vscode
 sandbox/tmp/
 __pycache__
-
+env/
 # Terraform
 *.tfstate
 *.tfstate.backup
