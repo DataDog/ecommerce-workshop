@@ -14,32 +14,15 @@ data:
   pw: password
 ---
 apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: task-pv-volume
-  labels:
-    type: local
-spec:
-  storageClassName: manual
-  capacity:
-    storage: 5Gi
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  hostPath:
-    path: "/mnt/data"
----
-apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: task-pvc-volume
+  name: ecommerce-postgres-database
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
-  storageClassName: manual
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -77,7 +60,7 @@ spec:
         - name: POSTGRES_USER
           value: "user"
         - name: PGDATA
-          value: "/var/lib/postgresql/data/mydata"
+          value: "/var/lib/postgresql/data/pgdata"
         - name: DD_ENV
           valueFrom:
             fieldRef:
@@ -88,13 +71,13 @@ spec:
               fieldPath: metadata.labels['tags.datadoghq.com/service']
         resources: {}
         volumeMounts:
-        - mountPath: /var/lib/postgresql/data
-          name: postgresdb
+          - name: postgresdb
+            mountPath: /var/lib/postgresql/data
       serviceAccountName: postgres
       volumes:
-      - name: postgresdb
-        persistentVolumeClaim:
-            claimName: task-pvc-volume
+        - name: postgresdb
+          persistentVolumeClaim:
+            claimName: ecommerce-postgres-database
 ---
 apiVersion: v1
 kind: Service

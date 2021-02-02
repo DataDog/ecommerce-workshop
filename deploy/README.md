@@ -41,10 +41,12 @@ Look at the `docker-compose` folder README for details.
 
 * Install [HELM v3](https://helm.sh/docs/intro/install/)
 * A kubernetes cluster configured with `kubectl`
+* For enabling RUM you need [a client token and ApplicationID](https://docs.datadoghq.com/real_user_monitoring/browser/#setup)
 
 ### Installing
 
 * Make sure you have a working `kubectl`, you may need to switch to the platform folder first (try running `kubectl get pods` as a test)
 * Change to the `ecommerce` directory
-* Run `helm install ecommerce .`
+* There are two ways you can run this command if you want to enable RUM or not by defining the API keys
+  * To enable RUM, run `helm upgrade ecommerce . --install --set datadog.ddClientToken=<YOUR DATADOG API KEY> --set datadog.ddClientApplicationId=<YOUR DATADOG APP KEY>`
   * If successful, you should see the various services for ecommerce app in `kubectl get pods` output

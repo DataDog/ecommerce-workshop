@@ -13,7 +13,7 @@ frontend:
     name: ecommerce-spree-observability
   # Enable and configure for Real User Monitoring (RUM)
   rum:
-    enabled: false
+    enabled: true
     ddClientToken: DataDogClientToken
     ddClientApplicationId: DataDogApplicationID
   service:
