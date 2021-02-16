@@ -10,7 +10,7 @@ from flask import request as flask_request
 from sqlalchemy.orm import joinedload
 
 from bootstrap import create_app
-from models import Discount, db
+from models import Discount, DiscountType, db
 
 r = RandomWords()
 
@@ -38,9 +38,13 @@ def status():
     elif flask_request.method == 'POST':
         # create a new discount with random name and value
         discounts_count = len(Discount.query.all())
+        new_discount_type = DiscountType('Random Savings',
+                                         'price * .9',
+                                         None)
         new_discount = Discount('Discount ' + str(discounts_count + 1),
                                 r.get_random_word(),
-                                random.randint(10,500))
+                                random.randint(10,500),
+                                new_discount_type)
         app.logger.info(f"Adding discount {new_discount}")
         db.session.add(new_discount)
         db.session.commit()
