@@ -38,7 +38,7 @@ def status():
     elif flask_request.method == 'POST':
         # create a new discount with random name and value
         discounts_count = len(Discount.query.all())
-        new_discount = Discount('Discount ' + str(discounts_count + 1), 
+        new_discount = Discount('Discount ' + str(discounts_count + 1),
                                 r.get_random_word(),
                                 random.randint(10,500))
         app.logger.info(f"Adding discount {new_discount}")
