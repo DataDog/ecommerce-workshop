@@ -1,0 +1,1619 @@
+1 b33c9c1a2bae6636d5389a1a47035170c58d367e 1568139746437296000
+GET / HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: none
+Referer: http://localhost:3000/products/monitoring-stein
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=zqYXHWSOPNtUr%2BptS50qNVncQBnq%2FHKF049xaPznjLGC4%2FC86Mu7DfPuzcu14XS4WcS7yeRKeI1LIvyZb3FmlVPuqs%2BVL0LEMybj0O1SoTiv05POU5NFucX%2FDPiVDBJvvLcaNzv1Yow1UdwDt1g%3D--A0FZUYbvqUDLnsZ%2B--hnxFW7rr24dyQZsz5kO7NA%3D%3D
+
+
+🐵🙈🙉
+1 56c731dc4647ecc5f44b00c8f9553fff209da918 1568139754038038000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=6iIY4Yhcjku72Fq6A5OaScJyZc%2BgVBWKQZ6OyOcahfFTHAYqqiH8jid1K2Bsp07caUJsNHG%2Biz2kUB%2B9FOMOdXkdO9GaF2keoL3ejfW9m01AM4bPPjyciGBvqnwesDF8IaK97AhYlgyfJ%2Bl0zfw%3D--Tk3QwTv64VoLTeQY--WLV1ZagQ%2BzF0QWfYa6heZg%3D%3D
+
+
+🐵🙈🙉
+1 2254caae662f74693cc392bf56838b98b9294433 1568139754051242000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=6iIY4Yhcjku72Fq6A5OaScJyZc%2BgVBWKQZ6OyOcahfFTHAYqqiH8jid1K2Bsp07caUJsNHG%2Biz2kUB%2B9FOMOdXkdO9GaF2keoL3ejfW9m01AM4bPPjyciGBvqnwesDF8IaK97AhYlgyfJ%2Bl0zfw%3D--Tk3QwTv64VoLTeQY--WLV1ZagQ%2BzF0QWfYa6heZg%3D%3D
+
+
+🐵🙈🙉
+1 f76ef057e8caaa2eabbf52f8d6b6a9934079f1a2 1568139754074377000
+GET /assets/favicon-92e86d463e909754599d66730477622cd3dd0b9bff58c47c9c38bebceb8073e5.ico HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Sec-Fetch-Mode: no-cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=6iIY4Yhcjku72Fq6A5OaScJyZc%2BgVBWKQZ6OyOcahfFTHAYqqiH8jid1K2Bsp07caUJsNHG%2Biz2kUB%2B9FOMOdXkdO9GaF2keoL3ejfW9m01AM4bPPjyciGBvqnwesDF8IaK97AhYlgyfJ%2Bl0zfw%3D--Tk3QwTv64VoLTeQY--WLV1ZagQ%2BzF0QWfYa6heZg%3D%3D
+
+
+🐵🙈🙉
+1 c48612cb7291d16843aa25b32607194f9bdf0ea1 1568139757174831000
+GET /products/datadog-tote HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=Ifj7bqrtNGts2Rt2vLwgnUStgwwUaxWh5lIqvj7KsijtS2OJ83WUzXB8UXyBXWV%2BoWIxh3SPU3nrgGWq6aLRC86yOcC1wyM8EorgPRF7cRLINuYhRjZWKFUnMSSKogkUS%2BecE77d1r%2BVa1suCPo%3D--x6ef97ux4XyVX%2B%2Fd--z7friuKuE7QxiaSBElPVSw%3D%3D
+
+
+🐵🙈🙉
+1 37063b3ba8305f60a4d7793bb92ea003b7829841 1568139761255241000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=7uvkhl8wKpl%2BxhdlrSbZJNtHFOG2qogahYXgjquoe3duOSWFLR%2FdPjTvG647A5rTM4ElTIQH1%2FH%2BrQDQL9MrfVP2z24MfrmfyhEFu%2FQQLA%2BUAccXosOsdMqR3nV%2Bl4Lq0FSKNxhlbUzIudWZEjQ%3D--X%2Fp9C5OstaD2cIwI--3JYenuBcQJouKwgC0DB4mg%3D%3D
+
+
+🐵🙈🙉
+1 0e3377e0519e8bd2b48f62c4bf2d581b97fec354 1568139761273277000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=7uvkhl8wKpl%2BxhdlrSbZJNtHFOG2qogahYXgjquoe3duOSWFLR%2FdPjTvG647A5rTM4ElTIQH1%2FH%2BrQDQL9MrfVP2z24MfrmfyhEFu%2FQQLA%2BUAccXosOsdMqR3nV%2Bl4Lq0FSKNxhlbUzIudWZEjQ%3D--X%2Fp9C5OstaD2cIwI--3JYenuBcQJouKwgC0DB4mg%3D%3D
+
+
+🐵🙈🙉
+1 d4c9f8d217958ad067c50f650f2c4a5412cd3e94 1568139763851489000
+GET /products/datadog-ringer-t-shirt HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=N287%2FEKKtGz3clWDV7kRbLjpdl37a4%2FWrL5nd90a2wznfZSg6L8iO5P7M6%2BEE1ByWqsP1Sg6V8bU1kqTllAddPScuuHanP8RK1pnA6o1Qw3VkEMDZpQWlzaum%2Bfq3fGwGgxzcvzfxC09gTG7%2BPo%3D--lWH91TLBN69BX1P6--TvsIPYSEGWSsZtMTqeaB%2Bg%3D%3D
+
+
+🐵🙈🙉
+1 13df6b310a6330bfb6e1b2f5519cdbc7532751b1 1568139768417140000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-ringer-t-shirt
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=Xso3ZEHYK5207IZ6YNKF5tM1JaeBVSWbGFfZLjmAMhF6eYyL1mpBlKBPVMjvh3Rl2hmzFJPbrv8AzAJu3Wxi9nl2dPMZH7yKfctwX38pGtTnS9ne3K271jqSr8PTfFhnP7HOb2LkvmlYOlmwovs%3D--m9y0X8ukmDo4Visv--%2BwMzV4%2BGGziJo%2BdloGB97g%3D%3D
+
+
+🐵🙈🙉
+1 9632e9e7f41f0baca317f2ab9bdadffaeb734060 1568139768444174000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-ringer-t-shirt
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=Xso3ZEHYK5207IZ6YNKF5tM1JaeBVSWbGFfZLjmAMhF6eYyL1mpBlKBPVMjvh3Rl2hmzFJPbrv8AzAJu3Wxi9nl2dPMZH7yKfctwX38pGtTnS9ne3K271jqSr8PTfFhnP7HOb2LkvmlYOlmwovs%3D--m9y0X8ukmDo4Visv--%2BwMzV4%2BGGziJo%2BdloGB97g%3D%3D
+
+
+🐵🙈🙉
+1 1abd837280590fd557ea6032b23964dfb642b1be 1568139771301917000
+GET /products?utf8=%E2%9C%93&taxon=&keywords=t+shirt HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-ringer-t-shirt
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=dXH4%2FTXhTM2w8NQMUWKTdcNfENuGeLRlKm8mXLVpb8yuVaoll8owOYNwgTrLB2sZN7cBxCXZwAjJ%2F%2BctLwxkpvV11NH5jG0sifwLuddFtzL%2B98FiANCQ2Jzjd4kAxIYhquj3Zds0fYSBRChfSv8%3D--lT3fZKWzyWf%2BiOOz--fYZirM9cvyijjJcNCqke%2FQ%3D%3D
+
+
+🐵🙈🙉
+1 5b2fc06139ddce6fd8c42848fb4e0cc146d8043f 1568139775099047000
+GET /favicon.ico HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: no-cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products?utf8=%E2%9C%93&taxon=&keywords=t+shirt
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=dXH4%2FTXhTM2w8NQMUWKTdcNfENuGeLRlKm8mXLVpb8yuVaoll8owOYNwgTrLB2sZN7cBxCXZwAjJ%2F%2BctLwxkpvV11NH5jG0sifwLuddFtzL%2B98FiANCQ2Jzjd4kAxIYhquj3Zds0fYSBRChfSv8%3D--lT3fZKWzyWf%2BiOOz--fYZirM9cvyijjJcNCqke%2FQ%3D%3D
+
+
+🐵🙈🙉
+1 4dffcb8d0a7f8a76e99458a60bed3532e5de1113 1568139776606423000
+GET /products/datadog-ringer-t-shirt HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: none
+Referer: http://localhost:3000/products/datadog-tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=dXH4%2FTXhTM2w8NQMUWKTdcNfENuGeLRlKm8mXLVpb8yuVaoll8owOYNwgTrLB2sZN7cBxCXZwAjJ%2F%2BctLwxkpvV11NH5jG0sifwLuddFtzL%2B98FiANCQ2Jzjd4kAxIYhquj3Zds0fYSBRChfSv8%3D--lT3fZKWzyWf%2BiOOz--fYZirM9cvyijjJcNCqke%2FQ%3D%3D
+
+
+🐵🙈🙉
+1 fe87828bc383860ec8c26323b6930d6fab5c0328 1568139780667531000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-ringer-t-shirt
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=w3CCwCLKTV6AC%2Bv1ZedPpFcVit8hxafkCiBVS72JL4OkNVY145ErNjEcB27pRLhEEQdFu4GGZyEYaTZ7BUEMt3cT2oLqwHwVo8Q%2BYP3EvSArbTL8bRrW%2BdGdauClmFim7kx5S2T8gJGv4rBwV6k%3D--UeYc0C%2B5KVueYhJ9--Q1umezTBRmlI4akW2RVdaQ%3D%3D
+
+
+🐵🙈🙉
+1 6c770232d5ef4310da18251a30cf903ba50500a0 1568139780687569000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-ringer-t-shirt
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=w3CCwCLKTV6AC%2Bv1ZedPpFcVit8hxafkCiBVS72JL4OkNVY145ErNjEcB27pRLhEEQdFu4GGZyEYaTZ7BUEMt3cT2oLqwHwVo8Q%2BYP3EvSArbTL8bRrW%2BdGdauClmFim7kx5S2T8gJGv4rBwV6k%3D--UeYc0C%2B5KVueYhJ9--Q1umezTBRmlI4akW2RVdaQ%3D%3D
+
+
+🐵🙈🙉
+1 6fb28765322a4482e9ccee4cd6e239f6b8d3ab48 1568139782118724000
+GET / HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-ringer-t-shirt
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=o80GQgSraWdtxZTKyB27s0TcJdB2U7ubNMC7tD5mmaJClEKqOsWT2%2BBbRDGqqCNmmnMuJWTVwffrPD02Ua2bCKJFXQS6M7BnU1FwSX1TJpFMulw738tyXIXbcS19BaWfnWMKc5J5tI%2F5K08OvdE%3D--hs9OJqK6pyv6beke--sbIvHeuZ6GPW9p02b3wztQ%3D%3D
+
+
+🐵🙈🙉
+1 6298f15aebeac1f856d5390f287941bbeadf2457 1568139790762978000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=olv4sfoCJm71WTLG%2Fvuhi2wSYUFGWel0MWR0Nqqkk5i%2FuUg1GYU1vvh%2F79dEaFGoqr0HNYVzdhXbHpUlRXByrjH8JwEWpdFYzpxxJN9C5mxyZ4JHkn2%2FJCTXgNL095W0IJTXWUrEGnNW21%2FBDwE%3D--%2F1Hlmncv%2BoI2aoWs--f%2Bhrr0vGdh4gigO95voG0g%3D%3D
+
+
+🐵🙈🙉
+1 d2209692f48e7b8fa3a0d61f48a57aee7ece9d3a 1568139790787608000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=olv4sfoCJm71WTLG%2Fvuhi2wSYUFGWel0MWR0Nqqkk5i%2FuUg1GYU1vvh%2F79dEaFGoqr0HNYVzdhXbHpUlRXByrjH8JwEWpdFYzpxxJN9C5mxyZ4JHkn2%2FJCTXgNL095W0IJTXWUrEGnNW21%2FBDwE%3D--%2F1Hlmncv%2BoI2aoWs--f%2Bhrr0vGdh4gigO95voG0g%3D%3D
+
+
+🐵🙈🙉
+1 06882ad3433d9a5400dadd4df548631fa64746c8 1568139793246597000
+GET /cart HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=jwl1U2kCr811Ssk20H967zmdRfM43nz90hpxt8Dx%2Ffvcl8sRC0J9R%2FNh1SFlfW9XR1jWhKB7g8ZOdJP0NVY8yCLJLWet%2BGeBHdYDoROjofbezb8x75JbKGotcjxcKluMwYxmTBo7CwGueQ3s26g%3D--Q%2Bkzfv9yks2h3L8n--cyQLY9QTqJD2yGd6HjFadw%3D%3D
+
+
+🐵🙈🙉
+1 68f06458f3c963aaff33f15a2ea8cdfa9b727980 1568139795667228000
+GET /favicon.ico HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: no-cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/cart
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=jwl1U2kCr811Ssk20H967zmdRfM43nz90hpxt8Dx%2Ffvcl8sRC0J9R%2FNh1SFlfW9XR1jWhKB7g8ZOdJP0NVY8yCLJLWet%2BGeBHdYDoROjofbezb8x75JbKGotcjxcKluMwYxmTBo7CwGueQ3s26g%3D--Q%2Bkzfv9yks2h3L8n--cyQLY9QTqJD2yGd6HjFadw%3D%3D
+
+
+🐵🙈🙉
+1 95d056e0abac0d7b61202f52aa5b48bfc588e5ef 1568139797247028000
+GET / HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: none
+Referer: http://localhost:3000/products/datadog-ringer-t-shirt
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=jwl1U2kCr811Ssk20H967zmdRfM43nz90hpxt8Dx%2Ffvcl8sRC0J9R%2FNh1SFlfW9XR1jWhKB7g8ZOdJP0NVY8yCLJLWet%2BGeBHdYDoROjofbezb8x75JbKGotcjxcKluMwYxmTBo7CwGueQ3s26g%3D--Q%2Bkzfv9yks2h3L8n--cyQLY9QTqJD2yGd6HjFadw%3D%3D
+
+
+🐵🙈🙉
+1 bad4867ca284e74e0a3f45d22d0a7c0c1bd8d8c9 1568139804944206000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=S8%2F9GRnUaPDgX1WmJpVw5EBADMUIOyfKqV%2Bc5CSW3XQlqDo3weNKzf2BvY%2FxIT%2BTsJ9n1DeGHYFlY%2BdYZDK0l893Fk%2FhLaov1dzYr09U2ViTxeLHYDSN8QQVhap%2BzEEAk9Wpj6pFEKhYfZMJNM4%3D--yhf%2Bv5bviInp3sOi--xBUqpRuQ8SchzJuxisiENQ%3D%3D
+
+
+🐵🙈🙉
+1 15aeb62d44ec9f903e700e7e9d5f7a08f4cb2232 1568139804954908000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=S8%2F9GRnUaPDgX1WmJpVw5EBADMUIOyfKqV%2Bc5CSW3XQlqDo3weNKzf2BvY%2FxIT%2BTsJ9n1DeGHYFlY%2BdYZDK0l893Fk%2FhLaov1dzYr09U2ViTxeLHYDSN8QQVhap%2BzEEAk9Wpj6pFEKhYfZMJNM4%3D--yhf%2Bv5bviInp3sOi--xBUqpRuQ8SchzJuxisiENQ%3D%3D
+
+
+🐵🙈🙉
+1 4de24742beab9fcbfa74184d4e911ab00e877add 1568139807718623000
+GET /?page=2 HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=4udDK1gDPfNzmBA0gxqQ3lMREeyTpC9A5lnfvrKfLj8db8Y4jbyb%2FEB0G%2F2h97bRf6Y9dTPihqa8I25iUrckyzW5ofAB7akQS%2FAU7K2EszjgkAFDEdKoJZApt%2FwCYkZe6iWLNWjo5n0AMZZP%2BGQ%3D--ifo5bfJcJoyCD3%2FD--UuEO3UdLAFy9hh4ftHokrg%3D%3D
+
+
+🐵🙈🙉
+1 b2665c530c2871e25cf9a836f1959d486b1959cc 1568139814929397000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/?page=2
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=UqS%2BI0%2F3SJhksmLEcck0ZAhUeDRmSZ%2BH%2F3xINRlnHnIvkpSmvCWkLesX3c%2FgT%2B9X0i%2Bk0nsuWqGbCF4bY%2BBGDEzlPrhXwBhd6834Ymb2tRqF%2Be7oSjIPWJLkmFDkLV9I3n1vHiA4%2F354qID0y4c%3D--mbN8Ir%2BDUL1WhWrp--%2B1ZZ23pHS8srE4n%2BjV3peg%3D%3D
+
+
+🐵🙈🙉
+1 f1d8655b0c8ed534b4d575bbd34d3027ac6c8706 1568139814940689000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/?page=2
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=UqS%2BI0%2F3SJhksmLEcck0ZAhUeDRmSZ%2BH%2F3xINRlnHnIvkpSmvCWkLesX3c%2FgT%2B9X0i%2Bk0nsuWqGbCF4bY%2BBGDEzlPrhXwBhd6834Ymb2tRqF%2Be7oSjIPWJLkmFDkLV9I3n1vHiA4%2F354qID0y4c%3D--mbN8Ir%2BDUL1WhWrp--%2B1ZZ23pHS8srE4n%2BjV3peg%3D%3D
+
+
+🐵🙈🙉
+1 3ca8e89cd1f6c6704d99d63a9cfff5c47ef0c8e3 1568139815818106000
+GET /assets/glyphicons-halflings-regular.woff HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+Origin: http://localhost:3000
+If-None-Match: "a26394f7ede100ca118eff2eda08596275a9839b959c226e15439557a5a80742"
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/assets/spree/frontend/frontend_bootstrap.self-6b1875ab3c924365383f62eb1ab16829e79dd8486d074ab7f983c07878a0fcaf.css?body=1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=nX1CeMxIUDMbd%2FasPuGTHU7zS%2BxasSm%2Boi%2Bj0xXfosIF1ZJYee6OXjDgzuyK8Jp3x1heUPcL9PzdN4ah6V9lmDbE%2Bqcu5LRQbPNZVgaXkzNUBNM8KFVEOfHmS1bwR7QhULKVwou8S1sTT5P3rUo%3D--xVXpYKpFiTTkXlMy--87eMQc5bFapoSHflycOU5w%3D%3D
+
+
+🐵🙈🙉
+1 10baa73df28a66f0ee5bfe8830aa4d1cc77d871a 1568139817777547000
+GET /products/datadog-stein HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/?page=2
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=nX1CeMxIUDMbd%2FasPuGTHU7zS%2BxasSm%2Boi%2Bj0xXfosIF1ZJYee6OXjDgzuyK8Jp3x1heUPcL9PzdN4ah6V9lmDbE%2Bqcu5LRQbPNZVgaXkzNUBNM8KFVEOfHmS1bwR7QhULKVwou8S1sTT5P3rUo%3D--xVXpYKpFiTTkXlMy--87eMQc5bFapoSHflycOU5w%3D%3D
+
+
+🐵🙈🙉
+1 62d252dfa24eb2ca48dc250505c41a95739ae434 1568139822209612000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-stein
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=LlBCkNoCEP0rZPI2IRsOfpHffs8Oei7n0fYr7SVDqYSO%2FkTyoKw3K8xMCORqZUEPQzn7RZj6AvL8dKocWpN%2FTAS6DmrDzmt6MuuOUFV6sGycjPORZE%2BowM0EFracbNoijiWDTAwXD3K%2BxD86Gyk%3D--qOcluqM%2BhMXcBAaU--2HuFMSTDjL70rHuubRlscQ%3D%3D
+
+
+🐵🙈🙉
+1 84417392d1586f335a269ad1062498c6e1695ef7 1568139822219824000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-stein
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=LlBCkNoCEP0rZPI2IRsOfpHffs8Oei7n0fYr7SVDqYSO%2FkTyoKw3K8xMCORqZUEPQzn7RZj6AvL8dKocWpN%2FTAS6DmrDzmt6MuuOUFV6sGycjPORZE%2BowM0EFracbNoijiWDTAwXD3K%2BxD86Gyk%3D--qOcluqM%2BhMXcBAaU--2HuFMSTDjL70rHuubRlscQ%3D%3D
+
+
+🐵🙈🙉
+1 15b932781c4b64d2f847e71056f72d41d1a830f6 1568139826107825000
+GET /t/categories HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-stein
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=d0cnIswrIlP3IwOQsAc0tf3SjEVdPqmXMbQQwRDECmchGkwvpFtrFm15hHT0Zwyx7DKy6cLVkRxLX0tSTMX5f1LRVX2o%2FbXz65EoZo7j%2FzCahRdhKd3vbQYBLdJvrFl0UlNgj18hPSVlLyQyK8Y%3D--U0JNAy0T0D2DXc4u--jc5KMoRHc06aQaXb0gR3lQ%3D%3D
+
+
+🐵🙈🙉
+1 7e8d615c4743e82e21b7495001a925d1df1efb39 1568139829983530000
+GET /favicon.ico HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: no-cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/t/categories
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=d0cnIswrIlP3IwOQsAc0tf3SjEVdPqmXMbQQwRDECmchGkwvpFtrFm15hHT0Zwyx7DKy6cLVkRxLX0tSTMX5f1LRVX2o%2FbXz65EoZo7j%2FzCahRdhKd3vbQYBLdJvrFl0UlNgj18hPSVlLyQyK8Y%3D--U0JNAy0T0D2DXc4u--jc5KMoRHc06aQaXb0gR3lQ%3D%3D
+
+
+🐵🙈🙉
+1 32747ae2cd4ce1d0dcb43e4d93736de1e461fd47 1568139831001704000
+GET /products/datadog-stein HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: none
+Referer: http://localhost:3000/?page=2
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=d0cnIswrIlP3IwOQsAc0tf3SjEVdPqmXMbQQwRDECmchGkwvpFtrFm15hHT0Zwyx7DKy6cLVkRxLX0tSTMX5f1LRVX2o%2FbXz65EoZo7j%2FzCahRdhKd3vbQYBLdJvrFl0UlNgj18hPSVlLyQyK8Y%3D--U0JNAy0T0D2DXc4u--jc5KMoRHc06aQaXb0gR3lQ%3D%3D
+
+
+🐵🙈🙉
+1 b9f137fd4cae743a5463185cecadee812cc22297 1568139835509297000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-stein
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=iTJATqbxDl3u0hx4Ztcqr3p91%2FktROPGlYVvxW4nXxB2Xez1W8FH3ZZBCgKIE0S24QinGgNjT9jAZ0feiyNHaQ8gTjSTZLWJg%2FDWa6AaF69zvOLsfw2K%2B2DgY3xnJe8Hxqtz9WagK7zoZEZQB3Q%3D--u%2FY%2FcmPGzkOPAY7H--%2F6QAT1uXNN%2FdNcLpT7a2Mg%3D%3D
+
+
+🐵🙈🙉
+1 94ecd64ca856454361361c17f6bf10589e43f4f8 1568139835525518000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-stein
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=iTJATqbxDl3u0hx4Ztcqr3p91%2FktROPGlYVvxW4nXxB2Xez1W8FH3ZZBCgKIE0S24QinGgNjT9jAZ0feiyNHaQ8gTjSTZLWJg%2FDWa6AaF69zvOLsfw2K%2B2DgY3xnJe8Hxqtz9WagK7zoZEZQB3Q%3D--u%2FY%2FcmPGzkOPAY7H--%2F6QAT1uXNN%2FdNcLpT7a2Mg%3D%3D
+
+
+🐵🙈🙉
+1 8b838c76b083c8da74648f85904befd399ffe967 1568139842227919000
+GET /t/mugs HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-stein
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=HqJqymtrCJ8M70Wq3L8noJcB3%2BYBGUv7vZkEhnu6zLG7YIXmJ1A2%2Bl4%2FEsPuWE0CEgAHJvtNWd%2Foao7Vy3dG%2B6Uo%2BmTNPxmKJmlUBKU%2BUabhvqkfg0IW74jekDjUTeDKU48RKx3YC1as3GPqJNI%3D--7bpKjTf260w%2FMDGY--BIH4zS4Bt2xjFqaflXpMOw%3D%3D
+
+
+🐵🙈🙉
+1 afc94e530dcb81d6fe57a66e61e976b486a12e41 1568139845136665000
+GET /favicon.ico HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: no-cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/t/mugs
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=HqJqymtrCJ8M70Wq3L8noJcB3%2BYBGUv7vZkEhnu6zLG7YIXmJ1A2%2Bl4%2FEsPuWE0CEgAHJvtNWd%2Foao7Vy3dG%2B6Uo%2BmTNPxmKJmlUBKU%2BUabhvqkfg0IW74jekDjUTeDKU48RKx3YC1as3GPqJNI%3D--7bpKjTf260w%2FMDGY--BIH4zS4Bt2xjFqaflXpMOw%3D%3D
+
+
+🐵🙈🙉
+1 0a6055d4acee43c4280eb5f2925cc527873e1c2c 1568139846086034000
+GET /products/datadog-stein HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: none
+Referer: http://localhost:3000/?page=2
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=HqJqymtrCJ8M70Wq3L8noJcB3%2BYBGUv7vZkEhnu6zLG7YIXmJ1A2%2Bl4%2FEsPuWE0CEgAHJvtNWd%2Foao7Vy3dG%2B6Uo%2BmTNPxmKJmlUBKU%2BUabhvqkfg0IW74jekDjUTeDKU48RKx3YC1as3GPqJNI%3D--7bpKjTf260w%2FMDGY--BIH4zS4Bt2xjFqaflXpMOw%3D%3D
+
+
+🐵🙈🙉
+1 14dbb29d0bac4f8c4b0b33b786daf99038663f91 1568139850446186000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-stein
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=XD64cNXlPaajntJM720JpiS%2BF%2B1OPPMiMkJLxu9B%2BnpN76W%2FO3u4jv%2F0DLVEEDkCLvtGsTfEFMQriWkJ9hvbipB0eWCrnz8kF4ws0cgsJzbWCnaTaMYH77uC8KgcwzjHkkghzIRcyKeGfrAow%2FU%3D--5SddDP3H91cdNU9v--J7wV71Af%2FA9561sCNqddZQ%3D%3D
+
+
+🐵🙈🙉
+1 e4c2c8a08f0904b2b5bc4cfa10d13b13e7de354e 1568139850456835000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-stein
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=XD64cNXlPaajntJM720JpiS%2BF%2B1OPPMiMkJLxu9B%2BnpN76W%2FO3u4jv%2F0DLVEEDkCLvtGsTfEFMQriWkJ9hvbipB0eWCrnz8kF4ws0cgsJzbWCnaTaMYH77uC8KgcwzjHkkghzIRcyKeGfrAow%2FU%3D--5SddDP3H91cdNU9v--J7wV71Af%2FA9561sCNqddZQ%3D%3D
+
+
+🐵🙈🙉
+1 9c046020c887ba4acf91db7aaa697b8f4f2eca72 1568139852186510000
+GET /products/datadog-stein HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: none
+Referer: http://localhost:3000/?page=2
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=xFCTy%2FokZFmZLu1XIqGb9crTf7s6C9pr52GzgfgN0%2BRgQsxIAbl%2B8spLRjP8npejEp8rqcvOUGB4BDRs0S34B%2BbL%2F4r3LmWuRHdJ6bKOcLRpYOcni2VDIfYlwncWeePQgcJF7f4603mHwaeO4Xg%3D--6vklMMEEID%2FImhnZ--gZ0xM7De7l2cYK1cjoM23Q%3D%3D
+
+
+🐵🙈🙉
+1 72baf40f629d36b26ebd0e35aee97a5be5d3e69d 1568139856842822000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-stein
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=JIk1TyCFIlFfubbX2vL9xplZMEXrUlw1VM1Oe3tUZgvD%2BrpR0iDMIPBQLNQZ6mZUl4FOAvm%2FtYKMKtNwDg%2F1xYUCRAEGKXjEOFyh8eVoAnLRozmI6dFGoG3KKB%2B4A3k4sfrQnpk%2BB9LFqEAiZp0%3D--yFPHycrmXkKsgkbh--VistW3jPB76cw8VeDTEwLA%3D%3D
+
+
+🐵🙈🙉
+1 6e010a6a7858175408c3a9e55fd287108753562f 1568139856857912000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-stein
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=JIk1TyCFIlFfubbX2vL9xplZMEXrUlw1VM1Oe3tUZgvD%2BrpR0iDMIPBQLNQZ6mZUl4FOAvm%2FtYKMKtNwDg%2F1xYUCRAEGKXjEOFyh8eVoAnLRozmI6dFGoG3KKB%2B4A3k4sfrQnpk%2BB9LFqEAiZp0%3D--yFPHycrmXkKsgkbh--VistW3jPB76cw8VeDTEwLA%3D%3D
+
+
+🐵🙈🙉
+1 3fd2dbafe9d84eae649e1fdadbcff418d3c39813 1568139856861862000
+GET /assets/favicon-92e86d463e909754599d66730477622cd3dd0b9bff58c47c9c38bebceb8073e5.ico HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Sec-Fetch-Mode: no-cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-stein
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=JIk1TyCFIlFfubbX2vL9xplZMEXrUlw1VM1Oe3tUZgvD%2BrpR0iDMIPBQLNQZ6mZUl4FOAvm%2FtYKMKtNwDg%2F1xYUCRAEGKXjEOFyh8eVoAnLRozmI6dFGoG3KKB%2B4A3k4sfrQnpk%2BB9LFqEAiZp0%3D--yFPHycrmXkKsgkbh--VistW3jPB76cw8VeDTEwLA%3D%3D
+
+
+🐵🙈🙉
+1 4b477f079216ef36edd921b8c117b21b16649722 1568139859190032000
+GET / HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: none
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=ZNzjh9zwwfuIb44OAFvQrOFnOvaz%2FpGJErM8qB3PikcPxJfgKYryf7k56o36Evb%2F21%2B91ZDfBYN0h8Bv3Ixc1OMsTTA28asNZu24CNyQs3%2F%2BuXb0LrMFcKc1MxmwgMNEa7lsiPrLZxA9LMCxHsE%3D--V%2B3kygGl6sePSIp3--mri1carOM9s8TQF7pcZwyQ%3D%3D
+
+
+🐵🙈🙉
+1 05451d042b97b62ebef965d519bbb5a5ecd494a7 1568139866641460000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=IFs3RcRIHrGoNwAoi%2B2uaT0%2BzTi9oN0y%2F5PPZBNmnYoEgGWmNdrH22yJ79njRE%2BMw78yde0u9SfTKK5K02crosjc4KcwRQ3Oln7dQs2Eus6iO%2BKO9c%2FU7lwVMjo7L%2F99c4PP2Kctpvdprwu0yCg%3D--OauGmyJ2eSqVFlyH--fKuGwGYMRb60xtDq80qwpg%3D%3D
+
+
+🐵🙈🙉
+1 46d55d0b3ca2b52d75d0dce53ea16d7e4a2a8cec 1568139866661718000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=IFs3RcRIHrGoNwAoi%2B2uaT0%2BzTi9oN0y%2F5PPZBNmnYoEgGWmNdrH22yJ79njRE%2BMw78yde0u9SfTKK5K02crosjc4KcwRQ3Oln7dQs2Eus6iO%2BKO9c%2FU7lwVMjo7L%2F99c4PP2Kctpvdprwu0yCg%3D--OauGmyJ2eSqVFlyH--fKuGwGYMRb60xtDq80qwpg%3D%3D
+
+
+🐵🙈🙉
+1 670608be8ca2dc9bc743fb629f1bbae3063af1db 1568139871175351000
+GET /products/datadog-tote HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=CAJRQW%2FkToJV7O3miHMbIKYPJ%2Bv6KRwnOWRypI1b55H%2BXx3jqOuXfBDlnDJOFTs4oS06DfbGSCr2BEzB4H%2BJdV5xX%2BnguSrPtpdMeLJKUnQKe%2BjfHbKnYA5BZeq41i3jpFSXQUYFcwaHBZEMDEc%3D--jMNz96n9P2FKPyB2--vJXSr2woAjqAOmkyMdfnlg%3D%3D
+
+
+🐵🙈🙉
+1 185910ae97a17897fc48732722408b12a0b6df0c 1568139875522413000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=15AZyEBwee5661J56hj0zlyauokGDY3Q1LrOntDh%2FGwRiSlwbJgbapCK3lyUy5vfHH%2BWR6LB8dcqv2rwqgLKB7K5mqsqcigN5LIImlMf%2FhGx04uwzeEjSKrBQsXu%2Fr0LE3KiCCPE3UsDB3EcaIM%3D--KHQSePwG3uzEd6XL--zss3TwrFpRgEzycPZmFCzg%3D%3D
+
+
+🐵🙈🙉
+1 1c2989a7e136997935423978b208b0bbc39911b2 1568139875530243000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=15AZyEBwee5661J56hj0zlyauokGDY3Q1LrOntDh%2FGwRiSlwbJgbapCK3lyUy5vfHH%2BWR6LB8dcqv2rwqgLKB7K5mqsqcigN5LIImlMf%2FhGx04uwzeEjSKrBQsXu%2Fr0LE3KiCCPE3UsDB3EcaIM%3D--KHQSePwG3uzEd6XL--zss3TwrFpRgEzycPZmFCzg%3D%3D
+
+
+🐵🙈🙉
+1 81ca4a3005a7f417649e1d115830826ca9263888 1568139879113837000
+GET /products?utf8=%E2%9C%93&taxon=3&keywords=tote HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=fVJCyVcEe%2BGysPyV5%2BvdOfAWI%2B%2FZSmG4JkTeUp%2FIctayMjmVZAjUhNYQK7gWKCYZzoZYhxRiUIgCyWVw77739Z0yXIALLlOl57AVquRcDCj5iDV8OsaOZwVlB%2F7hqJsCMlNS5IHo0NAVWxhQkmc%3D--srmhX4YnI%2BMQZ6OK--uc17poURZfdSdc6fFCXW4Q%3D%3D
+
+
+🐵🙈🙉
+1 0b81e265cb94a4538bb1b1eb4b6200020c1d6cd8 1568139881196765000
+GET /favicon.ico HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: no-cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products?utf8=%E2%9C%93&taxon=3&keywords=tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=fVJCyVcEe%2BGysPyV5%2BvdOfAWI%2B%2FZSmG4JkTeUp%2FIctayMjmVZAjUhNYQK7gWKCYZzoZYhxRiUIgCyWVw77739Z0yXIALLlOl57AVquRcDCj5iDV8OsaOZwVlB%2F7hqJsCMlNS5IHo0NAVWxhQkmc%3D--srmhX4YnI%2BMQZ6OK--uc17poURZfdSdc6fFCXW4Q%3D%3D
+
+
+🐵🙈🙉
+1 5686e210715e2e6050c76e72905681369b400fa7 1568139882298193000
+GET /products/datadog-tote HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: none
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=fVJCyVcEe%2BGysPyV5%2BvdOfAWI%2B%2FZSmG4JkTeUp%2FIctayMjmVZAjUhNYQK7gWKCYZzoZYhxRiUIgCyWVw77739Z0yXIALLlOl57AVquRcDCj5iDV8OsaOZwVlB%2F7hqJsCMlNS5IHo0NAVWxhQkmc%3D--srmhX4YnI%2BMQZ6OK--uc17poURZfdSdc6fFCXW4Q%3D%3D
+
+
+🐵🙈🙉
+1 aabbe6859a42adb739141318ebc2ecbe635b1a31 1568139886606412000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=pSj1%2FGdDS0oDNs%2BQ4Nx3I76Bqbj6CioTJqA3V1W7pcucz%2BSy3xOvbX51cR7SwzW%2Fyfq6LDfCjZC9pSZDKmb974z8tSsM%2FGeKB7V32CNcshLE5o%2FwCPWoipbwVKEX1J6Wvai5Jq8gfIDXojoNh6s%3D--rvfkudLn01tNPluW--jQzZ9i043c04HRCMdvbfEQ%3D%3D
+
+
+🐵🙈🙉
+1 ce149c1590efef10ac026ec6b3234d3c2e16664d 1568139886620425000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=pSj1%2FGdDS0oDNs%2BQ4Nx3I76Bqbj6CioTJqA3V1W7pcucz%2BSy3xOvbX51cR7SwzW%2Fyfq6LDfCjZC9pSZDKmb974z8tSsM%2FGeKB7V32CNcshLE5o%2FwCPWoipbwVKEX1J6Wvai5Jq8gfIDXojoNh6s%3D--rvfkudLn01tNPluW--jQzZ9i043c04HRCMdvbfEQ%3D%3D
+
+
+🐵🙈🙉
+1 cf14b999825647cf5a690b0d10d88fcd1acacb14 1568139889081763000
+GET / HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=DqLSWGYeETHUo0IlJKmFVQYgkjXiZnh%2FxrxNijV7YxOkrxhCICm4NLDAre8JbPY6LoLBK%2BetPW6YxHled%2FnvNFHdxTIoLC%2FfKXnGwmvktWMufPu2Ye3cf95hj%2BNCJ02GBumwudpDFzWIMZmx7nY%3D--47ENpSu5uv26vTVe--0dbzba%2F3yJD5lRpgZ6rPDQ%3D%3D
+
+
+🐵🙈🙉
+1 9c54a42beda56d09e70417f572ab5f1d281df444 1568139896515853000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=6da3IizDMt63jcsfFtEu5MMo1D6ROYTvJQ%2FVkYAQDacgZYOYkcTTiZrSkJSpcYAZlD6OJhBFUE0lkiz3uyMgpJVBmIr0e4jYLde3jkVl54lzKaxErUhPBWA3fp7%2Bf2vfmF%2BgsNlxog%2F9Tx1NxYI%3D--1d1G0XLwruubg7Gz--Sr%2Fo2LrjiV8L15nUsSGlyQ%3D%3D
+
+
+🐵🙈🙉
+1 d4da3f1cd4a6526e2a87b59f597087fd6da0dee8 1568139896538571000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=6da3IizDMt63jcsfFtEu5MMo1D6ROYTvJQ%2FVkYAQDacgZYOYkcTTiZrSkJSpcYAZlD6OJhBFUE0lkiz3uyMgpJVBmIr0e4jYLde3jkVl54lzKaxErUhPBWA3fp7%2Bf2vfmF%2BgsNlxog%2F9Tx1NxYI%3D--1d1G0XLwruubg7Gz--Sr%2Fo2LrjiV8L15nUsSGlyQ%3D%3D
+
+
+🐵🙈🙉
+1 0a2f110f6001811fa2c6bf237c0a2e2b56be8a62 1568139900777063000
+GET /products/spree-tote HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=XozEvoymufyT9M4p0Q05AGunNitk1kAy1d68b6zeGogTdy%2FPNi3ByrSr5DmpzmFdIEYFNth4deZGA0zVJ48qXMX5R97WrHMYp4ci6uMdT8jWpR5bVCKPwK%2B4B6%2B76GHjMruMEcsopQ9PTM%2FNP1g%3D--Ql54zSFmqvWLrJVZ--qgpZPJw71PO13c6QWK4OZA%3D%3D
+
+
+🐵🙈🙉
+1 5bda9931776fe13b44b79abe474b572c0fd58e1f 1568139905382098000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/spree-tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=SdIZe1ovobHynj%2FuNixg%2BmJ547yP23CqXekTIoG37wHt%2FuGhluuaptYbD3G3gvYxAdMSVcc8cu3rBj8AA4B0Mzy7yScyFwC7kBICKqmXPd0zQGQmHrclKL7N%2BzX4hyvvgpfWODF9TR9wbODlrxo%3D--h5fSIad3j%2FibnCDD--YkFvPjrk0%2FOsYW8D4PvvHA%3D%3D
+
+
+🐵🙈🙉
+1 e8a4c9b292623b4f1d847c58541b31e2a522aaa2 1568139905394216000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/spree-tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=SdIZe1ovobHynj%2FuNixg%2BmJ547yP23CqXekTIoG37wHt%2FuGhluuaptYbD3G3gvYxAdMSVcc8cu3rBj8AA4B0Mzy7yScyFwC7kBICKqmXPd0zQGQmHrclKL7N%2BzX4hyvvgpfWODF9TR9wbODlrxo%3D--h5fSIad3j%2FibnCDD--YkFvPjrk0%2FOsYW8D4PvvHA%3D%3D
+
+
+🐵🙈🙉
+1 b616a622fa8799b0ba1580ed77735e56189a2554 1568139907123620000
+GET / HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: none
+Referer: http://localhost:3000/products/datadog-tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=408bYAMks9I86IjjmTS%2BSu%2BIaz7Tv1TifydjbPWsyZNn%2BYm1y57BQ5qfeUXumPRIYqPgbzK8MRwYtTksGHl8si9AbyoQuxircPLqg0OwxfUt9lpuw1ontOxAfUbmD4OGS%2B1BwxRBzIzG5sw%2BBDM%3D--NRRNI1GBNN%2B1vhND--Q%2Bv3mkA%2BgkZ6UoebWD%2FvPw%3D%3D
+
+
+🐵🙈🙉
+1 df168b1b4098af0191b37edc57a52e47004d6ada 1568139915560137000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=37ldUViRQ74EUMdvrVgR6eb33Au39h67csXPYO9rLSG8PsjfAihrih6RzLlvKfBCw%2BK3zq9phq%2BDbLE3J4w4bW7qpYCHvz1cy%2F1OAfYVfdYVg9ZlTtXGcJ2FNhnLbq%2Fjuw3VmBzrwLEau1hISnE%3D--TdK5kUiYCLbgc2gF--qKq4asku%2BUVzxUdGszV%2BOw%3D%3D
+
+
+🐵🙈🙉
+1 aade72b57cd608f5a549bfec3aeba6b84873ab0b 1568139915576671000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=37ldUViRQ74EUMdvrVgR6eb33Au39h67csXPYO9rLSG8PsjfAihrih6RzLlvKfBCw%2BK3zq9phq%2BDbLE3J4w4bW7qpYCHvz1cy%2F1OAfYVfdYVg9ZlTtXGcJ2FNhnLbq%2Fjuw3VmBzrwLEau1hISnE%3D--TdK5kUiYCLbgc2gF--qKq4asku%2BUVzxUdGszV%2BOw%3D%3D
+
+
+🐵🙈🙉
+1 a0df7a47cea361abf660278ae0924b0bde912860 1568139917654365000
+GET /?page=2 HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=pAxi8yl6JIZ7YYsv6j%2FdU83ndjybXJPnXSDB4HlD7DfWUH4YgSnZRkya5MB2ZS0IO29Hwd1HDpB2BJmoolMWgE7V5hcd7pl6om6Rx5qHKJW9BxMmwM1gzxSkDIhdWk5m9AVnNYaAWqYJGHXUjxE%3D--o6t5DYG8OU16XDBJ--v6H%2FaGvFl9kQbNftm5zZIg%3D%3D
+
+
+🐵🙈🙉
+1 ff656c09c9de02617efcfdad899097686193ea31 1568139925303440000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/?page=2
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=80BFB8KW0TrKO5zjdxkoyVUKthA5oNwaqTa5EaQ1T5g37PKOvSkqzKDv246enWO5OfCI5nv2GRR%2BpRmHEEPUy2f2nXuiJhWd3xRQD%2FB0uafSD%2FdsxUuRkfOuh7MsXkH8fMzSvlY9TvV4eaY%2BwZQ%3D--4YewDp6Cb0gS0PGk--wzkH4NPLoUNF%2F3YynH6fww%3D%3D
+
+
+🐵🙈🙉
+1 63e7f63393d84ec4c1d69f53ba93a701292c7f1d 1568139925320377000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/?page=2
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=80BFB8KW0TrKO5zjdxkoyVUKthA5oNwaqTa5EaQ1T5g37PKOvSkqzKDv246enWO5OfCI5nv2GRR%2BpRmHEEPUy2f2nXuiJhWd3xRQD%2FB0uafSD%2FdsxUuRkfOuh7MsXkH8fMzSvlY9TvV4eaY%2BwZQ%3D--4YewDp6Cb0gS0PGk--wzkH4NPLoUNF%2F3YynH6fww%3D%3D
+
+
+🐵🙈🙉
+1 afa6b2352e93118243c8e1e9526d3b9d38878c1b 1568139926817233000
+GET /products/monitoring-stein HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/?page=2
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=Z6EnaxC51b9nN4JzIT9tkmO0JVcHufA2XShEqBamV3da4l7kSB1WuA2RKE2J0Qhv7NL1yO4MxBvsio5pjftF%2FiPwp5R0PuKX18YwYmjf7Pju75uP04AUHTLCjyWHm2feM%2FPJAC4Z5QkyQG42CRU%3D--NC%2BmgPFloueF5fNG--0kbDB0vIiGH3p0WK33cQvw%3D%3D
+
+
+🐵🙈🙉
+1 219681967a58ff22028aa6b8d839974647dc98bc 1568139931485315000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/monitoring-stein
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=mXcpqbb2UH2zcHVXSO1QJG9L0tZIM2tO6rATc6yJm6iR7Nug7yHNrT%2F0i5cSdBScHEtePF4%2F9MvLz2p69oKC4jaUWPuBVGTjNPozvxyAdumpM2Y0PDimMKHG0PxX2MBCL3p6MLrZSwtM8yHb7EI%3D--WzA2ryUhXicyeEUm--rv%2FUuRq%2Fcidrr%2BFdi9Z8lA%3D%3D
+
+
+🐵🙈🙉
+1 bc0ed85e5326c298d20b87d4b711f1881e197cc9 1568139931505689000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/monitoring-stein
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=mXcpqbb2UH2zcHVXSO1QJG9L0tZIM2tO6rATc6yJm6iR7Nug7yHNrT%2F0i5cSdBScHEtePF4%2F9MvLz2p69oKC4jaUWPuBVGTjNPozvxyAdumpM2Y0PDimMKHG0PxX2MBCL3p6MLrZSwtM8yHb7EI%3D--WzA2ryUhXicyeEUm--rv%2FUuRq%2Fcidrr%2BFdi9Z8lA%3D%3D
+
+
+🐵🙈🙉
+1 a8ad60d97b220d4aaa5c8682c6196fac267d6485 1568139934769249000
+GET / HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/monitoring-stein
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=jhylb5RBlO2ujC8roAeSPwiiMI6dG%2B7YSO5dsmO5YcD1kCujOWv0b44p6mx%2B6fLwQfr275qyD3j467IY0IW7to0Vn%2FhTMIL0K7dKrsPmBcGAeZiEEJcuJUnhb%2Bwko4XwUOZZdvOMHr%2FL2qeUFms%3D--rmjJ%2FT56yZ1uuu%2FS--itBaHQ3R%2B2zNSkLmjkIetg%3D%3D
+
+
+🐵🙈🙉
+1 cc6adc93612115ddf05cc55d3051d8171da76114 1568139942109868000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=D95A0lc3pWGfcczXOkkalnY4ziW5D3fSP7CKRR4%2BkdgWvB6dm9kl%2BjB5KkbBhghyX5PVSCVxW0G4SYl%2FMSFN1JjzHU99Pnnlp5szTvb2%2BWEjWPO6BXK0W6CJCKIQmijLD%2BP%2BtY5NYEbYN1XGqR8%3D--oaOK6KQ18s74ZqtJ--tvlLM9K8wep3UmYgHLI6Vg%3D%3D
+
+
+🐵🙈🙉
+1 519e454fe6b4446d862c6242681532a5108ecfa6 1568139942118594000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=D95A0lc3pWGfcczXOkkalnY4ziW5D3fSP7CKRR4%2BkdgWvB6dm9kl%2BjB5KkbBhghyX5PVSCVxW0G4SYl%2FMSFN1JjzHU99Pnnlp5szTvb2%2BWEjWPO6BXK0W6CJCKIQmijLD%2BP%2BtY5NYEbYN1XGqR8%3D--oaOK6KQ18s74ZqtJ--tvlLM9K8wep3UmYgHLI6Vg%3D%3D
+
+
+🐵🙈🙉
+1 ac628942f7dec468061cab518ea670c39162df74 1568139963953570000
+GET /products/spree-bag HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=%2BuxgyaiHVRZiInOtdkHJiNlfFbKOSas9Ga02BA32J5eUOg92KeM6If%2Bbaoke77pDDN0Do4qiEH11D7HAsTD8F4fwcqW9xfpji4ZBySSJtIVclngabE80XcCm14SUKVpCe1xbmLPKRpEx36uXoQo%3D--JxVoUuDtwzQdrhzC--4bIttH1CQhfbZhyO%2F2%2FPYA%3D%3D
+
+
+🐵🙈🙉
+1 67aacfa6555713a73e673b8ef99d931342191db1 1568139968170830000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/spree-bag
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=O0kF1YPrWmR4mhGYdxLXg6uYEs0McAZjHEcITYQ%2BAxXapXEscAhk%2F%2BdoNLdiRLDO%2BO0DDP1wrs1i62sr9MrjqsrM8vzeZqtcdpRIQ5Wsk2FVjk35LCSkLGSfwwUbSn%2Bv0F%2B%2FPgccIEBRLssj4Jk%3D--AFbQOmNm7RhhZdq7--8sFMom%2FIc5dBvXMvX5wjHQ%3D%3D
+
+
+🐵🙈🙉
+1 3411f4825fefd22866b168e5fdccaa3c847d0e86 1568139968187737000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/spree-bag
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=O0kF1YPrWmR4mhGYdxLXg6uYEs0McAZjHEcITYQ%2BAxXapXEscAhk%2F%2BdoNLdiRLDO%2BO0DDP1wrs1i62sr9MrjqsrM8vzeZqtcdpRIQ5Wsk2FVjk35LCSkLGSfwwUbSn%2Bv0F%2B%2FPgccIEBRLssj4Jk%3D--AFbQOmNm7RhhZdq7--8sFMom%2FIc5dBvXMvX5wjHQ%3D%3D
+
+
+🐵🙈🙉
+1 9a618a2f584c38534b198301ec80aed21cdc9d67 1568139973016630000
+POST /api/v2/storefront/cart/add_item HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Content-Length: 45
+Accept: application/json
+X-Spree-Order-Token: aeihRQ1NnX7TbfvhhtQNNg1567611578919
+Origin: http://localhost:3000
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Content-Type: application/json
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/spree-bag
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=VsRuXr9ZR2XvcGkypvywSkuR0%2F3OZ1eckeY88IrYRGuNvRHlEGt%2BV8p%2BiU9nMjmJJ85p2k%2B7rpZLhPHHy0ZMH%2BZefd4Y2Ane6bqUy7hBySJQ1S%2BbjgV22opnNWSRQz1Qwbzr99cQ%2BuKin83RsFI%3D--SVtstRJyjQYxo30q--%2BsR93qcXKSQhPiGoaAXcEQ%3D%3D
+
+{"variant_id":"11","quantity":1,"options":{}}
+🐵🙈🙉
+1 c069faa9a1319a022df1bca89dee8df8fdef76ca 1568139974149641000
+GET /cart?variant_id=11 HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/spree-bag
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=VsRuXr9ZR2XvcGkypvywSkuR0%2F3OZ1eckeY88IrYRGuNvRHlEGt%2BV8p%2BiU9nMjmJJ85p2k%2B7rpZLhPHHy0ZMH%2BZefd4Y2Ane6bqUy7hBySJQ1S%2BbjgV22opnNWSRQz1Qwbzr99cQ%2BuKin83RsFI%3D--SVtstRJyjQYxo30q--%2BsR93qcXKSQhPiGoaAXcEQ%3D%3D
+
+
+🐵🙈🙉
+1 828ad1a2742db5d71808228640b1807ff6949fed 1568139975966095000
+GET /favicon.ico HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: no-cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/cart?variant_id=11
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=VsRuXr9ZR2XvcGkypvywSkuR0%2F3OZ1eckeY88IrYRGuNvRHlEGt%2BV8p%2BiU9nMjmJJ85p2k%2B7rpZLhPHHy0ZMH%2BZefd4Y2Ane6bqUy7hBySJQ1S%2BbjgV22opnNWSRQz1Qwbzr99cQ%2BuKin83RsFI%3D--SVtstRJyjQYxo30q--%2BsR93qcXKSQhPiGoaAXcEQ%3D%3D
+
+
+🐵🙈🙉
+1 0438cf04e69fdc99869065b9cd40412d267261c0 1568139979086638000
+GET /products/spree-bag HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: none
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=VsRuXr9ZR2XvcGkypvywSkuR0%2F3OZ1eckeY88IrYRGuNvRHlEGt%2BV8p%2BiU9nMjmJJ85p2k%2B7rpZLhPHHy0ZMH%2BZefd4Y2Ane6bqUy7hBySJQ1S%2BbjgV22opnNWSRQz1Qwbzr99cQ%2BuKin83RsFI%3D--SVtstRJyjQYxo30q--%2BsR93qcXKSQhPiGoaAXcEQ%3D%3D
+
+
+🐵🙈🙉
+1 cc17cf59e2053c384640e1909325b786c041c2b7 1568139983757742000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/spree-bag
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=vuQX8PLL9%2FyoNe%2FAblUl2wdL9m9fbOYO5itGPHM3maDqKnNfn5X9jBbmD9fA3205PP7z%2FhcfAy9YB93hum9N88Y3dzgjIkwdLkjRNTtezqpMXllbQynbRGMa%2Bx3669ZuToJBFgsDAPzflu45ERE%3D--Cmn0BawuboUPOd20--BzD%2FYL0R1A5YGW6MQUbVPw%3D%3D
+
+
+🐵🙈🙉
+1 28c3c6ff5900ed001ac0feebf4ba8197e3b1a8e6 1568139983768719000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/spree-bag
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=vuQX8PLL9%2FyoNe%2FAblUl2wdL9m9fbOYO5itGPHM3maDqKnNfn5X9jBbmD9fA3205PP7z%2FhcfAy9YB93hum9N88Y3dzgjIkwdLkjRNTtezqpMXllbQynbRGMa%2Bx3669ZuToJBFgsDAPzflu45ERE%3D--Cmn0BawuboUPOd20--BzD%2FYL0R1A5YGW6MQUbVPw%3D%3D
+
+
+🐵🙈🙉
+1 96a6f7565aff8dbdd705a60345ab6c7aaeea970e 1568139987472952000
+GET /t/categories HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/spree-bag
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=CpeiGrj3ZJjK9mVBJ%2BHn%2FzzkxXtpCJFxt0T%2B4uEObqZ7RRC8x6mtnn%2FfrLDcOZvXx9xp2V2JN1p94KvFjzl%2FdrbueUrLOOST7wIwRzXgxuLQ3ZoOqtVopx1eU%2F%2FJk3zumnEd89s0Dq2v7tz%2FwnA%3D--549Buqqu%2Fa2oqP5c--wwGks%2FRsDE9ePui9EH7%2FpA%3D%3D
+
+
+🐵🙈🙉
+1 961b68c93588e87fb621325924c91cd1d9bd454b 1568139991845759000
+GET /favicon.ico HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: no-cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/t/categories
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=CpeiGrj3ZJjK9mVBJ%2BHn%2FzzkxXtpCJFxt0T%2B4uEObqZ7RRC8x6mtnn%2FfrLDcOZvXx9xp2V2JN1p94KvFjzl%2FdrbueUrLOOST7wIwRzXgxuLQ3ZoOqtVopx1eU%2F%2FJk3zumnEd89s0Dq2v7tz%2FwnA%3D--549Buqqu%2Fa2oqP5c--wwGks%2FRsDE9ePui9EH7%2FpA%3D%3D
+
+
+🐵🙈🙉
+1 66e0cd532d639dfdad2c63ca63ff5ff058723743 1568139992824549000
+GET /products/spree-bag HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: none
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=CpeiGrj3ZJjK9mVBJ%2BHn%2FzzkxXtpCJFxt0T%2B4uEObqZ7RRC8x6mtnn%2FfrLDcOZvXx9xp2V2JN1p94KvFjzl%2FdrbueUrLOOST7wIwRzXgxuLQ3ZoOqtVopx1eU%2F%2FJk3zumnEd89s0Dq2v7tz%2FwnA%3D--549Buqqu%2Fa2oqP5c--wwGks%2FRsDE9ePui9EH7%2FpA%3D%3D
+
+
+🐵🙈🙉
+1 1832a8cfb7a3f47567cc12d8ed84ed1bffcde5e1 1568139997287625000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/spree-bag
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=rQG3lXXHYBl8HDO6gr2FIAtobcrJ7MEGXPOfaI%2FLphSrzzWP9yv2B5G5sKHo1LJVqI%2BoqeECUA5xDlgogVyqbOhoboXeMWFL%2Bmwh2OykIclxcgWMXi7UDUR8UDgTmwlFvs7NahZucx3AR6nQUwM%3D--EWt0MqE2hDQSM%2Bes--rBXEOq6bCDeoKUPJp0p1wg%3D%3D
+
+
+🐵🙈🙉
+1 16c23105b24e3fe28a416b500f3f70a4c96ea4c3 1568139997298881000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/spree-bag
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=rQG3lXXHYBl8HDO6gr2FIAtobcrJ7MEGXPOfaI%2FLphSrzzWP9yv2B5G5sKHo1LJVqI%2BoqeECUA5xDlgogVyqbOhoboXeMWFL%2Bmwh2OykIclxcgWMXi7UDUR8UDgTmwlFvs7NahZucx3AR6nQUwM%3D--EWt0MqE2hDQSM%2Bes--rBXEOq6bCDeoKUPJp0p1wg%3D%3D
+
+
+🐵🙈🙉
+1 dec389942b2abf6da36eb0f7ff708ce93453c39c 1568139998834781000
+GET / HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/spree-bag
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=OvlBmaTPZyiQUn%2Fl3U63NL4VvlnXHMx7nEU4mcGBXDKDDQN1CFm9v94YolkETMVmOTX4DxWdMXycODxCLE3tysD0VcJz1o46sOnz9PLen8FyNS0rMbzoudan4M6O0ZDtH1FCqDVpsoGY6YOqmGk%3D--v4qKHNsKX6CzD75I--6ZSvRN7NnnJzGLhsVBE4Yw%3D%3D
+
+
+🐵🙈🙉
+1 395ab499f0f4a01bb2d21c4b92fa35fb4053f9ee 1568140004985816000
+GET / HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/spree-bag
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=OvlBmaTPZyiQUn%2Fl3U63NL4VvlnXHMx7nEU4mcGBXDKDDQN1CFm9v94YolkETMVmOTX4DxWdMXycODxCLE3tysD0VcJz1o46sOnz9PLen8FyNS0rMbzoudan4M6O0ZDtH1FCqDVpsoGY6YOqmGk%3D--v4qKHNsKX6CzD75I--6ZSvRN7NnnJzGLhsVBE4Yw%3D%3D
+
+
+🐵🙈🙉
+1 82105bfbd5cbea2c20bbaf4e109eec18b2eb6848 1568140013157277000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=6tlqf%2Bl%2B4DXwBF9woAW6ms1vHXgKvmBsNFx2YpPHaJ2V4aePUg1PY4QXhHuAZ4XcSoNgP5JUGIq2Qoy%2FfdXHf0t0A4R1%2BUvE8s5qfJz%2BYHd12ReNhCiaPuKajrYp%2BvgiJkWalANfSnssgp9iGvA%3D--qhmsP8GV41%2FLx5cY--tN3xQm7gtRxb8qpo6XOHJQ%3D%3D
+
+
+🐵🙈🙉
+1 b61dc3b3574244c483d9bc5c692e41fe2740e215 1568140013176741000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=6tlqf%2Bl%2B4DXwBF9woAW6ms1vHXgKvmBsNFx2YpPHaJ2V4aePUg1PY4QXhHuAZ4XcSoNgP5JUGIq2Qoy%2FfdXHf0t0A4R1%2BUvE8s5qfJz%2BYHd12ReNhCiaPuKajrYp%2BvgiJkWalANfSnssgp9iGvA%3D--qhmsP8GV41%2FLx5cY--tN3xQm7gtRxb8qpo6XOHJQ%3D%3D
+
+
+🐵🙈🙉
+1 bd1ca85e3e798126837499b7ad8c250fb4993962 1568140014702280000
+GET /assets/glyphicons-halflings-regular.woff HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+Origin: http://localhost:3000
+If-None-Match: "a26394f7ede100ca118eff2eda08596275a9839b959c226e15439557a5a80742"
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/assets/spree/frontend/frontend_bootstrap.self-6b1875ab3c924365383f62eb1ab16829e79dd8486d074ab7f983c07878a0fcaf.css?body=1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=VJRWLiWWZdCfSMs%2F9zWdoIks%2Ftv2hY3%2BLz4fGQVWFogl6pwxJz9SxVExZkww3a6sHxeECn7OoiNXk8RpnpQSn7PiC1bmYpYd8DKjncOKe8ns00D9y1JTPhqGSfHDJoSXwtUWhgYPkc90NagbwNQ%3D--AUIkH7fJn%2FeeDV5N--nRNb3dd27Mv2S3Whu4ngzA%3D%3D
+
+
+🐵🙈🙉
+1 e747db69409f2b985a6cfc0976768871154e0985 1568140017042966000
+GET /products/datadog-tote HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=qSRCJeX4KROdsw1tYsad7sNAoqgibQXkvgIl3zjAZcJzKQVwL6dOJ6S6hamhHnJLbADc5UchWSoxODKKwXZJGO0z01jtp6ygpQJHyfVTzxxgb4Ljr%2FUAF53NXGLZ2Y%2F5ZHKqq4SewMVWpLXXsPY%3D--9hXAvQ46iqlxx2Nu--qreb6cJN4JxMUShaE%2FTY1w%3D%3D
+
+
+🐵🙈🙉
+1 2dd8a7a5a5c7eaa69c55bcd8fb4f60fac623bd78 1568140021123542000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=DE7tMmIXsCcaSbr4TM8Le7C%2Bsz39ow24Q8knRqHMMZhIQtoNxD0yvEy9Ghtjs%2FrKvnh0fO%2BLrmWwYWapW3IN6wdPxUdQSTLvxrXUSpM1zloOQCrPLjZL7eTxQDWSHe63NY6q%2Bc%2FZgVk%2Bf4wB8o4%3D--HPfRN92lVgMPZVEn--SgTV1cyRjnfA9UGVmRHrwA%3D%3D
+
+
+🐵🙈🙉
+1 d5713dc4a2778698fa10d4c94022f435a524ebc5 1568140021140581000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=DE7tMmIXsCcaSbr4TM8Le7C%2Bsz39ow24Q8knRqHMMZhIQtoNxD0yvEy9Ghtjs%2FrKvnh0fO%2BLrmWwYWapW3IN6wdPxUdQSTLvxrXUSpM1zloOQCrPLjZL7eTxQDWSHe63NY6q%2Bc%2FZgVk%2Bf4wB8o4%3D--HPfRN92lVgMPZVEn--SgTV1cyRjnfA9UGVmRHrwA%3D%3D
+
+
+🐵🙈🙉
+1 86232a13c899b7f22b1ef7717e30254f86e87948 1568140027960786000
+POST /api/v2/storefront/cart/add_item HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Content-Length: 44
+Accept: application/json
+X-Spree-Order-Token: aeihRQ1NnX7TbfvhhtQNNg1567611578919
+Origin: http://localhost:3000
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Content-Type: application/json
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=YDv5MORe9WCecx0zv7lwBg%2FdKP2poInEBCdz7neEr31jhfnfDq51Q4bDJHRS%2FD5msJvfjbThCFeqoO5BFnT1bvrKlKlPDUVOU%2B7ItwJc7x3gAk3%2BBxsfnQByNhODm15Mm%2BwPGsccRBuAvwhpasg%3D--QxMETYsD%2BWIwyReq--W8R8kGc1CSdY775JtW4VJA%3D%3D
+
+{"variant_id":"1","quantity":1,"options":{}}
+🐵🙈🙉
+1 f1b504d0c0b50b17d67e387a07c05444041ee281 1568140028989584000
+GET /cart?variant_id=1 HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=YDv5MORe9WCecx0zv7lwBg%2FdKP2poInEBCdz7neEr31jhfnfDq51Q4bDJHRS%2FD5msJvfjbThCFeqoO5BFnT1bvrKlKlPDUVOU%2B7ItwJc7x3gAk3%2BBxsfnQByNhODm15Mm%2BwPGsccRBuAvwhpasg%3D--QxMETYsD%2BWIwyReq--W8R8kGc1CSdY775JtW4VJA%3D%3D
+
+
+🐵🙈🙉
+1 70b34c67129c88247da0ed16d15fe3ef9760a385 1568140031033175000
+GET /favicon.ico HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: no-cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/cart?variant_id=1
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=YDv5MORe9WCecx0zv7lwBg%2FdKP2poInEBCdz7neEr31jhfnfDq51Q4bDJHRS%2FD5msJvfjbThCFeqoO5BFnT1bvrKlKlPDUVOU%2B7ItwJc7x3gAk3%2BBxsfnQByNhODm15Mm%2BwPGsccRBuAvwhpasg%3D--QxMETYsD%2BWIwyReq--W8R8kGc1CSdY775JtW4VJA%3D%3D
+
+
+🐵🙈🙉
+1 2ba545b4b4b86d49e1e1e15af4599001f3467912 1568140260849703000
+GET /products/datadog-tote HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: navigate
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+Sec-Fetch-Site: none
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=YDv5MORe9WCecx0zv7lwBg%2FdKP2poInEBCdz7neEr31jhfnfDq51Q4bDJHRS%2FD5msJvfjbThCFeqoO5BFnT1bvrKlKlPDUVOU%2B7ItwJc7x3gAk3%2BBxsfnQByNhODm15Mm%2BwPGsccRBuAvwhpasg%3D--QxMETYsD%2BWIwyReq--W8R8kGc1CSdY775JtW4VJA%3D%3D
+
+
+🐵🙈🙉
+1 4b05f8846cc0fea31c7015c3c2a69b2ea9cf5af1 1568140264987692000
+GET /cart_link HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=6qwM83GPYfsVNuCEKwE7V7abUDqaE4eKUX7LewvWeFb%2FXZGbJil%2FZlbOkk0Ided6f7lngLkEgkUkSwEWq8%2BqCSLuRPm8ClGz8Qp947Ih25ZT1uCTEVPi%2BybQN%2Bu0UdmnzUQJlu2XNGMJ6sPUkVA%3D--6LOb7JVtcZ%2FRsRYu--BYQ145hDlO3Clw1eRohUVg%3D%3D
+
+
+🐵🙈🙉
+1 0c5556b8081350cd213793838376b3e7f73f07f6 1568140265001506000
+GET /api_tokens HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Sec-Fetch-Mode: cors
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Accept: */*
+Sec-Fetch-Site: same-origin
+Referer: http://localhost:3000/products/datadog-tote
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+Cookie: csrftoken=Oic3VndVOCtti1TXxZX9h4kGAdjea6O4UrtlFXkEJSWdLRSwg9rKMeX4jzsy62A5; checkout=e89d797c-de85-40ff-bc62-95d39ce416b4:1hyjGC:TiaiF1jZD13GSzPNaTN7XjMKC7M; __profilin=p%3Dt; token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; guest_token=ImFlaWhSUTFOblg3VGJmdmhodFFOTmcxNTY3NjExNTc4OTE5Ig%3D%3D--7ffb6f32af134e6e0f1337c397e3f453060c333a; _sandbox_session=6qwM83GPYfsVNuCEKwE7V7abUDqaE4eKUX7LewvWeFb%2FXZGbJil%2FZlbOkk0Ided6f7lngLkEgkUkSwEWq8%2BqCSLuRPm8ClGz8Qp947Ih25ZT1uCTEVPi%2BybQN%2Bu0UdmnzUQJlu2XNGMJ6sPUkVA%3D--6LOb7JVtcZ%2FRsRYu--BYQ145hDlO3Clw1eRohUVg%3D%3D
+
+
+🐵🙈🙉

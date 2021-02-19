@@ -1,5 +1,5 @@
 
-# eCommerce Observability in Practice 
+# eCommerce Observability in Practice
 
 This is a repo demonstrating applying observability principals to an eCommerce app.
 
@@ -20,6 +20,7 @@ This repository is used to build the Docker images to run the application in the
 * `store-frontend-broken-no-instrumentation`- The Spree application in a broken state and with no instrumentation. This is the initial scenario.
 * `store-frontend-broken-instrumented`- The Spree application in a broken state but instrumented with Datadog APM. This is the second scenario.
 * `store-frontend-instrumented-fixed`- The Spree application instrumented with Datadog APM and fixed. This is the final scenario.
+* `traffic-replay`- Looping replay of live traffic to send requests to `frontend`
 
 To build any of the images you should `cd` into each of the folders and run:
 
@@ -61,17 +62,27 @@ After the site comes up, you shold be able to navigate around, and then see your
 
 ## Creating Example Traffic To Your Site
 
-The Katacoda scenario uses `gor` to spin up traffic our own (dysfunctional) stores, and then diagnose and fix them with replayed live traffic.
+The scenario uses [GoReplay](https://github.com/buger/goreplay) to spin up traffic our own (dysfunctional) stores, and then diagnose and fix them with replayed live traffic.
 
 This way, we don't have to manually click around the site to see all the places where our site is broken.
 
-You can reuse the recorded traffic I've already kept with a:
+### Containerized replay
+Example traffic can be perpetually sent via the `traffic-replay` container.  By default this container will send traffic to the host `http://frontend:3000` but can be customized via environment variables.  This facilitates the use of load balancers or breaking apart the application.
+
+```yaml
+environment:
+  - FRONTEND_HOST=loadbalancer.example.com
+  - FRONTEND_PORT=80
+```
+
+### Local replay
+You can reuse the recorded traffic ad-hoc:
 
 ```bash
 $ ./gor --input-file-loop --input-file requests_0.gor --output-http "http://localhost:3000"
 ```
 
-This command opens up my traffic recording, and ships all the requests to `localhost`, at port 3000. After running this traffic generator for a while, we'll be able to see the services that make up our application within Datadog.
+This command opens up the traffic recording, and ships all the requests to `localhost`, at port 3000. After running this traffic generator for a while, we'll be able to see the services that make up our application within Datadog.
 
 ## Viewing Our Broken Services in Datadog
 
@@ -121,7 +132,7 @@ In the `discounts-service`, there is an N+1 query:
 
 ![N+1 Query](https://github.com/DataDog/ecommerce-workshop/raw/master/images/nplus-query.png)
 
-The problem is a lazy lookup on a relational database. 
+The problem is a lazy lookup on a relational database.
 
 By changing the line:
 
