@@ -6,13 +6,38 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  # Silence the web console warnings
+  config.web_console.whiny_requests = false
+
+  # Enable lograge and format in JSON for easier parsing
+  config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Json.new
+  config.colorize_logging = false
+  config.log_level = :info
+  config.action_controller.enable_fragment_cache_logging = false
+  # This is useful if you want to log query parameters
+  config.lograge.custom_options = lambda do |event|
+    # Retrieves trace information for current thread
+    correlation = Datadog.tracer.active_correlation
+    {
+      # Adds IDs as tags to log output
+      dd: {
+        trace_id: correlation.trace_id.to_s,
+        span_id: correlation.span_id.to_s,
+        env: correlation.env.to_s,
+        service: correlation.service.to_s,
+        version: correlation.version.to_s
+      },
+      ddsource: ["ruby"],
+      params: event.payload[:params].reject { |k| %w(controller action).include? k }
+    }
+  end
+
   # Do not eager load code on boot.
   config.eager_load = false
 
   # Show full error reports.
   config.consider_all_requests_local = true
-
-  config.web_console.whitelisted_ips = ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
@@ -54,8 +79,9 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  config.log_level = :info
-  config.log_tags = [proc { Datadog.tracer.active_correlation.to_s }]
+  # Suppress logger output for ActiveRecord and ActionView
+  config.active_record.logger = nil
+  config.action_view.logger = nil
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
@@ -65,7 +91,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Set the logging destination(s)
-  config.log_to = %w[stdout]
+  config.log_to = %w[stdout file]
 
   # Show the logging configuration on STDOUT
   config.show_log_configuration = true
