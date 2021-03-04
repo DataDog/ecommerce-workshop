@@ -5,25 +5,31 @@ Rails.application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
-  # Lograge config
-  config.lograge.enabled = true
 
-  # We are asking here to log in RAW (which are actually ruby hashes). The Ruby logging is going to take care of the JSON formatting.
+  # Silence the web console warnings
+  config.web_console.whiny_requests = false
+
+  # Enable lograge and format in JSON for easier parsing
+  config.lograge.enabled = true
   config.lograge.formatter = Lograge::Formatters::Json.new
   config.colorize_logging = false
+  config.log_level = :info
+  config.action_controller.enable_fragment_cache_logging = false
   # This is useful if you want to log query parameters
   config.lograge.custom_options = lambda do |event|
     # Retrieves trace information for current thread
     correlation = Datadog.tracer.active_correlation
-  
     {
       # Adds IDs as tags to log output
-      :dd => {
-        :trace_id => correlation.trace_id,
-        :span_id => correlation.span_id
+      dd: {
+        trace_id: correlation.trace_id.to_s,
+        span_id: correlation.span_id.to_s,
+        env: correlation.env.to_s,
+        service: correlation.service.to_s,
+        version: correlation.version.to_s
       },
-      :ddsource => ["ruby"],
-      :params => event.payload[:params].reject { |k| %w(controller action).include? k }
+      ddsource: ["ruby"],
+      params: event.payload[:params].reject { |k| %w(controller action).include? k }
     }
   end
 
@@ -72,6 +78,10 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
+
+  # Suppress logger output for ActiveRecord and ActionView
+  config.active_record.logger = nil
+  config.action_view.logger = nil
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
