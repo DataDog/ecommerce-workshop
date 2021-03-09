@@ -24,8 +24,7 @@ RUN chgrp -R 0 /spree && \
     chmod -R g=u /spree
 
 # Copy in our frontend and run bundle
-RUN cd store-frontend && \
-      bundle install && \
-      yarn install
+RUN bundle install && \
+    yarn install
 
 CMD ["sh", "docker-entrypoint.sh"]
