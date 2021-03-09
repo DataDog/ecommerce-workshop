@@ -45,8 +45,8 @@ gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: 'master'
 gem 'spree_gateway', github: 'spree/spree_gateway', branch: 'master'
 gem 'ddtrace', '>= 0.4.1'
 gem 'httparty'
-gem 'logging-rails', :require => 'logging/rails'
-gem 'lograge'
+gem 'amazing_print'
+gem 'rails_semantic_logger'
 
 group :test, :development do
   gem 'bullet'

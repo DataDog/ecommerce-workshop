@@ -91,7 +91,27 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Set the logging destination(s)
-  config.log_to = %w[stdout file]
+  if ENV["RAILS_LOG_TO_STDOUT"].present?
+    config.log_to = %w[stdout]
+    STDOUT.sync = true
+    config.rails_semantic_logger.add_file_appender = false
+    config.semantic_logger.add_appender(io: STDOUT, level: config.log_level, formatter: DatadogFormatter.new)
+  else
+    config.log_to = %w[stdout file]
+  end
+
+  # Add the log tags the way Datadog expects
+  config.log_tags = {
+    request_id: :request_id,
+    dd: {
+      trace_id: proc { Datadog.tracer.active_correlation.trace_id.to_s },
+      span_id: proc { Datadog.tracer.active_correlation.span_id.to_s },
+      env: proc { Datadog.tracer.active_correlation.env.to_s },
+      service: proc { Datadog.tracer.active_correlation.service.to_s },
+      version: proc { Datadog.tracer.active_correlation.version.to_s }
+    },
+    ddsource: ["ruby"]
+  }
 
   # Show the logging configuration on STDOUT
   config.show_log_configuration = true

@@ -32,3 +32,9 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
+
+# Reopen SemanticLogger after forking
+on_worker_boot do
+  # Re-open appenders after forking the process
+  SemanticLogger.reopen
+end
