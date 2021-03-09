@@ -8,4 +8,4 @@ export RAILS_ENV=development
 # TODO: Remove this once we upgrade to Ruby 3.0 and Rails 6.1
 export RUBYOPT='-W0'
 
-cd store-frontend && puma --config config/puma.rb
+puma --config config/puma.rb
