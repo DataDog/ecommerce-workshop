@@ -1,7 +1,7 @@
 version: '3'
 services:
   agent:
-    image: "datadog/agent:7.21.1"
+    image: "datadog/agent:7.26.0"
     environment:
       - DD_API_KEY
       - DD_APM_ENABLED=true
@@ -29,12 +29,12 @@ services:
       - DD_TRACE_ANALYTICS_ENABLED=true
       - DD_PROFILING_ENABLED=true
       - DD_VERSION=1.0
-    image: "ddtraining/discounts-service:latest"
+    image: "ddtraining/discounts:latest"
     command: ddtrace-run flask run --port=5001 --host=0.0.0.0
     ports:
       - "5001:5001"
     volumes:
-      - "../discounts-service:/app"
+      - "../../discounts-service:/app"
     depends_on:
       - agent
       - db
@@ -51,10 +51,12 @@ services:
       - DB_PASSWORD
       - DD_CLIENT_TOKEN
       - DD_APPLICATION_ID
-    image: "ddtraining/ecommerce-frontend-broken:latest"
+    image: "ddtraining/storefront:latest"
     command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"
+    volumes:
+      - "../../store-frontend-broken-instrumented:/app"
     depends_on:
       - agent
       - db
@@ -74,12 +76,12 @@ services:
       - DD_TRACE_ANALYTICS_ENABLED=true
       - DD_PROFILING_ENABLED=true
       - DD_VERSION=1.0
-    image: "ddtraining/advertisements-service:latest"
+    image: "ddtraining/advertisements:latest"
     command: ddtrace-run flask run --port=5002 --host=0.0.0.0
     ports:
       - "5002:5002"
     volumes:
-      - "../ads-service:/app"
+      - "../../ads-service:/app"
     depends_on:
       - agent
       - db
