@@ -279,7 +279,7 @@ GEM
       byebug (~> 11.0)
       pry (~> 0.10)
     public_suffix (4.0.6)
-    puma (3.12.1)
+    puma (3.12.6)
     rabl (0.14.3)
       activesupport (>= 2.3.14)
     racc (1.5.2)
@@ -403,7 +403,7 @@ DEPENDENCIES
   logging-rails
   lograge
   pry-byebug
-  puma (~> 3.11)
+  puma (~> 3.12)
   rack-mini-profiler
   rails (~> 5.2.4.5)
   sass-rails (~> 5.0)
