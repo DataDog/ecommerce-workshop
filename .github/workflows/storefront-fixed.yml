@@ -2,7 +2,7 @@ name: Storefront (fixed) Service Test and Build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths:
       - store-frontend-instrumented-fixed/**
 

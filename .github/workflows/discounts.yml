@@ -2,7 +2,7 @@ name: Discounts Service Test and Build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths:
       - discounts-service/**
 
