@@ -57,3 +57,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `ecommerce-frontend-fixed` is now `storefront-fixed`
 - Ruby and Python versions have been updated to their latest or closest to
   latest versions.
+- The storefront service now uses [Semantic Logger](https://github.com/rocketjob/semantic_logger)
+  for logging instead of Lograge. This drastically reduces the multi-line log
+  noise. [#80](https://github.com/DataDog/ecommerce-workshop/pull/80)
