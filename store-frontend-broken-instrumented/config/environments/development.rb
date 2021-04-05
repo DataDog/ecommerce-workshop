@@ -9,30 +9,6 @@ Rails.application.configure do
   # Silence the web console warnings
   config.web_console.whiny_requests = false
 
-  # Enable lograge and format in JSON for easier parsing
-  config.lograge.enabled = true
-  config.lograge.formatter = Lograge::Formatters::Json.new
-  config.colorize_logging = false
-  config.log_level = :info
-  config.action_controller.enable_fragment_cache_logging = false
-  # This is useful if you want to log query parameters
-  config.lograge.custom_options = lambda do |event|
-    # Retrieves trace information for current thread
-    correlation = Datadog.tracer.active_correlation
-    {
-      # Adds IDs as tags to log output
-      dd: {
-        trace_id: correlation.trace_id.to_s,
-        span_id: correlation.span_id.to_s,
-        env: correlation.env.to_s,
-        service: correlation.service.to_s,
-        version: correlation.version.to_s
-      },
-      ddsource: ["ruby"],
-      params: event.payload[:params].reject { |k| %w(controller action).include? k }
-    }
-  end
-
   # Do not eager load code on boot.
   config.eager_load = false
 
@@ -90,8 +66,40 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  # Quiet down logger level and disable fragment logging
+  config.log_level = :info
+  config.colorize_logging = false
+  config.rails_semantic_logger.format = :json
+  config.action_controller.enable_fragment_cache_logging = false
+
   # Set the logging destination(s)
-  config.log_to = %w[stdout file]
+  if ENV["RAILS_LOG_TO_STDOUT"].present?
+    config.log_to = %w[stdout]
+    STDOUT.sync = true
+    config.rails_semantic_logger.add_file_appender = false
+    config.semantic_logger.add_appender(
+      io: STDOUT,
+      level: config.log_level,
+      formatter: config.rails_semantic_logger.format,
+      # We don't want any of the deface messages here for now
+      filter: -> log { !log.message.to_s.match(/Deface: /) }
+    )
+  else
+    config.log_to = %w[stdout file]
+  end
+
+  # Add the log tags the way Datadog expects
+  config.log_tags = {
+    request_id: :request_id,
+    dd: {
+      trace_id: -> { Datadog.tracer.active_correlation.trace_id.to_s },
+      span_id: -> { Datadog.tracer.active_correlation.span_id.to_s },
+      env: -> { Datadog.tracer.active_correlation.env.to_s },
+      service: -> { Datadog.tracer.active_correlation.service.to_s },
+      version: -> { Datadog.tracer.active_correlation.version.to_s }
+    },
+    ddsource: ["ruby"]
+  }
 
   # Show the logging configuration on STDOUT
   config.show_log_configuration = true

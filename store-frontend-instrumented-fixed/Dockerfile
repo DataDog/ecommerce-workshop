@@ -27,4 +27,7 @@ RUN chgrp -R 0 /app && \
 RUN bundle install && \
     yarn install
 
+# Force STDOUT logging
+ENV RAILS_LOG_TO_STDOUT=true
+
 CMD ["sh", "docker-entrypoint.sh"]
