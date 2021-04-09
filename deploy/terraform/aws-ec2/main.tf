@@ -22,7 +22,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "discounts" {
-  ami                    = "ami-0121ef35996ede438"
+  ami                    = var.mainami
   subnet_id              = aws_subnet.ecommerceapp-subnet.id
   vpc_security_group_ids = [aws_security_group.ecommerceapp-sg.id]
   instance_type          = var.instance_type
@@ -35,13 +35,13 @@ resource "aws_instance" "discounts" {
   }
 
   provisioner "local-exec" {
-    command = "./setuphosts.sh ${aws_instance.discounts.private_ip} ${aws_instance.discounts.public_ip} ubuntu discounts"
+    command = "./setuphosts.sh ${aws_instance.discounts.private_ip} ${aws_instance.discounts.public_ip} ${var.mainamiuser} discounts"
   }
 
 }
 
 resource "aws_instance" "frontend" {
-  ami                    = "ami-072df871c83814231"
+  ami                    = var.rubyami
   subnet_id              = aws_subnet.ecommerceapp-subnet.id
   vpc_security_group_ids = [aws_security_group.ecommerceapp-sg.id]
   instance_type          = var.instance_type
@@ -52,12 +52,12 @@ resource "aws_instance" "frontend" {
     Owner = var.owner
   }
   provisioner "local-exec" {
-    command = "./setuphosts.sh ${aws_instance.frontend.private_ip} ${aws_instance.frontend.public_ip} bitnami frontend"
+    command = "./setuphosts.sh ${aws_instance.frontend.private_ip} ${aws_instance.frontend.public_ip} ${var.rubyamiuser} frontend"
   }
 }
 
 resource "aws_instance" "advertisements" {
-  ami                    = "ami-0121ef35996ede438"
+  ami                    = var.mainami
   subnet_id              = aws_subnet.ecommerceapp-subnet.id
   vpc_security_group_ids = [aws_security_group.ecommerceapp-sg.id]
   instance_type          = var.instance_type
@@ -68,12 +68,12 @@ resource "aws_instance" "advertisements" {
     Owner = var.owner
   }
   provisioner "local-exec" {
-    command = "./setuphosts.sh ${aws_instance.advertisements.private_ip} ${aws_instance.advertisements.public_ip} ubuntu advertisements"
+    command = "./setuphosts.sh ${aws_instance.advertisements.private_ip} ${aws_instance.advertisements.public_ip} ${var.mainamiuser} advertisements"
   }
 }
 
 resource "aws_instance" "db" {
-  ami                    = "ami-0121ef35996ede438"
+  ami                    = var.mainami
   subnet_id              = aws_subnet.ecommerceapp-subnet.id
   vpc_security_group_ids = [aws_security_group.ecommerceapp-sg.id]
   instance_type          = var.instance_type
@@ -86,7 +86,7 @@ resource "aws_instance" "db" {
   }
 
   provisioner "local-exec" {
-    command = "./setuphosts.sh ${aws_instance.db.private_ip} ${aws_instance.db.public_ip} ubuntu db"
+    command = "./setuphosts.sh ${aws_instance.db.private_ip} ${aws_instance.db.public_ip} ${var.mainamiuser} db"
   }
 
 }

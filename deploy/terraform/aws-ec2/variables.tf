@@ -16,6 +16,23 @@ variable "owner" {
   type    = string
   default = "mattw"
 }
+variable "mainami" {
+  type    = string
+  default = "ami-0121ef35996ede438"
+}
+variable "mainamiuser" {
+  type    = string
+  default = "ubuntu"
+}
+
+variable "rubyami" {
+  type    = string
+  default = "ami-072df871c83814231"
+}
+variable "rubyamiuser" {
+  type    = string
+  default = "bitnami"
+}
 
 variable "ddapikey" {
   type      = string
