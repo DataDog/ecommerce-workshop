@@ -5,16 +5,16 @@ variable "instance_type" {
   default     = "t2.medium"
 }
 variable "region" {
-  type=string
-  default="us-west-1"
+  type    = string
+  default = "us-west-1"
 }
 variable "keyname" {
   description = "Name of the ssh key to use"
-  default = "ecommerceapp"
+  default     = "ecommerceapp"
 }
 variable "owner" {
   type    = string
-  default = "yournamehere"
+  default = "mattw"
 }
 
 variable "ddapikey" {
