@@ -56,7 +56,7 @@ DD_AGENT_MAJOR_VERSION=7 DD_API_KEY=${apikey} DD_SITE="datadoghq.com" bash -c "$
 sudo sed -i "s/# logs_enabled: false/logs_enabled: true/g" /etc/datadog-agent/datadog.yaml
 
 cd /app
-find . -type f -name "*.rb" -printev0 | xargs -0 sed -i '' -e 's/advertisements:5002/advertisements:5022/g'
+find . -type f -name "*.rb" -print0 | xargs -0 sed -i '' -e 's/advertisements:5002/advertisements:5022/g'
 find . -type f -name "*.rb" -print0 | xargs -0 sed -i '' -e 's/discounts:5001/discounts:5011/g'
 # sed replace 2.7.2 to 2.7.3 in Gemfile
 bundle install && yarn install

@@ -21,3 +21,5 @@ This terraform module sets up and configures the app to run on EC2 instances. Th
 1. Terraform apply will create a shell script called `run.sh` which you can run after apply is complete. This will setup the hosts file on each machine so they can talk to each other. To apply and run this script together, run: `terraform apply -auto-approve;./run.sh`
 1. The run.sh command tries to repeatedly connect to each EC2 until sshd is ready, so you will see a bunch of 'connection refused errors until it connects. It should take less than a minute to complete.
 1. After the script completes, it will still take upwards of 5 minutes to spin everything up in the EC2's. Be patient.
+
+I haven't been able to figure out how to get puma to start automatically, so you will need to ssh into the frontend box, cd to /app and then run `bundle exec puma --config config/puma.rb`
