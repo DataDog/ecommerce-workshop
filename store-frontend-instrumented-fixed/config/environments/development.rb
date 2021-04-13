@@ -73,7 +73,6 @@ Rails.application.configure do
   config.action_controller.enable_fragment_cache_logging = false
 
   # Set the logging destination(s)
-  config.log_to = %w[stdout file]
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     config.log_to = %w[stdout]
     STDOUT.sync = true
@@ -92,14 +91,16 @@ Rails.application.configure do
   # Add the log tags the way Datadog expects
   config.log_tags = {
     request_id: :request_id,
-    dd: {
-      trace_id: -> { Datadog.tracer.active_correlation.trace_id.to_s },
-      span_id: -> { Datadog.tracer.active_correlation.span_id.to_s },
-      env: -> { Datadog.tracer.active_correlation.env.to_s },
-      service: -> { Datadog.tracer.active_correlation.service.to_s },
-      version: -> { Datadog.tracer.active_correlation.version.to_s }
-    },
-    ddsource: ["ruby"]
+    dd: -> _ {
+      correlation = Datadog.tracer.active_correlation
+      {
+        trace_id: correlation.trace_id.to_s,
+        span_id:  correlation.span_id.to_s,
+        env:      correlation.env.to_s,
+        service:  correlation.service.to_s,
+        version:  correlation.version.to_s
+      }
+    }
   }
 
   # Show the logging configuration on STDOUT
