@@ -69,8 +69,15 @@ Rails.application.configure do
   # Quiet down logger level and disable fragment logging
   config.log_level = :info
   config.colorize_logging = false
-  config.rails_semantic_logger.format = :json
   config.action_controller.enable_fragment_cache_logging = false
+
+  # Flatten out the payload key for easier parsing
+  payload_formatter = Proc.new do |log, logger|
+    log_hash = log.to_h
+    log_hash.merge!(log_hash.delete(:payload) || {})
+    log_hash.to_json
+  end
+  config.rails_semantic_logger.format = payload_formatter
 
   # Set the logging destination(s)
   if ENV["RAILS_LOG_TO_STDOUT"].present?
