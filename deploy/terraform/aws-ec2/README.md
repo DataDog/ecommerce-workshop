@@ -7,7 +7,7 @@ This terraform module sets up and configures the app to run on EC2 instances. Th
 - aws-vault or env vars setup
 
 1. Clone this repo to a local folder.
-1. These instructions assume you have setup an account with AWS and have the keys in your environment variables. If you have a lot of accounts to manage, look into using **aws-vault**.
+1. These instructions assume you have setup an account with AWS and have the keys in your environment variables. If you have a lot of accounts to manage, look into using **[aws-vault](https://github.com/99designs/aws-vault)**.
 1. Navigate to this directory in the newly cloned local repo. Run `terraform init` to install the extensions to terraform used.
 1. Create an SSH key to use to connect to the EC2's created. `ssh-keygen -f ecommerceapp -N ""` will create a key named ecommerceapp with no passphrase. Run the command in the same directory you cloned this to.
 1. Edit `variables.tf` file

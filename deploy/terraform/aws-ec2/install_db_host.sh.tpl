@@ -1,10 +1,5 @@
 #!/bin/bash
 sudo hostname db
-cat << EOF >> /home/ubuntu/.profile
-
-EOF
-
-source  /home/ubuntu/.profile
 
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 
@@ -12,7 +7,7 @@ echo "deb http://apt.postgresql.org/pub/repos/apt/ bionic"-pgdg main | sudo tee 
 
 sudo apt-get update -y && sudo apt-get upgrade -y
 sudo apt -y install postgresql-11
-# sudo apt install postgresql -y
+
 
 sudo su postgres -c 'psql -U postgres -c "CREATE ROLE datadog;"'
 sudo su postgres -c 'psql -U postgres -c "ALTER ROLE  datadog  WITH LOGIN;"'

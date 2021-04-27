@@ -35,7 +35,5 @@ pip3 install --upgrade cython
 pip3 install ddtrace
 pip3 install --no-cache-dir -r requirements.txt
 
-
 wall -n 'all done'
 ddtrace-run flask run --port=5011 --host=0.0.0.0 &
-# need to add env vars

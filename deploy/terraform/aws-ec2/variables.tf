@@ -1,4 +1,3 @@
-
 variable "instance_type" {
   description = "Instance type to use for each host."
   type        = string
