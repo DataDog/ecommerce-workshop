@@ -28,7 +28,6 @@ def banner_image(banner):
 @app.route('/weighted-banners/<float:weight>')
 def weighted_image(weight):
     app.logger.info(f"attempting to grab banner weight of less than {weight}")
-    advertisements = Advertisement.query.all()
     for ad in advertisements:
         if ad.weight < weight:
             return jsonify(ad.serialize())
@@ -38,7 +37,6 @@ def status():
     if flask_request.method == 'GET':
 
         try:
-            advertisements = Advertisement.query.all()
             app.logger.info(f"Total advertisements available: {len(advertisements)}")
             # adding a half sleep to test something
             time.sleep(2.5)
@@ -54,14 +52,13 @@ def status():
 
         try:
             # create a new advertisement with random name and value
-            advertisements_count = len(Advertisement.query.all())
             new_advertisement = Advertisement('Advertisement ' + str(discounts_count + 1),
                                     '/',
                                     random.randint(10,500))
             app.logger.info(f"Adding advertisement {new_advertisement}")
             db.session.add(new_advertisement)
             db.session.commit()
-            advertisements = Advertisement.query.all()
+    
 
             # adding a half sleep to test something
             time.sleep(2.5)

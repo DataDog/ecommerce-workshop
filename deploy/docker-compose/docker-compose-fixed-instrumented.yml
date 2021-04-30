@@ -75,7 +75,7 @@ services:
       - DD_TRACE_ANALYTICS_ENABLED=true
       - DD_PROFILING_ENABLED=true
       - DD_VERSION=1.0
-    image: "ddtraining/advertisements-fixed:latest"
+    image: "ads-errors:1.1"
     command: ddtrace-run flask run --port=5002 --host=0.0.0.0
     ports:
       - "5002:5002"
