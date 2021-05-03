@@ -1,0 +1,11 @@
+diff -r ads-service-fixed/ads.py ads-service-errors/ads.py
+31d30
+<     advertisements = Advertisement.query.all()
+41d39
+<             advertisements = Advertisement.query.all()
+55d52
+<             advertisements_count = len(Advertisement.query.all())
+62c59
+<             advertisements = Advertisement.query.all()
+---
+>     
