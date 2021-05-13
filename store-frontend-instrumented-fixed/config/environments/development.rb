@@ -74,7 +74,19 @@ Rails.application.configure do
   # Flatten out the payload key for easier parsing
   payload_formatter = Proc.new do |log, logger|
     log_hash = log.to_h
+    # The delete method can potentially return nil
     log_hash.merge!(log_hash.delete(:payload) || {})
+    # Make sure the log level reflects the HTTP status
+    if log_hash.has_key?(:status)
+      case log_hash[:status]
+      when 200
+        log_hash[:level] = "INFO"
+      when 302
+        log_hash[:level] = "WARN"
+      else
+        log_hash[:level] = "ERROR"
+      end
+    end
     log_hash.to_json
   end
   config.rails_semantic_logger.format = payload_formatter
