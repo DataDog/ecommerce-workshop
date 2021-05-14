@@ -6,6 +6,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export FLASK_DEBUG=1
 export POSTGRES_PASSWORD=password
 export POSTGRES_USER=datadog
+export POSTGRES_URL=db
 export DD_SERVICE=advertisements-service
 export DD_LOGS_INJECTION=true
 export DD_TRACE_ANALYTICS_ENABLED=true

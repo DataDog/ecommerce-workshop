@@ -38,6 +38,8 @@ spec:
                 name: db-password
           - name: POSTGRES_USER
             value: "user"
+          - name: POSTGRES_URL
+            value: "db"
           - name: DATADOG_SERVICE_NAME
             value: "discountsservice"
           - name: DD_AGENT_HOST
