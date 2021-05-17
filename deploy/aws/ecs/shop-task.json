@@ -137,7 +137,7 @@
             "value": "postgres"
           },
           {
-            "name": "POSTGRES_URL",
+            "name": "POSTGRES_HOST",
             "value": "db"
           }
         ],
@@ -275,7 +275,7 @@
             "value": "postgres"
           },
           {
-            "name": "POSTGRES_URL",
+            "name": "POSTGRES_HOST",
             "value": "db"
           }
         ],

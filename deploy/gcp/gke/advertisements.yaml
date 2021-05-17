@@ -36,7 +36,7 @@ spec:
                 name: db-password
           - name: POSTGRES_USER
             value: "user"
-          - name: POSTGRES_URL
+          - name: POSTGRES_HOST
             value: "db"
           - name: DATADOG_SERVICE_NAME
             value: "advertisements-service"

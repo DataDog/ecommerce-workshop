@@ -6,7 +6,7 @@ services:
       - FLASK_DEBUG=1
       - POSTGRES_PASSWORD
       - POSTGRES_USER
-      - POSTGRES_URL=db
+      - POSTGRES_HOST=db
     image: "ddtraining/discounts:latest"
     command: flask run --port=5001 --host=0.0.0.0
     ports:
@@ -31,7 +31,7 @@ services:
       - FLASK_DEBUG=1
       - POSTGRES_PASSWORD
       - POSTGRES_USER
-      - POSTGRES_URL=db
+      - POSTGRES_HOST=db
     image: "ddtraining/advertisements:latest"
     command: flask run --port=5002 --host=0.0.0.0
     ports:
