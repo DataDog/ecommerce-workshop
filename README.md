@@ -45,7 +45,7 @@ Once created, you'll get a piece of Javascript with an `applicationId` and a `cl
 Pass these environment variables to docker-compose:
 
 ```
-$ DD_API_KEY=<YOUR_API_KEY> DD_CLIENT_TOKEN=<CLIENT_TOKEN> DD_APPLICATION_ID=<APPLICATION_ID> POSTGRES_USER=<POSTGRES_USER> POSTGRES_PASSWORD=<POSTGRES_PASSWORD> docker-compose -f docker-compose-fixed-instrumented.yml up
+$ DD_API_KEY=<YOUR_API_KEY> DD_CLIENT_TOKEN=<CLIENT_TOKEN> DD_APPLICATION_ID=<APPLICATION_ID> POSTGRES_USER=<POSTGRES_USER> POSTGRES_PASSWORD=<POSTGRES_PASSWORD> POSTGRES_HOST="db" docker-compose -f docker-compose-fixed-instrumented.yml up
 ```
 
 Or uncomment the following lines in the `frontend.yaml` if in Kubernetes, adding your `applicationID` and your `clientToken`:
