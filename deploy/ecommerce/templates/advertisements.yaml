@@ -20,7 +20,7 @@ spec:
         {{- include "ecommerce.labels" . | nindent 8 }}
     spec:
       containers:
-      - image: {{ .Values.advertisements.container.image }}
+      - image: {{ .Values.advertisements.container.image }}:{{ .Values.advertisements.container.version }}
         imagePullPolicy: {{ .Values.advertisements.container.pullPolicy }}
         name: {{ .Values.advertisements.container.name }}
         command: ["ddtrace-run"]

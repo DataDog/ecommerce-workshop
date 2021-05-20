@@ -59,7 +59,7 @@ spec:
         - name: DD_APPLICATION_ID
           value: {{ .Values.frontend.rum.ddClientApplicationId }}
         {{- end }}
-        image: {{ .Values.frontend.container.image }}
+        image: {{ .Values.frontend.container.image }}:{{ .Values.frontend.container.version }}
         imagePullPolicy: {{ .Values.frontend.container.pullPolicy }}
         name: {{ .Values.frontend.container.name }}
         ports:

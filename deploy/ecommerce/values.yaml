@@ -8,7 +8,8 @@ environment: development
 frontend:
   replicas: 1
   container:
-    image: ddtraining/ecommerce-frontend:latest
+    image: ddtraining/storefront
+    version: latest
     pullPolicy: Always
     name: ecommerce-spree-observability
   # Enable and configure for Real User Monitoring (RUM)
@@ -23,7 +24,8 @@ frontend:
 advertisements:
   replicas: 1
   container:
-    image: ddtraining/advertisements-service:latest
+    image: ddtraining/advertisements
+    version: latest
     pullPolicy: Always
     name: advertisements
   service:
@@ -32,7 +34,8 @@ advertisements:
 discounts:
   replicas: 1
   container:
-    image: ddtraining/discounts-service:latest
+    image: ddtraining/discounts
+    version: latest
     pullPolicy: Always
     name: discounts
   service:
