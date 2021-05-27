@@ -7,6 +7,11 @@ variable "region" {
   type    = string
   default = "us-west-1"
 }
+variable "az" {
+  description = "AWS region availability zone"
+  type        = string
+  default     = "b"
+}
 variable "keyname" {
   description = "Name of the ssh key to use"
   default     = "ecommerceapp"
