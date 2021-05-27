@@ -5,7 +5,7 @@ metadata:
     service: advertisements
     app: ecommerce
     tags.datadoghq.com/env: "ruby-shop"
-  name: advertisements 
+  name: advertisements
 spec:
   replicas: 1
   selector:
@@ -22,8 +22,8 @@ spec:
         tags.datadoghq.com/env: "ruby-shop"
     spec:
       containers:
-      - image: ddtraining/advertisements-service:latest
-        name: advertisements 
+      - image: ddtraining/advertisements:latest
+        name: advertisements
         command: ["ddtrace-run"]
         args: ["flask", "run", "--port=5002", "--host=0.0.0.0"]
         env:
@@ -46,7 +46,7 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.labels['tags.datadoghq.com/env']
-          - name: DD_AGENT_HOST 
+          - name: DD_AGENT_HOST
             valueFrom:
               fieldRef:
                 fieldPath: status.hostIP
