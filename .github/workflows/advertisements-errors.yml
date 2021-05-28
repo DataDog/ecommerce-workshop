@@ -32,4 +32,4 @@ jobs:
         context: ./ads-service-errors
         platforms: linux/amd64 # TODO: Support linux/arm64?
         push: true
-        tags: ddtraining/advertisements-errors:1.0.0
+        tags: ddtraining/advertisements-errors:latest
