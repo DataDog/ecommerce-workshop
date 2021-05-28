@@ -16,7 +16,7 @@ jobs:
       - name: Release a Changelog
         uses: rasmus-saks/release-a-changelog-action@v1.0.1
         with:
-          github-token: '${{ secrets.GITHUB_TOKEN }}'
+          github-token: '${{ secrets.GH_TOKEN }}'
   publish_service_containers:
     name: Publish service containers
     runs-on: ubuntu-latest
