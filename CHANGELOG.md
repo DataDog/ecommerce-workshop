@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2021-05-28
+
 ### Added
 
 - Added a new advertisements-errors image [#123](https://github.com/DataDog/ecommerce-workshop/pull/123)
