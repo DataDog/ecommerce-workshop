@@ -23,6 +23,7 @@ provider "aws" {
 
 resource "aws_instance" "discounts" {
   ami                    = var.mainami
+  availability_zone      = "${var.region}${var.az}"
   subnet_id              = aws_subnet.ecommerceapp-subnet.id
   vpc_security_group_ids = [aws_security_group.ecommerceapp-sg.id]
   instance_type          = var.instance_type
@@ -42,6 +43,7 @@ resource "aws_instance" "discounts" {
 
 resource "aws_instance" "frontend" {
   ami                    = var.rubyami
+  availability_zone      = "${var.region}${var.az}"
   subnet_id              = aws_subnet.ecommerceapp-subnet.id
   vpc_security_group_ids = [aws_security_group.ecommerceapp-sg.id]
   instance_type          = var.instance_type
@@ -57,6 +59,7 @@ resource "aws_instance" "frontend" {
 }
 
 resource "aws_instance" "advertisements" {
+  availability_zone      = "${var.region}${var.az}"
   ami                    = var.mainami
   subnet_id              = aws_subnet.ecommerceapp-subnet.id
   vpc_security_group_ids = [aws_security_group.ecommerceapp-sg.id]
@@ -74,6 +77,7 @@ resource "aws_instance" "advertisements" {
 
 resource "aws_instance" "db" {
   ami                    = var.mainami
+  availability_zone      = "${var.region}${var.az}"
   subnet_id              = aws_subnet.ecommerceapp-subnet.id
   vpc_security_group_ids = [aws_security_group.ecommerceapp-sg.id]
   instance_type          = var.instance_type
