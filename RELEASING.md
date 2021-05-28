@@ -1,22 +1,25 @@
 # Automated version release guide
 
+**Note:** Replace 1.0.0 with the version number you are releasing
+
 1. Verify that the CHANGELOG.md unreleased section is accurate and up to date by checking the commits between tags
-1. Update the CHANGELOG.md unrelease section with the next version number. Use [Semver](https://semver.org/) to determine how far to bump things up.
-1. Make a new commit with that changelog using "Release [version]" (e.g. "Release 1.2.3")
+1. Update the CHANGELOG.md unreleased section with the next version number. Use [Semver](https://semver.org/) to determine how far to bump things up
+1. Make a new unreleased section at the top. Follow the [Keep A Changelog](https://keepachangelog.com/en/1.0.0/) format for this
+1. Make a new commit with that changelog using "Release 1.0.0" as the message
 1. Make a new tag with the version number `git tag --annotate 1.0.0 --message="Release 1.0.0"`
 1. Push the new tag `git push && git push --tags`
 1. Monitor the new release workflow in Github Actions which should complete the rest
 
 # Manual version release guide
 
-Note: Replace 1.0.0 with the version number you are releasing
+**Note:** Replace 1.0.0 with the version number you are releasing
 
 1. Verify that the CHANGELOG.md unreleased section is accurate and up to date by checking the commits between tags
-1. Update the CHANGELOG.md unrelease section with the next version number. Use [Semver](https://semver.org/) to determine how far to bump things up.
+1. Update the CHANGELOG.md unrelease section with the next version number. Use [Semver](https://semver.org/) to determine how far to bump things up
 1. Make a new commit with that changelog using "Release 1.0.0"
 1. Make a new tag with the version number `git tag --annotate 1.0.0 --message="Release 1.0.0"`
 1. Push the new tag `git push && git push --tags`
-1. Go to the [tags page](https://github.com/DataDog/ecommerce-workshop/tags) and click the three dots to the right to "Create release". In the prompt, copy and paste the `CHANGELOG.md` notes for the 1.0.0 release in the body and put "1.0.0" for the title.
+1. Go to the [tags page](https://github.com/DataDog/ecommerce-workshop/tags) and click the three dots to the right to "Create release". In the prompt, copy and paste the `CHANGELOG.md` notes for the 1.0.0 release in the body and put "1.0.0" for the title
 1. Pull down the latest advertisements image `docker pull ddtraining/advertisements:latest`
 1. Tag the advertisements latest image with the new version number `docker tag ddtraining/advertisements:latest ddtraining/advertisements:1.0.0`
 1. Push the advertisements image up `docker push ddtraining/advertisements:1.0.0`
