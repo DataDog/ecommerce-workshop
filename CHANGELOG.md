@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- Added a new advertisements-errors image [#123](https://github.com/DataDog/ecommerce-workshop/pull/123)
+- Added DB_HOST support for the python microservices [#128](https://github.com/DataDog/ecommerce-workshop/pull/128)
+- Added availability zone support to the AWS terraform files [#139](https://github.com/DataDog/ecommerce-workshop/pull/139)
+
+### Fixed
+
+- Applied all the latest security updates to storefront service
+- Update all the generic k8s container image names [#137](https://github.com/DataDog/ecommerce-workshop/pull/137)
+
+### Changed
+
+- Remove rack-mini-profiler from both Rails apps [#136](https://github.com/DataDog/ecommerce-workshop/pull/136)
+- Flattened out the logging payload in both Rails apps [#120](https://github.com/DataDog/ecommerce-workshop/pull/120)
+
 ## [1.0.0] - 2021-04-26
 
 ### Added
