@@ -2,7 +2,7 @@ name: Release Changelog
 
 # Only release on a new tag that is a version number.
 on:
-  push:
+  create:
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
 
@@ -37,20 +37,20 @@ jobs:
       - name: Download, Tag, and Push Service Images
         run: |
           docker pull ddtraining/advertisements:latest
-          docker tag ddtraining/advertisements:latest ddtraining/advertisements:${{ github.ref }}
-          docker push ddtraining/advertisements:${{ github.ref }}
+          docker tag ddtraining/advertisements:latest ddtraining/advertisements:${{ github.event.ref }}
+          docker push ddtraining/advertisements:${{ github.event.ref }}
           docker pull ddtraining/advertisements-fixed:latest
-          docker tag ddtraining/advertisements-fixed:latest ddtraining/advertisements-fixed:${{ github.ref }}
-          docker push ddtraining/advertisements-fixed:${{ github.ref }}
+          docker tag ddtraining/advertisements-fixed:latest ddtraining/advertisements-fixed:${{ github.event.ref }}
+          docker push ddtraining/advertisements-fixed:${{ github.event.ref }}
           docker pull ddtraining/discounts:latest
-          docker tag ddtraining/discounts:latest ddtraining/discounts:${{ github.ref }}
-          docker push ddtraining/discounts:${{ github.ref }}
+          docker tag ddtraining/discounts:latest ddtraining/discounts:${{ github.event.ref }}
+          docker push ddtraining/discounts:${{ github.event.ref }}
           docker pull ddtraining/discounts-fixed:latest
-          docker tag ddtraining/discounts-fixed:latest ddtraining/discounts-fixed:${{ github.ref }}
-          docker push ddtraining/discounts-fixed:${{ github.ref }}
+          docker tag ddtraining/discounts-fixed:latest ddtraining/discounts-fixed:${{ github.event.ref }}
+          docker push ddtraining/discounts-fixed:${{ github.event.ref }}
           docker pull ddtraining/storefront:latest
-          docker tag ddtraining/storefront:latest ddtraining/storefront:${{ github.ref }}
-          docker push ddtraining/storefront:${{ github.ref }}
+          docker tag ddtraining/storefront:latest ddtraining/storefront:${{ github.event.ref }}
+          docker push ddtraining/storefront:${{ github.event.ref }}
           docker pull ddtraining/storefront-fixed:latest
-          docker tag ddtraining/storefront-fixed:latest ddtraining/storefront-fixed:${{ github.ref }}
-          docker push ddtraining/storefront-fixed:${{ github.ref }}
+          docker tag ddtraining/storefront-fixed:latest ddtraining/storefront-fixed:${{ github.event.ref }}
+          docker push ddtraining/storefront-fixed:${{ github.event.ref }}
