@@ -5,6 +5,7 @@ on:
     branches: [ main ]
     paths:
       - ads-service-errors/**
+      - ads-service-fixed/**
 
 jobs:
 
