@@ -4,7 +4,7 @@ metadata:
   labels:
     service: advertisements
     app: ecommerce
-    tags.datadoghq.com/env: "ruby-shop"
+    tags.datadoghq.com/env: "development"
   name: advertisements
 spec:
   replicas: 1
@@ -19,7 +19,7 @@ spec:
       labels:
         service: advertisements
         app: ecommerce
-        tags.datadoghq.com/env: "ruby-shop"
+        tags.datadoghq.com/env: "development"
     spec:
       containers:
       - image: ddtraining/advertisements:latest

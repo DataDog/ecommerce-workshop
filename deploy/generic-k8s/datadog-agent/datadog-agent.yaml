@@ -7,7 +7,7 @@ metadata:
     app: "datadog"
 type: Opaque
 data:
-  api-key: <replace_with_base64_of_your_api_key> 
+  api-key: <replace_with_base64_of_your_api_key>
 ---
 apiVersion: extensions/v1beta1
 kind: DaemonSet
@@ -33,11 +33,11 @@ spec:
             secretKeyRef:
               key: api-key
               name: datadog-secret
-        - name: DD_CLUSTER_AGENT_AUTH_TOKEN 
+        - name: DD_CLUSTER_AGENT_AUTH_TOKEN
           valueFrom:
             secretKeyRef:
               key: token
-              name: datadog-auth-token 
+              name: datadog-auth-token
         - name: DD_SITE
           value: datadoghq.com
         - name: DD_DOGSTATSD_NON_LOCAL_TRAFFIC
@@ -53,15 +53,15 @@ spec:
         - name: DD_APM_ENABLED
           value: "true"
         - name: DD_CLUSTER_NAME
-          value: kubernetes-cluster 
+          value: kubernetes-cluster
         - name: DD_KUBELET_TLS_VERIFY
           value: "false"
         - name: DD_LOGS_ENABLED
           value: "false"
         - name: DD_TAGS
-          value: "env:ruby-shop"
+          value: "env:development"
         - name: DD_ENV
-          value: "ruby-shop"
+          value: "development"
         - name: DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL
           value: "false"
         - name: DD_CRI_SOCKET_PATH

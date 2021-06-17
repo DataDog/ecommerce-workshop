@@ -5,7 +5,7 @@ services:
     environment:
       - DD_API_KEY
       - DD_PROCESS_AGENT_ENABLED=true
-      - DD_TAGS='env:ruby-shop'
+      - DD_TAGS='env:development'
 # add agent env variables
 # add agent trace port
     volumes:
