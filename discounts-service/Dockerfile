@@ -16,8 +16,16 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 WORKDIR /app
 COPY . .
 
-# Let Flask know what to boot
-ENV FLASK_APP=discounts.py
-
 # Install dependencies via pip and avoid caching build artifacts
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Let Flask know what to boot
+ENV FLASK_APP=discounts.py
+ENV DD_ENV=development
+
+# Listen on 5001
+EXPOSE 5001
+
+# Start the app using ddtrace so we have profiling and tracing
+ENTRYPOINT ["ddtrace-run"]
+CMD ["flask", "run", "--port=5001", "--host=0.0.0.0"]
