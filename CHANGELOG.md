@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Datadog agent upgraded to 7.29 release [#150](https://github.com/DataDog/ecommerce-workshop/pull/150)
+- All python microservices are now on Python 3.9.6 [#150](https://github.com/DataDog/ecommerce-workshop/pull/150)
+- The ads errors image now builds with the fixed ads service image [#147](https://github.com/DataDog/ecommerce-workshop/pull/147)
+
+### Changed
+
+- **BREAKING CHANGE:** The default environment is now `development` instead of `ruby-shop` or in more than a few cases `none` [#150](https://github.com/DataDog/ecommerce-workshop/pull/150)
+
 ## [1.1.0] - 2021-05-28
 
 ### Added
