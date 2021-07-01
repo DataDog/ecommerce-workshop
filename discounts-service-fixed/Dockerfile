@@ -2,7 +2,7 @@
 # ^ This enables the new BuildKit stable syntax which can be
 # run with the DOCKER_BUILDKIT=1 environment variable in your
 # docker build command (see build.sh)
-FROM python:3.9.1-slim-buster
+FROM python:3.9.6-slim-buster
 
 # Update, upgrade, and cleanup debian packages
 RUN export DEBIAN_FRONTEND=noninteractive && \
