@@ -15,12 +15,13 @@ This repository is used to build the Docker images to run the application in the
 
 * `ads-service`- The advertisement microservice with a couple of injected sleeps.
 * `ads-service-fixed`- The advertisement microservice with the sleeps removed.
+* `ads-service-errors`- The advertisement microservice that will return 500 errors on the `/ads` endpoint
 * `discounts-service`- The discounts microservice with an [N+1 query](#finding-an-n1-query) and a couple of sleeps.
 * `discounts-service-fixed`- The discounts microservice with the N+1 query fixed and the sleeps removed.
 * `store-frontend-broken-no-instrumentation`- The Spree application in a broken state and with no instrumentation. This is the initial scenario.
 * `store-frontend-broken-instrumented`- The Spree application in a broken state but instrumented with Datadog APM. This is the second scenario.
 * `store-frontend-instrumented-fixed`- The Spree application instrumented with Datadog APM and fixed. This is the final scenario.
-* `traffic-replay`- Looping replay of live traffic to send requests to `frontend`
+* `traffic-replay`- Looping replay of live traffic to send requests to `frontend` (see [Creating Example Traffic](#creating-example-traffic-to-your-site) for details)
 
 To build any of the images you should `cd` into each of the folders and run:
 
