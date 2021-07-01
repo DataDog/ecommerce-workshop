@@ -67,7 +67,16 @@ The scenario uses [GoReplay](https://github.com/buger/goreplay) to spin up traff
 This way, we don't have to manually click around the site to see all the places where our site is broken.
 
 ### Containerized replay
-Example traffic can be perpetually sent via the `traffic-replay` container.  By default this container will send traffic to the host `http://frontend:3000` but can be customized via environment variables.  This facilitates the use of load balancers or breaking apart the application.
+
+Example traffic can be perpetually sent via the `traffic-replay` container. To build and run it via Docker and connect it to your running cluster in docker-compose (by default the docker-compose_default network is created).
+
+```
+cd traffic-replay
+docker build -t traffic-replay .
+docker run -i -t --net=docker-compose_default --rm traffic-replay
+```
+
+By default this container will send traffic to the host `http://frontend:3000` but can be customized via environment variables on the command line or in the below example via Docker Compose.  This facilitates the use of load balancers or breaking apart the application.
 
 ```yaml
 environment:
@@ -76,6 +85,7 @@ environment:
 ```
 
 ### Local replay
+
 You can reuse the recorded traffic ad-hoc:
 
 ```bash
