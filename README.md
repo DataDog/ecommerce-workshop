@@ -69,6 +69,8 @@ This way, we don't have to manually click around the site to see all the places 
 
 ### Containerized replay
 
+#### Building and running manually
+
 Example traffic can be perpetually sent via the `traffic-replay` container. To build and run it via Docker and connect it to your running cluster in docker-compose (by default the docker-compose_default network is created).
 
 ```
@@ -85,15 +87,15 @@ environment:
   - FRONTEND_PORT=80
 ```
 
-### Local replay
+#### Running via Docker Compose
 
-You can reuse the recorded traffic ad-hoc:
+We automatically build new traffic-replay containers on every release and you can spin up the traffic-replay container with your Docker Compose cluster by adding the config as an override via the example below.
 
-```bash
-$ ./gor --input-file-loop --input-file requests_0.gor --output-http "http://localhost:3000"
+```
+POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres docker-compose -f deploy/docker-compose/docker-compose-broken-instrumented.yml -f deploy/docker-compose/docker-compose-traffic-replay.yml up
 ```
 
-This command opens up the traffic recording, and ships all the requests to `localhost`, at port 3000. After running this traffic generator for a while, we'll be able to see the services that make up our application within Datadog.
+Any of the other docker compose configurations can work with this traffic container just by adding another `-f  deploy/docker-compose/docker-compose-traffic-replay.yml` to the compose command.
 
 ## Viewing Our Broken Services in Datadog
 
