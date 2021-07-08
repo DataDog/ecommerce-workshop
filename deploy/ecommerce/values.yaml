@@ -11,7 +11,7 @@ frontend:
     image: ddtraining/storefront
     version: latest
     pullPolicy: Always
-    name: ecommerce-spree-observability
+    name: storefront
   # Enable and configure for Real User Monitoring (RUM)
   rum:
     enabled: true
@@ -40,3 +40,13 @@ discounts:
     name: discounts
   service:
     port: 5001
+
+traffic:
+  replicas: 1
+  container:
+    image: ddtraining/traffic-replay
+    version: latest
+    pullPolicy: Always
+    name: traffic-replay
+  frontendHost: frontend
+  frontendPort: 3000
