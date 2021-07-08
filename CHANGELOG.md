@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2021-07-08
+
 ### Fixed
 
 - Datadog agent upgraded to 7.29 release [#150](https://github.com/DataDog/ecommerce-workshop/pull/150)
