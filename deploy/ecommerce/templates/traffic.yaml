@@ -25,9 +25,9 @@ spec:
         name: {{ .Values.traffic.container.name }}
         env:
           - name: FRONTEND_HOST
-            value: {{ .Values.traffic.frontendHost | quote }}
+            value: {{ .Values.frontend.container.name | quote }}
           - name: FRONTEND_PORT
-            value: {{ .Values.traffic.frontendPort | quote }}
+            value: {{ .Values.frontend.service.port | quote }}
           - name: DD_ENV
             valueFrom:
               fieldRef:

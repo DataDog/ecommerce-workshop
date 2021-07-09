@@ -14,7 +14,7 @@ frontend:
     name: storefront
   # Enable and configure for Real User Monitoring (RUM)
   rum:
-    enabled: true
+    enabled: false
     ddClientToken: DataDogClientToken
     ddClientApplicationId: DataDogApplicationID
   service:
@@ -48,5 +48,3 @@ traffic:
     version: latest
     pullPolicy: Always
     name: traffic-replay
-  frontendHost: frontend
-  frontendPort: 3000

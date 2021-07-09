@@ -30,6 +30,8 @@ spec:
             value: "ads.py"
           - name: FLASK_DEBUG
             value: "1"
+          - name: POSTGRES_HOST
+            value: "db"
           - name: POSTGRES_PASSWORD
             valueFrom:
               secretKeyRef:
