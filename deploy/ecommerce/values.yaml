@@ -42,6 +42,7 @@ discounts:
     port: 5001
 
 traffic:
+  enabled: true
   replicas: 1
   container:
     image: ddtraining/traffic-replay
