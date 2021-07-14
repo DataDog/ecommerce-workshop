@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: ./store-frontend
-        file: ./store-frontend/storefront-versions/store-frontend-broken-instrumented/Dockerfile
+        file: ./store-frontend/storefront-versions/store-frontend-broken-no-instrumentation/Dockerfile
         platforms: linux/amd64 # TODO: Support linux/arm64?
         push: true
-        tags: ddtraining/storefront:latest
+        tags: ddtraining/storefront-no-instrumentation:latest

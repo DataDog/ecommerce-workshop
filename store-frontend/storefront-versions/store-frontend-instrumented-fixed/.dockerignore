@@ -1,0 +1,11 @@
+# Version control
+.git
+.gitignore
+
+# Docker
+Dockerfile*
+.dockerignore
+
+# Logs and Temp files
+log/*
+tmp/*
