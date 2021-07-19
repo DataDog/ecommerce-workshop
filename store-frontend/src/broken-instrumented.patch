@@ -1,6 +1,6 @@
-diff -urN store-frontend-broken-no-instrumentation/Gemfile store-frontend-broken-instrumented/Gemfile
---- store-frontend-broken-no-instrumentation/Gemfile	2021-07-14 10:52:12.000000000 +0200
-+++ store-frontend-broken-instrumented/Gemfile	2021-07-14 11:40:22.000000000 +0200
+diff -urN store-frontend-initial-state/Gemfile store-frontend-broken-instrumented/Gemfile
+--- store-frontend-initial-state/Gemfile	2021-07-14 12:26:50.000000000 +0200
++++ store-frontend-broken-instrumented/Gemfile	2021-07-19 11:19:24.000000000 +0200
 @@ -43,6 +43,7 @@
  gem 'spree', github: 'spree/spree', ref: 'f8e7b4ed9856d1a2f4521f5b8ef7de158a30b398'
  gem 'spree_auth_devise', github: 'spree/spree_auth_devise', ref: '7e9c4d102e0eb84446ec0f4cb3aeefa7f6dfa65d'
@@ -9,9 +9,9 @@ diff -urN store-frontend-broken-no-instrumentation/Gemfile store-frontend-broken
  gem 'httparty'
  gem 'amazing_print'
  gem 'rails_semantic_logger'
-diff -urN store-frontend-broken-no-instrumentation/Gemfile.lock store-frontend-broken-instrumented/Gemfile.lock
---- store-frontend-broken-no-instrumentation/Gemfile.lock	2021-07-14 11:18:23.000000000 +0200
-+++ store-frontend-broken-instrumented/Gemfile.lock	2021-07-14 11:40:22.000000000 +0200
+diff -urN store-frontend-initial-state/Gemfile.lock store-frontend-broken-instrumented/Gemfile.lock
+--- store-frontend-initial-state/Gemfile.lock	2021-07-14 12:26:50.000000000 +0200
++++ store-frontend-broken-instrumented/Gemfile.lock	2021-07-19 11:19:24.000000000 +0200
 @@ -164,6 +164,9 @@
      crass (1.0.6)
      css_parser (1.9.0)
@@ -38,9 +38,9 @@ diff -urN store-frontend-broken-no-instrumentation/Gemfile.lock store-frontend-b
    httparty
    jbuilder (~> 2.5)
    listen (>= 3.0.5, < 3.2)
-diff -urN store-frontend-broken-no-instrumentation/app/views/layouts/application.html.erb store-frontend-broken-instrumented/app/views/layouts/application.html.erb
---- store-frontend-broken-no-instrumentation/app/views/layouts/application.html.erb	2021-07-14 10:53:39.000000000 +0200
-+++ store-frontend-broken-instrumented/app/views/layouts/application.html.erb	2021-07-14 11:40:22.000000000 +0200
+diff -urN store-frontend-initial-state/app/views/layouts/application.html.erb store-frontend-broken-instrumented/app/views/layouts/application.html.erb
+--- store-frontend-initial-state/app/views/layouts/application.html.erb	2021-07-14 12:26:50.000000000 +0200
++++ store-frontend-broken-instrumented/app/views/layouts/application.html.erb	2021-07-19 11:19:24.000000000 +0200
 @@ -2,6 +2,31 @@
  <html>
    <head>
@@ -73,9 +73,9 @@ diff -urN store-frontend-broken-no-instrumentation/app/views/layouts/application
      <%= csrf_meta_tags %>
      <%= csp_meta_tag %>
  
-diff -urN store-frontend-broken-no-instrumentation/app/views/spree/layouts/spree_application.html.erb store-frontend-broken-instrumented/app/views/spree/layouts/spree_application.html.erb
---- store-frontend-broken-no-instrumentation/app/views/spree/layouts/spree_application.html.erb	2021-07-14 10:54:00.000000000 +0200
-+++ store-frontend-broken-instrumented/app/views/spree/layouts/spree_application.html.erb	2021-07-14 11:40:22.000000000 +0200
+diff -urN store-frontend-initial-state/app/views/spree/layouts/spree_application.html.erb store-frontend-broken-instrumented/app/views/spree/layouts/spree_application.html.erb
+--- store-frontend-initial-state/app/views/spree/layouts/spree_application.html.erb	2021-07-14 12:26:50.000000000 +0200
++++ store-frontend-broken-instrumented/app/views/spree/layouts/spree_application.html.erb	2021-07-19 11:19:24.000000000 +0200
 @@ -5,6 +5,31 @@
  <!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
  <!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
@@ -108,9 +108,9 @@ diff -urN store-frontend-broken-no-instrumentation/app/views/spree/layouts/spree
      <%= render partial: 'spree/shared/head' %>
    </head>
    <body class="<%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body">
-diff -urN store-frontend-broken-no-instrumentation/config/environments/development.rb store-frontend-broken-instrumented/config/environments/development.rb
---- store-frontend-broken-no-instrumentation/config/environments/development.rb	2021-07-14 10:54:24.000000000 +0200
-+++ store-frontend-broken-instrumented/config/environments/development.rb	2021-07-14 11:40:22.000000000 +0200
+diff -urN store-frontend-initial-state/config/environments/development.rb store-frontend-broken-instrumented/config/environments/development.rb
+--- store-frontend-initial-state/config/environments/development.rb	2021-07-14 12:26:50.000000000 +0200
++++ store-frontend-broken-instrumented/config/environments/development.rb	2021-07-19 11:19:24.000000000 +0200
 @@ -107,6 +107,21 @@
      config.log_to = %w[stdout file]
    end
@@ -133,9 +133,9 @@ diff -urN store-frontend-broken-no-instrumentation/config/environments/developme
    # Show the logging configuration on STDOUT
    config.show_log_configuration = true
  end
-diff -urN store-frontend-broken-no-instrumentation/config/environments/production.rb store-frontend-broken-instrumented/config/environments/production.rb
---- store-frontend-broken-no-instrumentation/config/environments/production.rb	2021-07-14 10:54:39.000000000 +0200
-+++ store-frontend-broken-instrumented/config/environments/production.rb	2021-07-14 11:40:22.000000000 +0200
+diff -urN store-frontend-initial-state/config/environments/production.rb store-frontend-broken-instrumented/config/environments/production.rb
+--- store-frontend-initial-state/config/environments/production.rb	2021-07-14 12:26:50.000000000 +0200
++++ store-frontend-broken-instrumented/config/environments/production.rb	2021-07-19 11:19:24.000000000 +0200
 @@ -53,6 +53,9 @@
    # when problems arise.
    config.log_level = :warn
@@ -146,9 +146,9 @@ diff -urN store-frontend-broken-no-instrumentation/config/environments/productio
    # Use a different cache store in production.
    # config.cache_store = :mem_cache_store
  
-diff -urN store-frontend-broken-no-instrumentation/config/initializers/datadog.rb store-frontend-broken-instrumented/config/initializers/datadog.rb
---- store-frontend-broken-no-instrumentation/config/initializers/datadog.rb	1970-01-01 01:00:00.000000000 +0100
-+++ store-frontend-broken-instrumented/config/initializers/datadog.rb	2021-07-14 11:44:22.000000000 +0200
+diff -urN store-frontend-initial-state/config/initializers/datadog.rb store-frontend-broken-instrumented/config/initializers/datadog.rb
+--- store-frontend-initial-state/config/initializers/datadog.rb	1970-01-01 01:00:00.000000000 +0100
++++ store-frontend-broken-instrumented/config/initializers/datadog.rb	2021-07-19 11:19:24.000000000 +0200
 @@ -0,0 +1,6 @@
 +Datadog.configure do |c|
 +  # This will activate auto-instrumentation for Rails

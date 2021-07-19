@@ -23,13 +23,11 @@ This repository is used to build the Docker images to run the application in the
 * `store-frontend-instrumented-fixed`- The Spree application instrumented with Datadog APM and fixed. This is the final scenario.
 * `traffic-replay`- Looping replay of live traffic to send requests to `frontend` (see [Creating Example Traffic](#creating-example-traffic-to-your-site) for details)
 
-To build any of the images you should `cd` into each of the folders and run:
-
-```
-docker build .
-```
-
 Feel free to [follow along](https://www.katacoda.com/DataDog/scenarios/ecommerce-workshop) with the scenario, or to run the application locally.
+
+## Building the docker images
+
+Follow the [specific guide for building the images](./development.md#Building)
 
 ## Deploying the application
 
