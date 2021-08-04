@@ -1,10 +1,10 @@
-name: Ads Service (Fixed) Test and Build
+name: Discounts Service (Fixed) Test and Build
 
 on:
   push:
     branches: [ master ]
     paths:
-      - ads-service-fixed/**
+      - discounts-service-fixed/**
 
 jobs:
 
@@ -29,7 +29,7 @@ jobs:
     - name: Build and Push Docker Image
       uses: docker/build-push-action@v2
       with:
-        context: ./ads-service-fixed
+        context: ./discounts-service-fixed
         platforms: linux/amd64 # TODO: Support linux/arm64?
         push: true
-        tags: ddtraining/advertisements-fixed:latest
+        tags: ddtraining/discounts-fixed:latest

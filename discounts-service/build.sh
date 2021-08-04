@@ -11,4 +11,4 @@ set -euo pipefail
 export DOCKER_BUILDKIT=1
 
 # Build and tag image
-docker image build --progress=plain --tag ddtraining/storefront-fixed:latest .
+docker image build --progress=plain --tag ddtraining/discounts:latest .
