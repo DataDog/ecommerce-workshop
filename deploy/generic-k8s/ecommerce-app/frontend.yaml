@@ -68,7 +68,7 @@ spec:
           value: "pubf5a158cd2aab6ce0a10b919757b19d3d"
         - name: DD_APPLICATION_ID
           value: "fec827c1-d98f-474f-9d70-8b90489204a1"
-        image: ddtraining/ecommerce-frontend:latest
+        image: ddtraining/storefront:latest
         imagePullPolicy: Always
         name: ecommerce-spree-observability
         ports:

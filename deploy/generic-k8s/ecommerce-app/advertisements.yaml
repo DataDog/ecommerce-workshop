@@ -26,8 +26,8 @@ spec:
         tags.datadoghq.com/version: "1.0"
     spec:
       containers:
-      - image: ddtraining/advertisements-service:latest
-        name: advertisements 
+      - image: ddtraining/advertisements:latest
+        name: advertisements
         command: ["ddtrace-run"]
         args: ["flask", "run", "--port=5002", "--host=0.0.0.0"]
         env:
@@ -46,6 +46,8 @@ spec:
                 name: db-password
           - name: POSTGRES_USER
             value: "user"
+          - name: POSTGRES_HOST
+            value: "db"
           - name: DATADOG_SERVICE_NAME
             value: "advertisements-service"
           - name: DD_ENV

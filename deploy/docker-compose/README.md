@@ -12,14 +12,16 @@ They currently exist in three different versions:
 
 `docker-compose-fixed-instrumented`: View a fixed application and compare it to the previously broken deployment.
 
+`docker-compose-traffic-replay`: Simulate traffic to the application.
+
 The application itself runs on `docker-compose`. First, install Docker along with docker-compose. Then sign up with a trial [Datadog account](https://www.datadoghq.com/), and grab your API key from the Integrations->API tab.
 
-To run any of the scenarios:
+To run any of the scenarios, be in the root directory:
 
 ```bash
 $ git clone https://github.com/DataDog/ecommerce-workshop.git
-$ cd ecommerce-workshop/deploy/docker-compose
-$ POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=<YOUR_API_KEY> docker-compose -f <docker_compose_with_your_selected_scenario> up
+$ cd ecommerce-workshop
+$ POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=<YOUR_API_KEY> docker-compose -f deploy/docker-compose/<docker_compose_with_your_selected_scenario> up
 ```
 
 With this, the docker images will be pulled, and you'll be able to visit the app.

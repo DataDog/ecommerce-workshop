@@ -2,7 +2,7 @@ name: Storefront Service Test and Build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths:
       - store-frontend-broken-instrumented/**
 
