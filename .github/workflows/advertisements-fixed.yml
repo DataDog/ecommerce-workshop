@@ -2,7 +2,7 @@ name: Ads Service (Fixed) Test and Build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths:
       - ads-service-fixed/**
 

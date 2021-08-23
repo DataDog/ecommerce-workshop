@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: datadog-cluster-agent
-  namespace: datadog 
+  namespace: datadog
 spec:
   selector:
     matchLabels:
@@ -34,12 +34,12 @@ spec:
           #   valueFrom:
           #     secretKeyRef:
           #       name: datadog-app-key
-          #       key: app-key 
+          #       key: app-key
           - name: DD_COLLECT_KUBERNETES_EVENTS
             value: "true"
           - name: DD_LEADER_ELECTION
             value: "true"
-          - name: DD_CLUSTER_CHECKS_ENABLED 
+          - name: DD_CLUSTER_CHECKS_ENABLED
             value: "true"
           # Optional: uncomment to set up External Metrics Provider
           # - name: DD_EXTERNAL_METRICS_PROVIDER_ENABLED
@@ -50,11 +50,11 @@ spec:
           - name: DD_LOG_LEVEL
             value: 'info'
           - name: DD_CLUSTER_NAME
-            value: kubernetes-cluster 
+            value: kubernetes-cluster
           - name: DD_ENV
-            value: "ruby-shop"
+            value: "development"
           - name: DD_TAGS
-            value: "env:ruby-shop"
+            value: "env:development"
           - name: DD_CLUSTER_AGENT_AUTH_TOKEN
             valueFrom:
               secretKeyRef:

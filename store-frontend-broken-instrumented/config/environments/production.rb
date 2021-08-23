@@ -22,20 +22,6 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
-  config.lograge.custom_options = lambda do |event|
-    # Retrieves trace information for current thread
-    correlation = Datadog.tracer.active_correlation
-  
-    {
-      # Adds IDs as tags to log output
-      :dd => {
-        :trace_id => correlation.trace_id,
-        :span_id => correlation.span_id
-      },
-      :ddsource => ["ruby"],
-      :params => event.payload[:params].reject { |k| %w(controller action).include? k }
-    }
-  end
   # Compress CSS.
   # config.assets.css_compressor = :sass
 

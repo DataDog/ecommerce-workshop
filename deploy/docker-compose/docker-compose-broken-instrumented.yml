@@ -1,14 +1,14 @@
 version: '3'
 services:
   agent:
-    image: "datadog/agent:7.21.1"
+    image: "datadog/agent:7.29.0"
     environment:
       - DD_API_KEY
       - DD_APM_ENABLED=true
       - DD_LOGS_ENABLED=true
       - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
       - DD_PROCESS_AGENT_ENABLED=true
-      - DD_TAGS='env:ruby-shop'
+      - DD_TAGS='env:development'
     ports:
       - "8126:8126"
     volumes:
@@ -19,22 +19,21 @@ services:
       com.datadoghq.ad.logs: '[{"source": "agent", "service": "agent"}]'
   discounts:
     environment:
-      - FLASK_APP=discounts.py
       - FLASK_DEBUG=1
       - POSTGRES_PASSWORD
       - POSTGRES_USER
+      - POSTGRES_HOST=db
       - DD_SERVICE=discounts-service
       - DD_AGENT_HOST=agent
       - DD_LOGS_INJECTION=true
       - DD_TRACE_ANALYTICS_ENABLED=true
       - DD_PROFILING_ENABLED=true
       - DD_VERSION=1.0
-    image: "ddtraining/discounts-service:latest"
-    command: ddtrace-run flask run --port=5001 --host=0.0.0.0
+    image: "ddtraining/discounts:latest"
     ports:
       - "5001:5001"
     volumes:
-      - "../discounts-service:/app"
+      - "../../discounts-service:/app"
     depends_on:
       - agent
       - db
@@ -51,10 +50,12 @@ services:
       - DB_PASSWORD
       - DD_CLIENT_TOKEN
       - DD_APPLICATION_ID
-    image: "ddtraining/ecommerce-frontend-broken:latest"
+    image: "ddtraining/storefront:latest"
     command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"
+    volumes:
+      - "../../store-frontend-broken-instrumented:/app"
     depends_on:
       - agent
       - db
@@ -64,22 +65,21 @@ services:
       com.datadoghq.ad.logs: '[{"source": "ruby", "service": "store-frontend"}]'
   advertisements:
     environment:
-      - FLASK_APP=ads.py
       - FLASK_DEBUG=1
       - POSTGRES_PASSWORD
       - POSTGRES_USER
+      - POSTGRES_HOST=db
       - DD_SERVICE=advertisements-service
       - DD_AGENT_HOST=agent
       - DD_LOGS_INJECTION=true
       - DD_TRACE_ANALYTICS_ENABLED=true
       - DD_PROFILING_ENABLED=true
       - DD_VERSION=1.0
-    image: "ddtraining/advertisements-service:latest"
-    command: ddtrace-run flask run --port=5002 --host=0.0.0.0
+    image: "ddtraining/advertisements:latest"
     ports:
       - "5002:5002"
     volumes:
-      - "../ads-service:/app"
+      - "../../ads-service:/app"
     depends_on:
       - agent
       - db
@@ -91,5 +91,6 @@ services:
     environment:
       - POSTGRES_PASSWORD
       - POSTGRES_USER
+      - DD_ENV=development
     labels:
       com.datadoghq.ad.logs: '[{"source": "postgresql", "service": "postgres"}]'

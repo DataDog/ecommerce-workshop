@@ -1,0 +1,1 @@
+This service will introduce 500 errors when the app attempts to hit the `/ads` endpoint.

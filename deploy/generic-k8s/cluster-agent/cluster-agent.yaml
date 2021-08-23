@@ -52,9 +52,9 @@ spec:
           - name: DD_CLUSTER_NAME
             value: kubernetes-cluster 
           - name: DD_ENV
-            value: "ruby-shop"
+            value: "development"
           - name: DD_TAGS
-            value: "env:ruby-shop"
+            value: "env:development"
           - name: DD_CLUSTER_AGENT_AUTH_TOKEN
             valueFrom:
               secretKeyRef:

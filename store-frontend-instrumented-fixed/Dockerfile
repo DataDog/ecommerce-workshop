@@ -15,17 +15,19 @@ RUN apt-get update && \
     apt-get install -y nodejs yarn && \
     rm -rf /var/lib/apt/lists/*
 
-COPY . /spree
-WORKDIR /spree
+COPY . /app
+WORKDIR /app
 
 # COPY ./config/database.yml /spree/sandbox/config/database.yml
 #COPY ./store-frontend /spree/store-frontend
-RUN chgrp -R 0 /spree && \
-    chmod -R g=u /spree
+RUN chgrp -R 0 /app && \
+    chmod -R g=u /app
 
 # Copy in our frontend and run bundle
-RUN cd store-frontend && \
-      bundle install && \
-      yarn install
+RUN bundle install && \
+    yarn install
+
+# Force STDOUT logging
+ENV RAILS_LOG_TO_STDOUT=true
 
 CMD ["sh", "docker-entrypoint.sh"]

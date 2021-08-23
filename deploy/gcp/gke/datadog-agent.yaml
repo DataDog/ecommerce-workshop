@@ -48,15 +48,15 @@ spec:
         - name: DD_APM_ENABLED
           value: "true"
         - name: DD_CLUSTER_NAME
-          value: kubernetes-cluster 
+          value: kubernetes-cluster
         - name: DD_KUBELET_TLS_VERIFY
           value: "false"
         - name: DD_LOGS_ENABLED
           value: "true"
         - name: DD_TAGS
-          value: "env:ruby-shop"
+          value: "env:development"
         - name: DD_ENV
-          value: "ruby-shop"
+          value: "development"
         - name: DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL
           value: "true"
         - name: DD_CRI_SOCKET_PATH
