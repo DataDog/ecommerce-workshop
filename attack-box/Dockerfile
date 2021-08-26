@@ -14,10 +14,15 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get install --yes libssl-dev libssh-dev libidn11-dev libpcre3-dev \
                  libgtk2.0-dev libmariadb-dev libpq-dev libsvn-dev \
                  firebird-dev libmemcached-dev libgpg-error-dev \
-                 libgcrypt20-dev \
+                 libgcrypt20-dev  openssh-client iputils-ping \
                  build-essential libpq-dev p7zip unzip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+# Create user and the ssh dir
+RUN useradd -m user
+RUN mkdir -p /home/user/.ssh
+COPY keys/storedog-leaked-key /home/user/.ssh/id_rsa
 
 # Bring in app
 WORKDIR /app
@@ -25,5 +30,12 @@ RUN 7zr e ./gobuster-linux-amd64.7z && chmod +x gobuster
 RUN unzip v9.2.zip && cd thc-hydra-9.2/ && ./configure && make && make install
 COPY . .
 
-# Install dependencies via pip and avoid caching build artifacts
-#RUN pip install --no-cache-dir -r requirements.txt
+# Update permissions so ssh keys can be accessed outside sudo user
+RUN chown -R user:user /home/user/.ssh
+RUN chmod +x attack.sh
+RUN chown -R user ./keys
+
+USER user
+
+# Run script that attacks another container in the cluster
+CMD [ "./attack.sh"]
