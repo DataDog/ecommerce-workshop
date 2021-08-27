@@ -33,7 +33,8 @@ services:
     build:
       context: ../../discounts-service
     ports:
-      - "2201:22"
+      - "22"
+      - "5001:5001"
     volumes:
       - "../../discounts-service:/app"
     depends_on:
@@ -100,8 +101,6 @@ services:
   attackbox:
     build:
       context: ../../attack-box
-    ports:
-      - "2202:22"
     volumes:
       - ../../attack-box/attack.sh:/attack.sh
     environment:
