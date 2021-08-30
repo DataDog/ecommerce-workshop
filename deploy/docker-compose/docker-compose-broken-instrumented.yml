@@ -1,14 +1,14 @@
 version: '3'
 services:
   agent:
-    image: "datadog/agent:7.26.0"
+    image: "datadog/agent:7.29.0"
     environment:
       - DD_API_KEY
       - DD_APM_ENABLED=true
       - DD_LOGS_ENABLED=true
       - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
       - DD_PROCESS_AGENT_ENABLED=true
-      - DD_TAGS='env:ruby-shop'
+      - DD_TAGS='env:development'
     ports:
       - "8126:8126"
     volumes:
@@ -19,7 +19,6 @@ services:
       com.datadoghq.ad.logs: '[{"source": "agent", "service": "agent"}]'
   discounts:
     environment:
-      - FLASK_APP=discounts.py
       - FLASK_DEBUG=1
       - POSTGRES_PASSWORD
       - POSTGRES_USER
@@ -31,7 +30,6 @@ services:
       - DD_PROFILING_ENABLED=true
       - DD_VERSION=1.0
     image: "ddtraining/discounts:latest"
-    command: ddtrace-run flask run --port=5001 --host=0.0.0.0
     ports:
       - "5001:5001"
     volumes:
@@ -67,7 +65,6 @@ services:
       com.datadoghq.ad.logs: '[{"source": "ruby", "service": "store-frontend"}]'
   advertisements:
     environment:
-      - FLASK_APP=ads.py
       - FLASK_DEBUG=1
       - POSTGRES_PASSWORD
       - POSTGRES_USER
@@ -79,7 +76,6 @@ services:
       - DD_PROFILING_ENABLED=true
       - DD_VERSION=1.0
     image: "ddtraining/advertisements:latest"
-    command: ddtrace-run flask run --port=5002 --host=0.0.0.0
     ports:
       - "5002:5002"
     volumes:
@@ -95,5 +91,6 @@ services:
     environment:
       - POSTGRES_PASSWORD
       - POSTGRES_USER
+      - DD_ENV=development
     labels:
       com.datadoghq.ad.logs: '[{"source": "postgresql", "service": "postgres"}]'

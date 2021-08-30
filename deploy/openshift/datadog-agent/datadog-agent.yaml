@@ -59,9 +59,9 @@ spec:
         - name: DD_LOGS_ENABLED
           value: "false"
         - name: DD_TAGS
-          value: "env:ruby-shop"
+          value: "env:development"
         - name: DD_ENV
-          value: "ruby-shop"
+          value: "development"
         - name: DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL
           value: "false"
         - name: DD_CRI_SOCKET_PATH

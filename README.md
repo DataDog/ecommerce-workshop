@@ -15,12 +15,13 @@ This repository is used to build the Docker images to run the application in the
 
 * `ads-service`- The advertisement microservice with a couple of injected sleeps.
 * `ads-service-fixed`- The advertisement microservice with the sleeps removed.
+* `ads-service-errors`- The advertisement microservice that will return 500 errors on the `/ads` endpoint
 * `discounts-service`- The discounts microservice with an [N+1 query](#finding-an-n1-query) and a couple of sleeps.
 * `discounts-service-fixed`- The discounts microservice with the N+1 query fixed and the sleeps removed.
 * `store-frontend-broken-no-instrumentation`- The Spree application in a broken state and with no instrumentation. This is the initial scenario.
 * `store-frontend-broken-instrumented`- The Spree application in a broken state but instrumented with Datadog APM. This is the second scenario.
 * `store-frontend-instrumented-fixed`- The Spree application instrumented with Datadog APM and fixed. This is the final scenario.
-* `traffic-replay`- Looping replay of live traffic to send requests to `frontend`
+* `traffic-replay`- Looping replay of live traffic to send requests to `frontend` (see [Creating Example Traffic](#creating-example-traffic-to-your-site) for details)
 
 To build any of the images you should `cd` into each of the folders and run:
 
@@ -67,7 +68,18 @@ The scenario uses [GoReplay](https://github.com/buger/goreplay) to spin up traff
 This way, we don't have to manually click around the site to see all the places where our site is broken.
 
 ### Containerized replay
-Example traffic can be perpetually sent via the `traffic-replay` container.  By default this container will send traffic to the host `http://frontend:3000` but can be customized via environment variables.  This facilitates the use of load balancers or breaking apart the application.
+
+#### Building and running manually
+
+Example traffic can be perpetually sent via the `traffic-replay` container. To build and run it via Docker and connect it to your running cluster in docker-compose (by default the docker-compose_default network is created).
+
+```
+cd traffic-replay
+docker build -t traffic-replay .
+docker run -i -t --net=docker-compose_default --rm traffic-replay
+```
+
+By default this container will send traffic to the host `http://frontend:3000` but can be customized via environment variables on the command line or in the below example via Docker Compose.  This facilitates the use of load balancers or breaking apart the application.
 
 ```yaml
 environment:
@@ -75,14 +87,15 @@ environment:
   - FRONTEND_PORT=80
 ```
 
-### Local replay
-You can reuse the recorded traffic ad-hoc:
+#### Running via Docker Compose
 
-```bash
-$ ./gor --input-file-loop --input-file requests_0.gor --output-http "http://localhost:3000"
+We automatically build new traffic-replay containers on every release and you can spin up the traffic-replay container with your Docker Compose cluster by adding the config as an override via the example below.
+
+```
+POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres docker-compose -f deploy/docker-compose/docker-compose-broken-instrumented.yml -f deploy/docker-compose/docker-compose-traffic-replay.yml up
 ```
 
-This command opens up the traffic recording, and ships all the requests to `localhost`, at port 3000. After running this traffic generator for a while, we'll be able to see the services that make up our application within Datadog.
+Any of the other docker compose configurations can work with this traffic container just by adding another `-f  deploy/docker-compose/docker-compose-traffic-replay.yml` to the compose command.
 
 ## Viewing Our Broken Services in Datadog
 

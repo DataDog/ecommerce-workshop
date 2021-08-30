@@ -42,7 +42,7 @@
           },
           {
             "name": "DD_ENV",
-            "value": "ruby-shop"
+            "value": "development"
           },
           {
             "name": "DD_LOGS_INJECTION",

@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2021-07-08
+
+### Fixed
+
+- Datadog agent upgraded to 7.29 release [#150](https://github.com/DataDog/ecommerce-workshop/pull/150)
+- All python microservices are now on Python 3.9.6 [#150](https://github.com/DataDog/ecommerce-workshop/pull/150)
+- The ads errors image now builds with the fixed ads service image [#147](https://github.com/DataDog/ecommerce-workshop/pull/147)
+- Pinned the spree project even more to stabilize upgrades [#151](https://github.com/DataDog/ecommerce-workshop/pull/151)
+
+### Changed
+
+- **BREAKING CHANGE:** The default environment is now `development` instead of `ruby-shop` or in more than a few cases `none` [#150](https://github.com/DataDog/ecommerce-workshop/pull/150)
+- **BREAKING CHANGE:** The traffic replay system is now containerized so the gor binary is no longer there. There are lots of updated docs for running the traffic replay container. [#154](https://github.com/DataDog/ecommerce-workshop/pull/154)
+
 ## [1.1.0] - 2021-05-28
 
 ### Added
