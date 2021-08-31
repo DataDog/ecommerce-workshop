@@ -18,5 +18,9 @@ kube_config_server.yaml
 # HELM
 helm-values.yaml
 
-# Intentionally leaked keys for attacker scenario
+# Frontend version
+store-frontend/src/store-frontend-instrumented-fixed
+store-frontend/src/store-frontend-broken-instrumented
+
+# Attackbox
 keys/
