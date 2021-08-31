@@ -55,7 +55,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - "../../store-frontend-broken-instrumented:/app"
+      - "../../store-frontend/src/store-frontend-broken-instrumented:/app"
     depends_on:
       - agent
       - db
