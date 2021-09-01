@@ -8,7 +8,7 @@ FROM python:3.9.6-slim-buster
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
     apt-get upgrade --yes && \
-    apt-get install --yes build-essential libpq-dev openssh-server sudo && \
+    apt-get install --yes build-essential libpq-dev openssh-server sudo dumb-init rsyslog && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -36,4 +36,8 @@ ENV DD_ENV=development
 RUN pip install --no-cache-dir -r requirements.txt
 RUN chmod +x ./my-wrapper-script.sh
 
-CMD ./my-wrapper-script.sh
+# required to get logs out of the container
+# ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+
+# runs sshd and flask server
+CMD ["./my-wrapper-script.sh"]
