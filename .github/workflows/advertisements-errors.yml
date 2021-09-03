@@ -6,6 +6,8 @@ on:
     paths:
       - ads-service-errors/**
       - ads-service-fixed/**
+  workflow_dispatch:
+    branches: [ main ]
 
 jobs:
 
