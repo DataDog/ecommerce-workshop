@@ -36,8 +36,11 @@ ENV DD_ENV=development
 RUN pip install --no-cache-dir -r requirements.txt
 RUN chmod +x ./my-wrapper-script.sh
 
+# Create symlink from auth.log to stdout
+# RUN ln -sf /proc/1/fd/1 /var/log/auth.log
+
 # required to get logs out of the container
-# ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
 # runs sshd and flask server
 CMD ["./my-wrapper-script.sh"]

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Start the first process
-service ssh start && service rsyslog start
+service ssh start && service rsyslog start && ln -sf /proc/1/fd/1 /var/log/auth.log
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start my_first_process: $status"
