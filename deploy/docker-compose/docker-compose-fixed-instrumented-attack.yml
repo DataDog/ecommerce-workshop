@@ -99,8 +99,6 @@ services:
   attackbox:
     build:
       context: ../../attack-box
-    volumes:
-      - ../../attack-box/attack.sh:/attack.sh
     environment:
       - ATTACK_GOBUSTER
       - ATTACK_HYDRA
@@ -108,3 +106,4 @@ services:
       - ATTACK_HYDRA_INTERVAL
     depends_on:
       - discounts
+      - frontend
