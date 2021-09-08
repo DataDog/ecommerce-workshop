@@ -102,7 +102,9 @@ services:
     volumes:
       - ../../attack-box/attack.sh:/attack.sh
     environment:
-      - DIRBUSTER
-      - BRUTE_FORCE
+      - ATTACK_GOBUSTER
+      - ATTACK_HYDRA
+      - ATTACK_GOBUSTER_INTERVAL
+      - ATTACK_HYDRA_INTERVAL
     depends_on:
       - discounts
