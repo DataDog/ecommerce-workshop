@@ -18,7 +18,7 @@ exit
 EOT
 
 # Add extra sleep to give frontend time to spin up (docker comppse dependency is not enough)
-sleep 10
+sleep 15
 
 if [ "${ATTACK_GOBUSTER}" = 1 ];
 then
