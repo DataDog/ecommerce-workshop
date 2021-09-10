@@ -55,7 +55,7 @@ services:
       - DD_APPLICATION_ID
     image: "ddtraining/storefront-fixed:latest"
     volumes:
-      - "../../store-frontend/src/store-frontend-initial-state:/app"
+      - "../../store-frontend/src/store-frontend-instrumented-fixed:/app"
     command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"
