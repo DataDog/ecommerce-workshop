@@ -17,7 +17,7 @@ echo "test" | sudo -S dd if=/dev/zero of=tempfile bs=1000000 count=10
 exit
 EOT
 
-# Add extra sleep to give frontend time to spin up (docker comppse dependency is not enough)
+# Add extra sleep to give frontend time to spin up (docker compose dependency is not enough)
 sleep 15
 
 if [ "${ATTACK_GOBUSTER}" = 1 ];
