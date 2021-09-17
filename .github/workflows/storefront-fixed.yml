@@ -4,7 +4,9 @@ on:
   push:
     branches: [ main ]
     paths:
-      - store-frontend-instrumented-fixed/**
+      - store-frontend/**
+  workflow_dispatch:
+    branches: [ main ]
 
 jobs:
 
@@ -29,7 +31,8 @@ jobs:
     - name: Build and Push Docker Image
       uses: docker/build-push-action@v2
       with:
-        context: ./store-frontend-instrumented-fixed
+        context: ./store-frontend
+        file: ./store-frontend/storefront-versions/store-frontend-instrumented-fixed/Dockerfile
         platforms: linux/amd64 # TODO: Support linux/arm64?
         push: true
         tags: ddtraining/storefront-fixed:latest

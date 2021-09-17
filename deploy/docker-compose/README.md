@@ -19,9 +19,18 @@ The application itself runs on `docker-compose`. First, install Docker along wit
 To run any of the scenarios, be in the root directory:
 
 ```bash
-$ git clone https://github.com/DataDog/ecommerce-workshop.git
-$ cd ecommerce-workshop
-$ POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=<YOUR_API_KEY> docker-compose -f deploy/docker-compose/<docker_compose_with_your_selected_scenario> up
+git clone https://github.com/DataDog/ecommerce-workshop.git
+cd ecommerce-workshop
+cd store-frontend/src/
+cp -R store-frontend-initial-state store-frontend-broken-instrumented
+cd store-frontend-broken-instrumented
+patch -t -p1 < ../broken-instrumented.patch
+cd ..
+cp -R store-frontend-initial-state store-frontend-instrumented-fixed
+cd store-frontend-instrumented-fixed
+patch -t -p1 < ../instrumented-fixed.patch
+cd ../..
+POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=<YOUR_API_KEY> docker-compose -f deploy/docker-compose/<docker_compose_with_your_selected_scenario> up
 ```
 
 With this, the docker images will be pulled, and you'll be able to visit the app.

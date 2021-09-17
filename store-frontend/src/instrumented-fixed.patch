@@ -1,0 +1,186 @@
+diff -urN store-frontend-initial-state/Gemfile store-frontend-instrumented-fixed/Gemfile
+--- store-frontend-initial-state/Gemfile	2021-07-14 12:36:16.000000000 +0200
++++ store-frontend-instrumented-fixed/Gemfile	2021-07-14 10:01:21.000000000 +0200
+@@ -43,6 +43,7 @@
+ gem 'spree', github: 'spree/spree', ref: 'f8e7b4ed9856d1a2f4521f5b8ef7de158a30b398'
+ gem 'spree_auth_devise', github: 'spree/spree_auth_devise', ref: '7e9c4d102e0eb84446ec0f4cb3aeefa7f6dfa65d'
+ gem 'spree_gateway', github: 'spree/spree_gateway', branch: 'master'
++gem 'ddtrace', '>= 0.4.1'
+ gem 'httparty'
+ gem 'amazing_print'
+ gem 'rails_semantic_logger'
+diff -urN store-frontend-initial-state/Gemfile.lock store-frontend-instrumented-fixed/Gemfile.lock
+--- store-frontend-initial-state/Gemfile.lock	2021-07-14 12:36:16.000000000 +0200
++++ store-frontend-instrumented-fixed/Gemfile.lock	2021-07-14 10:01:21.000000000 +0200
+@@ -164,6 +164,9 @@
+     crass (1.0.6)
+     css_parser (1.9.0)
+       addressable
++    ddtrace (0.50.0)
++      ffi (~> 1.0)
++      msgpack
+     deface (1.8.1)
+       nokogiri (>= 1.6)
+       polyglot
+@@ -239,6 +242,7 @@
+       money (~> 6.12)
+     money (6.16.0)
+       i18n (>= 0.6.4, <= 2)
++    msgpack (1.4.2)
+     multi_xml (0.6.0)
+     nio4r (2.5.7)
+     nokogiri (1.11.7)
+@@ -383,6 +387,7 @@
+   awesome_print
+   bullet
+   byebug
++  ddtrace (>= 0.4.1)
+   httparty
+   jbuilder (~> 2.5)
+   listen (>= 3.0.5, < 3.2)
+diff -urN store-frontend-initial-state/app/views/layouts/application.html.erb store-frontend-instrumented-fixed/app/views/layouts/application.html.erb
+--- store-frontend-initial-state/app/views/layouts/application.html.erb	2021-07-14 12:36:16.000000000 +0200
++++ store-frontend-instrumented-fixed/app/views/layouts/application.html.erb	2021-07-14 10:01:21.000000000 +0200
+@@ -2,6 +2,31 @@
+ <html>
+   <head>
+     <title>Sandbox</title>
++    <script
++  src="https://www.datadoghq-browser-agent.com/datadog-rum-us.js"
++  type="text/javascript">
++</script>
++<script>
++if (window.DD_RUM) {
++  window.DD_RUM.init({
++    clientToken: '<%= ENV['DD_CLIENT_TOKEN'] %>',
++    applicationId: '<%= ENV['DD_APPLICATION_ID'] %>',
++    sampleRate: 100,
++    trackInteractions: true,
++    service: 'storedog-ui',
++    env: 'production',
++    version: 1.1
++  });
++
++  if (!window._DATADOG_SYNTHETICS_BROWSER) {
++    window.DD_RUM.setRumGlobalContext({'usr.handle': 'john@storedog.com'});
++  };
++
++  if (window.location.href.includes('utm')) {
++    window.DD_RUM.addRumGlobalContext({'fromUtm': true});
++  };
++}
++</script>
+     <%= csrf_meta_tags %>
+     <%= csp_meta_tag %>
+ 
+diff -urN store-frontend-initial-state/app/views/spree/home/index.html.erb store-frontend-instrumented-fixed/app/views/spree/home/index.html.erb
+--- store-frontend-initial-state/app/views/spree/home/index.html.erb	2021-07-14 12:36:16.000000000 +0200
++++ store-frontend-instrumented-fixed/app/views/spree/home/index.html.erb	2021-07-14 10:01:21.000000000 +0200
+@@ -9,6 +9,7 @@
+ <% end %>
+ 
+ <div data-hook="homepage_products">
++<br /><center><a href="<%= @ads['url'] %>"><img src="data:image/png;base64,<%= @ads['base64'] %>" /></a></center>
+   <% cache(cache_key_for_products) do %>
+     <%= render partial: 'spree/shared/products', locals: { products: @products } %>
+   <% end %>
+diff -urN store-frontend-initial-state/app/views/spree/layouts/spree_application.html.erb store-frontend-instrumented-fixed/app/views/spree/layouts/spree_application.html.erb
+--- store-frontend-initial-state/app/views/spree/layouts/spree_application.html.erb	2021-07-14 12:36:16.000000000 +0200
++++ store-frontend-instrumented-fixed/app/views/spree/layouts/spree_application.html.erb	2021-07-14 10:01:21.000000000 +0200
+@@ -5,14 +5,38 @@
+ <!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
+ <!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
+   <head data-hook="inside_head">
++  <script
++  src="https://www.datadoghq-browser-agent.com/datadog-rum-us.js"
++  type="text/javascript">
++</script>
++<script>
++if (window.DD_RUM) {
++  window.DD_RUM.init({
++    clientToken: '<%= ENV['DD_CLIENT_TOKEN'] %>',
++    applicationId: '<%= ENV['DD_APPLICATION_ID'] %>',
++    sampleRate: 100,
++    trackInteractions: true,
++    service: 'storedog-ui',
++    env: 'production',
++    version: 1.1
++  });
++
++  if (!window._DATADOG_SYNTHETICS_BROWSER) {
++    window.DD_RUM.setRumGlobalContext({'usr.handle': 'john@storedog.com'});
++  };
++
++  if (window.location.href.includes('utm')) {
++    window.DD_RUM.addRumGlobalContext({'fromUtm': true});
++  };
++}
++</script>
+     <%= render partial: 'spree/shared/head' %>
+   </head>
+   <body class="<%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body">
+     <%= render partial: 'spree/shared/header' %>
+ 
+     <div class="container">
+-     <br /><center><a href="<%= @ads['url'] %>"><img src="data:image/png;base64,<%= @ads['base64'] %>" /></a></center>
+-      <div class="row" data-hook>
++     <div class="row" data-hook>
+         <%= spree_breadcrumbs(@taxon) %>
+ 
+         <%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>
+diff -urN store-frontend-initial-state/app/views/spree/products/show.html.erb store-frontend-instrumented-fixed/app/views/spree/products/show.html.erb
+--- store-frontend-initial-state/app/views/spree/products/show.html.erb	2021-07-14 12:36:16.000000000 +0200
++++ store-frontend-instrumented-fixed/app/views/spree/products/show.html.erb	2021-07-14 10:01:21.000000000 +0200
+@@ -45,3 +45,4 @@
+     </div>
+   </div>
+ <% end %>
++<br /><center><a href="<%= @ads['url'] %>"><img src="data:image/png;base64,<%= @ads['base64'] %>" /></a></center>
+diff -urN store-frontend-initial-state/config/environments/development.rb store-frontend-instrumented-fixed/config/environments/development.rb
+--- store-frontend-initial-state/config/environments/development.rb	2021-07-14 12:36:16.000000000 +0200
++++ store-frontend-instrumented-fixed/config/environments/development.rb	2021-07-14 10:01:21.000000000 +0200
+@@ -107,6 +107,21 @@
+     config.log_to = %w[stdout file]
+   end
+ 
++  # Add the log tags the way Datadog expects
++  config.log_tags = {
++    request_id: :request_id,
++    dd: -> _ {
++      correlation = Datadog.tracer.active_correlation
++      {
++        trace_id: correlation.trace_id.to_s,
++        span_id:  correlation.span_id.to_s,
++        env:      correlation.env.to_s,
++        service:  correlation.service.to_s,
++        version:  correlation.version.to_s
++      }
++    }
++  }
++
+   # Show the logging configuration on STDOUT
+   config.show_log_configuration = true
+ end
+diff -urN store-frontend-initial-state/config/environments/production.rb store-frontend-instrumented-fixed/config/environments/production.rb
+--- store-frontend-initial-state/config/environments/production.rb	2021-07-14 12:36:16.000000000 +0200
++++ store-frontend-instrumented-fixed/config/environments/production.rb	2021-07-14 10:01:21.000000000 +0200
+@@ -53,6 +53,9 @@
+   # when problems arise.
+   config.log_level = :warn
+ 
++  # Prepend all log lines with the following tags.
++  config.log_tags = [proc { Datadog.tracer.active_correlation.to_s }]
++
+   # Use a different cache store in production.
+   # config.cache_store = :mem_cache_store
+ 
+diff -urN store-frontend-initial-state/config/initializers/datadog.rb store-frontend-instrumented-fixed/config/initializers/datadog.rb
+--- store-frontend-initial-state/config/initializers/datadog.rb	1970-01-01 01:00:00.000000000 +0100
++++ store-frontend-instrumented-fixed/config/initializers/datadog.rb	2021-07-14 10:01:21.000000000 +0200
+@@ -0,0 +1,6 @@
++Datadog.configure do |c|
++  # This will activate auto-instrumentation for Rails
++  c.use :rails, {'analytics_enabled': true, 'service_name': 'store-frontend', 'cache_service': 'store-frontend-cache', 'database_service': 'store-frontend-sqlite'}
++  # Make sure requests are also instrumented
++  c.use :http, {'analytics_enabled': true, 'service_name': 'store-frontend'}
++end

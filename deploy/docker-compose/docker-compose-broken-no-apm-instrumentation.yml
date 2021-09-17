@@ -47,7 +47,7 @@ services:
       - discounts
       - advertisements
     volumes:
-      - "../../store-frontend-broken-instrumented:/app"
+      - "../../store-frontend/src/store-frontend-broken-instrumented:/app"
 # add frontend log labels
   advertisements:
     environment:

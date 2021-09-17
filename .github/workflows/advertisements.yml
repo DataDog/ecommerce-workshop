@@ -5,6 +5,8 @@ on:
     branches: [ main ]
     paths:
       - ads-service/**
+  workflow_dispatch:
+    branches: [ main ]
 
 jobs:
 
