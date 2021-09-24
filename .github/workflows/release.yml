@@ -54,3 +54,5 @@ jobs:
           docker pull ddtraining/storefront-fixed:latest
           docker tag ddtraining/storefront-fixed:latest ddtraining/storefront-fixed:${{ github.event.ref }}
           docker push ddtraining/storefront-fixed:${{ github.event.ref }}
+          docker pull ddtraining/attackbox:latest
+          docker tag ddtraining/attackbox:latest ddtraining/attackbox:${{ github.event.ref }}

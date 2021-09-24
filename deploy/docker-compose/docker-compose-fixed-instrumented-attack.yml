@@ -31,8 +31,7 @@ services:
       - DD_TRACE_ANALYTICS_ENABLED=true
       - DD_PROFILING_ENABLED=true
       - DD_VERSION=1.1
-    build:
-      context: ../../discounts-service
+    image: "ddtraining/discounts:latest"
     ports:
       - "5001:5001"
       - "22"
