@@ -36,23 +36,24 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Download, Tag, and Push Service Images
         run: |
+          TAG=${GITHUB_REF/refs\/tags\//}
           docker pull ddtraining/advertisements:latest
-          docker tag ddtraining/advertisements:latest ddtraining/advertisements:${{ github.event.ref }}
-          docker push ddtraining/advertisements:${{ github.event.ref }}
+          docker tag ddtraining/advertisements:latest ddtraining/advertisements:$TAG
+          docker push ddtraining/advertisements:$TAG
           docker pull ddtraining/advertisements-fixed:latest
-          docker tag ddtraining/advertisements-fixed:latest ddtraining/advertisements-fixed:${{ github.event.ref }}
-          docker push ddtraining/advertisements-fixed:${{ github.event.ref }}
+          docker tag ddtraining/advertisements-fixed:latest ddtraining/advertisements-fixed:$TAG
+          docker push ddtraining/advertisements-fixed:$TAG
           docker pull ddtraining/discounts:latest
-          docker tag ddtraining/discounts:latest ddtraining/discounts:${{ github.event.ref }}
-          docker push ddtraining/discounts:${{ github.event.ref }}
+          docker tag ddtraining/discounts:latest ddtraining/discounts:$TAG
+          docker push ddtraining/discounts:$TAG
           docker pull ddtraining/discounts-fixed:latest
-          docker tag ddtraining/discounts-fixed:latest ddtraining/discounts-fixed:${{ github.event.ref }}
-          docker push ddtraining/discounts-fixed:${{ github.event.ref }}
+          docker tag ddtraining/discounts-fixed:latest ddtraining/discounts-fixed:$TAG
+          docker push ddtraining/discounts-fixed:$TAG
           docker pull ddtraining/storefront:latest
-          docker tag ddtraining/storefront:latest ddtraining/storefront:${{ github.event.ref }}
-          docker push ddtraining/storefront:${{ github.event.ref }}
+          docker tag ddtraining/storefront:latest ddtraining/storefront:$TAG
+          docker push ddtraining/storefront:$TAG
           docker pull ddtraining/storefront-fixed:latest
-          docker tag ddtraining/storefront-fixed:latest ddtraining/storefront-fixed:${{ github.event.ref }}
-          docker push ddtraining/storefront-fixed:${{ github.event.ref }}
+          docker tag ddtraining/storefront-fixed:latest ddtraining/storefront-fixed:$TAG
+          docker push ddtraining/storefront-fixed:$TAG
           docker pull ddtraining/attackbox:latest
-          docker tag ddtraining/attackbox:latest ddtraining/attackbox:${{ github.event.ref }}
+          docker tag ddtraining/attackbox:latest ddtraining/attackbox:$TAG
