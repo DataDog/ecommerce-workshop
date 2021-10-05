@@ -38,7 +38,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Download, Tag, and Push Service Images
         run: |
-          TAG=${GITHUB_REF/refs\/tags\//}
+          TAG=2.1.0
           docker pull ddtraining/advertisements:latest
           docker tag ddtraining/advertisements:latest ddtraining/advertisements:$TAG
           docker push ddtraining/advertisements:$TAG
