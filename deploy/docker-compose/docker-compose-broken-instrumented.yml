@@ -29,7 +29,7 @@ services:
       - DD_TRACE_ANALYTICS_ENABLED=true
       - DD_PROFILING_ENABLED=true
       - DD_VERSION=1.0
-    image: "ddtraining/discounts:latest"
+    image: "ddtraining/discounts:2.1.0"
     ports:
       - "5001:5001"
     volumes:
@@ -50,7 +50,7 @@ services:
       - DB_PASSWORD
       - DD_CLIENT_TOKEN
       - DD_APPLICATION_ID
-    image: "ddtraining/storefront:latest"
+    image: "ddtraining/storefront:2.1.0"
     command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"
@@ -75,7 +75,7 @@ services:
       - DD_TRACE_ANALYTICS_ENABLED=true
       - DD_PROFILING_ENABLED=true
       - DD_VERSION=1.0
-    image: "ddtraining/advertisements:latest"
+    image: "ddtraining/advertisements:2.1.0"
     ports:
       - "5002:5002"
     volumes:
