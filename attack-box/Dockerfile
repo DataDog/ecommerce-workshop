@@ -37,5 +37,7 @@ RUN chown -R user ./keys
 
 # Switch back to new user so we can SSH properly
 USER user
+RUN chmod 400 /home/user/.ssh/id_rsa
+RUN chmod 400 ./keys/attacker-key
 
 CMD [ "./attack.sh"]

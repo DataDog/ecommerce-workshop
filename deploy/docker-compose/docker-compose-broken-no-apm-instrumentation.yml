@@ -22,7 +22,7 @@ services:
       - POSTGRES_HOST=db
       - DATADOG_SERVICE_NAME=discounts-service
 # add discounts env variables
-    image: "ddtraining/discounts:latest"
+    image: "ddtraining/discounts:2.1.0"
     command: flask run --port=5001 --host=0.0.0.0
     ports:
       - "5001:5001"
@@ -37,7 +37,7 @@ services:
       - DB_USERNAME
       - DB_PASSWORD
 # add frontend env variables
-    image: "ddtraining/storefront:latest"
+    image: "ddtraining/storefront:2.1.0"
     command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"
@@ -58,7 +58,7 @@ services:
       - POSTGRES_HOST=db
       - DATADOG_SERVICE_NAME=advertisements-service
 # add ads env variables
-    image: "ddtraining/advertisements:latest"
+    image: "ddtraining/advertisements:2.1.0"
     command: flask run --port=5002 --host=0.0.0.0
     ports:
       - "5002:5002"

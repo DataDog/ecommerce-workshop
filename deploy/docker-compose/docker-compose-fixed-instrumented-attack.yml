@@ -31,8 +31,7 @@ services:
       - DD_TRACE_ANALYTICS_ENABLED=true
       - DD_PROFILING_ENABLED=true
       - DD_VERSION=1.1
-    build:
-      context: ../../discounts-service
+    image: "ddtraining/discounts:2.1.0"
     ports:
       - "5001:5001"
       - "22"
@@ -53,7 +52,7 @@ services:
       - DD_VERSION=1.1
       - DD_CLIENT_TOKEN
       - DD_APPLICATION_ID
-    image: "ddtraining/storefront-fixed:latest"
+    image: "ddtraining/storefront-fixed:2.1.0"
     volumes:
       - "../../store-frontend/src/store-frontend-instrumented-fixed:/app"
     command: sh docker-entrypoint.sh
@@ -80,7 +79,7 @@ services:
       - DD_TRACE_ANALYTICS_ENABLED=true
       - DD_PROFILING_ENABLED=true
       - DD_VERSION=1.0
-    image: "ddtraining/advertisements-fixed:latest"
+    image: "ddtraining/advertisements-fixed:2.1.0"
     command: ddtrace-run flask run --port=5002 --host=0.0.0.0
     ports:
       - "5002:5002"
@@ -99,8 +98,7 @@ services:
     labels:
       com.datadoghq.ad.logs: '[{"source": "postgresql", "service": "postgres"}]'
   attackbox:
-    build:
-      context: ../../attack-box
+    image: "ddtraining/attackbox:2.1.0"
     environment:
       - ATTACK_GOBUSTER
       - ATTACK_HYDRA
