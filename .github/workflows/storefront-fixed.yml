@@ -2,7 +2,7 @@ name: Storefront (fixed) Service Test and Build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths:
       - store-frontend/**
 
@@ -56,5 +56,5 @@ jobs:
         push: true
         tags: |
           ddtraining/storefront-fixed:latest
-          public.ecr.aws/b1o7r7e0/ecommerce-workshop-test/storefront-fixed:latest
+          public.ecr.aws/b1o7r7e0/ddtraining/storefront-fixed:latest
 
