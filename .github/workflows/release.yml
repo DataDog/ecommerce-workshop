@@ -13,10 +13,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Release a Changelog
         uses: rasmus-saks/release-a-changelog-action@v1.0.1
         with:
           github-token: '${{ secrets.GH_TOKEN }}'
+
   publish_service_containers:
     name: Publish service containers
     runs-on: ubuntu-latest
@@ -25,36 +27,55 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
+
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v1
+
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Login to ECR
+        id: login-ecr
+        uses: docker/login-action@v1
+        with:
+           registry: public.ecr.aws
+           username: ${{ secrets.AWS_ACCESS_KEY_ID }}
+           password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
       - name: Download, Tag, and Push Service Images
         run: |
           TAG=${GITHUB_REF/refs\/tags\//}
-          docker pull ddtraining/advertisements:latest
-          docker tag ddtraining/advertisements:latest ddtraining/advertisements:$TAG
-          docker push ddtraining/advertisements:$TAG
-          docker pull ddtraining/advertisements-fixed:latest
-          docker tag ddtraining/advertisements-fixed:latest ddtraining/advertisements-fixed:$TAG
-          docker push ddtraining/advertisements-fixed:$TAG
-          docker pull ddtraining/discounts:latest
-          docker tag ddtraining/discounts:latest ddtraining/discounts:$TAG
-          docker push ddtraining/discounts:$TAG
-          docker pull ddtraining/discounts-fixed:latest
-          docker tag ddtraining/discounts-fixed:latest ddtraining/discounts-fixed:$TAG
-          docker push ddtraining/discounts-fixed:$TAG
-          docker pull ddtraining/storefront:latest
-          docker tag ddtraining/storefront:latest ddtraining/storefront:$TAG
-          docker push ddtraining/storefront:$TAG
-          docker pull ddtraining/storefront-fixed:latest
-          docker tag ddtraining/storefront-fixed:latest ddtraining/storefront-fixed:$TAG
-          docker push ddtraining/storefront-fixed:$TAG
-          docker pull ddtraining/attackbox:latest
-          docker tag ddtraining/attackbox:latest ddtraining/attackbox:$TAG
-          docker push ddtraining/attackbox:$TAG
+
+          IMAGES=(
+            dtraining/advertisements
+            ddtraining/advertisements-fixed
+            ddtraining/discounts
+            ddtraining/discounts-fixed
+            ddtraining/storefront
+            ddtraining/storefront-fixed
+            ddtraining/attackbox
+            public.ecr.aws/b1o7r7e0/ddtraining/advertisements
+            public.ecr.aws/b1o7r7e0/ddtraining/advertisements-fixed
+            public.ecr.aws/b1o7r7e0/ddtraining/discounts
+            public.ecr.aws/b1o7r7e0/ddtraining/discounts-fixed
+            public.ecr.aws/b1o7r7e0/ddtraining/storefront
+            public.ecr.aws/b1o7r7e0/ddtraining/storefront-fixed
+            public.ecr.aws/b1o7r7e0/ddtraining/attackbox
+          )
+
+          for i in "${IMAGES[@]}"
+          do
+            echo "$i"
+            docker pull "$i":latest
+            docker tag "$i":latest "$i":$TAG
+            docker push "$i":$TAG
+          done
+
+          echo "All done"
+
