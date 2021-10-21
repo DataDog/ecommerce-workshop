@@ -49,5 +49,5 @@ jobs:
         push: true
         tags: |
           ddtraining/advertisements:latest
-          public.ecr.aws/b1o7r7e0/ddtraining/ads-service:latest
+          public.ecr.aws/b1o7r7e0/ddtraining/advertisements:latest
 
