@@ -29,7 +29,7 @@ cd ..
 cp -R store-frontend-initial-state store-frontend-instrumented-fixed
 cd store-frontend-instrumented-fixed
 patch -t -p1 < ../instrumented-fixed.patch
-cd ../..
+cd ../../..
 POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=<YOUR_API_KEY> docker-compose -f deploy/docker-compose/<docker_compose_with_your_selected_scenario> up
 ```
 

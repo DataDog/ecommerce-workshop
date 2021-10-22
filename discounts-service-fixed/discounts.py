@@ -37,7 +37,7 @@ def status():
 
         except:
 
-            app.logger.error("An error occured while getting discounts.")
+            app.logger.error("An error occurred while getting discounts.")
             err = jsonify({'error': 'Internal Server Error'})
             err.status_code = 500
             return err
@@ -63,7 +63,7 @@ def status():
 
         except:
 
-            app.logger.error("An error occured while creating a new discount.")
+            app.logger.error("An error occurred while creating a new discount.")
             err = jsonify({'error': 'Internal Server Error'})
             err.status_code = 500
             return err

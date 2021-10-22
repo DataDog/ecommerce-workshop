@@ -2,4 +2,7 @@ version: '3'
 services:
   traffic-replay:
     image: "ddtraining/traffic-replay:latest"
+    environment:
+      - FRONTEND_HOST
+      - FRONTEND_PORT
 

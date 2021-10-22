@@ -57,7 +57,7 @@ Or uncomment the following lines in the `frontend.yaml` if in Kubernetes, adding
 #   value: <your_application_id>
 ```
 
-After the site comes up, you shold be able to navigate around, and then see your Real User Monitoring traffic show up.
+After the site comes up, you should be able to navigate around, and then see your Real User Monitoring traffic show up.
 
 ## Creating Example Traffic To Your Site
 

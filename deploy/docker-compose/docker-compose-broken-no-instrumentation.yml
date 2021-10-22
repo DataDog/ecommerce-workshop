@@ -7,7 +7,7 @@ services:
       - POSTGRES_PASSWORD
       - POSTGRES_USER
       - POSTGRES_HOST=db
-    image: "ddtraining/discounts:latest"
+    image: "ddtraining/discounts:2.1.0"
     command: flask run --port=5001 --host=0.0.0.0
     ports:
       - "5001:5001"
@@ -17,7 +17,7 @@ services:
     environment:
       - DB_USERNAME
       - DB_PASSWORD
-    image: "ddtraining/storefront:latest"
+    image: "ddtraining/storefront:2.1.0"
     command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"
@@ -32,7 +32,7 @@ services:
       - POSTGRES_PASSWORD
       - POSTGRES_USER
       - POSTGRES_HOST=db
-    image: "ddtraining/advertisements:latest"
+    image: "ddtraining/advertisements:2.1.0"
     command: flask run --port=5002 --host=0.0.0.0
     ports:
       - "5002:5002"
