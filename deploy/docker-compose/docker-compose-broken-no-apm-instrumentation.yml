@@ -3,7 +3,8 @@ services:
   agent:
     image: "datadog/agent:7.29.0"
     environment:
-      - DD_API_KEY
+      - DD_API_KEY=yourDatadogApiKey
+      - DD_SITE=datadoghq.com
       - DD_PROCESS_AGENT_ENABLED=true
       - DD_TAGS='env:development'
 # add agent env variables

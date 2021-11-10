@@ -35,6 +35,8 @@ spec:
           #     secretKeyRef:
           #       name: datadog-app-key
           #       key: app-key 
+          - name: DD_SITE
+            value: "datadoghq.com"
           - name: DD_COLLECT_KUBERNETES_EVENTS
             value: "true"
           - name: DD_LEADER_ELECTION
