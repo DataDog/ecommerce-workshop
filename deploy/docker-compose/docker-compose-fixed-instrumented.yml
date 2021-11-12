@@ -52,10 +52,14 @@ services:
       - DD_VERSION=1.1
       - DD_CLIENT_TOKEN
       - DD_APPLICATION_ID
+      - CHECKOUT_ERROR
+      - CHECKOUT_ERROR_PROBABILITY
     image: "ddtraining/storefront-fixed:2.1.0"
     command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"
+    volumes:
+      - "../../store-frontend/src/store-frontend-instrumented-fixed:/app"
     depends_on:
       - agent
       - db
