@@ -1,4 +1,5 @@
 # Docker compose file which uses build context plus mounted volumes for easier local development
+# Note: storefront-fixed cannot use the build context because the .patch files are located in a parent directory of the Dockerfile
 version: '3'
 services:
   agent:
@@ -56,8 +57,7 @@ services:
       - DD_VERSION=1.1
       - DD_CLIENT_TOKEN
       - DD_APPLICATION_ID
-    build:
-      context: ../../store-frontend/storefront-versions/store-frontend-instrumented-fixed
+    image: "ddtraining/storefront-fixed:latest"
     command: sh docker-entrypoint.sh
     volumes:
       - "../../store-frontend/src/store-frontend-instrumented-fixed:/app"
