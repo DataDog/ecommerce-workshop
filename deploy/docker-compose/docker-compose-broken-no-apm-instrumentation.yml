@@ -38,7 +38,6 @@ services:
       - DB_PASSWORD
 # add frontend env variables
     image: "ddtraining/storefront:2.1.0"
-    command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"
     depends_on:
@@ -46,8 +45,6 @@ services:
       - db
       - discounts
       - advertisements
-    volumes:
-      - "../../store-frontend/src/store-frontend-broken-instrumented:/app"
 # add frontend log labels
   advertisements:
     environment:

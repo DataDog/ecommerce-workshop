@@ -53,9 +53,6 @@ services:
       - DD_CLIENT_TOKEN
       - DD_APPLICATION_ID
     image: "ddtraining/storefront-fixed:2.1.0"
-    volumes:
-      - "../../store-frontend/src/store-frontend-instrumented-fixed:/app"
-    command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"
     depends_on:
