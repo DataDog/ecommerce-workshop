@@ -52,6 +52,7 @@ services:
       - DD_VERSION=1.1
       - DD_CLIENT_TOKEN
       - DD_APPLICATION_ID
+      - DD_ENV=development
     image: "ddtraining/storefront-fixed:2.1.0"
     volumes:
       - "../../store-frontend/src/store-frontend-instrumented-fixed:/app"
