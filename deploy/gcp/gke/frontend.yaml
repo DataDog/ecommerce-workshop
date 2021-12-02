@@ -43,12 +43,18 @@ spec:
           value: "true"
         - name: DD_ANALYTICS_ENABLED
           value: "true"
+        - name: DD_ENV
+          value: "development"
+        - name: DD_SITE
+          value: "datadoghq.com"
+        - name: DD_SERVICE
+          value: "store-frontend"
         # Enable RUM
         #- name: DD_CLIENT_TOKEN
         #  value: ""
         #- name: DD_APPLICATION_ID
         #  value: ""
-        image: ddtraining/storefront-fixed:2.1.1
+        image: ddtraining/storefront-fixed:2.1.2
         imagePullPolicy: Always
         name: ecommerce-spree-observability
         ports:
