@@ -48,7 +48,7 @@ spec:
         #  value: ""
         #- name: DD_APPLICATION_ID
         #  value: ""
-        image: ddtraining/ecommerce-frontend:latest
+        image: ddtraining/storefront-fixed:2.1.1
         imagePullPolicy: Always
         name: ecommerce-spree-observability
         ports:

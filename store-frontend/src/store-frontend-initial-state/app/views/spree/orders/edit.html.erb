@@ -37,7 +37,7 @@
                 <%= button_tag class: 'btn btn-primary', id: 'update-button' do %>
                   <%= Spree.t(:update) %>
                 <% end %>
-                <%= button_tag onclick: 'window.DD_RUM && window.DD_RUM.addUserAction("checkout", {cartAmount: 12})', class: 'btn btn-lg btn-success', id: 'checkout-link', name: 'checkout' do %>
+                <%= button_tag onclick: 'window.DD_RUM && window.DD_RUM.addAction("checkout", {cartAmount: 12})', class: 'btn btn-lg btn-success', id: 'checkout-link', name: 'checkout' do %>
                   <%= Spree.t(:checkout) %>
                 <% end %>
               </div>
