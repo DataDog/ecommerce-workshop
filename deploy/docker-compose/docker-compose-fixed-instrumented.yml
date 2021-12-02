@@ -54,7 +54,11 @@ services:
       - DD_APPLICATION_ID
       - DD_ENV=development
       - DD_SITE=datadoghq.com
-    image: "ddtraining/storefront-fixed:2.1.0"
+      - CHECKOUT_ERROR
+      - CHECKOUT_ERROR_PROBABILITY
+    image: "ddtraining/storefront-fixed:2.1.2"
+    volumes:
+      - "../../store-frontend/src/store-frontend-instrumented-fixed:/app"
     command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"

@@ -1,6 +1,6 @@
 diff -urN store-frontend-initial-state/Gemfile store-frontend-instrumented-fixed/Gemfile
 --- store-frontend-initial-state/Gemfile	2021-08-31 09:59:14.000000000 -0400
-+++ store-frontend-instrumented-fixed/Gemfile	2021-12-01 15:21:37.000000000 -0500
++++ store-frontend-instrumented-fixed/Gemfile	2021-12-02 16:29:08.000000000 -0500
 @@ -43,6 +43,7 @@
  gem 'spree', github: 'spree/spree', ref: 'f8e7b4ed9856d1a2f4521f5b8ef7de158a30b398'
  gem 'spree_auth_devise', github: 'spree/spree_auth_devise', ref: '7e9c4d102e0eb84446ec0f4cb3aeefa7f6dfa65d'
@@ -11,7 +11,7 @@ diff -urN store-frontend-initial-state/Gemfile store-frontend-instrumented-fixed
  gem 'rails_semantic_logger'
 diff -urN store-frontend-initial-state/Gemfile.lock store-frontend-instrumented-fixed/Gemfile.lock
 --- store-frontend-initial-state/Gemfile.lock	2021-08-31 09:59:14.000000000 -0400
-+++ store-frontend-instrumented-fixed/Gemfile.lock	2021-12-01 15:21:37.000000000 -0500
++++ store-frontend-instrumented-fixed/Gemfile.lock	2021-12-02 16:29:08.000000000 -0500
 @@ -164,6 +164,9 @@
      crass (1.0.6)
      css_parser (1.9.0)
@@ -38,9 +38,37 @@ diff -urN store-frontend-initial-state/Gemfile.lock store-frontend-instrumented-
    httparty
    jbuilder (~> 2.5)
    listen (>= 3.0.5, < 3.2)
+diff -urN store-frontend-initial-state/app/controllers/spree/checkout_controller.rb store-frontend-instrumented-fixed/app/controllers/spree/checkout_controller.rb
+--- store-frontend-initial-state/app/controllers/spree/checkout_controller.rb	2021-11-11 11:41:05.000000000 -0500
++++ store-frontend-instrumented-fixed/app/controllers/spree/checkout_controller.rb	2021-12-02 16:31:34.000000000 -0500
+@@ -144,6 +144,24 @@
+     end
+ 
+     def before_delivery
++      # check if we are intentionally failing checkout
++      if ENV['CHECKOUT_ERROR'] == 'true' 
++
++        # Get the active span
++        current_span = Datadog.tracer.active_span
++        # customer_id -> 12345
++        current_span&.set_tag('customer.id', '12345')
++                
++        # Generate rnd num
++        randNum = rand(1..10)
++        failThreshold = ENV['CHECKOUT_ERROR_PROBABILITY'].to_i
++                
++        # Check if rnd num falls in error range
++        if(randNum <= failThreshold)
++          raise StandardError.new "Intentional checkout failure"
++        end
++      end
++
+       return if params[:order].present?
+ 
+       packages = @order.shipments.map(&:to_package)
 diff -urN store-frontend-initial-state/app/views/layouts/application.html.erb store-frontend-instrumented-fixed/app/views/layouts/application.html.erb
 --- store-frontend-initial-state/app/views/layouts/application.html.erb	2021-09-10 16:21:30.000000000 -0400
-+++ store-frontend-instrumented-fixed/app/views/layouts/application.html.erb	2021-12-01 16:10:25.000000000 -0500
++++ store-frontend-instrumented-fixed/app/views/layouts/application.html.erb	2021-12-02 16:29:08.000000000 -0500
 @@ -2,6 +2,30 @@
  <html>
    <head>
@@ -74,7 +102,7 @@ diff -urN store-frontend-initial-state/app/views/layouts/application.html.erb st
  
 diff -urN store-frontend-initial-state/app/views/spree/home/index.html.erb store-frontend-instrumented-fixed/app/views/spree/home/index.html.erb
 --- store-frontend-initial-state/app/views/spree/home/index.html.erb	2021-08-31 09:59:14.000000000 -0400
-+++ store-frontend-instrumented-fixed/app/views/spree/home/index.html.erb	2021-12-01 15:21:37.000000000 -0500
++++ store-frontend-instrumented-fixed/app/views/spree/home/index.html.erb	2021-12-02 16:29:08.000000000 -0500
 @@ -9,6 +9,7 @@
  <% end %>
  
@@ -85,7 +113,7 @@ diff -urN store-frontend-initial-state/app/views/spree/home/index.html.erb store
    <% end %>
 diff -urN store-frontend-initial-state/app/views/spree/layouts/spree_application.html.erb store-frontend-instrumented-fixed/app/views/spree/layouts/spree_application.html.erb
 --- store-frontend-initial-state/app/views/spree/layouts/spree_application.html.erb	2021-08-31 09:59:14.000000000 -0400
-+++ store-frontend-instrumented-fixed/app/views/spree/layouts/spree_application.html.erb	2021-12-01 16:10:30.000000000 -0500
++++ store-frontend-instrumented-fixed/app/views/spree/layouts/spree_application.html.erb	2021-12-02 16:29:08.000000000 -0500
 @@ -5,14 +5,37 @@
  <!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
  <!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
@@ -128,7 +156,7 @@ diff -urN store-frontend-initial-state/app/views/spree/layouts/spree_application
          <%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>
 diff -urN store-frontend-initial-state/app/views/spree/products/show.html.erb store-frontend-instrumented-fixed/app/views/spree/products/show.html.erb
 --- store-frontend-initial-state/app/views/spree/products/show.html.erb	2021-08-31 09:59:14.000000000 -0400
-+++ store-frontend-instrumented-fixed/app/views/spree/products/show.html.erb	2021-12-01 15:21:37.000000000 -0500
++++ store-frontend-instrumented-fixed/app/views/spree/products/show.html.erb	2021-12-02 16:29:08.000000000 -0500
 @@ -45,3 +45,4 @@
      </div>
    </div>
@@ -136,7 +164,7 @@ diff -urN store-frontend-initial-state/app/views/spree/products/show.html.erb st
 +<br /><center><a href="<%= @ads['url'] %>"><img src="data:image/png;base64,<%= @ads['base64'] %>" /></a></center>
 diff -urN store-frontend-initial-state/config/environments/development.rb store-frontend-instrumented-fixed/config/environments/development.rb
 --- store-frontend-initial-state/config/environments/development.rb	2021-09-10 17:19:31.000000000 -0400
-+++ store-frontend-instrumented-fixed/config/environments/development.rb	2021-12-01 15:21:37.000000000 -0500
++++ store-frontend-instrumented-fixed/config/environments/development.rb	2021-12-02 16:29:08.000000000 -0500
 @@ -107,6 +107,21 @@
      config.log_to = %w[stdout file]
    end
@@ -161,7 +189,7 @@ diff -urN store-frontend-initial-state/config/environments/development.rb store-
  end
 diff -urN store-frontend-initial-state/config/environments/production.rb store-frontend-instrumented-fixed/config/environments/production.rb
 --- store-frontend-initial-state/config/environments/production.rb	2021-08-31 09:59:14.000000000 -0400
-+++ store-frontend-instrumented-fixed/config/environments/production.rb	2021-12-01 15:21:37.000000000 -0500
++++ store-frontend-instrumented-fixed/config/environments/production.rb	2021-12-02 16:29:08.000000000 -0500
 @@ -53,6 +53,9 @@
    # when problems arise.
    config.log_level = :warn
@@ -174,7 +202,7 @@ diff -urN store-frontend-initial-state/config/environments/production.rb store-f
  
 diff -urN store-frontend-initial-state/config/initializers/datadog.rb store-frontend-instrumented-fixed/config/initializers/datadog.rb
 --- store-frontend-initial-state/config/initializers/datadog.rb	1969-12-31 19:00:00.000000000 -0500
-+++ store-frontend-instrumented-fixed/config/initializers/datadog.rb	2021-12-01 15:21:37.000000000 -0500
++++ store-frontend-instrumented-fixed/config/initializers/datadog.rb	2021-12-02 16:29:08.000000000 -0500
 @@ -0,0 +1,6 @@
 +Datadog.configure do |c|
 +  # This will activate auto-instrumentation for Rails
@@ -182,4 +210,3 @@ diff -urN store-frontend-initial-state/config/initializers/datadog.rb store-fron
 +  # Make sure requests are also instrumented
 +  c.use :http, {'analytics_enabled': true, 'service_name': 'store-frontend'}
 +end
-Binary files store-frontend-initial-state/db/development.sqlite3 and store-frontend-instrumented-fixed/db/development.sqlite3 differ
