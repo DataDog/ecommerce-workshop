@@ -59,6 +59,8 @@ services:
       - DD_APPLICATION_ID
       - DD_ENV=development
       - DD_SITE=datadoghq.com
+      - CHECKOUT_ERROR
+      - CHECKOUT_ERROR_PROBABILITY
     image: "ddtraining/storefront-fixed:latest"
     command: sh docker-entrypoint.sh
     volumes:
