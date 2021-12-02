@@ -43,6 +43,12 @@ spec:
           value: "true"
         - name: DD_ANALYTICS_ENABLED
           value: "true"
+        - name: DD_ENV
+          value: "development"
+        - name: DD_SITE
+          value: "datadoghq.com"
+        - name: DD_SERVICE
+          value: "store-frontend"
         # Enable RUM
         #- name: DD_CLIENT_TOKEN
         #  value: ""
