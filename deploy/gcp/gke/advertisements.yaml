@@ -20,7 +20,7 @@ spec:
         app: ecommerce
     spec:
       containers:
-      - image: ddtraining/advertisements-service:latest
+      - image: ddtraining/advertisements:2.1.2
         name: advertisements 
         command: ["ddtrace-run"]
         args: ["flask", "run", "--port=5002", "--host=0.0.0.0"]

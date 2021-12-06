@@ -1,3 +1,5 @@
+# Docker compose file which uses build context plus mounted volumes for easier local development
+# Note: storefront-fixed cannot use the build context because the .patch files are located in a parent directory of the Dockerfile
 version: '3'
 services:
   agent:
@@ -31,10 +33,13 @@ services:
       - DD_TRACE_ANALYTICS_ENABLED=true
       - DD_PROFILING_ENABLED=true
       - DD_VERSION=1.1
-    image: "ddtraining/discounts:2.1.0"
+    build:
+      context: ../../discounts-service-fixed
+    volumes:
+      - "../../discounts-service-fixed:/app"
+    command: ddtrace-run flask run --port=5001 --host=0.0.0.0
     ports:
       - "5001:5001"
-      - "22"
     depends_on:
       - agent
       - db
@@ -54,7 +59,10 @@ services:
       - DD_APPLICATION_ID
       - DD_ENV=development
       - DD_SITE=datadoghq.com
-    image: "ddtraining/storefront-fixed:2.1.0"
+    image: "ddtraining/storefront-fixed:latest"
+    command: sh docker-entrypoint.sh
+    volumes:
+      - "../../store-frontend/src/store-frontend-instrumented-fixed:/app"
     ports:
       - "3000:3000"
     depends_on:
@@ -78,7 +86,10 @@ services:
       - DD_TRACE_ANALYTICS_ENABLED=true
       - DD_PROFILING_ENABLED=true
       - DD_VERSION=1.0
-    image: "ddtraining/advertisements-fixed:2.1.0"
+    build:
+      context: ../../ads-service-fixed
+    volumes:
+      - "../../ads-service-fixed:/app"
     command: ddtrace-run flask run --port=5002 --host=0.0.0.0
     ports:
       - "5002:5002"
@@ -97,7 +108,8 @@ services:
     labels:
       com.datadoghq.ad.logs: '[{"source": "postgresql", "service": "postgres"}]'
   attackbox:
-    image: "ddtraining/attackbox:2.1.0"
+    build:
+      context: ../../attack-box
     environment:
       - ATTACK_GOBUSTER
       - ATTACK_HYDRA
