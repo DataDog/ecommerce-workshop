@@ -12,7 +12,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
                  libgtk2.0-dev libmariadb-dev libpq-dev libsvn-dev \
                  firebird-dev libmemcached-dev libgpg-error-dev \
                  libgcrypt20-dev  openssh-client iputils-ping wordlists \
-                 build-essential libpq-dev p7zip unzip && \
+                 build-essential libpq-dev p7zip unzip jq && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
