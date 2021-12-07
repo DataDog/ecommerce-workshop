@@ -34,12 +34,12 @@ services:
       - DD_PROFILING_ENABLED=true
       - DD_VERSION=1.1
     build:
-      context: ../../discounts-service-fixed
+      context: ../../discounts-service
     volumes:
-      - "../../discounts-service-fixed:/app"
-    command: ddtrace-run flask run --port=5001 --host=0.0.0.0
+      - "../../discounts-service:/app"
     ports:
       - "5001:5001"
+      - "22"
     depends_on:
       - agent
       - db
@@ -60,7 +60,6 @@ services:
       - DD_ENV=development
       - DD_SITE=datadoghq.com
     image: "ddtraining/storefront-fixed:latest"
-    command: sh docker-entrypoint.sh
     volumes:
       - "../../store-frontend/src/store-frontend-instrumented-fixed:/app"
     ports:
@@ -90,7 +89,6 @@ services:
       context: ../../ads-service-fixed
     volumes:
       - "../../ads-service-fixed:/app"
-    command: ddtrace-run flask run --port=5002 --host=0.0.0.0
     ports:
       - "5002:5002"
     depends_on:
