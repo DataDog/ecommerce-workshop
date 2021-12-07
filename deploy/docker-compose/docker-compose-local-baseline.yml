@@ -110,6 +110,8 @@ services:
   attackbox:
     build:
       context: ../../attack-box
+    logging:
+      driver: none # this only works when using docker-compose (vs docker compose)
     environment:
       - ATTACK_GOBUSTER
       - ATTACK_HYDRA
