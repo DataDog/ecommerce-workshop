@@ -115,6 +115,16 @@ services:
       - ATTACK_HYDRA
       - ATTACK_GOBUSTER_INTERVAL
       - ATTACK_HYDRA_INTERVAL
+      - ATTACK_SSH
+      - ATTACK_SSH_INTERVAL
     depends_on:
       - discounts
+      - frontend
+  nginx:
+    restart: always
+    build:
+      context: ../../nginx
+    ports:
+      - "80:80"
+    depends_on:
       - frontend

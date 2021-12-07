@@ -108,16 +108,3 @@ services:
     depends_on:
       - discounts
       - frontend
-  nginx:
-    build:
-      context:
-    environment:
-      - ATTACK_GOBUSTER
-      - ATTACK_HYDRA
-      - ATTACK_GOBUSTER_INTERVAL
-      - ATTACK_HYDRA_INTERVAL
-      - ATTACK_SSH
-      - ATTACK_SSH_INTERVAL
-    depends_on:
-      - discounts
-      - frontend
