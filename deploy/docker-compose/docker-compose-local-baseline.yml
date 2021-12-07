@@ -128,3 +128,5 @@ services:
       - "80:80"
     depends_on:
       - frontend
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "nginx", "service": "nginx"}]'

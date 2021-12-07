@@ -42,10 +42,8 @@ if [ "${ATTACK_GOBUSTER}" = 1 ];
 then
   if [[ -z "${ATTACK_GOBUSTER_INTERVAL}" ]]
     then
-      # run single invocation
       ./gobuster dir -u http://frontend:3000 -w /usr/share/wordlists/rockyou.txt
     else
-      # run in a loop
       while true
       do
           ./gobuster dir -u http://frontend:3000 -w /usr/share/wordlists/rockyou.txt
@@ -68,4 +66,5 @@ then
   fi
 fi
 
-sleep 3500
+# keep container alive
+sleep infinity
