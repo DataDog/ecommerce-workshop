@@ -59,6 +59,7 @@ services:
       - DD_APPLICATION_ID
       - DD_ENV=development
       - DD_SITE=datadoghq.com
+      - RAILS_HIDE_STACKTRACE=true
     image: "ddtraining/storefront-fixed:latest"
     volumes:
       - "../../store-frontend/src/store-frontend-instrumented-fixed:/app"
