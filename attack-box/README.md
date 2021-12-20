@@ -1,8 +1,8 @@
 # Attack Box
 
-This is an attack container for simulating an adversary attempting to hack our online store.
+This is a container that simulates an adversary attempting to hack the online store.
 
-The attack script has 3 stages:
+The script has 3 stages:
 1) Malicious SSH configuration
 2) Gobuster
 3) Hydra
@@ -17,12 +17,12 @@ The attack box is configurable via environment variables in the `docker compose`
 - **ATTACK_GOBUSTER_INTERVAL**: Number of seconds between GOBUSTER invocations (if ommited, GOBUSTER will run once)
 - **ATTACK_HYDRA_INTERVAL**: Number of seconds between HYDRA invocations (if ommited, HYDRA will run once)
 
-Here's an example of what a `docker compose` command would look like if we wanted to run Gobuster every 500 seconds and Hydra every 900 seconds:
+Here's an example of what a `docker-compose` command would look like if we wanted to run Gobuster every 500 seconds and Hydra every 900 seconds:
 
-```POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=[API KEY] ATTACK_GOBUSTER=1 ATTACK_GOBUSTER_INTERVAL=500 ATTACK_HYDRA=1 ATTACK_HYDRA_INTERVAL=900 docker compose -f deploy/docker-compose/docker-compose-fixed-instrumented-attack.yml up```
+```POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=[API KEY] ATTACK_GOBUSTER=1 ATTACK_GOBUSTER_INTERVAL=500 ATTACK_HYDRA=1 ATTACK_HYDRA_INTERVAL=900 docker-compose -f deploy/docker-compose/docker-compose-fixed-instrumented-attack.yml up```
 
 ## Local dev
-Run the following commands locally (assuming you have `docker compose` already installed)
-1. Clean local docker environment of all volumes / containers / images: `docker system prune -a --volumes` (Optional)
+Run the following commands locally
+1. (Optional) Clean local docker environment of all volumes / containers / images: `docker system prune -a --volumes`
 2. [Recreate the frontend code](https://github.com/DataDog/ecommerce-workshop/blob/main/development.md#recreating-the-code)
-3. Start the app: `POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=[API KEY] ATTACK_GOBUSTER=1 ATTACK_GOBUSTER_INTERVAL=500 ATTACK_HYDRA=1 ATTACK_HYDRA_INTERVAL=900 docker compose -f deploy/docker-compose/docker-compose-fixed-instrumented-attack.yml up`
+3. Start the app: `POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=[API KEY] ATTACK_GOBUSTER=1 ATTACK_GOBUSTER_INTERVAL=500 ATTACK_HYDRA=1 ATTACK_HYDRA_INTERVAL=900 docker-compose -f deploy/docker-compose/docker-compose-fixed-instrumented-attack.yml up`
