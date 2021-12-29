@@ -56,8 +56,6 @@ services:
     command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"
-    volumes:
-      - "../../store-frontend/src/store-frontend-broken-instrumented:/app"
     depends_on:
       - agent
       - db
