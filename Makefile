@@ -1,12 +1,13 @@
 ROOT_DIR	  			:= $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 COMMIT_HASH				:= $(shell git rev-parse --short HEAD)
 DOCKER_CONTAINERS 		:= ads-service ads-service-fixed ads-service-errors \
-discounts-service discounts-service-fixed attack-box
+discounts-service discounts-service-fixed attack-box nginx
 STOREFRONT_CONTAINERS 	:= \
 store-frontend-broken-no-instrumentation \
 store-frontend-broken-instrumented \
 store-frontend-instrumented-fixed
 RUN_ATTACKS=1
+VERSION=2.1.0
 
 # Note that this Makefile is a work in progress and may duplicate some code in github actions
 
@@ -19,7 +20,7 @@ build-storefront:
 	for container in $(STOREFRONT_CONTAINERS); do \
 		echo "Building storefront-container $$container against local source." \
 		&& cd store-frontend/ && \
-		docker build . -f storefront-versions/$$container/Dockerfile && \
+		docker build . -f storefront-versions/$$container/Dockerfile -t ddtraining/$$container:latest && \
 		cd $(ROOT_DIR); \
 	done
 
@@ -29,10 +30,26 @@ build: build-storefront
 	for container in $(DOCKER_CONTAINERS); do \
 		echo "Building $$container against local source." \
 		&& cd $$container && \
-		docker build . && \
+		docker build . -t ddtraining/$$container:latest && \
 		cd $(ROOT_DIR); \
 	done
 	@echo 'All containers have been built locally including the storefront.'
+
+tag-storefront:
+	@echo 'Tagging local storefront containers with version: $(VERSION)'
+	for container in $(STOREFRONT_CONTAINERS); do \
+		echo "Tagging $$container with $(VERSION)." && \
+		docker tag ddtraining/$$container:latest ddtraining/$$container:$(VERSION) ;\
+	done
+
+.PHONY: tag-local-containers
+tag-local-containers: tag-storefront
+	@echo 'Tagging local containers with version: $(VERSION)'
+	for container in $(DOCKER_CONTAINERS); do \
+		echo "Tagging $$container with $(VERSION)." && \
+		docker tag ddtraining/$$container:latest ddtraining/$$container:$(VERSION) ;\
+	done
+	@echo 'Tagging complete all storefront and other containers with: $(VERSION)'
 
 
 .PHONY: clean

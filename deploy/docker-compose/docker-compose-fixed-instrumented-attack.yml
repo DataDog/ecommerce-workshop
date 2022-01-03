@@ -65,6 +65,30 @@ services:
     labels:
       com.datadoghq.ad.logs: '[{"source": "ruby", "service": "store-frontend"}]'
       my.custom.label.team: "frontend"
+  nginx:
+    environment:
+      - DD_AGENT_HOST=agent
+      - DD_LOGS_INJECTION=true
+      - DD_TRACE_ANALYTICS_ENABLED=true
+      - DD_SERVICE=store-frontend
+      - DB_USERNAME
+      - DB_PASSWORD
+      - DD_VERSION=1.1
+      - DD_CLIENT_TOKEN
+      - DD_APPLICATION_ID
+      - DD_ENV=development
+      - DD_SITE=datadoghq.com
+    image: "ddtraining/nginx:2.1.0"
+    ports:
+      - "80:80"
+    depends_on:
+      - agent
+      - db
+      - discounts
+      - advertisements
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "nginx", "service": "store-frontend"}]'
+      my.custom.label.team: "frontend"
   advertisements:
     environment:
       - FLASK_APP=ads.py
