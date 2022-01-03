@@ -42,11 +42,11 @@ if [ "${ATTACK_GOBUSTER}" = 1 ];
 then
   if [[ -z "${ATTACK_GOBUSTER_INTERVAL}" ]]
     then
-      ./gobuster dir -u http://frontend:3000 -w /usr/share/wordlists/rockyou.txt
+      ./gobuster dir -u ${ATTACK_URL} -w /usr/share/wordlists/rockyou.txt
     else
       while true
       do
-          ./gobuster dir -u http://frontend:3000 -w /usr/share/wordlists/rockyou.txt
+          ./gobuster dir -u ${ATTACK_URL} -w /usr/share/wordlists/rockyou.txt
           sleep $ATTACK_GOBUSTER_INTERVAL
       done &
   fi

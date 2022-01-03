@@ -1,7 +1,7 @@
 ROOT_DIR	  			:= $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 COMMIT_HASH				:= $(shell git rev-parse --short HEAD)
 DOCKER_CONTAINERS 		:= ads-service ads-service-fixed ads-service-errors \
-discounts-service discounts-service-fixed attack-box nginx
+discounts-service discounts-service-fixed attackbox nginx
 STOREFRONT_CONTAINERS 	:= \
 store-frontend-broken-no-instrumentation \
 store-frontend-broken-instrumented \
@@ -97,7 +97,8 @@ local-attack-scenario-start:
 	ATTACK_HYDRA_INTERVAL=900 \
 	ATTACK_SSH=$(RUN_ATTACKS) \
 	ATTACK_SSH_INTERVAL=90 \
-	docker-compose -f deploy/docker-compose/docker-compose-fixed-instrumented-attack.yml up -d
+	ATTACK_URL=http://nginx \
+	docker-compose -f deploy/docker-compose/docker-compose-fixed-instrumented-attack.yml up --force-recreate -d
 	@echo 'The local attack scenario has been started.  To live tail the logs run the target for local-attack-scenario-logs.'
 
 
