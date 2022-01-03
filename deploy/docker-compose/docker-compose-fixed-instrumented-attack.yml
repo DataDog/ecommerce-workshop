@@ -82,10 +82,7 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - agent
-      - db
-      - discounts
-      - advertisements
+      - frontend
     labels:
       com.datadoghq.ad.logs: '[{"source": "nginx", "service": "store-frontend"}]'
       my.custom.label.team: "frontend"
@@ -129,6 +126,9 @@ services:
       - ATTACK_HYDRA_INTERVAL
       - ATTACK_SSH
       - ATTACK_SSH_INTERVAL
+      - ATTACK_HOST
+      - ATTACK_PORT
     depends_on:
       - discounts
       - frontend
+      - nginx

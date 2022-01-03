@@ -6,8 +6,8 @@ STOREFRONT_CONTAINERS 	:= \
 store-frontend-broken-no-instrumentation \
 store-frontend-broken-instrumented \
 store-frontend-instrumented-fixed
-RUN_ATTACKS=1
-VERSION=2.1.0
+RUN_ATTACKS				:= 1
+VERSION 				:= 2.1.0
 
 # Note that this Makefile is a work in progress and may duplicate some code in github actions
 
@@ -87,17 +87,19 @@ create-frontend-diffs: create-frontend-fixed-diff create-broken-instrumented-dif
 
 
 .PHONY: local-attack-scenario-start
-.SILENT:
+#.SILENT:
 local-attack-scenario-start:
-	POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres \
+	POSTGRES_USER=postgres \
+	POSTGRES_PASSWORD=postgres \
+	ATTACK_HOST=nginx \
+	ATTACK_PORT=80 \
 	DD_API_KEY=${DD_API_KEY} \
 	ATTACK_GOBUSTER=$(RUN_ATTACKS) \
-	ATTACK_GOBUSTER_INTERVAL=500 \
+	ATTACK_GOBUSTER_INTERVAL=180 \
 	ATTACK_HYDRA=$(RUN_ATTACKS) \
-	ATTACK_HYDRA_INTERVAL=900 \
+	ATTACK_HYDRA_INTERVAL=120 \
 	ATTACK_SSH=$(RUN_ATTACKS) \
 	ATTACK_SSH_INTERVAL=90 \
-	ATTACK_URL=http://nginx \
 	docker-compose -f deploy/docker-compose/docker-compose-fixed-instrumented-attack.yml up --force-recreate -d
 	@echo 'The local attack scenario has been started.  To live tail the logs run the target for local-attack-scenario-logs.'
 
@@ -110,3 +112,8 @@ local-attack-scenario-logs:
 .PHONY: local-attack-scenario-stop
 local-attack-scenario-stop:
 	docker-compose -f deploy/docker-compose/docker-compose-fixed-instrumented-attack.yml stop
+
+
+.PHONY: local-attack-scenario-restart
+local-attack-scenario-restart:
+	docker-compose -f deploy/docker-compose/docker-compose-fixed-instrumented-attack.yml restart
