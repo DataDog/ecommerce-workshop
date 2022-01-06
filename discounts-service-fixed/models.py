@@ -1,9 +1,12 @@
 from flask_sqlalchemy import SQLAlchemy
 import datetime
+from os import environ
 
 db = SQLAlchemy()
+schema = environ['POSTGRES_SCHEMA']
 
 class Influencer(db.Model):
+    __table_args__ = {'schema': schema}
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128))
     discount_types = db.relationship("DiscountType", backref="influencer", lazy=True)
@@ -19,9 +22,11 @@ class Influencer(db.Model):
         }
 
 class DiscountType(db.Model):
+    __table_args__ = {'schema': schema}
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128))
-    influencer_id = db.Column(db.Integer, db.ForeignKey('influencer.id'), nullable=True)
+    #influencer_id = db.Column(db.Integer, db.ForeignKey('influencer.id'), nullable=True)
+    influencer_id = db.Column(db.Integer, db.ForeignKey(schema + '.influencer.id'), nullable=True)
     discount_query = db.Column(db.String(128))
     discounts = db.relationship('Discount', backref='discount_type', lazy=True)
 
@@ -39,11 +44,13 @@ class DiscountType(db.Model):
     
 
 class Discount(db.Model):
+    __table_args__ = {'schema': schema}
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128))
     code = db.Column(db.String(64))
     value = db.Column(db.Integer)
-    discount_type_id = db.Column(db.Integer, db.ForeignKey('discount_type.id'), nullable=False)
+    #discount_type_id = db.Column(db.Integer, db.ForeignKey('discount_type.id'), nullable=False)
+    discount_type_id = db.Column(db.Integer, db.ForeignKey(schema + '.discount_type.id'), nullable=False)
 
     def __init__(self, name, code, value, discount_type):
         self.name = name

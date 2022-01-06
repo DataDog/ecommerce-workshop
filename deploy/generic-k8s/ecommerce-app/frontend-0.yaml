@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ecommerce
+    service: frontend
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ecommerce
+      service: frontend
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: ecommerce
+        service: frontend
+    spec:
+      containers:
+      - args:
+        - docker-entrypoint.sh
+        command:
+        - sh
+        env:
+        - name: DB_USERNAME
+          value: user
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: pw
+              name: db-password
+        image: econocombrasil/store-frontend:v1.0
+        imagePullPolicy: Always
+        name: ecommerce-spree-observability
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ecommerce
+    service: frontend
+  name: frontend
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: ecommerce
+    service: frontend
+  type: LoadBalancer

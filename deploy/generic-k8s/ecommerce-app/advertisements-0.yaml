@@ -6,7 +6,7 @@ metadata:
     service: advertisements
     tags.datadoghq.com/env: development
     tags.datadoghq.com/service: advertisements
-    tags.datadoghq.com/version: "v3.0"
+    tags.datadoghq.com/version: "v1.0"
   name: advertisements
 spec:
   replicas: 1
@@ -28,7 +28,7 @@ spec:
         service: advertisements
         tags.datadoghq.com/env: development
         tags.datadoghq.com/service: advertisements
-        tags.datadoghq.com/version: "v3.0"
+        tags.datadoghq.com/version: "v1.0"
     spec:
       containers:
       - args:
@@ -43,21 +43,31 @@ spec:
           value: ads.py
         - name: FLASK_DEBUG
           value: "1"
+        - name: POSTGRES_DATABASE
+          valueFrom:
+            secretKeyRef:
+              key: name
+              name: storedog-advertisements-db
+        - name: POSTGRES_SCHEMA
+          valueFrom:
+            secretKeyRef:
+              key: schema
+              name: storedog-advertisements-db
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
               key: pw
-              name: storedog-db
+              name: storedog-advertisements-db
         - name: POSTGRES_USER
           valueFrom:
             secretKeyRef:
               key: usr
-              name: storedog-db
+              name: storedog-advertisements-db
         - name: POSTGRES_HOST
           valueFrom:
             secretKeyRef:
               key: host
-              name: storedog-db
+              name: storedog-advertisements-db
         - name: DD_ENV
           valueFrom:
             fieldRef:
@@ -82,7 +92,7 @@ spec:
           value: "true"
         - name: DD_SERVICE_MAPPING
           value: "postgres:advertisements-postgres"
-        image: econocombrasil/advertisements:v3.0
+        image: econocombrasil/advertisements-service:v1.0
         imagePullPolicy: Always
         name: advertisements
         ports:

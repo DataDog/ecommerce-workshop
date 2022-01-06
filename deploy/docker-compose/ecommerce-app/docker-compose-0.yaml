@@ -1,0 +1,128 @@
+version: '3'
+services:
+  agent:
+    image: "datadog/agent:7.32.4"
+    container_name: agent
+    environment:
+      - DD_API_KEY=${DD_API_KEY}
+      - DD_HOSTNAME=${HOSTNAME}
+      - DD_LOG_LEVEL=WARN
+      - DD_APM_ENABLED=true
+      - DD_APM_NON_LOCAL_TRAFFIC=true
+      - DD_LOGS_ENABLED=true
+      - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=false
+      - DD_LOGS_CONFIG_DOCKER_CONTAINER_USE_FILE=true
+      - DD_PROCESS_AGENT_ENABLED=true
+      - DD_SYSTEM_PROBE_ENABLED=true
+      - DD_DOCKER_LABELS_AS_TAGS={"my.custom.label.team":"team"}
+      - DD_TAGS='agent_type:docker provider:econocom'
+    ports:
+      - "8126:8126"
+      - "8125:8125"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /proc/:/host/proc/:ro
+      - /opt/datadog-agent/run:/opt/datadog-agent/run:rw
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
+      - /sys/kernel/debug:/sys/kernel/debug
+    cap_add:
+      - SYS_ADMIN
+      - SYS_RESOURCE
+      - SYS_PTRACE
+      - NET_ADMIN
+      - NET_BROADCAST
+      - NET_RAW
+      - IPC_LOCK
+      - CHOWN
+    security_opt:
+      - apparmor:unconfined
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "agent", "service": "agent"}]'
+  db:
+    image: postgres:13-alpine
+    container_name: db
+    restart: always
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    labels:
+      my.custom.label.team: "database"
+  discounts:
+    image: "econocombrasil/discounts-service:v1.0"
+    container_name: discounts
+    environment:
+      - FLASK_APP=discounts.py
+      - FLASK_DEBUG=1
+      - POSTGRES_DATABASE=${DB_USERNAME}
+      - POSTGRES_SCHEMA=public
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_HOST=db
+      - DD_SERVICE=discounts
+      - DD_AGENT_HOST=agent
+      - DD_LOGS_INJECTION=true
+      - DD_TRACE_ANALYTICS_ENABLED=true
+      - DD_PROFILING_ENABLED=true
+      - DD_ENV=training
+      - DD_SERVICE=discounts
+      - DD_VERSION=v1.0
+      - DD_SERVICE_MAPPING="postgres:discounts-postgres"
+    command: ddtrace-run flask run --port=5001 --host=0.0.0.0
+    ports:
+      - "5001:5001"
+    depends_on:
+      - agent
+      - db
+    labels:
+      com.datadoghq.tags.env: "training"
+      com.datadoghq.tags.service: "discounts"
+      com.datadoghq.tags.version: "v1.0"
+      com.datadoghq.ad.logs: '[{"source": "python", "service": "discounts"}]'
+      my.custom.label.team: "backend"
+  advertisements:
+    image: "econocombrasil/advertisements-service:v1.0"
+    command: ddtrace-run flask run --port=5002 --host=0.0.0.0
+    environment:
+      - FLASK_APP=ads.py
+      - FLASK_DEBUG=1
+      - POSTGRES_DATABASE=${DB_USERNAME}
+      - POSTGRES_SCHEMA=public
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_HOST=db
+      - DD_ENV=training
+      - DD_SERVICE=advertisements
+      - DD_VERSION=v1.0
+      - DD_AGENT_HOST=agent
+      - DD_LOGS_INJECTION=true
+      - DD_TRACE_ANALYTICS_ENABLED=true
+      - DD_PROFILING_ENABLED=true
+      - DD_SERVICE_MAPPING="postgres:advertisements-postgres"
+    ports:
+      - "5002:5002"
+    depends_on:
+      - agent
+      - db
+    labels:
+      com.datadoghq.tags.env: "training"
+      com.datadoghq.tags.service: "advertisements"
+      com.datadoghq.tags.version: "v1.0"
+      com.datadoghq.ad.logs: '[{"source": "python", "service": "advertisements"}]'
+      my.custom.label.team: "backend"
+  store-frontend:
+    image: "econocombrasil/store-frontend:v1.0"
+    container_name: store-frontend
+    environment:
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+    command: sh docker-entrypoint.sh
+    ports:
+      - "3000:80"
+    depends_on:
+      - agent
+      - db
+      - discounts
+      - advertisements
+    labels:
+      my.custom.label.team: "frontend"

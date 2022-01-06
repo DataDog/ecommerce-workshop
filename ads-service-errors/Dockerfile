@@ -1,4 +1,5 @@
-FROM ddtraining/advertisements-fixed:1.0.0
+#FROM ddtraining/advertisements-fixed:1.0.0
+FROM econocombrasil/advertisements-service:fixed
 
 WORKDIR /app
 COPY advertisements.patch .

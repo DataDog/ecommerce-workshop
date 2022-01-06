@@ -6,7 +6,7 @@ metadata:
     service: frontend
     tags.datadoghq.com/env: development
     tags.datadoghq.com/service: store-frontend
-    tags.datadoghq.com/version: "v3.0"
+    tags.datadoghq.com/version: "v2.0"
   name: frontend
 spec:
   replicas: 1
@@ -28,7 +28,7 @@ spec:
         service: frontend
         tags.datadoghq.com/env: development
         tags.datadoghq.com/service: store-frontend
-        tags.datadoghq.com/version: "v3.0"
+        tags.datadoghq.com/version: "v2.0"
     spec:
       containers:
       - args:
@@ -79,7 +79,7 @@ spec:
             secretKeyRef:
               key: application_id
               name: frontend-rum
-        image: econocombrasil/store-frontend:v3.0
+        image: econocombrasil/store-frontend:v2.0
         imagePullPolicy: Always
         name: ecommerce-spree-observability
         ports:
