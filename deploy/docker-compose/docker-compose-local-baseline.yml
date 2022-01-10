@@ -108,7 +108,7 @@ services:
       com.datadoghq.ad.logs: '[{"source": "postgresql", "service": "postgres"}]'
   attackbox:
     build:
-      context: ../../attack-box
+      context: ../../attackbox
     logging:
       driver: none # this only works when using docker-compose (vs docker compose)
     environment:

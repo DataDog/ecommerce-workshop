@@ -16,10 +16,12 @@ The attack box is configurable via environment variables in the `docker compose`
 - **ATTACK_SSH_INTERVAL**: Number of seconds between SSH attack invocations (if ommited, SSH attack will run once)
 - **ATTACK_GOBUSTER_INTERVAL**: Number of seconds between GOBUSTER invocations (if ommited, GOBUSTER will run once)
 - **ATTACK_HYDRA_INTERVAL**: Number of seconds between HYDRA invocations (if ommited, HYDRA will run once)
+- **ATTACK_PORT**: The web port you want to run the attacks against for hydra and dirbuster.
+- **ATTACK_HOST**: The web host that hydra and dirbuster will attack. ( Probably frontend or nginx )
 
 Here's an example of what a `docker-compose` command would look like if we wanted to run Gobuster every 500 seconds and Hydra every 900 seconds:
 
-```POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=[API KEY] ATTACK_GOBUSTER=1 ATTACK_GOBUSTER_INTERVAL=500 ATTACK_HYDRA=1 ATTACK_HYDRA_INTERVAL=900 docker-compose -f deploy/docker-compose/docker-compose-fixed-instrumented-attack.yml up```
+```POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=[API KEY] ATTACK_GOBUSTER=1 ATTACK_GOBUSTER_INTERVAL=500 ATTACK_HYDRA=1 ATTACK_HYDRA_INTERVAL=900 ATTACK_HOST=frontend ATTACK_PORT=3000 docker-compose -f deploy/docker-compose/docker-compose-fixed-instrumented-attack.yml up```
 
 ## Local dev
 Run the following commands locally
