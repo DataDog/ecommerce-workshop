@@ -34,12 +34,12 @@ services:
       - DD_PROFILING_ENABLED=true
       - DD_VERSION=1.1
     build:
-      context: ../../discounts-service-fixed
+      context: ../../discounts-service
     volumes:
-      - "../../discounts-service-fixed:/app"
-    command: ddtrace-run flask run --port=5001 --host=0.0.0.0
+      - "../../discounts-service:/app"
     ports:
       - "5001:5001"
+      - "22"
     depends_on:
       - agent
       - db
@@ -59,8 +59,8 @@ services:
       - DD_APPLICATION_ID
       - DD_ENV=development
       - DD_SITE=datadoghq.com
+      - RAILS_HIDE_STACKTRACE=true
     image: "ddtraining/storefront-fixed:latest"
-    command: sh docker-entrypoint.sh
     volumes:
       - "../../store-frontend/src/store-frontend-instrumented-fixed:/app"
     ports:
@@ -90,7 +90,6 @@ services:
       context: ../../ads-service-fixed
     volumes:
       - "../../ads-service-fixed:/app"
-    command: ddtrace-run flask run --port=5002 --host=0.0.0.0
     ports:
       - "5002:5002"
     depends_on:
@@ -109,12 +108,26 @@ services:
       com.datadoghq.ad.logs: '[{"source": "postgresql", "service": "postgres"}]'
   attackbox:
     build:
-      context: ../../attack-box
+      context: ../../attackbox
+    logging:
+      driver: none # this only works when using docker-compose (vs docker compose)
     environment:
       - ATTACK_GOBUSTER
       - ATTACK_HYDRA
       - ATTACK_GOBUSTER_INTERVAL
       - ATTACK_HYDRA_INTERVAL
+      - ATTACK_SSH
+      - ATTACK_SSH_INTERVAL
     depends_on:
       - discounts
       - frontend
+  nginx:
+    restart: always
+    build:
+      context: ../../nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "nginx", "service": "nginx"}]'

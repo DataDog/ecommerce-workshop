@@ -1,10 +1,10 @@
-name: Attackbox Test and Build
+name: Nginx Test and Build
 
 on:
   push:
     branches: [ main ]
     paths:
-      - attackbox/**
+      - nginx/**
   workflow_dispatch:
     branches: [ main ]
 
@@ -31,7 +31,7 @@ jobs:
     - name: Build and Push Docker Image
       uses: docker/build-push-action@v2
       with:
-        context: ./attackbox
+        context: ./nginx
         platforms: linux/amd64
         push: true
-        tags: ddtraining/attackbox:latest
+        tags: ddtraining/nginx:latest

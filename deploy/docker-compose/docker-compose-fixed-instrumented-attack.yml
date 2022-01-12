@@ -65,6 +65,15 @@ services:
     labels:
       com.datadoghq.ad.logs: '[{"source": "ruby", "service": "store-frontend"}]'
       my.custom.label.team: "frontend"
+  nginx:
+    image: "ddtraining/nginx:2.1.0"
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "nginx", "service": "store-frontend"}]'
+      my.custom.label.team: "frontend"
   advertisements:
     environment:
       - FLASK_APP=ads.py
@@ -103,6 +112,11 @@ services:
       - ATTACK_HYDRA
       - ATTACK_GOBUSTER_INTERVAL
       - ATTACK_HYDRA_INTERVAL
+      - ATTACK_SSH
+      - ATTACK_SSH_INTERVAL
+      - ATTACK_HOST
+      - ATTACK_PORT
     depends_on:
       - discounts
       - frontend
+      - nginx
