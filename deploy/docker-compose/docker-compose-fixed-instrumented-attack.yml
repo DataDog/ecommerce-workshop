@@ -54,7 +54,8 @@ services:
       - DD_APPLICATION_ID
       - DD_ENV=development
       - DD_SITE=datadoghq.com
-    image: "ddtraining/storefront-fixed:2.1.0"
+      - RAILS_HIDE_STACKTRACE=true
+    image: "ddtraining/storefront-fixed:2.1.3"
     ports:
       - "3000:3000"
     depends_on:
@@ -66,14 +67,14 @@ services:
       com.datadoghq.ad.logs: '[{"source": "ruby", "service": "store-frontend"}]'
       my.custom.label.team: "frontend"
   nginx:
-    image: "ddtraining/nginx:2.1.0"
+    image: "ddtraining/nginx:2.1.3"
     ports:
       - "80:80"
     depends_on:
       - frontend
     labels:
-      com.datadoghq.ad.logs: '[{"source": "nginx", "service": "store-frontend"}]'
-      my.custom.label.team: "frontend"
+      com.datadoghq.ad.logs: '[{"source": "nginx", "service": "nginx"}]'
+      my.custom.label.team: "nginx"
   advertisements:
     environment:
       - FLASK_APP=ads.py
@@ -106,7 +107,9 @@ services:
     labels:
       com.datadoghq.ad.logs: '[{"source": "postgresql", "service": "postgres"}]'
   attackbox:
-    image: "ddtraining/attackbox:2.1.0"
+    image: "ddtraining/attackbox:2.1.3"
+    logging:
+      driver: none # this only works when using docker-compose (vs docker compose)
     environment:
       - ATTACK_GOBUSTER
       - ATTACK_HYDRA
