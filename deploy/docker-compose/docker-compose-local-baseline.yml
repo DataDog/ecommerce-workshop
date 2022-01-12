@@ -118,6 +118,8 @@ services:
       - ATTACK_HYDRA_INTERVAL
       - ATTACK_SSH
       - ATTACK_SSH_INTERVAL
+      - ATTACK_HOST
+      - ATTACK_PORT
     depends_on:
       - discounts
       - frontend
