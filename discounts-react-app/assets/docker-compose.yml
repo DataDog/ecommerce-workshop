@@ -1,0 +1,162 @@
+version: '3'
+services:
+  agent:
+    image: 'datadog/agent:7.31.1'
+    environment:
+      - DD_API_KEY
+      - DD_APM_ENABLED=true
+      - DD_LOGS_ENABLED=true
+      - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
+      - DD_PROCESS_AGENT_ENABLED=true
+      - DD_DOCKER_LABELS_AS_TAGS={"my.custom.label.team":"team"}
+      - DD_TAGS='env:frontend-issues-2'
+    ports:
+      - '8126:8126'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "agent", "service": "agent"}]'
+  discounts:
+    environment:
+      - FLASK_APP=discounts.py
+      - FLASK_DEBUG=1
+      - POSTGRES_PASSWORD
+      - POSTGRES_USER
+      - POSTGRES_HOST=db
+      - DD_ENV=frontend-issues-2
+      - DD_SERVICE=discounts-service
+      - DD_VERSION=1.1
+      - DD_AGENT_HOST=agent
+      - DD_LOGS_INJECTION=true
+      - DD_TRACE_ANALYTICS_ENABLED=true
+      - DD_PROFILING_ENABLED=true
+    image: 'ddtraining/discounts:2.0.0'
+    command:
+      [
+        sh,
+        -c,
+        'pip install -r requirements.txt && ddtrace-run flask run --port=5001 --host=0.0.0.0',
+      ]
+    ports:
+      - '5001:5001'
+    volumes:
+      - '/ecommworkshop/discounts-service:/app'
+    depends_on:
+      - agent
+      - db
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "python", "service": "discounts-service"}]'
+      com.datadoghq.tags.env: 'frontend-issues-2'
+      com.datadoghq.tags.service: 'discounts-service'
+      com.datadoghq.tags.version: '1.1'
+      my.custom.label.team: 'discounts'
+  frontend:
+    environment:
+      - DD_AGENT_HOST=agent
+      - DD_LOGS_INJECTION=true
+      - DD_TRACE_ANALYTICS_ENABLED=true
+      - DD_ENV=frontend-issues-2
+      - DD_SERVICE=store-frontend
+      - DD_SITE=datadoghq.com
+      - DD_VERSION=1.1
+      - DB_USERNAME
+      - DB_PASSWORD
+      - DD_CLIENT_TOKEN
+      - DD_APPLICATION_ID
+      - DD_DISCOUNTS_URL
+      - DD_ADS_URL
+    image: 'ddtraining/storefront-fixed:2.0.0'
+    command: sh docker-entrypoint.sh
+    ports:
+      - '3000:3000'
+    volumes:
+      - '/ecommworkshop/store-frontend-broken-instrumented:/app'
+    depends_on:
+      - agent
+      - db
+      - discounts
+      - advertisements
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "ruby", "service": "store-frontend"}]'
+      com.datadoghq.tags.env: 'frontend-issues-2'
+      com.datadoghq.tags.service: 'store-frontend'
+      com.datadoghq.tags.version: '1.1'
+      my.custom.label.team: 'frontend'
+  advertisements:
+    environment:
+      - FLASK_APP=ads.py
+      - FLASK_DEBUG=1
+      - POSTGRES_PASSWORD
+      - POSTGRES_USER
+      - POSTGRES_HOST=db
+      - DD_ENV=frontend-issues-2
+      - DD_SERVICE=advertisements-service
+      - DD_VERSION=1.1
+      - DD_AGENT_HOST=agent
+      - DD_LOGS_INJECTION=true
+      - DD_TRACE_ANALYTICS_ENABLED=true
+      - DD_PROFILING_ENABLED=true
+    image: 'ddtraining/advertisements:2.0.0'
+    command:
+      [
+        sh,
+        -c,
+        'pip install -r requirements.txt && ddtrace-run flask run --port=5002 --host=0.0.0.0',
+      ]
+    ports:
+      - '5002:5002'
+    volumes:
+      - '/ecommworkshop/ads-service:/app'
+    depends_on:
+      - agent
+      - db
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "python", "service": "advertisements-service"}]'
+      com.datadoghq.tags.env: 'frontend-issues-2'
+      com.datadoghq.tags.service: 'advertisements-service'
+      com.datadoghq.tags.version: '1.1'
+      my.custom.label.team: 'advertisements'
+  db:
+    image: postgres:11-alpine
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD
+      - POSTGRES_USER
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "postgresql", "service": "postgres"}]'
+  puppeteer:
+    image: buildkite/puppeteer:10.0.0
+    volumes:
+      - /root/lab/puppeteer.js:/puppeteer.js
+      - /root/lab/puppeteer.sh:/puppeteer.sh
+    environment:
+      - STOREDOG_URL
+      - DISCOUNTS_FRONTEND_URL
+    depends_on:
+      - frontend
+      - discounts-frontend
+    command: bash puppeteer.sh
+  discounts-frontend:
+    image: nginx:1.19.7
+    stdin_open: true
+    ports:
+      - '3001:80'
+    volumes:
+      - /discounts-frontend/dist:/usr/share/nginx/html
+      - /root/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - agent
+      - db
+      - discounts
+      - advertisements
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "nginx", "service": "discounts-frontend"}]'
+      com.datadoghq.ad.check_names: '["nginx"]'
+      com.datadoghq.ad.init_configs: '[{}]'
+      com.datadoghq.ad.instances: '[{"nginx_status_url": "http://%%host%%:81/nginx_status/"}]'
+      com.datadoghq.tags.env: 'frontend-issues-2'
+      com.datadoghq.tags.service: 'discounts-frontend'
+      com.datadoghq.tags.version: '1.1'
+      my.custom.label.team: 'discounts'
