@@ -58,3 +58,6 @@ jobs:
           docker pull ddtraining/attackbox:latest
           docker tag ddtraining/attackbox:latest ddtraining/attackbox:$TAG
           docker push ddtraining/attackbox:$TAG
+          docker pull ddtraining/nginx:latest
+          docker tag ddtraining/nginx:latest ddtraining/nginx:$TAG
+          docker push ddtraining/nginx:$TAG
