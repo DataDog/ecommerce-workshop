@@ -125,13 +125,13 @@ local-baseline-start:
 	ATTACK_HOST=nginx \
 	ATTACK_PORT=80 \
 	DD_API_KEY=${DD_API_KEY} \
-	ATTACK_GOBUSTER=$(RUN_ATTACKS) \
+	ATTACK_GOBUSTER=$(ENABLE_ATTACKS) \
 	ATTACK_GOBUSTER_INTERVAL=180 \
-	ATTACK_HYDRA=$(RUN_ATTACKS) \
+	ATTACK_HYDRA=$(ENABLE_ATTACKS) \
 	ATTACK_HYDRA_INTERVAL=120 \
-	ATTACK_SSH=$(RUN_ATTACKS) \
+	ATTACK_SSH=$(ENABLE_ATTACKS) \
 	ATTACK_SSH_INTERVAL=90 \
-	docker-compose -f deploy/docker-compose/docker-compose-local-baseline.yml up --force-recreate -d
+	docker-compose -f deploy/docker-compose/docker-compose-local-baseline.yml up --build --force-recreate -d
 
 .PHONY: local-baseline-stop
 local-baseline-stop:
