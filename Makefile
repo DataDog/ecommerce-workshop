@@ -6,7 +6,7 @@ STOREFRONT_CONTAINERS 	:= \
 store-frontend-broken-no-instrumentation \
 store-frontend-broken-instrumented \
 store-frontend-instrumented-fixed
-RUN_ATTACKS				:= 0
+RUN_ATTACKS				:= 1
 VERSION 				:= 2.1.0
 
 # Note that this Makefile is a work in progress and may duplicate some code in github actions
