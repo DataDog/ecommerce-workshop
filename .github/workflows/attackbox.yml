@@ -8,7 +8,7 @@ on:
 
 defaults:
   run:
-    working-directory: attack-box
+    working-directory: attackbox
 
 jobs:
 
@@ -54,6 +54,6 @@ jobs:
         platforms: linux/amd64
         push: true
         tags: | 
-          ddtraining/attack-box:latest
-          public.ecr.aws/b1o7r7e0/ddtraining/attack-box:latest
+          ddtraining/attackbox:latest
+          public.ecr.aws/b1o7r7e0/ddtraining/attackbox:latest
 
