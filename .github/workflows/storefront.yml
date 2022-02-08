@@ -5,8 +5,8 @@ on:
     branches: [ main ]
     paths:
       - store-frontend/**
-    workflow_dispatch:
-      branches: [ main ]
+  workflow_dispatch:
+    branches: [ main ]
 
 defaults:
   run:

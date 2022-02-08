@@ -7,8 +7,8 @@ on:
       - 'tdimnet/from-dockerhub-to-ecr'
     paths:
       - nginx/**
-    workflow_dispatch:
-      branches: [ main ]
+  workflow_dispatch:
+    branches: [ main ]
 
 defaults:
   run:
