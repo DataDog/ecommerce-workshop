@@ -58,5 +58,5 @@ jobs:
         push: true
         tags: |
           ddtraining/storefront-fixed:latest
-          public.ecr.aws/b1o7r7e0/ddtraining/storefront-fixed:latest
+          ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/storefront-fixed:latest
 

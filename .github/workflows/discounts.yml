@@ -54,5 +54,5 @@ jobs:
         push: true
         tags: | 
           ddtraining/discounts:latest
-          public.ecr.aws/b1o7r7e0/ddtraining/discounts:latest
+          ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/discounts:latest
 

@@ -57,5 +57,5 @@ jobs:
         push: true
         tags: | 
           ddtraining/traffic-replay:latest
-          public.ecr.aws/b1o7r7e0/ddtraining/traffic-replay:latest
+          ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/traffic-replay:latest
 

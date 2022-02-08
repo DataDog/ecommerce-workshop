@@ -57,5 +57,5 @@ jobs:
         push: true
         tags: |
           ddtraining/advertisements-fixed:latest
-          public.ecr.aws/b1o7r7e0/ddtraining/advertisements-fixed:latest
+          ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/advertisements-fixed:latest
 
