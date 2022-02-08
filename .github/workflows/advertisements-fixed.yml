@@ -5,6 +5,8 @@ on:
     branches: [ main ]
     paths:
       - ads-service-fixed/**
+    workflow_dispatch:
+      branches: [ main ]
 
 defaults:
   run:

@@ -5,6 +5,8 @@ on:
     branches: [ main ]
     paths:
       - attackbox/**
+    workflow_dispatch:
+      branches: [ main ]
 
 defaults:
   run:
