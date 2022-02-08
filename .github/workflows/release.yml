@@ -61,6 +61,7 @@ jobs:
             ddtraining/storefront
             ddtraining/storefront-fixed
             ddtraining/attackbox
+            ddtraining/nginx
             public.ecr.aws/b1o7r7e0/ddtraining/advertisements
             public.ecr.aws/b1o7r7e0/ddtraining/advertisements-fixed
             public.ecr.aws/b1o7r7e0/ddtraining/advertisements-errors
@@ -69,6 +70,7 @@ jobs:
             public.ecr.aws/b1o7r7e0/ddtraining/storefront
             public.ecr.aws/b1o7r7e0/ddtraining/storefront-fixed
             public.ecr.aws/b1o7r7e0/ddtraining/attackbox
+            public.ecr.aws/b1o7r7e0/ddtraining/nginx
           )
 
           for i in "${IMAGES[@]}"

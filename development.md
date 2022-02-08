@@ -1,6 +1,16 @@
 ## Building
 
-### Docker images for the advertisements and discounts
+### Building all the containers to test a pull request or develop locally
+
+To build all containers for a local test run:
+
+```
+make build
+```
+
+This will refresh the local build of every container in the project.
+
+### Docker images for the advertisements and discounts (Manual individial)
 
 There are several versions of the advertisements and discounts services:
 
@@ -16,7 +26,7 @@ To build any of the images you should `cd` into each of the folders and run:
 docker build .
 ```
 
-### Docker images for the frontend service
+### Docker images for the frontend service (Manual individial)
 
 There are three versions of the frontend service:
 
@@ -58,15 +68,7 @@ If you are developing and modifying the `storefront` code, you will need to recr
 ### Recreating the code
 
 ```
-cd store-frontend/src/
-cp -R store-frontend-initial-state store-frontend-broken-instrumented
-cd store-frontend-broken-instrumented
-patch -t -p1 < ../broken-instrumented.patch
-cd ..
-cp -R store-frontend-initial-state store-frontend-instrumented-fixed
-cd store-frontend-instrumented-fixed
-patch -t -p1 < ../instrumented-fixed.patch
-cd ..
+make recreate-frontend-code
 ```
 
 ### Modifying the code
@@ -75,19 +77,28 @@ If your changes are part of the core of the code and will be applied to all thre
 
 * Develop the changes in the `store-frontend-initial-state` folder
 * Commit the changes made in the `store-frontend-initial-state` folder
-* [Regenearate the patches](#Generate-the-patches)
+* [Regenerate the patches](#Generate-the-patches)
 * Commit the patches
 
 If your changes only affect `store-frontend-broken-instrumented` and/or `store-frontend-instrumented-fixed`, do the following:
 
 * Develop the changes in the `store-frontend-broken-instrumented` and/or `store-frontend-instrumented-fixed` folder
-* [Regenearate the patches](#Generate-the-patches)
+* [Regenerate the patches](#Generate-the-patches)
 * Commit the patches
 
 ### Generate the patches
 
 ```
-cd store-frontend/src/
-diff -urN store-frontend-initial-state store-frontend-instrumented-fixed > instrumented-fixed.patch
-diff -urN store-frontend-initial-state store-frontend-broken-instrumented > broken-instrumented.patch
+make create-frontend-diffs
 ```
+
+## Testing
+
+In order to test a pull request for a specific scenario you'll need to do the following.
+
+1. Clean up any old containers from your system.
+2. Clean any persistent Docker volumes from prior tests of the project.
+3. Build the containers for the project.
+4. Boot the project using `docker-compose`
+
+> Makefile targets have been provided to speed along testing

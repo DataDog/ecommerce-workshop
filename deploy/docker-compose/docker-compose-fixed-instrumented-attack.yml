@@ -52,10 +52,10 @@ services:
       - DD_VERSION=1.1
       - DD_CLIENT_TOKEN
       - DD_APPLICATION_ID
-    image: "ddtraining/storefront-fixed:2.1.0"
-    volumes:
-      - "../../store-frontend/src/store-frontend-instrumented-fixed:/app"
-    command: sh docker-entrypoint.sh
+      - DD_ENV=development
+      - DD_SITE=datadoghq.com
+      - RAILS_HIDE_STACKTRACE=true
+    image: "ddtraining/storefront-fixed:2.1.3"
     ports:
       - "3000:3000"
     depends_on:
@@ -66,6 +66,15 @@ services:
     labels:
       com.datadoghq.ad.logs: '[{"source": "ruby", "service": "store-frontend"}]'
       my.custom.label.team: "frontend"
+  nginx:
+    image: "ddtraining/nginx:2.1.3"
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "nginx", "service": "nginx"}]'
+      my.custom.label.team: "nginx"
   advertisements:
     environment:
       - FLASK_APP=ads.py
@@ -98,12 +107,19 @@ services:
     labels:
       com.datadoghq.ad.logs: '[{"source": "postgresql", "service": "postgres"}]'
   attackbox:
-    image: "ddtraining/attackbox:2.1.0"
+    image: "ddtraining/attackbox:2.1.3"
+    logging:
+      driver: none # this only works when using docker-compose (vs docker compose)
     environment:
       - ATTACK_GOBUSTER
       - ATTACK_HYDRA
       - ATTACK_GOBUSTER_INTERVAL
       - ATTACK_HYDRA_INTERVAL
+      - ATTACK_SSH
+      - ATTACK_SSH_INTERVAL
+      - ATTACK_HOST
+      - ATTACK_PORT
     depends_on:
       - discounts
       - frontend
+      - nginx

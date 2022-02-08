@@ -17,6 +17,9 @@ RUN apt-get update && \
 
 COPY ./src/store-frontend-initial-state /app
 WORKDIR /app
+RUN mkdir -p /opt/storedog
+COPY ./docker-entrypoint.sh /opt/storedog/docker-entrypoint.sh
+RUN chmod +x /opt/storedog/docker-entrypoint.sh
 
 # COPY ./config/database.yml /spree/sandbox/config/database.yml
 #COPY ./store-frontend /spree/store-frontend
@@ -30,4 +33,4 @@ RUN bundle install && \
 # Force STDOUT logging
 ENV RAILS_LOG_TO_STDOUT=true
 
-CMD ["sh", "docker-entrypoint.sh"]
+CMD ["sh", "/opt/storedog/docker-entrypoint.sh"]
