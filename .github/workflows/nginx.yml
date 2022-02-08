@@ -2,7 +2,9 @@ name: Nginx Test and Build
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - 'tdimnet/from-dockerhub-to-ecr'
     paths:
       - nginx/**
     workflow_dispatch:
