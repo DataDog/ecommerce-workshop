@@ -2,7 +2,7 @@ import requests
 import random
 import time
 
-from words
+import words
 
 from flask import Flask, Response, jsonify
 from flask import request as flask_request
