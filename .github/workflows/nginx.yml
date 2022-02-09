@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - 'tdimnet/from-dockerhub-to-ecr'
     paths:
       - nginx/**
   workflow_dispatch:
