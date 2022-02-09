@@ -1,6 +1,7 @@
 import random
 import json
 import sys
+import os
 
 class WordsException(Exception):
     pass
