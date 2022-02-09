@@ -2,15 +2,11 @@ import requests
 import random
 import time
 
-from random_word import RandomWords
-
 from flask import Flask, Response, jsonify, send_from_directory
 from flask import request as flask_request
 
 from bootstrap import create_app
 from models import Advertisement, db
-
-r = RandomWords()
 
 app = create_app()
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

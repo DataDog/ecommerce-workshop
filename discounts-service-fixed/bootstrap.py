@@ -1,15 +1,12 @@
 from flask import Flask
 from models import Discount, DiscountType, Influencer, db
 import names
+import words
 
 import random
 import os
 
 import json
-
-with open('words.json') as f:
-  words = json.load(f)
-
 
 DB_USERNAME = os.environ['POSTGRES_USER']
 DB_PASSWORD = os.environ['POSTGRES_PASSWORD']
@@ -35,14 +32,12 @@ def initialize_database(app, db):
         db.create_all()
 
         for i in range(100):
-            discount_type = DiscountType(random.choice(words),
+            discount_type = DiscountType(words.get_random(),
                                          'price * %f' % random.random(),
                                          Influencer(names.get_full_name()))
-            discount_name = random.choice(words)
-            for i in range(random.randint(1,3)):
-                discount_name += ' ' + random.choice(words)
+            discount_name = words.get_random(random.randint(2,4))
             discount = Discount(discount_name,
-                                random.choice(words).upper(),
+                                words.get_random().upper(),
                                 random.randrange(1,100) * random.random(),
                                 discount_type)
             db.session.add(discount)
