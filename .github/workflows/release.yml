@@ -60,17 +60,19 @@ jobs:
             ddtraining/discounts-fixed
             ddtraining/storefront
             ddtraining/storefront-fixed
+            ddtraining/storefront-no-instrumentation
             ddtraining/attackbox
             ddtraining/nginx
-            public.ecr.aws/b1o7r7e0/ddtraining/advertisements
-            public.ecr.aws/b1o7r7e0/ddtraining/advertisements-fixed
-            public.ecr.aws/b1o7r7e0/ddtraining/advertisements-errors
-            public.ecr.aws/b1o7r7e0/ddtraining/discounts
-            public.ecr.aws/b1o7r7e0/ddtraining/discounts-fixed
-            public.ecr.aws/b1o7r7e0/ddtraining/storefront
-            public.ecr.aws/b1o7r7e0/ddtraining/storefront-fixed
-            public.ecr.aws/b1o7r7e0/ddtraining/attackbox
-            public.ecr.aws/b1o7r7e0/ddtraining/nginx
+            ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/advertisements
+            ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/advertisements-fixed
+            ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/advertisements-errors
+            ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/discounts
+            ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/discounts-fixed
+            ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/storefront
+            ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/storefront-fixed
+            ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/storefront-no-instrumentation
+            ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/attackbox
+            ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/nginx
           )
 
           for i in "${IMAGES[@]}"
