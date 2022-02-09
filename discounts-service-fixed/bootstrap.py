@@ -1,6 +1,8 @@
 from flask import Flask
 from models import Discount, DiscountType, Influencer, db
 import names
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import words
 
 import random

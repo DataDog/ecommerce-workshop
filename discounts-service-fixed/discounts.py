@@ -2,6 +2,7 @@ import requests
 import random
 import time
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import words
 
 from flask import Flask, Response, jsonify

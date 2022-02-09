@@ -46,4 +46,5 @@ def get_random(count=1):
         words.append(random.choice(word_list))
     return " ".join(words)
 
-word_list = load_words('words.json')
+current_dir = os.path.dirname(os.path.abspath(__file__))
+word_list = load_words(f"{current_dir}/words.json")
