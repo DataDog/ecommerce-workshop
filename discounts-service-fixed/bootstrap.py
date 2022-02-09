@@ -1,14 +1,15 @@
 from flask import Flask
 from models import Discount, DiscountType, Influencer, db
+
+import random
+import os
+import sys
+import json
 import names
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import words
 
-import random
-import os
-
-import json
 
 DB_USERNAME = os.environ['POSTGRES_USER']
 DB_PASSWORD = os.environ['POSTGRES_PASSWORD']
