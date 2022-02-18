@@ -30,7 +30,6 @@ RUN cat /home/test/.ssh/storedog-leaked-key.pub >> /home/test/.ssh/authorized_ke
 USER root
 # Let Flask know what to boot
 ENV FLASK_APP=discounts.py
-ENV DD_ENV=development
 
 # Install dependencies via pip and avoid caching build artifacts
 RUN pip install --no-cache-dir -r requirements.txt
