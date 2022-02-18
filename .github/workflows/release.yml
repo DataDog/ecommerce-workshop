@@ -53,16 +53,6 @@ jobs:
           TAG=${GITHUB_REF/refs\/tags\//}
 
           IMAGES=(
-            dtraining/advertisements
-            ddtraining/advertisements-fixed
-            ddtraining/advertisements-errors
-            ddtraining/discounts
-            ddtraining/discounts-fixed
-            ddtraining/storefront
-            ddtraining/storefront-fixed
-            ddtraining/storefront-no-instrumentation
-            ddtraining/attackbox
-            ddtraining/nginx
             ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/advertisements
             ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/advertisements-fixed
             ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/advertisements-errors

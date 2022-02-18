@@ -32,12 +32,6 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
 
-    - name: Login to DockerHub
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
-
     - name: Login to ECR
       id: login-ecr
       uses: docker/login-action@v1
@@ -52,7 +46,5 @@ jobs:
         context: ./discounts-service
         platforms: linux/amd64
         push: true
-        tags: | 
-          ddtraining/discounts:latest
-          ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/discounts:latest
+        tags: ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/discounts:latest
 
