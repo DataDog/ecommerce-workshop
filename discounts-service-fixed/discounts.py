@@ -1,8 +1,11 @@
 import requests
 import random
 import time
+import sys
+import os
 
-from random_word import RandomWords
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import words
 
 from flask import Flask, Response, jsonify
 from flask import request as flask_request
@@ -10,9 +13,7 @@ from flask import request as flask_request
 from sqlalchemy.orm import joinedload
 
 from bootstrap import create_app
-from models import Discount, db
-
-r = RandomWords()
+from models import Discount, DiscountType, db
 
 app = create_app()
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -51,7 +52,7 @@ def status():
                                              'price * .9',
                                              None)
             new_discount = Discount('Discount ' + str(discounts_count + 1),
-                                    r.get_random_word(),
+                                    words.get_random(random.randint(2,4)),
                                     random.randint(10,500),
                                     new_discount_type)
             app.logger.info(f"Adding discount {new_discount}")
