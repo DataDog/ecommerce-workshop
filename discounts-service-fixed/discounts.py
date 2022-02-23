@@ -1,8 +1,11 @@
 import requests
 import random
 import time
+import sys
+import os
 
-from random_word import RandomWords
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import words
 
 from flask import Flask, Response, jsonify
 from flask import request as flask_request
@@ -12,8 +15,6 @@ from sqlalchemy.orm import joinedload
 
 from bootstrap import create_app
 from models import Discount, DiscountType, db
-
-r = RandomWords()
 
 app = create_app()
 CORS(app)
@@ -48,21 +49,21 @@ def status():
     elif flask_request.method == 'POST':
 
         try:
-          # create a new discount with random name and value
-          discounts_count = len(Discount.query.all())
-          new_discount_type = DiscountType('Random Savings',
-                                          'price * .9',
-                                          None)
-          new_discount = Discount('Discount ' + str(discounts_count + 1),
-                                  r.get_random_word(),
-                                  random.randint(10,500),
-                                  new_discount_type)
-          app.logger.info(f"Adding discount {new_discount}")
-          db.session.add(new_discount)
-          db.session.commit()
-          discounts = Discount.query.all()
+            # create a new discount with random name and value
+            discounts_count = len(Discount.query.all())
+            new_discount_type = DiscountType('Random Savings',
+                                             'price * .9',
+                                             None)
+            new_discount = Discount('Discount ' + str(discounts_count + 1),
+                                    words.get_random(random.randint(2,4)),
+                                    random.randint(10,500),
+                                    new_discount_type)
+            app.logger.info(f"Adding discount {new_discount}")
+            db.session.add(new_discount)
+            db.session.commit()
+            discounts = Discount.query.all()
 
-          return jsonify([b.serialize() for b in discounts])
+            return jsonify([b.serialize() for b in discounts])
 
         except:
           app.logger.error("An error occurred while creating a new discount.")

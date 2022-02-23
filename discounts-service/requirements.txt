@@ -18,7 +18,6 @@ psutil==5.8.0
 psycopg2==2.8.6
 PyDispatcher==2.0.5
 PyYAML==5.4.1
-Random-Word==1.0.7
 requests==2.25.1
 six==1.15.0
 sortedcontainers==2.3.0
