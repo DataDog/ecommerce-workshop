@@ -4,11 +4,13 @@ import time
 
 from flask import Flask, Response, jsonify, send_from_directory
 from flask import request as flask_request
+from flask_cors import CORS
 
 from bootstrap import create_app
 from models import Advertisement, db
 
 app = create_app()
+CORS(app)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 @app.route('/')

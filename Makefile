@@ -117,3 +117,22 @@ local-attack-scenario-stop:
 .PHONY: local-attack-scenario-restart
 local-attack-scenario-restart:
 	docker-compose -f deploy/docker-compose/docker-compose-fixed-instrumented-attack.yml restart
+
+.PHONY: local-baseline-start
+local-baseline-start:
+	POSTGRES_USER=postgres \
+	POSTGRES_PASSWORD=postgres \
+	ATTACK_HOST=nginx \
+	ATTACK_PORT=80 \
+	DD_API_KEY=${DD_API_KEY} \
+	ATTACK_GOBUSTER=$(ENABLE_ATTACKS) \
+	ATTACK_GOBUSTER_INTERVAL=180 \
+	ATTACK_HYDRA=$(ENABLE_ATTACKS) \
+	ATTACK_HYDRA_INTERVAL=120 \
+	ATTACK_SSH=$(ENABLE_ATTACKS) \
+	ATTACK_SSH_INTERVAL=90 \
+	docker-compose -f deploy/docker-compose/docker-compose-local-baseline.yml up --build --force-recreate -d
+
+.PHONY: local-baseline-stop
+local-baseline-stop:
+	docker-compose -f deploy/docker-compose/docker-compose-local-baseline.yml down
