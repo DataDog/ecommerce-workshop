@@ -21,7 +21,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Set default Flask app and development environment
 ENV FLASK_APP=ads.py
-ENV DD_ENV=development
 
 # Listen on 5002
 EXPOSE 5002

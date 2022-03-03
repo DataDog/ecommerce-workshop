@@ -21,7 +21,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Let Flask know what to boot
 ENV FLASK_APP=discounts.py
-ENV DD_ENV=development
 
 # Listen on 5001
 EXPOSE 5001
