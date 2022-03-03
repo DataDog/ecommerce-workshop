@@ -139,18 +139,24 @@ services:
       - discounts-frontend
     command: bash puppeteer.sh
   discounts-frontend:
-    image: nginx:1.19.7
+    build:
+      context: ./discounts-react-app
     stdin_open: true
     ports:
       - '3001:80'
+    environment:
+      - REACT_APP_DD_ADS_URL
+      - REACT_APP_DD_DISCOUNTS_URL
+      - REACT_APP_STOREDOG_URL
+      - REACT_APP_DD_APPLICATION_ID
+      - REACT_APP_DD_CLIENT_TOKEN
+      - REACT_APP_DD_ENV
+      - REACT_APP_DD_SITE
+      - REACT_APP_DD_VERSION
+      - REACT_APP_DD_SERVICE
     volumes:
-      - /discounts-frontend/dist:/usr/share/nginx/html
-      - /root/nginx.conf:/etc/nginx/nginx.conf
-    depends_on:
-      - agent
-      - db
-      - discounts
-      - advertisements
+      - ./discounts-react-app/src/main/dist:/usr/share/nginx/html
+      - ./discounts-react-app/assets/nginx.conf:/etc/nginx/nginx.conf
     labels:
       com.datadoghq.ad.logs: '[{"source": "nginx", "service": "discounts-frontend"}]'
       com.datadoghq.ad.check_names: '["nginx"]'
