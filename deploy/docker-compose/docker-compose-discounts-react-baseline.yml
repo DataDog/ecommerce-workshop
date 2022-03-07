@@ -144,7 +144,7 @@ services:
     command: bash puppeteer.sh
   discounts-frontend:
     build:
-      context: ./discounts-react-app
+      context: ../../discounts-react-app
     stdin_open: true
     ports:
       - '3001:80'
