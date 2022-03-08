@@ -21,7 +21,7 @@ datadogRum.init({
   trackInteractions: true,
   defaultPrivacyLevel: 'mask-user-input',
   allowedTracingOrigins: [
-    /https:\/\/.*\.environments.katacoda\.com/,
+    /https:\/\/.*\.env.play.instruqt\.com/,
     'http://localhost:3001',
   ],
 });
