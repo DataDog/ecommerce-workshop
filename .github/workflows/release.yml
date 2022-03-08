@@ -34,12 +34,6 @@ jobs:
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
       - name: Login to ECR
         id: login-ecr
         uses: docker/login-action@v1
@@ -58,6 +52,7 @@ jobs:
             ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/advertisements-errors
             ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/discounts
             ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/discounts-fixed
+            ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/discounts-react-app
             ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/storefront
             ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/storefront-fixed
             ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/storefront-no-instrumentation
