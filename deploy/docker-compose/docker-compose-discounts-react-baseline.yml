@@ -1,0 +1,172 @@
+# Docker compose file which uses build context plus mounted volumes for easier local development
+# Note: storefront-fixed cannot use the build context because the .patch files are located in a parent directory of the Dockerfile
+version: '3'
+services:
+  agent:
+    image: "datadog/agent:7.29.0"
+    environment:
+      - DD_API_KEY
+      - DD_APM_ENABLED=true
+      - DD_LOGS_ENABLED=true
+      - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
+      - DD_PROCESS_AGENT_ENABLED=true
+      - DD_DOCKER_LABELS_AS_TAGS={"my.custom.label.team":"team"}
+      - DD_TAGS='env:development'
+    ports:
+      - "8126:8126"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "agent", "service": "agent"}]'
+  discounts:
+    environment:
+      - FLASK_APP=discounts.py
+      - FLASK_DEBUG=1
+      - POSTGRES_PASSWORD
+      - POSTGRES_USER
+      - POSTGRES_HOST=db
+      - DD_SERVICE=discounts-service
+      - DD_AGENT_HOST=agent
+      - DD_LOGS_INJECTION=true
+      - DD_TRACE_ANALYTICS_ENABLED=true
+      - DD_PROFILING_ENABLED=true
+      - DD_VERSION=1.1
+    build:
+      context: ../../discounts-service
+    volumes:
+      - "../../discounts-service:/app"
+    ports:
+      - "5001:5001"
+      - "22"
+    depends_on:
+      - agent
+      - db
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "python", "service": "discounts-service"}]'
+      my.custom.label.team: "discount"
+  frontend:
+    environment:
+      - DD_AGENT_HOST=agent
+      - DD_LOGS_INJECTION=true
+      - DD_TRACE_ANALYTICS_ENABLED=true
+      - DD_SERVICE=store-frontend
+      - DB_USERNAME
+      - DB_PASSWORD
+      - DD_VERSION=1.1
+      - DD_CLIENT_TOKEN
+      - DD_APPLICATION_ID
+      - DD_ENV=development
+      - DD_SITE=datadoghq.com
+      - RAILS_HIDE_STACKTRACE=true
+    image: "ddtraining/storefront-fixed:latest"
+    volumes:
+      - "../../store-frontend/src/store-frontend-instrumented-fixed:/app"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - agent
+      - db
+      - discounts
+      - advertisements
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "ruby", "service": "store-frontend"}]'
+      my.custom.label.team: "frontend"
+  advertisements:
+    environment:
+      - FLASK_APP=ads.py
+      - FLASK_DEBUG=1
+      - POSTGRES_PASSWORD
+      - POSTGRES_USER
+      - POSTGRES_HOST=db
+      - DD_SERVICE=advertisements-service
+      - DD_AGENT_HOST=agent
+      - DD_LOGS_INJECTION=true
+      - DD_TRACE_ANALYTICS_ENABLED=true
+      - DD_PROFILING_ENABLED=true
+      - DD_VERSION=1.0
+    build:
+      context: ../../ads-service-fixed
+    volumes:
+      - "../../ads-service-fixed:/app"
+    ports:
+      - "5002:5002"
+    depends_on:
+      - agent
+      - db
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "python", "service": "ads-service"}]'
+      my.custom.label.team: "advertisements"
+  db:
+    image: postgres:11-alpine
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD
+      - POSTGRES_USER
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "postgresql", "service": "postgres"}]'
+  attackbox:
+    build:
+      context: ../../attackbox
+    logging:
+      driver: none # this only works when using docker-compose (vs docker compose)
+    environment:
+      - ATTACK_GOBUSTER
+      - ATTACK_HYDRA
+      - ATTACK_GOBUSTER_INTERVAL
+      - ATTACK_HYDRA_INTERVAL
+      - ATTACK_SSH
+      - ATTACK_SSH_INTERVAL
+      - ATTACK_HOST
+      - ATTACK_PORT
+    depends_on:
+      - discounts
+      - frontend
+  nginx:
+    restart: always
+    build:
+      context: ../../nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "nginx", "service": "nginx"}]'
+  puppeteer:
+    image: buildkite/puppeteer:10.0.0
+    environment:
+      - STOREDOG_URL
+      - DISCOUNTS_FRONTEND_URL
+    depends_on:
+      - frontend
+      - discounts-frontend
+    command: bash puppeteer.sh
+  discounts-frontend:
+    build:
+      context: ../../discounts-react-app
+    stdin_open: true
+    ports:
+      - '3001:80'
+    environment:
+      - REACT_APP_DD_ADS_URL
+      - REACT_APP_DD_DISCOUNTS_URL
+      - REACT_APP_STOREDOG_URL
+      - REACT_APP_DD_APPLICATION_ID
+      - REACT_APP_DD_CLIENT_TOKEN
+      - REACT_APP_DD_ENV
+      - REACT_APP_DD_SITE
+      - REACT_APP_DD_VERSION
+      - REACT_APP_DD_SERVICE
+    # volumes:
+    #   - ../../discounts-react-app/src/main/dist:/usr/share/nginx/html
+    #   - ../../discounts-react-app/assets/nginx.conf:/etc/nginx/nginx.conf
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "nginx", "service": "discounts-frontend"}]'
+      com.datadoghq.ad.check_names: '["nginx"]'
+      com.datadoghq.ad.init_configs: '[{}]'
+      com.datadoghq.ad.instances: '[{"nginx_status_url": "http://%%host%%:81/nginx_status/"}]'
+      com.datadoghq.tags.env: 'frontend-issues-2'
+      com.datadoghq.tags.service: 'discounts-frontend'
+      com.datadoghq.tags.version: '1.1'
+      my.custom.label.team: 'discounts'
