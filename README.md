@@ -166,11 +166,20 @@ The N+1 query example lives in `discounts-service/`, and the fixed version lives
 ## How to run synthetics locally
 
 1. Install `@datadog/datadog-ci` via NPM or Yarn globally on your local machine:
-  ### NPM install globally
-  npm install -g @datadog/datadog-ci
-  ### Yarn v1 add globally
-  yarn global add @datadog/datadog-ci
-  
+
+```
+npm install -g @datadog/datadog-ci
+```
+```
+yarn global add @datadog/datadog-ci
+```
+
 2. Obtain the API and APP Key from the DD corpsite account:
 3. From the project root, run the following:
 `DD_API_KEY="<API_KEY>" DD_APP_KEY="<APP_KEY>" make synthetics-start`
+
+
+*To add a new test:*
+1. Generate a synthetics test via the DD app
+2. Grab the public ID of the test (found in the top left of the synthetic page or in the URL) and add it to `storedog.synthetics.json`.
+
