@@ -162,3 +162,11 @@ We eager load the `discount_type` relation on the `discount`, and can grab all i
 ![N+1 Solved](https://github.com/DataDog/ecommerce-workshop/raw/master/images/solved-nplus.png)
 
 The N+1 query example lives in `discounts-service/`, and the fixed version lives in `discounts-service-fixed/`.
+
+## How to run synthetics locally
+
+1. Install `@datadog/datadog-ci` via NPM or Yarn globally on your local machine:
+  `npm i @datadog/datadog-ci -g`
+2. Obtain the API and APP Key from the DD corpsite account:
+3. From the project root, run the following:
+`DD_API_KEY="<API_KEY>" DD_APP_KEY="<APP_KEY>" make synthetics-start`

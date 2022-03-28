@@ -136,3 +136,7 @@ local-baseline-start:
 .PHONY: local-baseline-stop
 local-baseline-stop:
 	docker-compose -f deploy/docker-compose/docker-compose-local-baseline.yml down
+
+.PHONY: synthetics-start
+synthetics-start:
+	datadog-ci synthetics run-tests --apiKey ${DD_API_KEY} --appKey ${DD_APP_KEY} --tunnel
