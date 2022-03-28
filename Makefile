@@ -131,7 +131,7 @@ local-baseline-start:
 	ATTACK_HYDRA_INTERVAL=120 \
 	ATTACK_SSH=$(ENABLE_ATTACKS) \
 	ATTACK_SSH_INTERVAL=90 \
-	docker-compose -f deploy/docker-compose/docker-compose-local-baseline.yml up --build --force-recreate -d
+	docker-compose -f deploy/docker-compose/docker-compose-local-baseline.yml up --build -d
 
 .PHONY: local-baseline-stop
 local-baseline-stop:

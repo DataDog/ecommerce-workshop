@@ -5,13 +5,15 @@ on:
     branches:
       - ccole/synth-tunnel
 
-jobs:
+jobs:   
 
   synthetics:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Start app
+        run: DD_API_KEY=${{secrets.DD_API_KEY}} make local-baseline-start
       - name: Run Datadog Synthetics tests
         uses: DataDog/synthetics-ci-github-action@v0.3.0
         with:
