@@ -166,7 +166,11 @@ The N+1 query example lives in `discounts-service/`, and the fixed version lives
 ## How to run synthetics locally
 
 1. Install `@datadog/datadog-ci` via NPM or Yarn globally on your local machine:
-  `npm i @datadog/datadog-ci -g`
+  ### NPM install globally
+  npm install -g @datadog/datadog-ci
+  ### Yarn v1 add globally
+  yarn global add @datadog/datadog-ci
+  
 2. Obtain the API and APP Key from the DD corpsite account:
 3. From the project root, run the following:
 `DD_API_KEY="<API_KEY>" DD_APP_KEY="<APP_KEY>" make synthetics-start`
