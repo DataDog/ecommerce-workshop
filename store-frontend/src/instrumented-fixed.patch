@@ -1,6 +1,6 @@
 diff -urN store-frontend-initial-state/Gemfile store-frontend-instrumented-fixed/Gemfile
 --- store-frontend-initial-state/Gemfile	2021-08-31 09:59:14.000000000 -0400
-+++ store-frontend-instrumented-fixed/Gemfile	2021-12-07 16:01:54.000000000 -0500
++++ store-frontend-instrumented-fixed/Gemfile	2022-03-30 17:36:54.000000000 -0400
 @@ -43,6 +43,7 @@
  gem 'spree', github: 'spree/spree', ref: 'f8e7b4ed9856d1a2f4521f5b8ef7de158a30b398'
  gem 'spree_auth_devise', github: 'spree/spree_auth_devise', ref: '7e9c4d102e0eb84446ec0f4cb3aeefa7f6dfa65d'
@@ -11,7 +11,7 @@ diff -urN store-frontend-initial-state/Gemfile store-frontend-instrumented-fixed
  gem 'rails_semantic_logger'
 diff -urN store-frontend-initial-state/Gemfile.lock store-frontend-instrumented-fixed/Gemfile.lock
 --- store-frontend-initial-state/Gemfile.lock	2021-08-31 09:59:14.000000000 -0400
-+++ store-frontend-instrumented-fixed/Gemfile.lock	2021-12-07 16:01:54.000000000 -0500
++++ store-frontend-instrumented-fixed/Gemfile.lock	2022-03-30 17:36:54.000000000 -0400
 @@ -164,6 +164,9 @@
      crass (1.0.6)
      css_parser (1.9.0)
@@ -38,9 +38,84 @@ diff -urN store-frontend-initial-state/Gemfile.lock store-frontend-instrumented-
    httparty
    jbuilder (~> 2.5)
    listen (>= 3.0.5, < 3.2)
+diff -urN store-frontend-initial-state/app/controllers/discounts_controller.rb store-frontend-instrumented-fixed/app/controllers/discounts_controller.rb
+--- store-frontend-initial-state/app/controllers/discounts_controller.rb	2022-03-30 17:39:03.000000000 -0400
++++ store-frontend-instrumented-fixed/app/controllers/discounts_controller.rb	2022-03-30 17:36:54.000000000 -0400
+@@ -1,6 +1,6 @@
+ class DiscountsController < ApplicationController
+   def get
+-    @discounts = Net::HTTP.get_response(URI('http://discounts:' + ENV['DISCOUNTS_PORT'] + '/discount')).body
++    @discounts = Net::HTTP.get_response(URI('http://discounts:5001/discount')).body
+     logger.info @discounts
+     render json: @discounts
+   end
+diff -urN store-frontend-initial-state/app/controllers/spree/home_controller.rb store-frontend-instrumented-fixed/app/controllers/spree/home_controller.rb
+--- store-frontend-initial-state/app/controllers/spree/home_controller.rb	2022-03-30 17:37:35.000000000 -0400
++++ store-frontend-instrumented-fixed/app/controllers/spree/home_controller.rb	2022-03-30 17:36:54.000000000 -0400
+@@ -10,7 +10,7 @@
+       @taxonomies = Spree::Taxonomy.includes(root: :children)
+       @discounts = helpers.get_discounts.sample
+       @ads = helpers.get_ads.sample
+-      @ads['base64'] = Base64.encode64(open('http://advertisements:' + ENV['ADS_PORT'] + '/banners/' + @ads['path']).read).gsub("\n", '')
++      @ads['base64'] = Base64.encode64(open('http://advertisements:5002/banners/' + @ads['path']).read).gsub("\n", '')
+     end
+   end
+ end
+diff -urN store-frontend-initial-state/app/controllers/spree/products_controller.rb store-frontend-instrumented-fixed/app/controllers/spree/products_controller.rb
+--- store-frontend-initial-state/app/controllers/spree/products_controller.rb	2022-03-30 17:37:51.000000000 -0400
++++ store-frontend-instrumented-fixed/app/controllers/spree/products_controller.rb	2022-03-30 17:36:54.000000000 -0400
+@@ -23,7 +23,7 @@
+       @taxon = params[:taxon_id].present? ? Spree::Taxon.find(params[:taxon_id]) : @product.taxons.first
+       redirect_if_legacy_path
+       @ads = helpers.get_ads.sample
+-      @ads['base64'] = Base64.encode64(open('http://advertisements:' + ENV['ADS_PORT'] + '/banners/' + @ads['path']).read).gsub("\n", '')
++      @ads['base64'] = Base64.encode64(open('http://advertisements:5002/banners/' + @ads['path']).read).gsub("\n", '')
+     end
+ 
+     private
+diff -urN store-frontend-initial-state/app/helpers/application_helper.rb store-frontend-instrumented-fixed/app/helpers/application_helper.rb
+--- store-frontend-initial-state/app/helpers/application_helper.rb	2022-03-30 17:38:08.000000000 -0400
++++ store-frontend-instrumented-fixed/app/helpers/application_helper.rb	2022-03-30 17:36:54.000000000 -0400
+@@ -1,6 +1,6 @@
+ module ApplicationHelper
+     def get_ads
+-        @ads = JSON.parse(Net::HTTP.get_response(URI('http://advertisements:' + ENV['ADS_PORT'] + '/ads')).body)
++        @ads = JSON.parse(Net::HTTP.get_response(URI('http://advertisements:5002/ads')).body)
+       end
+   
+ end
+diff -urN store-frontend-initial-state/app/helpers/spree/frontend_helper.rb store-frontend-instrumented-fixed/app/helpers/spree/frontend_helper.rb
+--- store-frontend-initial-state/app/helpers/spree/frontend_helper.rb	2022-03-30 17:38:31.000000000 -0400
++++ store-frontend-instrumented-fixed/app/helpers/spree/frontend_helper.rb	2022-03-30 17:36:54.000000000 -0400
+@@ -93,11 +93,11 @@
+     end
+ 
+     def get_discounts
+-      @discounts = JSON.parse(Net::HTTP.get_response(URI('http://discounts:' + ENV['DISCOUNTS_PORT'] + '/discount')).body)
++      @discounts = JSON.parse(Net::HTTP.get_response(URI('http://discounts:5001/discount')).body)
+     end
+ 
+     def get_ads
+-      @ads = JSON.parse(Net::HTTP.get_response(URI('http://advertisements:' + ENV['ADS_PORT'] + '/ads')).body)
++      @ads = JSON.parse(Net::HTTP.get_response(URI('http://advertisements:5002/ads')).body)
+     end
+ 
+   end
+diff -urN store-frontend-initial-state/app/helpers/spree/product_helper.rb store-frontend-instrumented-fixed/app/helpers/spree/product_helper.rb
+--- store-frontend-initial-state/app/helpers/spree/product_helper.rb	2022-03-30 17:38:47.000000000 -0400
++++ store-frontend-instrumented-fixed/app/helpers/spree/product_helper.rb	2022-03-30 17:36:54.000000000 -0400
+@@ -1,7 +1,7 @@
+ module Spree
+     module ProductHelper
+         def get_ads
+-            @ads = JSON.parse(Net::HTTP.get_response(URI('http://advertisements:' + ENV['ADS_PORT'] + '/ads')).body)
++            @ads = JSON.parse(Net::HTTP.get_response(URI('http://advertisements:5002/ads')).body)
+           end
+     end
+ 
 diff -urN store-frontend-initial-state/app/views/layouts/application.html.erb store-frontend-instrumented-fixed/app/views/layouts/application.html.erb
 --- store-frontend-initial-state/app/views/layouts/application.html.erb	2021-09-10 16:21:30.000000000 -0400
-+++ store-frontend-instrumented-fixed/app/views/layouts/application.html.erb	2021-12-07 16:01:54.000000000 -0500
++++ store-frontend-instrumented-fixed/app/views/layouts/application.html.erb	2022-03-30 17:36:54.000000000 -0400
 @@ -2,6 +2,30 @@
  <html>
    <head>
@@ -74,7 +149,7 @@ diff -urN store-frontend-initial-state/app/views/layouts/application.html.erb st
  
 diff -urN store-frontend-initial-state/app/views/spree/home/index.html.erb store-frontend-instrumented-fixed/app/views/spree/home/index.html.erb
 --- store-frontend-initial-state/app/views/spree/home/index.html.erb	2021-08-31 09:59:14.000000000 -0400
-+++ store-frontend-instrumented-fixed/app/views/spree/home/index.html.erb	2021-12-07 16:01:54.000000000 -0500
++++ store-frontend-instrumented-fixed/app/views/spree/home/index.html.erb	2022-03-30 17:36:54.000000000 -0400
 @@ -9,6 +9,7 @@
  <% end %>
  
@@ -85,7 +160,7 @@ diff -urN store-frontend-initial-state/app/views/spree/home/index.html.erb store
    <% end %>
 diff -urN store-frontend-initial-state/app/views/spree/layouts/spree_application.html.erb store-frontend-instrumented-fixed/app/views/spree/layouts/spree_application.html.erb
 --- store-frontend-initial-state/app/views/spree/layouts/spree_application.html.erb	2021-08-31 09:59:14.000000000 -0400
-+++ store-frontend-instrumented-fixed/app/views/spree/layouts/spree_application.html.erb	2021-12-07 16:01:54.000000000 -0500
++++ store-frontend-instrumented-fixed/app/views/spree/layouts/spree_application.html.erb	2022-03-30 17:36:54.000000000 -0400
 @@ -5,14 +5,37 @@
  <!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
  <!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
@@ -128,7 +203,7 @@ diff -urN store-frontend-initial-state/app/views/spree/layouts/spree_application
          <%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>
 diff -urN store-frontend-initial-state/app/views/spree/products/show.html.erb store-frontend-instrumented-fixed/app/views/spree/products/show.html.erb
 --- store-frontend-initial-state/app/views/spree/products/show.html.erb	2021-08-31 09:59:14.000000000 -0400
-+++ store-frontend-instrumented-fixed/app/views/spree/products/show.html.erb	2021-12-07 16:01:54.000000000 -0500
++++ store-frontend-instrumented-fixed/app/views/spree/products/show.html.erb	2022-03-30 17:36:54.000000000 -0400
 @@ -45,3 +45,4 @@
      </div>
    </div>
@@ -136,7 +211,7 @@ diff -urN store-frontend-initial-state/app/views/spree/products/show.html.erb st
 +<br /><center><a href="<%= @ads['url'] %>"><img src="data:image/png;base64,<%= @ads['base64'] %>" /></a></center>
 diff -urN store-frontend-initial-state/config/environments/development.rb store-frontend-instrumented-fixed/config/environments/development.rb
 --- store-frontend-initial-state/config/environments/development.rb	2021-09-10 17:19:31.000000000 -0400
-+++ store-frontend-instrumented-fixed/config/environments/development.rb	2021-12-07 17:29:38.000000000 -0500
++++ store-frontend-instrumented-fixed/config/environments/development.rb	2022-03-30 17:36:54.000000000 -0400
 @@ -87,6 +87,11 @@
          log_hash[:level] = "ERROR"
        end
@@ -173,7 +248,7 @@ diff -urN store-frontend-initial-state/config/environments/development.rb store-
  end
 diff -urN store-frontend-initial-state/config/environments/production.rb store-frontend-instrumented-fixed/config/environments/production.rb
 --- store-frontend-initial-state/config/environments/production.rb	2021-08-31 09:59:14.000000000 -0400
-+++ store-frontend-instrumented-fixed/config/environments/production.rb	2021-12-07 16:01:54.000000000 -0500
++++ store-frontend-instrumented-fixed/config/environments/production.rb	2022-03-30 17:36:54.000000000 -0400
 @@ -53,6 +53,9 @@
    # when problems arise.
    config.log_level = :warn
@@ -186,7 +261,7 @@ diff -urN store-frontend-initial-state/config/environments/production.rb store-f
  
 diff -urN store-frontend-initial-state/config/initializers/datadog.rb store-frontend-instrumented-fixed/config/initializers/datadog.rb
 --- store-frontend-initial-state/config/initializers/datadog.rb	1969-12-31 19:00:00.000000000 -0500
-+++ store-frontend-instrumented-fixed/config/initializers/datadog.rb	2021-12-07 16:01:54.000000000 -0500
++++ store-frontend-instrumented-fixed/config/initializers/datadog.rb	2022-03-30 17:36:54.000000000 -0400
 @@ -0,0 +1,6 @@
 +Datadog.configure do |c|
 +  # This will activate auto-instrumentation for Rails
