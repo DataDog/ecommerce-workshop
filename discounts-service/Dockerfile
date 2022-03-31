@@ -35,8 +35,14 @@ ENV FLASK_APP=discounts.py
 RUN pip install --no-cache-dir -r requirements.txt
 RUN chmod +x ./my-wrapper-script.sh
 
+# Pass in Port mapping (default to 8282)
+ARG DISCOUNTS_PORT=8282
+# Because CMD is a runtime instruction, we have to create an additional ENV var that reads the ARG val
+# Only ENV vars are accessible via CMD
+ENV DISCOUNTS_PORT ${DISCOUNTS_PORT}
+
 # required to get logs out of the container
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
 # runs sshd and flask server
-CMD ["./my-wrapper-script.sh"]
+CMD ./my-wrapper-script.sh ${DISCOUNTS_PORT}

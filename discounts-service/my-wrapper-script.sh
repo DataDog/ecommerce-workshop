@@ -9,7 +9,7 @@ if [ $status -ne 0 ]; then
 fi
 
 # Start the second process
-ddtrace-run flask run --port=5001 --host=0.0.0.0
+ddtrace-run flask run --port=$1 --host=0.0.0.0
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start my_second_process: $status"
@@ -21,7 +21,6 @@ fi
 # more than one service in a container. The container exits with an error
 # if it detects that either of the processes has exited.
 # Otherwise it loops forever, waking up every 60 seconds
-
 while sleep 60; do
   ps aux |grep my_first_process |grep -q -v grep
   PROCESS_1_STATUS=$?
