@@ -22,9 +22,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Set default Flask app and development environment
 ENV FLASK_APP=ads.py
 
-# Listen on 5002
-EXPOSE 5002
+# Pass in Port mapping (default to 9292)
+ARG ADS_PORT=9292
+# Because CMD is a runtime instruction, we have to create an additional ENV var that reads the ARG val
+# Only ENV vars are accessible via CMD
+ENV ADS_PORT ${ADS_PORT}
 
 # Start the app using ddtrace so we have profiling and tracing
 ENTRYPOINT ["ddtrace-run"]
-CMD ["flask", "run", "--port=5002", "--host=0.0.0.0"]
+CMD flask run --port=${ADS_PORT} --host=0.0.0.0
