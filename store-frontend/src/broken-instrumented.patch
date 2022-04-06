@@ -44,8 +44,8 @@ diff -urN store-frontend-initial-state/app/controllers/discounts_controller.rb s
 @@ -1,6 +1,6 @@
  class DiscountsController < ApplicationController
    def get
--    @discounts = Net::HTTP.get_response(URI(ENV['DISCOUNTS_ROUTE'] + ':' + ENV['DISCOUNTS_PORT'] + '/discount')).body
-+    @discounts = Net::HTTP.get_response(URI('http://discounts:5001/discount')).body
++    @discounts = Net::HTTP.get_response(URI(ENV['DISCOUNTS_ROUTE'] + ':' + ENV['DISCOUNTS_PORT'] + '/discount')).body
+-    @discounts = Net::HTTP.get_response(URI('http://discounts:5001/discount')).body
      logger.info @discounts
      render json: @discounts
    end
@@ -56,8 +56,8 @@ diff -urN store-frontend-initial-state/app/controllers/spree/home_controller.rb 
        @taxonomies = Spree::Taxonomy.includes(root: :children)
        @discounts = helpers.get_discounts.sample
        @ads = helpers.get_ads.sample
--      @ads['base64'] = Base64.encode64(open(ENV['ADS_ROUTE'] + ':' + ENV['ADS_PORT'] + '/banners/' + @ads['path']).read).gsub("\n", '')
-+      @ads['base64'] = Base64.encode64(open('http://advertisements:5002/banners/' + @ads['path']).read).gsub("\n", '')
++      @ads['base64'] = Base64.encode64(open(ENV['ADS_ROUTE'] + ':' + ENV['ADS_PORT'] + '/banners/' + @ads['path']).read).gsub("\n", '')
+-      @ads['base64'] = Base64.encode64(open('http://advertisements:5002/banners/' + @ads['path']).read).gsub("\n", '')
      end
    end
  end
@@ -68,8 +68,8 @@ diff -urN store-frontend-initial-state/app/controllers/spree/products_controller
        @taxon = params[:taxon_id].present? ? Spree::Taxon.find(params[:taxon_id]) : @product.taxons.first
        redirect_if_legacy_path
        @ads = helpers.get_ads.sample
--      @ads['base64'] = Base64.encode64(open(ENV['ADS_ROUTE'] + ':' + ENV['ADS_PORT'] + '/banners/' + @ads['path']).read).gsub("\n", '')
-+      @ads['base64'] = Base64.encode64(open('http://advertisements:5002/banners/' + @ads['path']).read).gsub("\n", '')
++      @ads['base64'] = Base64.encode64(open(ENV['ADS_ROUTE'] + ':' + ENV['ADS_PORT'] + '/banners/' + @ads['path']).read).gsub("\n", '')
+-      @ads['base64'] = Base64.encode64(open('http://advertisements:5002/banners/' + @ads['path']).read).gsub("\n", '')
      end
  
      private
@@ -79,8 +79,8 @@ diff -urN store-frontend-initial-state/app/helpers/application_helper.rb store-f
 @@ -1,6 +1,6 @@
  module ApplicationHelper
      def get_ads
--        @ads = JSON.parse(Net::HTTP.get_response(URI( ENV['ADS_ROUTE'] + ':' + ENV['ADS_PORT'] + '/ads')).body)
-+        @ads = JSON.parse(Net::HTTP.get_response(URI('http://advertisements:5002/ads')).body)
++        @ads = JSON.parse(Net::HTTP.get_response(URI( ENV['ADS_ROUTE'] + ':' + ENV['ADS_PORT'] + '/ads')).body)
+-        @ads = JSON.parse(Net::HTTP.get_response(URI('http://advertisements:5002/ads')).body)
        end
    
  end
@@ -91,13 +91,13 @@ diff -urN store-frontend-initial-state/app/helpers/spree/frontend_helper.rb stor
      end
  
      def get_discounts
--      @discounts = JSON.parse(Net::HTTP.get_response(URI(ENV['DISCOUNTS_ROUTE'] + ':' + ENV['DISCOUNTS_PORT'] + '/discount')).body)
-+      @discounts = JSON.parse(Net::HTTP.get_response(URI('http://discounts:5001/discount')).body)
++      @discounts = JSON.parse(Net::HTTP.get_response(URI(ENV['DISCOUNTS_ROUTE'] + ':' + ENV['DISCOUNTS_PORT'] + '/discount')).body)
+-      @discounts = JSON.parse(Net::HTTP.get_response(URI('http://discounts:5001/discount')).body)
      end
  
      def get_ads
--      @ads = JSON.parse(Net::HTTP.get_response(URI(ENV['ADS_ROUTE'] + ':' + ENV['ADS_PORT'] + '/ads')).body)
-+      @ads = JSON.parse(Net::HTTP.get_response(URI('http://advertisements:5002/ads')).body)
++      @ads = JSON.parse(Net::HTTP.get_response(URI(ENV['ADS_ROUTE'] + ':' + ENV['ADS_PORT'] + '/ads')).body)
+-      @ads = JSON.parse(Net::HTTP.get_response(URI('http://advertisements:5002/ads')).body)
      end
  
    end
@@ -108,8 +108,8 @@ diff -urN store-frontend-initial-state/app/helpers/spree/product_helper.rb store
  module Spree
      module ProductHelper
          def get_ads
--            @ads = JSON.parse(Net::HTTP.get_response(URI(ENV['ADS_ROUTE'] + ':' + ENV['ADS_PORT'] + '/ads')).body)
-+            @ads = JSON.parse(Net::HTTP.get_response(URI('http://advertisements:5002/ads')).body)
++            @ads = JSON.parse(Net::HTTP.get_response(URI(ENV['ADS_ROUTE'] + ':' + ENV['ADS_PORT'] + '/ads')).body)
+-            @ads = JSON.parse(Net::HTTP.get_response(URI('http://advertisements:5002/ads')).body)
            end
      end
  
