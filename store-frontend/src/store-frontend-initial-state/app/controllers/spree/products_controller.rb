@@ -23,7 +23,7 @@ module Spree
       @taxon = params[:taxon_id].present? ? Spree::Taxon.find(params[:taxon_id]) : @product.taxons.first
       redirect_if_legacy_path
       @ads = helpers.get_ads.sample
-      @ads['base64'] = Base64.encode64(open('http://advertisements:' + ENV['ADS_PORT'] + '/banners/' + @ads['path']).read).gsub("\n", '')
+      @ads['base64'] = Base64.encode64(open(ENV['ADS_ROUTE'] + ':' + ENV['ADS_PORT'] + '/banners/' + @ads['path']).read).gsub("\n", '')
     end
 
     private
