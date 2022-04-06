@@ -10,7 +10,8 @@ module Spree
       @taxonomies = Spree::Taxonomy.includes(root: :children)
       @discounts = helpers.get_discounts.sample
       @ads = helpers.get_ads.sample
-      @ads['base64'] = Base64.encode64(open(ENV['ADS_ROUTE'] + ':' + ENV['ADS_PORT'] + '/banners/' + @ads['path']).read).gsub("\n", '')
+
+      @ads['base64'] = Base64.encode64(open("#{ENV['ADS_ROUTE']}:#{ENV['ADS_PORT']}/banners/#{@ads['path']}").read).gsub("\n", '')
     end
   end
 end
