@@ -77,8 +77,6 @@ If your changes are part of the core of the code and will be applied to all thre
 
 * Develop the changes in the `store-frontend-initial-state` folder
 * Commit the changes made in the `store-frontend-initial-state` folder
-* [Regenerate the patches](#Generate-the-patches)
-* Commit the patches
 
 If your changes only affect `store-frontend-broken-instrumented` and/or `store-frontend-instrumented-fixed`, do the following:
 
