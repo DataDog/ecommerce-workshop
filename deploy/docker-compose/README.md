@@ -12,24 +12,20 @@ They currently exist in three different versions:
 
 `docker-compose-fixed-instrumented`: View a fixed application and compare it to the previously broken deployment.
 
+`docker-compose-fixed-instrumented-attack`: The same as `docker-compose-fixed-instrumented` with the addition of a `attack` container that simulates an adversary attempting to hack Storedog
+
 `docker-compose-traffic-replay`: Simulate traffic to the application.
+
+`docker-compose-latest`: All services point to the `latest` tagged images and the compose file contains the most up-to-date env vars and config options
+
+`docker-compose-local`: All services (except `frontend` and `agent`) are created using the local build context. This file is useful for local development, specifically when testing out new changes to Dockerfiles
 
 The application itself runs on `docker-compose`. First, install Docker along with docker-compose. Then sign up with a trial [Datadog account](https://www.datadoghq.com/), and grab your API key from the Integrations->API tab.
 
 To run any of the scenarios, be in the root directory:
 
 ```bash
-git clone https://github.com/DataDog/ecommerce-workshop.git
-cd ecommerce-workshop
-cd store-frontend/src/
-cp -R store-frontend-initial-state store-frontend-broken-instrumented
-cd store-frontend-broken-instrumented
-patch -t -p1 < ../broken-instrumented.patch
-cd ..
-cp -R store-frontend-initial-state store-frontend-instrumented-fixed
-cd store-frontend-instrumented-fixed
-patch -t -p1 < ../instrumented-fixed.patch
-cd ../../..
+make recreate-frontend-code
 POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=<YOUR_API_KEY> docker-compose -f deploy/docker-compose/<docker_compose_with_your_selected_scenario> up
 ```
 

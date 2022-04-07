@@ -118,8 +118,8 @@ local-attack-scenario-stop:
 local-attack-scenario-restart:
 	docker-compose -f deploy/docker-compose/docker-compose-fixed-instrumented-attack.yml restart
 
-.PHONY: local-baseline-start
-local-baseline-start:
+.PHONY: local-start
+local-start:
 	POSTGRES_USER=postgres \
 	POSTGRES_PASSWORD=postgres \
 	ATTACK_HOST=nginx \
@@ -131,8 +131,42 @@ local-baseline-start:
 	ATTACK_HYDRA_INTERVAL=120 \
 	ATTACK_SSH=$(ENABLE_ATTACKS) \
 	ATTACK_SSH_INTERVAL=90 \
-	docker-compose -f deploy/docker-compose/docker-compose-local-baseline.yml up --build --force-recreate -d
+	docker-compose -f deploy/docker-compose/docker-compose-local.yml up --build -d
 
-.PHONY: local-baseline-stop
-local-baseline-stop:
-	docker-compose -f deploy/docker-compose/docker-compose-local-baseline.yml down
+.PHONY: local-stop
+local-stop:
+	docker-compose -f deploy/docker-compose/docker-compose-local.yml down
+
+.PHONY: synthetics-start
+synthetics-start:
+	datadog-ci synthetics run-tests --apiKey ${DD_API_KEY} --appKey ${DD_APP_KEY} --tunnel
+
+.PHONY: latest-start
+latest-start:
+	POSTGRES_USER=postgres \
+	POSTGRES_PASSWORD=postgres \
+	ATTACK_HOST=nginx \
+	ATTACK_PORT=80 \
+	DD_API_KEY=${DD_API_KEY} \
+	ATTACK_GOBUSTER=$(ENABLE_ATTACKS) \
+	ATTACK_GOBUSTER_INTERVAL=180 \
+	ATTACK_HYDRA=$(ENABLE_ATTACKS) \
+	ATTACK_HYDRA_INTERVAL=120 \
+	ATTACK_SSH=$(ENABLE_ATTACKS) \
+	ATTACK_SSH_INTERVAL=90 \
+	docker-compose -f deploy/docker-compose/docker-compose-latest.yml up --build -d
+
+.PHONY: latest-stop
+latest-stop:
+	POSTGRES_USER=postgres \
+	POSTGRES_PASSWORD=postgres \
+	ATTACK_HOST=nginx \
+	ATTACK_PORT=80 \
+	DD_API_KEY=${DD_API_KEY} \
+	ATTACK_GOBUSTER=$(ENABLE_ATTACKS) \
+	ATTACK_GOBUSTER_INTERVAL=180 \
+	ATTACK_HYDRA=$(ENABLE_ATTACKS) \
+	ATTACK_HYDRA_INTERVAL=120 \
+	ATTACK_SSH=$(ENABLE_ATTACKS) \
+	ATTACK_SSH_INTERVAL=90 \
+	docker-compose -f deploy/docker-compose/docker-compose-latest.yml down
