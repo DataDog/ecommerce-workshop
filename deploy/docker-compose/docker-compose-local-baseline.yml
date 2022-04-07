@@ -64,7 +64,9 @@ services:
       - RAILS_HIDE_STACKTRACE=true
       - ADS_PORT=${ADS_PORT}
       - DISCOUNTS_PORT=${DISCOUNTS_PORT}
-    image: "ddtraining/storefront-fixed:latest"
+      - ADS_ROUTE=${ADS_ROUTE}
+      - DISCOUNTS_ROUTE=${DISCOUNTS_ROUTE}
+    image: "public.ecr.aws/x2b9z2t7/ddtraining/storefront-fixed:latest"
     volumes:
       - "../../store-frontend/src/store-frontend-instrumented-fixed:/app"
     ports:

@@ -61,9 +61,6 @@ cd store-frontend
 docker build -f storefront-versions/<VERSION_TO_BUILD>/Dockerfile .
 ```
 
-## Updating the storefront code
-
-If you are developing and modifying the `storefront` code, you will need to recreate the code for the three versions, and recreate the patches after making the changes.
 
 ### Recreating the code
 
@@ -71,26 +68,25 @@ If you are developing and modifying the `storefront` code, you will need to recr
 make recreate-frontend-code
 ```
 
-### Modifying the code
+### Generate the patches
+
+```
+make create-frontend-diffs
+```
+
+
+### Modifying the store-frontend code
 
 If your changes are part of the core of the code and will be applied to all three versions, do the following:
 
 * Develop the changes in the `store-frontend-initial-state` folder
 * Commit the changes made in the `store-frontend-initial-state` folder
-* [Regenerate the patches](#Generate-the-patches)
-* Commit the patches
 
 If your changes only affect `store-frontend-broken-instrumented` and/or `store-frontend-instrumented-fixed`, do the following:
 
 * Develop the changes in the `store-frontend-broken-instrumented` and/or `store-frontend-instrumented-fixed` folder
 * [Regenerate the patches](#Generate-the-patches)
 * Commit the patches
-
-### Generate the patches
-
-```
-make create-frontend-diffs
-```
 
 ## Testing
 
@@ -99,6 +95,8 @@ In order to test a pull request for a specific scenario you'll need to do the fo
 1. Clean up any old containers from your system.
 2. Clean any persistent Docker volumes from prior tests of the project.
 3. Build the containers for the project.
-4. Boot the project using `docker-compose`
+4. Rebuild the frontend code to ensure all frontend volume mounts will exist
+5. Boot the project using `docker-compose`. The suggested compose file to use is `docker-compose-local-baseline`. Run the following command to start the project:
+`POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=[Your API key] make local-baseline-start`
 
 > Makefile targets have been provided to speed along testing
