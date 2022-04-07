@@ -34,11 +34,13 @@ services:
       - DD_PROFILING_ENABLED=true
       - DD_VERSION=1.1
     build:
-      context: ../../discounts-service
+      context: ../../discounts-service-fixed
+      args:
+        DISCOUNTS_PORT: ${DISCOUNTS_PORT}
     volumes:
-      - "../../discounts-service:/app"
+      - "../../discounts-service-fixed:/app"
     ports:
-      - "5001:5001"
+      - "${DISCOUNTS_PORT}:${DISCOUNTS_PORT}"
       - "22"
     depends_on:
       - agent
@@ -60,7 +62,11 @@ services:
       - DD_ENV=development
       - DD_SITE=datadoghq.com
       - RAILS_HIDE_STACKTRACE=true
-    image: "ddtraining/storefront-fixed:latest"
+      - ADS_PORT=${ADS_PORT}
+      - DISCOUNTS_PORT=${DISCOUNTS_PORT}
+      - ADS_ROUTE=${ADS_ROUTE}
+      - DISCOUNTS_ROUTE=${DISCOUNTS_ROUTE}
+    image: "public.ecr.aws/x2b9z2t7/ddtraining/storefront-fixed:latest"
     volumes:
       - "../../store-frontend/src/store-frontend-instrumented-fixed:/app"
     ports:
@@ -88,10 +94,12 @@ services:
       - DD_VERSION=1.0
     build:
       context: ../../ads-service-fixed
+      args:
+        ADS_PORT: ${ADS_PORT}
     volumes:
       - "../../ads-service-fixed:/app"
     ports:
-      - "5002:5002"
+      - "${ADS_PORT}:${ADS_PORT}"
     depends_on:
       - agent
       - db

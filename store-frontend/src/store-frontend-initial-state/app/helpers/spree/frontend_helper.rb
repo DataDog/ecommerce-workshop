@@ -93,11 +93,11 @@ module Spree
     end
 
     def get_discounts
-      @discounts = JSON.parse(Net::HTTP.get_response(URI('http://discounts:5001/discount')).body)
+      @discounts = JSON.parse(Net::HTTP.get_response(URI("#{ENV['DISCOUNTS_ROUTE']}:#{ENV['DISCOUNTS_PORT']}/discount")).body)
     end
-
+    
     def get_ads
-      @ads = JSON.parse(Net::HTTP.get_response(URI('http://advertisements:5002/ads')).body)
+      @ads = JSON.parse(Net::HTTP.get_response(URI("#{ENV['ADS_ROUTE']}:#{ENV['ADS_PORT']}/ads")).body)
     end
 
   end

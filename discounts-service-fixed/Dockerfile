@@ -22,9 +22,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Let Flask know what to boot
 ENV FLASK_APP=discounts.py
 
-# Listen on 5001
-EXPOSE 5001
+# Pass in Port mapping (default to 8282)
+ARG DISCOUNTS_PORT=8282
+# Because CMD is a runtime instruction, we have to create an additional ENV var that reads the ARG val
+# Only ENV vars are accessible via CMD
+ENV DISCOUNTS_PORT ${DISCOUNTS_PORT}
 
 # Start the app using ddtrace so we have profiling and tracing
 ENTRYPOINT ["ddtrace-run"]
-CMD ["flask", "run", "--port=5001", "--host=0.0.0.0"]
+CMD flask run --port=${DISCOUNTS_PORT} --host=0.0.0.0
