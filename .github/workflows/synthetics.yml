@@ -12,10 +12,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Start app
-        run: DD_API_KEY=${{secrets.DD_API_KEY}} make local-baseline-start
-      - name: Run Datadog Synthetics tests
-        uses: DataDog/synthetics-ci-github-action@v0.3.0
-        with:
-          api_key: ${{secrets.DD_API_KEY}}
-          app_key: ${{secrets.DD_APP_KEY}}
+  
+      - name: Public IP
+        id: ip
+        uses: haythem/public-ip@v1.2
+
+      - name: Print Public IP
+      run: |
+        echo ${{ steps.ip.outputs.ipv4 }}
+        echo ${{ steps.ip.outputs.ipv6 }}
+
+      # - name: Start app
+      #   run: DD_API_KEY=${{secrets.DD_API_KEY}} make local-baseline-start
+
+      # - name: Run Datadog Synthetics tests
+      #   uses: DataDog/synthetics-ci-github-action@v0.3.0
+      #   with:
+      #     api_key: ${{secrets.DD_API_KEY}}
+      #     app_key: ${{secrets.DD_APP_KEY}}
