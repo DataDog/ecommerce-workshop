@@ -13,6 +13,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Start app
+        run: DD_API_KEY=${{secrets.DD_API_KEY}} make synthetics-ci-cd-start
+
+      - name: Check Docker
+        run: |
+          curl -I http://nginx:80
+
       - name: Check Runner Info
         run: |
           cat /etc/hosts
+          ping 127.0.0.1
