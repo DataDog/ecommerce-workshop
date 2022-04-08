@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Start app
-        run: POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres DD_API_KEY=${{secrets.DD_API_KEY}} make latest-start
+        run: DD_API_KEY=${{secrets.DD_API_KEY}} make latest-start
 
       - name: Run Datadog Synthetics tests
         uses: DataDog/synthetics-ci-github-action@v0.3.0
