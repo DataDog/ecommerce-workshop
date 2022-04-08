@@ -159,18 +159,3 @@ latest-start:
 .PHONY: latest-stop
 latest-stop:
 	docker-compose -f deploy/docker-compose/docker-compose-latest.yml down
-
-.PHONY: synthetics-ci-cd-start
-synthetics-ci-cd-start:
-	POSTGRES_USER=postgres \
-	POSTGRES_PASSWORD=postgres \
-	ATTACK_HOST=nginx \
-	ATTACK_PORT=80 \
-	DD_API_KEY=${DD_API_KEY} \
-	ATTACK_GOBUSTER=$(ENABLE_ATTACKS) \
-	ATTACK_GOBUSTER_INTERVAL=180 \
-	ATTACK_HYDRA=$(ENABLE_ATTACKS) \
-	ATTACK_HYDRA_INTERVAL=120 \
-	ATTACK_SSH=$(ENABLE_ATTACKS) \
-	ATTACK_SSH_INTERVAL=90 \
-	docker-compose -f deploy/docker-compose/docker-compose-latest.yml up -d
