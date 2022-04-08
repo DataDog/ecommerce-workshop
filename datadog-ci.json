@@ -1,5 +1,6 @@
 {
   "global": {
       "startUrl": "http://localhost:8080"
-  }
+  },
+  "tunnel": true
 }
