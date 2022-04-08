@@ -14,11 +14,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Start app
-        run: DD_API_KEY=${{secrets.DD_API_KEY}} make synthetics-ci-cd-start
-
-      - name: Check Docker
         run: |
-          curl -I http://nginx:80
+          DD_API_KEY=${{secrets.DD_API_KEY}} make synthetics-ci-cd-start
+          docker ps -a
 
       - name: Check Runner Info
         run: |
