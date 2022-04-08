@@ -3,7 +3,7 @@
 version: '3'
 services:
   agent:
-    image: "datadog/agent:7.35.0"
+    image: datadog/agent:7.35.0
     environment:
       - DD_API_KEY
       - DD_APM_ENABLED=true

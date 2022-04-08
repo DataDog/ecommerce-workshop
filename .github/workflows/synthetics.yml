@@ -13,6 +13,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Pull agent
+        run: docker pull datadog/agent:7.35.0
+
+      - name: Pull discounts
+        run: docker pull public.ecr.aws/x2b9z2t7/ddtraining/discounts-fixed:latest
+
+      - name: Pull frontend
+        run: docker pull public.ecr.aws/x2b9z2t7/ddtraining/storefront-fixed:latest
+
+      - name: Pull ads
+        run: docker pull public.ecr.aws/x2b9z2t7/ddtraining/advertisements-fixed:latest
+
+      - name: Pull db
+        run: docker pull postgres:11-alpine
+
+      - name: Pull attackbox
+        run: docker pull public.ecr.aws/x2b9z2t7/ddtraining/attackbox:latest
+
+      - name: Pull nginx
+        run: docker pull public.ecr.aws/x2b9z2t7/ddtraining/nginx:latest
+
       - name: Start app
         run: DD_API_KEY=${{secrets.DD_API_KEY}} make latest-start
 
