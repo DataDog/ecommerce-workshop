@@ -136,7 +136,7 @@ services:
     build:
       context: ../../nginx
     ports:
-      - "9871:80"
+      - "80:80"
     depends_on:
       - frontend
     labels:

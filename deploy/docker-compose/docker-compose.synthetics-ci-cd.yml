@@ -1,0 +1,13 @@
+# Docker compose file which uses build context plus mounted volumes for easier local development
+# Note: storefront-fixed cannot use the build context because the .patch files are located in a parent directory of the Dockerfile
+version: '3'
+services:
+  nginx:
+    restart: always
+    image: public.ecr.aws/x2b9z2t7/ddtraining/nginx:latest
+    ports:
+      - "9871:80"
+    depends_on:
+      - frontend
+    labels:
+      com.datadoghq.ad.logs: '[{"source": "nginx", "service": "nginx"}]'
