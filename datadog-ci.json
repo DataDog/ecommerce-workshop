@@ -1,5 +1,5 @@
 {
   "global": {
-      "startUrl": "localhost:8080"
+      "startUrl": "http://localhost:8080"
   }
 }
