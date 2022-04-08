@@ -15,7 +15,7 @@ jobs:
 
       - name: Start app
         run: |
-          DD_API_KEY=${{secrets.DD_API_KEY}} make synthetics-ci-cd-start
+          docker run hello-world
           docker ps -a
 
       - name: Check Runner Info
