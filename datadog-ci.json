@@ -1,5 +1,5 @@
 {
   "global": {
-      "startUrl": "http://172.17.0.1:80"
+      "startUrl": "http://host.docker.internal:80"
   }
 }
