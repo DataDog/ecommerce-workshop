@@ -13,26 +13,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Pull agent
-        run: docker pull datadog/agent:7.35.0
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
 
-      - name: Pull discounts
-        run: docker pull public.ecr.aws/x2b9z2t7/ddtraining/discounts-fixed:latest
+      - name: Login to ECR
+        id: login-ecr
+        uses: docker/login-action@v1
+        with:
+          registry: public.ecr.aws
+          username: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      - name: Pull frontend
-        run: docker pull public.ecr.aws/x2b9z2t7/ddtraining/storefront-fixed:latest
-
-      - name: Pull ads
-        run: docker pull public.ecr.aws/x2b9z2t7/ddtraining/advertisements-fixed:latest
-
-      - name: Pull nginx
-        run: docker pull public.ecr.aws/x2b9z2t7/ddtraining/nginx:latest
-
-      - name: Pull db
-        run: docker pull postgres:11-alpine
-
-      - name: Pull attackbox
-        run: docker pull public.ecr.aws/x2b9z2t7/ddtraining/attackbox:latest
+      - name: Pull images
+        run: docker-compose -f deploy/docker-compose/docker-compose-latest.yml pull
 
       - name: Start app
         run: |
