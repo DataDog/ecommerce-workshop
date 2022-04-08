@@ -1,0 +1,5 @@
+{
+  "global": {
+      "startUrl": "http://localhost:9871"
+  }
+}
