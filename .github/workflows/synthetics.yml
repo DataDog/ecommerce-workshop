@@ -35,10 +35,7 @@ jobs:
         run: |
           DD_API_KEY=${{secrets.DD_API_KEY}} make latest-start
           docker ps -a
-
-      - name: Check localhost
-        run: |
-          curl -I http://localhost:80
+          sleep 10
 
       - name: Run Datadog Synthetics tests
         uses: DataDog/synthetics-ci-github-action@v0.3.0
