@@ -4,10 +4,8 @@ version: '3'
 services:
   nginx:
     restart: always
-    image: public.ecr.aws/x2b9z2t7/ddtraining/nginx:latest
+    image: nginx
     ports:
-      - "9871:80"
-    depends_on:
-      - frontend
+      - "8080:80"
     labels:
       com.datadoghq.ad.logs: '[{"source": "nginx", "service": "nginx"}]'
