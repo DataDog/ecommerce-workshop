@@ -15,10 +15,11 @@ jobs:
 
       - name: Start app
         run: |
-          docker run hello-world
+          docker run -it --rm -d -p 8080:80 --name web nginx
           docker ps -a
 
       - name: Check Runner Info
         run: |
           cat /etc/hosts
-          ping 127.0.0.1
+          curl localhost:8080 
+          curl -I 127.0.0.1:8080 
