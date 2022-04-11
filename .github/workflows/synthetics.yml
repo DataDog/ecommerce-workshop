@@ -29,13 +29,12 @@ jobs:
           password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
       - name: Pull images
-        run: docker-compose -f deploy/docker-compose/docker-compose-latest.yml pull
+        run: docker-compose -f deploy/docker-compose/docker-compose-test.yml pull
 
       - name: Start app
         run: |
           DD_API_KEY=${{secrets.DD_API_KEY}} make latest-start
           docker ps -a
-          sleep 10
 
       - name: Run Datadog Synthetics tests
         uses: DataDog/synthetics-ci-github-action@v0.3.0
