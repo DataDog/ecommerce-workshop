@@ -33,9 +33,12 @@ jobs:
 
       - name: Start app
         run: |
+          make recreate-frontend-code
           DD_API_KEY=${{secrets.DD_API_KEY}} make latest-start
           docker ps -a
           sleep 20
+          curl -I http://localhost:3000
+          sleep 10
           curl -I http://localhost:80
           sleep 10
 
