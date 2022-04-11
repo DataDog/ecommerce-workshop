@@ -29,7 +29,7 @@ jobs:
           password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
       - name: Pull images
-        run: docker-compose -f deploy/docker-compose/docker-compose-test.yml pull
+        run: docker-compose -f deploy/docker-compose/docker-compose-latest.yml pull
 
       - name: Start app
         run: |
