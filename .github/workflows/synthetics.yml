@@ -35,12 +35,6 @@ jobs:
         run: |
           make recreate-frontend-code
           DD_API_KEY=${{secrets.DD_API_KEY}} make latest-start
-          docker ps -a
-          sleep 20
-          curl -I http://localhost:3000
-          sleep 10
-          curl -I http://localhost:80
-          sleep 10
 
       - name: Run Datadog Synthetics tests
         uses: DataDog/synthetics-ci-github-action@v0.3.0
