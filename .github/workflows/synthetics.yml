@@ -40,6 +40,7 @@ jobs:
         run: |
           chmod +x ./wait-for-it.sh
           ./wait-for-it.sh -t 30 localhost:3000
+          ./wait-for-it.sh -t 30 localhost:80
 
       - name: Run Datadog Synthetics tests
         uses: DataDog/synthetics-ci-github-action@v0.3.0
