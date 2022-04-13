@@ -35,7 +35,11 @@ jobs:
         run: |
           make recreate-frontend-code
           DD_API_KEY=${{secrets.DD_API_KEY}} make latest-start
-          sleep 30
+
+      - name: Wait for it
+        run: |
+          chmod +x ./wait-for-it.sh
+          ./wait-for-it.sh -t 30 localhost:3000
 
       - name: Run Datadog Synthetics tests
         uses: DataDog/synthetics-ci-github-action@v0.3.0
