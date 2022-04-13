@@ -28,6 +28,23 @@ jobs:
           username: ${{ secrets.AWS_ACCESS_KEY_ID }}
           password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
+      - name: Build frontend
+        uses: docker/build-push-action@v2
+        with:
+          context: ./store-frontend
+          file: ./store-frontend/storefront-versions/store-frontend-instrumented-fixed/Dockerfile
+          platforms: linux/amd64
+          push: false
+          tags: ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/storefront-fixed:latest
+
+      - name: Build discounts
+        uses: docker/build-push-action@v2
+        with:
+          context: ./discounts-service-fixed
+          platforms: linux/amd64
+          push: false
+          tags: ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/discounts-fixed:latest
+
       - name: Pull images
         run: docker-compose -f deploy/docker-compose/docker-compose-latest.yml pull
 
