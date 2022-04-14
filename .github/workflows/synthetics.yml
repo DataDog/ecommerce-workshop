@@ -28,23 +28,6 @@ jobs:
           username: ${{ secrets.AWS_ACCESS_KEY_ID }}
           password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      - name: Build frontend
-        uses: docker/build-push-action@v2
-        with:
-          context: ./store-frontend
-          file: ./store-frontend/storefront-versions/store-frontend-instrumented-fixed/Dockerfile
-          platforms: linux/amd64
-          push: false
-          tags: ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/storefront-fixed:latest
-
-      - name: Build discounts
-        uses: docker/build-push-action@v2
-        with:
-          context: ./discounts-service-fixed
-          platforms: linux/amd64
-          push: false
-          tags: ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/discounts-fixed:latest
-
       - name: Pull images
         run: docker-compose -f deploy/docker-compose/docker-compose-latest.yml pull
 
@@ -55,9 +38,8 @@ jobs:
 
       - name: Wait for it
         run: |
-          chmod +x ./wait-for-it.sh
-          ./wait-for-it.sh -t 30 localhost:3000
-          ./wait-for-it.sh -t 30 localhost:80
+          curl -I localhost:3000
+          curl -I localhost:80
 
       - name: Run Datadog Synthetics tests
         uses: DataDog/synthetics-ci-github-action@v0.3.0
