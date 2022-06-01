@@ -1,0 +1,11 @@
+env: development
+version: "v3.0"
+replicas: 2
+image: "econocombrasil/store-frontend:v3.0"
+resources:
+  limits:
+    cpu: 100m
+    memory: 300Mi
+  requests:
+    cpu: 50m
+    memory: 150Mi

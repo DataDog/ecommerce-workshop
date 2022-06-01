@@ -1,0 +1,11 @@
+env: <+env.name>
+version: <+serviceConfig.serviceDefinition.spec.variables.ImageTag>
+replicas: <+stage.variables.replicas>
+image: <+serviceConfig.serviceDefinition.spec.artifacts.primary.spec.imagePath>:<+stage.variables.imageTag>
+resources: 
+  limits:
+    cpu: 100m
+    memory: 300Mi
+  requests: 
+    cpu: 50m
+    memory: 150Mi

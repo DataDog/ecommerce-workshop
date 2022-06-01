@@ -1,0 +1,114 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ecommerce
+    service: advertisements
+    tags.datadoghq.com/env: {{ .Values.env }}
+    tags.datadoghq.com/service: advertisements
+    tags.datadoghq.com/version: {{ .Values.version }}
+  name: advertisements
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: ecommerce
+      service: advertisements
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        ad.datadoghq.com/advertisements.logs: '[{"source":"python","service":"advertisements"}]'
+      labels:
+        app: ecommerce
+        service: advertisements
+        tags.datadoghq.com/env: {{ .Values.env }}
+        tags.datadoghq.com/service: advertisements
+        tags.datadoghq.com/version: {{ .Values.version }}
+    spec:
+      containers:
+      - args:
+        - flask
+        - run
+        - --port=5002
+        - --host=0.0.0.0
+        command:
+        - ddtrace-run
+        env:
+        - name: FLASK_APP
+          value: ads.py
+        - name: FLASK_DEBUG
+          value: "1"
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: pw
+              name: storedog-db
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              key: usr
+              name: storedog-db
+        - name: POSTGRES_HOST
+          valueFrom:
+            secretKeyRef:
+              key: host
+              name: storedog-db
+        - name: DD_ENV
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/env']
+        - name: DD_SERVICE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/service']
+        - name: DD_VERSION
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/version']
+        - name: DD_AGENT_HOST
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: DD_LOGS_INJECTION
+          value: "true"
+        - name: DD_ANALYTICS_ENABLED
+          value: "true"
+        - name: DD_PROFILING_ENABLED
+          value: "true"
+        - name: DD_SERVICE_MAPPING
+          value: "postgres:advertisements-postgres"
+        image: {{ .Values.image }}
+        imagePullPolicy: Always
+        name: advertisements
+        ports:
+        - containerPort: 5002
+          protocol: TCP
+        resources: {{ .Values.resources }}
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+  labels:
+    app: ecommerce
+    service: advertisements
+    tags.datadoghq.com/env: {{ .Values.env }}
+    tags.datadoghq.com/service: advertisements
+  name: advertisements
+spec:
+  ports:
+  - port: 5002
+    protocol: TCP
+    targetPort: 5002
+  selector:
+    app: ecommerce
+    service: advertisements
+  sessionAffinity: None
+  type: ClusterIP
