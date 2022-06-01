@@ -4,9 +4,11 @@ metadata:
   labels:
     app: ecommerce
     service: discounts
+    ########### LABELS NO NIVEL DO DEPLOYMENT ##########
     tags.datadoghq.com/env: development
     tags.datadoghq.com/service: discounts
     tags.datadoghq.com/version: "v2.0"
+    ####################################################
   name: discounts
 spec:
   replicas: 1
@@ -22,13 +24,17 @@ spec:
   template:
     metadata:
       annotations:
+        ###### ANNOTATION PARA COLETA DE LOGS ######
         ad.datadoghq.com/discounts.logs: '[{"source":"python","service":"discounts"}]'
+        ############################################
       labels:
         app: ecommerce
         service: discounts
+        ########### LABELS NO NIVEL DO CONTAINER ###########
         tags.datadoghq.com/env: development
         tags.datadoghq.com/service: discounts
         tags.datadoghq.com/version: "v2.0"
+        ####################################################
     spec:
       containers:
       - args:
@@ -68,16 +74,8 @@ spec:
             secretKeyRef:
               key: host
               name: storedog-discounts-db
-        - name: DD_AGENT_HOST
-          valueFrom:
-            fieldRef:
-              fieldPath: status.hostIP
-        - name: DD_LOGS_INJECTION
-          value: "true"
-        - name: DD_ANALYTICS_ENABLED
-          value: "true"
-        - name: DD_PROFILING_ENABLED
-          value: "true"
+
+        ########## VARIAVEIS DE AMBIENTE DATADOG APM ###################
         - name: DD_ENV
           valueFrom:
             fieldRef:
@@ -90,15 +88,34 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.labels['tags.datadoghq.com/version']
+        - name: DD_AGENT_HOST
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: DD_LOGS_INJECTION
+          value: "true"
+        - name: DD_ANALYTICS_ENABLED
+          value: "true"
         - name: DD_SERVICE_MAPPING
           value: "postgres:discounts-postgres"
+        - name: DD_PROFILING_ENABLED
+          value: "true"
+        ################################################################
+
         image: econocombrasil/discounts-service:v2.0
         imagePullPolicy: Always
         name: discounts
         ports:
         - containerPort: 5001
           protocol: TCP
-        resources: {}
+        resources:
+          limits:
+            cpu: 300m
+            memory: 350Mi
+          requests:
+            cpu: 100m
+            memory: 150Mi
+
 
 ---
 
