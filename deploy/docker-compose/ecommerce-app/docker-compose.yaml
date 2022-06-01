@@ -1,7 +1,7 @@
 version: '3'
 services:
   agent:
-    image: "datadog/agent:7.32.4"
+    image: "datadog/agent:7.35.2"
     container_name: agent
     environment:
       - DD_API_KEY=${DD_API_KEY}
