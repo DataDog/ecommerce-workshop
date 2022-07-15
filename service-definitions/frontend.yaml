@@ -1,0 +1,75 @@
+---
+schema-version: v2
+dd-service: store-frontend 
+team: frontend-team 
+contacts:
+  - type: slack
+    contact: http://slack/e-commerce
+  - type: email 
+    name: Frontend Engineering Team
+    contact: frontend@example.com  
+links: 
+  - name: Runbook
+    type: runbook
+    url: http://runbook/store-frontend
+repos: 
+  - name: Source 
+    provider: github 
+    url: https://github.com/DataDog/ecommerce-workshop/tree/main/store-frontend
+docs: 
+  - name: Frontend Team
+    provider: wiki
+    url: http://wiki/frontend-team
+tags:
+  - app:storedog
+  - cost-center:engineering
+---
+schema-version: v2
+dd-service: store-frontend-cache 
+team: frontend-team 
+contacts:
+  - type: slack
+    contact: http://slack/e-commerce
+  - type: email 
+    name: Frontend Engineering Team
+    contact: frontend@example.com  
+links: 
+  - name: Runbook
+    type: runbook
+    url: http://runbook/store-frontend
+repos: 
+  - name: Source 
+    provider: github 
+    url: https://github.com/DataDog/ecommerce-workshop/tree/main/store-frontend
+docs: 
+  - name: Frontend Team
+    provider: wiki
+    url: http://wiki/frontend-team
+tags:
+  - app:storedog
+  - cost-center:engineering
+---
+schema-version: v2
+dd-service: store-frontend-sqlite 
+team: frontend-team 
+contacts:
+  - type: slack
+    contact: http://slack/e-commerce
+  - type: email 
+    name: Frontend Engineering Team
+    contact: frontend@example.com  
+links: 
+  - name: Runbook
+    type: runbook
+    url: http://runbook/store-frontend
+repos: 
+  - name: Source 
+    provider: github 
+    url: https://github.com/DataDog/ecommerce-workshop/tree/main/store-frontend
+docs: 
+  - name: Frontend Team
+    provider: wiki
+    url: http://wiki/frontend-team
+tags:
+  - app:storedog
+  - cost-center:engineering

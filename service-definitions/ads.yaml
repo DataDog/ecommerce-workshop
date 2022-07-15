@@ -1,0 +1,26 @@
+---
+schema-version: v2
+dd-service: advertisements
+team: ads-team 
+contacts:
+  - type: slack
+    contact: http://slack/e-commerce
+  - type: email 
+    name: Ads Engineering Team
+    contact: ads@example.com  
+links: 
+  - name: Runbook
+    type: runbook
+    url: http://runbook/advertisements
+repos: 
+  - name: Source 
+    provider: github 
+    url: https://github.com/DataDog/ecommerce-workshop/tree/main/ads-service
+docs: 
+  - name: Ads Team
+    provider: wiki
+    url: http://wiki/ads-team
+tags:
+  - app:storedog
+  - cost-center:engineering
+

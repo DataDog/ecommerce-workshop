@@ -1,0 +1,25 @@
+---
+schema-version: v2
+dd-service: discounts 
+team: discounts-team 
+contacts:
+  - type: slack
+    contact: http://slack/e-commerce
+  - type: email 
+    name: Discounts Engineering Team
+    contact: discounts@example.com  
+links: 
+  - name: Runbook
+    type: runbook
+    url: http://runbook/discounts
+repos: 
+  - name: Source 
+    provider: github 
+    url: https://github.com/DataDog/ecommerce-workshop/tree/main/discounts-service
+docs: 
+  - name: Discounts Team
+    provider: wiki
+    url: http://wiki/discounts-team
+tags:
+  - app:storedog
+  - cost-center:engineering
