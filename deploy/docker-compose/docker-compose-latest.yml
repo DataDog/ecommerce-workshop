@@ -135,3 +135,14 @@ services:
       - frontend
     labels:
       com.datadoghq.ad.logs: '[{"source": "nginx", "service": "nginx"}]'
+  puppeteer:
+    image: buildkite/puppeteer:10.0.0
+    volumes:
+      - "../../puppeteer/puppeteer-checkout-funnel.js:/puppeteer.js"
+      - "../../puppeteer/puppeteer.sh:/puppeteer.sh"
+    environment:
+      - STOREDOG_URL
+      - PUPPETEER_TIMEOUT
+    depends_on:
+      - nginx
+    command: bash puppeteer.sh
