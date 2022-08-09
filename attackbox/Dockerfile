@@ -1,8 +1,8 @@
-FROM kalilinux/kali:latest
+FROM kalilinux/kali-rolling:latest
 RUN mkdir /app
 
 ADD https://github.com/OJ/gobuster/releases/download/v3.1.0/gobuster-linux-amd64.7z /app
-ADD https://github.com/vanhauser-thc/thc-hydra/archive/refs/tags/v9.2.zip /app
+ADD https://github.com/vanhauser-thc/thc-hydra/archive/refs/tags/v9.3.zip /app
 
 # Install packages
 RUN export DEBIAN_FRONTEND=noninteractive && \
@@ -25,7 +25,7 @@ COPY keys/storedog-leaked-key /home/user/.ssh/id_rsa
 WORKDIR /app
 RUN gzip -d /usr/share/wordlists/rockyou.txt.gz
 RUN 7zr e ./gobuster-linux-amd64.7z && chmod +x gobuster
-RUN unzip v9.2.zip && cd thc-hydra-9.2/ && ./configure && make && make install
+RUN unzip v9.3.zip && cd thc-hydra-9.3/ && ./configure && make && make install
 
 # Copy attack script and keys
 COPY . .

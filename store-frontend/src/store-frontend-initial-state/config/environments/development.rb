@@ -64,7 +64,9 @@ Rails.application.configure do
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
-  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  ## Commenting out this line to fix build for M1 Macs: https://github.com/evilmartians/terraforming-rails/issues/34#issuecomment-872021786
+  # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Quiet down logger level and disable fragment logging
   config.log_level = :info
