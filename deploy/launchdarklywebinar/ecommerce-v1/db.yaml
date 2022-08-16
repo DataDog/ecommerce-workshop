@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: db-password
+  namespace: ns1
+  labels:
+    app: ecommerce
+    service: db
+type: Opaque
+data:
+  pw: password

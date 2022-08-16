@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: discounts
+    app: ecommerce
+  name: discounts
+  namespace: ns1
+spec:
+  ports:
+  - port: 5001
+    protocol: TCP
+    targetPort: 5001
+  selector:
+    service: discounts
+    app: ecommerce
+  sessionAffinity: None
+  type: ClusterIP

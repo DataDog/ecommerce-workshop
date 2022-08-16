@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: regular-traffic 
+  name: regular-traffic 
+  namespace: fake-traffic
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      run: regular-traffic
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: regular-traffic 
+    spec:
+      containers:
+      - command: ["/bin/sh"]
+        args: ["-c", "while true; do wget frontend.ns1; sleep 5;done"]
+        image: busybox
+        name: busybox
+        resources: {}
+

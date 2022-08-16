@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: advertisements
+    app: ecommerce
+  name: advertisements
+  namespace: ns1
+spec:
+  ports:
+  - port: 5002
+    protocol: TCP
+    targetPort: 5002
+  selector:
+    service: advertisements
+    app: ecommerce
+status:
