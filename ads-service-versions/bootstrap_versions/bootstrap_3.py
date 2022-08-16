@@ -25,5 +25,7 @@ def initialize_database(app, db):
         db.drop_all()
         db.create_all()
         first_ad = Advertisement('Version2', '/t/bags', 15.1, '2.jpg')
+        second_ad = Advertisement('Special', '/t/bags', 2, 'special.jpg')
         db.session.add(first_ad)
+        db.session.add(second_ad)
         db.session.commit()

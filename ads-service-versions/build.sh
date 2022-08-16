@@ -15,7 +15,12 @@ cp bootstrap_versions/bootstrap_1.py ./bootstrap.py
 docker image build --progress=plain --tag arapulido/advertisements_v1:latest .
 docker push arapulido/advertisements_v1:latest
 
-# Build and tag image (ads version1)
+# Build and tag image (ads version2)
 cp bootstrap_versions/bootstrap_2.py ./bootstrap.py
 docker image build --progress=plain --tag arapulido/advertisements_v2:latest .
 docker push arapulido/advertisements_v2:latest
+
+# Build and tag image (ads version3)
+cp bootstrap_versions/bootstrap_3.py ./bootstrap.py
+docker image build --progress=plain --tag arapulido/advertisements_v3:latest .
+docker push arapulido/advertisements_v3:latest

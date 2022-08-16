@@ -63,7 +63,8 @@ spec:
         #   value: <your_client_token>
         # - name: DD_APPLICATION_ID
         #   value: <your_application_id>
-        image: arapulido/frontend:1.0 
+        image: arapulido/storefront_weighted:latest 
+        imagePullPolicy: Always
         name: ecommerce-spree-observability
         ports:
         - containerPort: 3000
