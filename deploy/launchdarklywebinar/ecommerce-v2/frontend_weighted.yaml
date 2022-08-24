@@ -58,6 +58,9 @@ spec:
           value: "http://advertisements"
         - name: ADS_PORT
           value: "5002"
+        # Enable LaunchDarkly
+        - name: LD_API_KEY
+          value: "<launchdarkly_api_key>"
         # Enable RUM
         # - name: DD_CLIENT_TOKEN
         #   value: <your_client_token>
