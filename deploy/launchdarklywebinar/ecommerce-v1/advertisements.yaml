@@ -22,6 +22,7 @@ spec:
     spec:
       containers:
       - image: arapulido/advertisements_v1:latest
+        imagePullPolicy: Always
         name: advertisements
         command: ["ddtrace-run"]
         args: ["flask", "run", "--port=5002", "--host=0.0.0.0"]
