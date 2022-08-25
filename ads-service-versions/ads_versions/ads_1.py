@@ -35,7 +35,6 @@ def weighted_image(weight):
 def status():
     if flask_request.method == 'GET':
 
-        time.sleep(0.2)
         try:
             advertisements = Advertisement.query.all()
             app.logger.info(f"Total advertisements available: {len(advertisements)}")
