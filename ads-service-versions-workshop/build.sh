@@ -21,3 +21,9 @@ cp bootstrap_versions/bootstrap_2.py ./bootstrap.py
 cp ads_versions/ads_2.py ./ads.py
 docker image build --platform linux/amd64 --progress=plain --tag arapulido/ads-service:2.0 .
 docker push arapulido/ads-service:2.0
+
+# Build and tag image (ads version3)
+cp bootstrap_versions/bootstrap_3.py ./bootstrap.py
+cp ads_versions/ads_3.py ./ads.py
+docker image build --platform linux/amd64 --progress=plain --tag arapulido/ads-service:3.0 .
+docker push arapulido/ads-service:3.0

@@ -26,6 +26,7 @@ def initialize_database(app, db):
         db.create_all()
         ad1 = Advertisement('Version1', '/t/clothing', 15.1, '1.jpg')
         ad2 = Advertisement('Version2', '/t/clothing', 15.1, '2.jpg')
+        ad3 = Advertisement('Version3', '/t/clothing', 15.1, '2.jpg')
         db.session.add(ad1)
         db.session.add(ad2)
         db.session.commit()
