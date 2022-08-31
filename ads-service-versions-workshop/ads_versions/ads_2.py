@@ -36,7 +36,7 @@ def status():
     if flask_request.method == 'GET':
 
         try:
-            advertisements = Advertisement.query.filter(Advertisement.name == 'Version2').all()
+            advertisements = Advertisement.query.filter(Advertisement.name == 'Version2')
             app.logger.info(f"Total advertisements available: {len(advertisements)}")
             return jsonify([b.serialize() for b in advertisements])
 
