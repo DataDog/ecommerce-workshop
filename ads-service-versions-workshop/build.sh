@@ -13,11 +13,11 @@ export DOCKER_BUILDKIT=1
 # Build and tag image (ads version1)
 cp bootstrap_versions/bootstrap_1.py ./bootstrap.py
 cp ads_versions/ads_1.py ./ads.py
-docker image build --progress=plain --tag arapulido/ads-service:1.0 .
+docker image build --platform linux/amd64 --progress=plain --tag arapulido/ads-service:1.0 .
 docker push arapulido/ads-service:1.0
 
 # Build and tag image (ads version2)
 cp bootstrap_versions/bootstrap_2.py ./bootstrap.py
 cp ads_versions/ads_2.py ./ads.py
-docker image build --progress=plain --tag arapulido/ads-service:2.0 .
+docker image build --platform linux/amd64 --progress=plain --tag arapulido/ads-service:2.0 .
 docker push arapulido/ads-service:2.0
