@@ -22,3 +22,8 @@ cp ads_versions/ads_2.py ./ads.py
 docker image build --progress=plain --tag arapulido/advertisements_v2:latest .
 docker push arapulido/advertisements_v2:latest
 
+# Build and tag image (ads version2.1)
+cp bootstrap_versions/bootstrap_2.py ./bootstrap.py
+cp ads_versions/ads_2_1.py ./ads.py
+docker image build --progress=plain --tag arapulido/advertisements_v2_1:latest .
+docker push arapulido/advertisements_v2_1:latest

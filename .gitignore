@@ -25,3 +25,6 @@ store-frontend/src/store-frontend-broken-instrumented
 # Vim swp files
 *.swp
 
+# LaunchDarkly webinar ignore files
+ads-service-versions/ads.py
+ads-service-versions/bootstrap.py

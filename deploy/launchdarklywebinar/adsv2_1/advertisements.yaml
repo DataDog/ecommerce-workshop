@@ -21,7 +21,7 @@ spec:
         app: ecommerce
     spec:
       containers:
-      - image: arapulido/advertisements_v2_1:latest
+      - image: arapulido/advertisements_v2:latest
         imagePullPolicy: Always
         name: advertisements
         command: ["ddtrace-run"]
@@ -43,7 +43,7 @@ spec:
           - name: DD_ENV
             value: "ddld"
           - name: DD_VERSION
-            value: "2.1"
+            value: "2.0"
           - name: DD_SERVICE
             value: "advertisements"
           - name: DD_AGENT_HOST
