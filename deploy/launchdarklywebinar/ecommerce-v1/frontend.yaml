@@ -59,10 +59,16 @@ spec:
         - name: ADS_PORT
           value: "5002"
         # Enable RUM
-        # - name: DD_CLIENT_TOKEN
-        #   value: <your_client_token>
-        # - name: DD_APPLICATION_ID
-        #   value: <your_application_id>
+        - name: DD_CLIENT_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: dd-client-token
+              name: rum
+        - name: DD_APPLICATION_ID
+          valueFrom:
+            secretKeyRef:
+              key: dd-application-id
+              name: rum
         image: arapulido/frontend:1.0 
         name: ecommerce-spree-observability
         ports:
