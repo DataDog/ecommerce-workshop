@@ -1,10 +1,14 @@
 from flask import Flask
 from models import Advertisement, db
+import ldclient
+from ldclient.config import Config
+
 
 import os
 DB_USERNAME = os.environ['POSTGRES_USER']
 DB_PASSWORD = os.environ['POSTGRES_PASSWORD']
 DB_HOST = os.environ['POSTGRES_HOST']
+LD_API_KEY = os.environ['LD_API_KEY']
 
 
 def create_app():
@@ -16,6 +20,8 @@ def create_app():
 
     db.init_app(app)
     initialize_database(app, db)
+
+    app.ldClient = ldclient.set_config(Config(LD_API_KEY))
     return app
 
 

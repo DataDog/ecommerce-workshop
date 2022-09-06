@@ -7,7 +7,7 @@ import os
 DB_USERNAME = os.environ['POSTGRES_USER']
 DB_PASSWORD = os.environ['POSTGRES_PASSWORD']
 DB_HOST = os.environ['POSTGRES_HOST']
-
+LD_API_KEY = os.environ['LD_API_KEY']
 
 def create_app():
     """Create a Flask application"""
@@ -18,7 +18,7 @@ def create_app():
 
     db.init_app(app)
     initialize_database(app, db)
-    app.ldclient = ldclient.client.LDClient(Config("sdk-76fe902e-d708-4b33-8ecc-bff3ac181b75"), start_wait=8)
+    app.ldclient = ldclient.client.LDClient(Config(LD_API_KEY), start_wait=8)
     app.logger.info(app.ldclient)
     return app
 
