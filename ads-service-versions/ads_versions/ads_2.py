@@ -1,6 +1,7 @@
 import requests
 import random
 import time
+import uuid
 
 from flask import Flask, Response, jsonify, send_from_directory
 from flask import request as flask_request
@@ -34,10 +35,23 @@ def weighted_image(weight):
 @app.route('/ads', methods=['GET', 'POST'])
 def status():
     if flask_request.method == 'GET':
-
-        time.sleep(0.2)
+        user = {
+            "key": uuid.uuid4(),
+            "custom": {
+                "platform": flask_request.user_agent.platform,
+                "browser": flask_request.user_agent.browser,
+                "language": flask_request.user_agent.language,
+                "unparsed": flask_request.user_agent.string
+            }
+        }
+        
         try:
-            advertisements = Advertisement.query.all()
+            enableAllAds = app.ldclient.variation("enable-all-ads", user, False)
+            if enableAllAds:
+                time.sleep(0.3)
+                advertisements = Advertisement.query.all()
+            else:
+                advertisements = Advertisement.query.limit(5).all()
             app.logger.info(f"Total advertisements available: {len(advertisements)}")
             return jsonify([b.serialize() for b in advertisements])
 

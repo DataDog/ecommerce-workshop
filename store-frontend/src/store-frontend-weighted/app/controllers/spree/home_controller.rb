@@ -1,14 +1,7 @@
-require 'ldclient-rb'
-
 module Spree
   class HomeController < Spree::StoreController
     helper 'spree/products'
     respond_to :html
-
-    def show_message(s)
-      puts "*** #{s}"
-      puts
-    end
 
     def index
       @searcher = build_searcher(params.merge(include_images: true))
@@ -16,25 +9,12 @@ module Spree
       @products = @products.includes(:possible_promotions) if @products.respond_to?(:includes)
       @taxonomies = Spree::Taxonomy.includes(root: :children)
       @discounts = helpers.get_discounts.sample
-      
-      
-      user = {
-        key: "example-user-key",
-        name: "Bob Loblaw"
-      }
-
-      if Rails.configuration.client.initialized?
-        show_message "SDK successfully initialized!"
-      else
-        show_message "SDK failed to initialize"
-        exit 1
-      end
 
       # Put this under a feature flag
-      flag_value = Rails.configuration.client.variation("configure-ad-weight", user, 0.0)
-      ad_value = flag_value.to_f / 10
+      flag = helpers.get_ld_config("configure-ad-weight", 0.0)
+      ad_value = flag.to_f / 10
 
-      if flag_value.to_f != 0.0
+      if flag.to_f != 0.0
         @ads = helpers.get_ads_weighted(ad_value)
       else
         @ads = helpers.get_ads.sample

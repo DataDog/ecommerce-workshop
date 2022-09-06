@@ -1,5 +1,7 @@
 from flask import Flask
 from models import Advertisement, db
+import ldclient
+from ldclient.config import Config
 
 import os
 DB_USERNAME = os.environ['POSTGRES_USER']
@@ -16,6 +18,8 @@ def create_app():
 
     db.init_app(app)
     initialize_database(app, db)
+    app.ldclient = ldclient.client.LDClient(Config("sdk-76fe902e-d708-4b33-8ecc-bff3ac181b75"), start_wait=8)
+    app.logger.info(app.ldclient)
     return app
 
 
