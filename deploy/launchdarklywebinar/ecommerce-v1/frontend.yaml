@@ -44,6 +44,8 @@ spec:
           value: "true"
         - name: DD_ENV
           value: "ddld"
+        - name: DD_SITE
+          value: "datadoghq.com"
         - name: DD_VERSION
           value: "1.0"
         - name: DD_SERVICE
@@ -70,6 +72,7 @@ spec:
               key: dd-application-id
               name: rum
         image: arapulido/frontend:1.0 
+        imagePullPolicy: Always
         name: ecommerce-spree-observability
         ports:
         - containerPort: 3000

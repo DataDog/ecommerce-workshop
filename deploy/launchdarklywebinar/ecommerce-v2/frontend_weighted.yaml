@@ -44,6 +44,8 @@ spec:
           value: "true"
         - name: DD_ENV
           value: "ddld"
+        - name: DD_SITE
+          value: "datadoghq.com"
         - name: DD_VERSION
           value: "2.0"
         - name: DD_SERVICE
