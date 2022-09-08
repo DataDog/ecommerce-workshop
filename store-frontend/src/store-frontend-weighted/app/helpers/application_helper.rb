@@ -17,17 +17,13 @@ module ApplicationHelper
         end
         hash_key = session[:hash_key] 
         groups_for_user = nil
+        internalUser = false
       else
         hash_key = spree_current_user.email
-        #group_id = spree_current_user.group_id
-        
-        #if group_id == nil
-        groups_for_user = nil
-        #else
-        #  groups_for_user = Spree::Group.find(group_id).name 
-        #end
+        internalUser = true
+
       end
   
-      flag = Rails.configuration.ld_client.variation(key, {:key => hash_key, :custom => {:groups => groups_for_user}, :anonymous => spree_current_user.nil?}, default)
+      flag = Rails.configuration.ld_client.variation(key, {:key => hash_key, :custom => {:groups => groups_for_user, :internalUser => internalUser}, :anonymous => spree_current_user.nil?}, default)
     end
 end

@@ -44,16 +44,19 @@ def status():
                 "unparsed": flask_request.user_agent.string
             }
         }
-        
+
         try:
-            enableAllAds = app.ldclient.variation("enable-all-ads", user, False)
-            if enableAllAds:
+            enableNewAdEngine = app.ldclient.variation("enable-new-ad-engine", user, False)
+            advertisements = Advertisement.query.all()
+            if enableNewAdEngine: 
                 time.sleep(0.3)
-                advertisements = Advertisement.query.all()
-            else:
-                advertisements = Advertisement.query.limit(5).all()
-            app.logger.info(f"Total advertisements available: {len(advertisements)}")
-            return jsonify([b.serialize() for b in advertisements])
+                return_ads = [ad for ad in advertisements if ad.weight > 15.0 ]
+                selected_ad = random.choice(return_ads)
+                return selected_ad.serialize()
+            else: 
+                return_ads = [ad for ad in advertisements if ad.weight > 10.0 and ad.weight < 15.0]
+                selected_ad = random.choice(return_ads)
+                return selected_ad.serialize()
 
         except:
             app.logger.error("An error occurred while getting ad.")
