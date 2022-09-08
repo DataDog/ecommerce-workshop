@@ -44,6 +44,8 @@ spec:
           value: "true"
         - name: DD_ENV
           value: "ddld"
+        - name: DD_SITE
+          value: "datadoghq.com"
         - name: DD_VERSION
           value: "2.0"
         - name: DD_SERVICE
@@ -60,12 +62,20 @@ spec:
           value: "5002"
         # Enable LaunchDarkly
         - name: LD_API_KEY
-          value: "<launchdarkly_api_key>"
-        # Enable RUM
-        # - name: DD_CLIENT_TOKEN
-        #   value: <your_client_token>
-        # - name: DD_APPLICATION_ID
-        #   value: <your_application_id>
+          valueFrom:
+            secretKeyRef:
+              key: api-key
+              name: launchdarkly
+        - name: DD_CLIENT_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: dd-client-token
+              name: rum
+        - name: DD_APPLICATION_ID
+          valueFrom:
+            secretKeyRef:
+              key: dd-application-id
+              name: rum
         image: arapulido/storefront_weighted:latest 
         imagePullPolicy: Always
         name: ecommerce-spree-observability
