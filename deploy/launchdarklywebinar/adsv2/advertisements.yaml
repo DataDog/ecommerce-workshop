@@ -58,7 +58,10 @@ spec:
             value: "true"
           # Enable LaunchDarkly
           - name: LD_API_KEY
-            value: "<launchdarkly_api_key>"
+            valueFrom:
+              secretKeyRef:
+                key: api-key
+                name: launchdarkly
         ports:
         - containerPort: 5002
         resources: {}
