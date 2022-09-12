@@ -1,6 +1,7 @@
 import requests
 import random
 import time
+import uuid
 
 from flask import Flask, Response, jsonify, send_from_directory
 from flask import request as flask_request
@@ -34,12 +35,28 @@ def weighted_image(weight):
 @app.route('/ads', methods=['GET', 'POST'])
 def status():
     if flask_request.method == 'GET':
+        user = {
+            "key": uuid.uuid4(),
+            "custom": {
+                "platform": flask_request.user_agent.platform,
+                "browser": flask_request.user_agent.browser,
+                "language": flask_request.user_agent.language,
+                "unparsed": flask_request.user_agent.string
+            }
+        }
 
-        time.sleep(0.2)
         try:
+            enableNewAdEngine = app.ldclient.variation("enable-new-ad-engine", user, False)
             advertisements = Advertisement.query.all()
-            app.logger.info(f"Total advertisements available: {len(advertisements)}")
-            return jsonify([b.serialize() for b in advertisements])
+            if enableNewAdEngine: 
+                time.sleep(0.3)
+                return_ads = [ad for ad in advertisements if ad.weight > 15.0 ]
+                selected_ad = random.choice(return_ads)
+                return selected_ad.serialize()
+            else: 
+                return_ads = [ad for ad in advertisements if ad.weight > 10.0 and ad.weight < 15.0]
+                selected_ad = random.choice(return_ads)
+                return selected_ad.serialize()
 
         except:
             app.logger.error("An error occurred while getting ad.")

@@ -56,6 +56,12 @@ spec:
             value: "true"
           - name: DD_PROFILING_ENABLED
             value: "true"
+          # Enable LaunchDarkly
+          - name: LD_API_KEY
+            valueFrom:
+              secretKeyRef:
+               key: api-key
+               name: launchdarkly
         ports:
         - containerPort: 5002
         resources: {}

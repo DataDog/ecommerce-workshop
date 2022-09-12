@@ -54,3 +54,4 @@ group :test, :development do
   gem 'awesome_print'
 end
 gem 'launchdarkly-server-sdk', '6.3.4'
+gem 'uuidtools'
