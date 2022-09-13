@@ -71,7 +71,7 @@ spec:
             secretKeyRef:
               key: dd-application-id
               name: rum
-        image: arapulido/frontend:1.0 
+        image: arapulido/frontend_v1:latest
         imagePullPolicy: Always
         name: ecommerce-spree-observability
         ports:
