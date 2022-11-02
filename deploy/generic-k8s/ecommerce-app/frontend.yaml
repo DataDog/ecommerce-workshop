@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: frontend
+    tags.datadoghq.com/service: storefront
     app: ecommerce
     tags.datadoghq.com/env: "development"
   name: frontend
@@ -10,7 +10,8 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      service: frontend
+      tags.datadoghq.com/service: storefront
+      tags.datadoghq.com/env: "development"
       app: ecommerce
   strategy:
     rollingUpdate:
@@ -20,9 +21,9 @@ spec:
   template:
     metadata:
       labels:
-        service: frontend
-        app: ecommerce
+        tags.datadoghq.com/service: storefront
         tags.datadoghq.com/env: "development"
+        app: ecommerce
     spec:
       containers:
       - args:
@@ -47,6 +48,10 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.labels['tags.datadoghq.com/env']
+        - name: DD_SERVICE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/service']
         - name: DD_ANALYTICS_ENABLED
           value: "true"
         # Enable RUM
@@ -70,7 +75,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    service: frontend
+    tags.datadoghq.com/service: storefront
+    tags.datadoghq.com/env: development
     app: ecommerce
   name: frontend
 spec:
@@ -80,7 +86,8 @@ spec:
       targetPort: 3000
       name: http
   selector:
-    service: frontend
+    tags.datadoghq.com/service: storefront
+    tags.datadoghq.com/env: development
     app: ecommerce
   # Change this value to LoadBalancer for better public ingress routing to this
   # pod on most k8s platforms.

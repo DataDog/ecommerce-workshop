@@ -4,6 +4,7 @@ metadata:
   labels:
     tags.datadoghq.com/env: development
     tags.datadoghq.com/service: advertisements
+    tags.datadoghq.com/version: "1.0" 
     app: ecommerce
   name: advertisements
 spec:
@@ -12,6 +13,7 @@ spec:
     matchLabels:
       tags.datadoghq.com/env: development
       tags.datadoghq.com/service: advertisements
+      tags.datadoghq.com/version: "1.0" 
       app: ecommerce
   strategy: {}
   template:
@@ -20,6 +22,7 @@ spec:
       labels:
         tags.datadoghq.com/env: development
         tags.datadoghq.com/service: advertisements
+        tags.datadoghq.com/version: "1.0" 
         app: ecommerce
     spec:
       containers:
@@ -67,8 +70,7 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    tags.datadoghq.com/service: advertisements
-    tags.datadoghq.com/env: development
+    service: advertisements
     app: ecommerce
   name: advertisements
 spec:
@@ -77,7 +79,6 @@ spec:
     protocol: TCP
     targetPort: 5002
   selector:
-    tags.datadoghq.com/service: advertisements
-    tags.datadoghq.com/env: development
+    service: advertisements
     app: ecommerce
 status:

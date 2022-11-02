@@ -3,23 +3,24 @@ kind: Deployment
 metadata:
   labels:
     app: ecommerce
-    service: discounts
+    tags.datadoghq.com/service: discounts
     tags.datadoghq.com/env: "development"
   name: discounts
 spec:
   replicas: 1
   selector:
     matchLabels:
-      service: discounts
+      tags.datadoghq.com/service: discounts
+      tags.datadoghq.com/env: "development"
       app: ecommerce
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        service: discounts
-        app: ecommerce
+        tags.datadoghq.com/service: discounts
         tags.datadoghq.com/env: "development"
+        app: ecommerce
     spec:
       containers:
       - image: ddtraining/discounts:latest
@@ -40,8 +41,6 @@ spec:
             value: "user"
           - name: POSTGRES_HOST
             value: "db"
-          - name: DATADOG_SERVICE_NAME
-            value: "discountsservice"
           - name: DD_AGENT_HOST
             valueFrom:
               fieldRef:
@@ -56,6 +55,10 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.labels['tags.datadoghq.com/env']
+          - name: DD_SERVICE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.labels['tags.datadoghq.com/service']
         ports:
         - containerPort: 5001
         resources: {}
@@ -64,7 +67,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    service: discounts
+    tags.datadoghq.com/service: discounts
+    tags.datadoghq.com/env: development
     app: ecommerce
   name: discounts
 spec:
@@ -73,7 +77,8 @@ spec:
     protocol: TCP
     targetPort: 5001
   selector:
-    service: discounts
+    tags.datadoghq.com/service: discounts
+    tags.datadoghq.com/env: development
     app: ecommerce
   sessionAffinity: None
   type: ClusterIP
