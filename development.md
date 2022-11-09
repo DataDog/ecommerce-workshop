@@ -26,6 +26,14 @@ To build any of the images you should `cd` into each of the folders and run:
 docker build .
 ```
 
+### Docker images for advertisements versions
+
+To build the different versions offered by the `ads-service-versions` folder you should `cd` into that folder and run:
+
+```
+./build.sh
+```
+
 ### Docker images for the frontend service (Manual individial)
 
 There are three versions of the frontend service:
