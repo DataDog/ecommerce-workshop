@@ -28,6 +28,7 @@ ARG DISCOUNTS_PORT=8282
 # Only ENV vars are accessible via CMD
 ENV DISCOUNTS_PORT ${DISCOUNTS_PORT}
 
+
 # Start the app using ddtrace so we have profiling and tracing
 ENTRYPOINT ["ddtrace-run"]
 CMD flask run --port=${DISCOUNTS_PORT} --host=0.0.0.0
