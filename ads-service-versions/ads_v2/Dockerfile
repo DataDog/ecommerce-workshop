@@ -15,7 +15,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 # Bring in app
 WORKDIR /app
 COPY ./common .
-COPY ./ads_v1 .
+COPY ./ads_v2 .
 
 # Install dependencies via pip and avoid caching build artifacts
 RUN pip install --no-cache-dir -r requirements.txt

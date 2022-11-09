@@ -24,7 +24,7 @@ spec:
         app: ecommerce
     spec:
       containers:
-      - image: ddtraining/ads_versions_v1:latest
+      - image: public.ecr.aws/x2b9z2t7/ddtraining/ads_versions_v1:latest
         name: advertisements
         imagePullPolicy: Always
         command: ["ddtrace-run"]
