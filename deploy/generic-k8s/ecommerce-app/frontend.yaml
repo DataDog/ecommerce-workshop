@@ -54,12 +54,20 @@ spec:
               fieldPath: metadata.labels['tags.datadoghq.com/service']
         - name: DD_ANALYTICS_ENABLED
           value: "true"
+        - name: DISCOUNTS_ROUTE
+          value: "http://discounts"
+        - name: DISCOUNTS_PORT
+          value: "5001"
+        - name: ADS_ROUTE
+          value: "http://advertisements"
+        - name: ADS_PORT
+          value: "5002"
         # Enable RUM
         # - name: DD_CLIENT_TOKEN
         #   value: <your_client_token>
         # - name: DD_APPLICATION_ID
         #   value: <your_application_id>
-        image: ddtraining/storefront:latest
+        image: public.ecr.aws/x2b9z2t7/ddtraining/storefront:latest
         imagePullPolicy: Always
         name: ecommerce-spree-observability
         ports:
