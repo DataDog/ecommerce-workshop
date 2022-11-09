@@ -52,5 +52,5 @@ jobs:
         context: ./discounts-service-fixed
         platforms: linux/amd64
         push: true
-        tags: ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/discounts-fixed:latest, ddtraining/discounts-fixed:latest
+        tags: ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/discounts-fixed:latest,ddtraining/discounts-fixed:latest
 
