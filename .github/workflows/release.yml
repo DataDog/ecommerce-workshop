@@ -52,6 +52,7 @@ jobs:
             ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/advertisements-errors
             ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/ads_versions_v1
             ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/ads_versions_v2
+            ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/ads_versions_v2_1
             ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/discounts
             ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/discounts-fixed
             ${{ secrets.PUBLIC_ECR_REGISTRY }}/ddtraining/discounts-react-app
