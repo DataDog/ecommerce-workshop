@@ -5,7 +5,7 @@ metadata:
     tags.datadoghq.com/env: development
     tags.datadoghq.com/service: advertisements
     app: ecommerce
-  name: advertisements
+  name: advertisements2
 spec:
   replicas: 1
   selector:
@@ -20,11 +20,13 @@ spec:
       labels:
         tags.datadoghq.com/env: development
         tags.datadoghq.com/service: advertisements
+        tags.datadoghq.com/version: "2.0" 
         app: ecommerce
     spec:
       containers:
-      - image: public.ecr.aws/x2b9z2t7/ddtraining/advertisements:latest
+      - image: public.ecr.aws/x2b9z2t7/ddtraining/ads_versions_v2:latest
         name: advertisements
+        imagePullPolicy: Always
         command: ["ddtrace-run"]
         args: ["flask", "run", "--port=5002", "--host=0.0.0.0"]
         env:
@@ -49,6 +51,10 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.labels['tags.datadoghq.com/service']
+          - name: DD_VERSION
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.labels['tags.datadoghq.com/version']
           - name: DD_AGENT_HOST
             valueFrom:
               fieldRef:
@@ -62,22 +68,3 @@ spec:
         ports:
         - containerPort: 5002
         resources: {}
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    tags.datadoghq.com/service: advertisements
-    tags.datadoghq.com/env: development
-    app: ecommerce
-  name: advertisements
-spec:
-  ports:
-  - port: 5002
-    protocol: TCP
-    targetPort: 5002
-  selector:
-    tags.datadoghq.com/service: advertisements
-    tags.datadoghq.com/env: development
-    app: ecommerce
-status:

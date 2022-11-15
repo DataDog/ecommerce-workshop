@@ -16,6 +16,7 @@ This repository is used to build the Docker images to run the application in the
 * `ads-service`- The advertisement microservice with a couple of injected sleeps.
 * `ads-service-fixed`- The advertisement microservice with the sleeps removed.
 * `ads-service-errors`- The advertisement microservice that will return 500 errors on the `/ads` endpoint
+* `ads-service-versions`- The advertisement microservice on several versions showcasing the deployment functionality
 * `discounts-service`- The discounts microservice with an [N+1 query](#finding-an-n1-query) and a couple of sleeps.
 * `discounts-service-fixed`- The discounts microservice with the N+1 query fixed and the sleeps removed.
 * `store-frontend-broken-no-instrumentation`- The Spree application in a broken state and with no instrumentation. This is the initial scenario.
@@ -162,6 +163,66 @@ We eager load the `discount_type` relation on the `discount`, and can grab all i
 ![N+1 Solved](https://github.com/DataDog/ecommerce-workshop/raw/master/images/solved-nplus.png)
 
 The N+1 query example lives in `discounts-service/`, and the fixed version lives in `discounts-service-fixed/`.
+
+## Using different versions of the advertisement service to showcase the deploy comparison feature
+
+It might be useful for certain workshops and demos (i.e. things related to canary deployments, feature flags, general APM ones) to showcase different versions of the advertisements services, and to compare the versions using Datadog.
+
+To enable this scenario using Kubernetes:
+
+1. Deploy the ecommerce application in your cluster:
+
+```
+kubectl apply -f deploy/generic-k8s/ecommerce-app
+```
+
+1. Delete the original advertisements deployment:
+
+```
+kubectl delete -f deploy/generic-k8s/ecommerce-app/advertisements.yaml
+```
+
+1. Deploy version 1.0 of the advertisements service:
+
+```
+kubectl apply -f deploy/generic-k8s/ecommerce-ads-versions/advertisements_v1.yaml
+```
+
+This version deploys version `1.0` of the advertisements version. This version always show a blue ads banner, also showing an advertisement number `1.x`.
+
+2. Deploy version 2.0 of the advertisement service:
+
+```
+kubectl apply -f deploy/generic-k8s/ecommerce-ads-versions/advertisements_v2.yaml
+```
+
+This version deploys version `2.0` of the advertisements version. This version always show a red ads banner, also showing an advertisement number `2.x`. It also has an added latency of 0.5 seconds.
+
+This keeps both deployments (v1 and v2) in the cluster, making a simple 50/50 canary deployment. As the service selectors are the same, 50% of the time, it will show an advertisement coming from version `1.0` and sometimes it will serve a banner coming from version `2.0`.
+
+![2 versions of the ads service](https://github.com/DataDog/ecommerce-workshop/raw/master/images/2-ads-versions.gif)
+
+3. Compare versions during the canary
+
+Show in Datadog that even though the new version deploys the correct feature, it adds extra latency that we didn't see on previous versions.
+
+To compare both versions, you can use the "Deployments" section of the `advertisements` service:
+
+![Version 2.0 extra latency](https://github.com/DataDog/ecommerce-workshop/raw/master/images/extra-latency-ads.jpg)
+
+4. Deploy a patch release to fix the issue
+
+```
+kubectl apply -f deploy/generic-k8s/ecommerce-ads-versions/advertisements_v2_1.yaml
+```
+
+This versions has the same functionality as `2.0` but it doesn't have the increased latency. This replaces version `2.0`.
+
+5. Compare versions in Datadog
+
+You can now compare version `1.0` and `2.1` and see that the increased latency is gone and things seems to be working fine.
+
+![Version 2.1 solves extra latency](https://github.com/DataDog/ecommerce-workshop/raw/master/images/extra-latency-solved.jpg)
 
 ## How to run synthetics locally
 
