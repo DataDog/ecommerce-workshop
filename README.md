@@ -5,7 +5,7 @@ This is a repo demonstrating applying observability principals to an eCommerce a
 
 In this hypothetical scenario, we've got a [Spree](https://spreecommerce.org/) website, that a team has started adding microservices to. In it's current state, the application is broken.
 
-![storedog](https://github.com/DataDog/ecommerce-workshop/raw/master/images/storedog.png)
+![storedog](https://github.com/DataDog/ecommerce-workshop/raw/main/images/storedog.png)
 
 We'll take that broken application, instrument it with Datadog, and then deploy a fix. After deploying a fix, we'll look into Datadog to ensure our deploy worked, and that our systems are actually functioning properly.
 
@@ -100,23 +100,23 @@ Any of the other docker compose configurations can work with this traffic contai
 
 Once we've spun up our site, and ship traffic with `gor`, we can then view the health of the systems we've deployed. But first, let's see the structure of our services by visiting the Service Map.
 
-![Datadog Service Map](https://github.com/DataDog/ecommerce-workshop/raw/master/images/service-map.png)
+![Datadog Service Map](https://github.com/DataDog/ecommerce-workshop/raw/main/images/service-map.png)
 
 Here, we can see we've got a `store-frontend` service, that appears to connect to SQLite as its datastore. Downstream, we've got a `discounts-service`, along with an `advertisements-service`, both of which connect to the same PostgreSQL server.
 
 With this architecture in mind, we can then head over to the Services page, and see where the errors might be coming from. Is it one of the new microservices?
 
-![Datadog Services List](https://github.com/DataDog/ecommerce-workshop/raw/master/images/services-list.png)
+![Datadog Services List](https://github.com/DataDog/ecommerce-workshop/raw/main/images/services-list.png)
 
 Looking at the services list, we can sort by either latency, or errors. Looking at all our services, it appears only the `store-frontend` has errors, with an error rate of ~5%.
 
 By clicking on the `store-frontend`, we can then drill further and see which endpoints are causing trouble. It seems like it's more than one:
 
-![View Trace](https://github.com/DataDog/ecommerce-workshop/raw/master/images/problematic-service.gif)
+![View Trace](https://github.com/DataDog/ecommerce-workshop/raw/main/images/problematic-service.gif)
 
 We _could_ click one level down and view one of the endpoints that's generating a trace. We can also head over to the Traces page, and sort by error traces:
 
-![Trace Errors](https://github.com/DataDog/ecommerce-workshop/raw/master/images/error-traces.gif)
+![Trace Errors](https://github.com/DataDog/ecommerce-workshop/raw/main/images/error-traces.gif)
 
 With this, we've got a line number that appears to be generating our errors. Checking across multiple traces, we can see the same behavior. It looks like the new advertisement call was pushed to the wrong file.
 
@@ -124,7 +124,7 @@ With this, we've got a line number that appears to be generating our errors. Che
 
 Once we've applied the fix for the wrong file, we still see slow behavior. We can drill down into a service and see where the bottleneck is by sorting via latency on the Services Page:
 
-![Bottleneck](https://github.com/DataDog/ecommerce-workshop/raw/master/images/bottleneck.gif)
+![Bottleneck](https://github.com/DataDog/ecommerce-workshop/raw/main/images/bottleneck.gif)
 
 There are a couple of sleeps in both the discounts service and the advertisments service.
 
@@ -142,7 +142,7 @@ The code with the leftover sleeps lives in `discounts-service` and `ads-service`
 
 In the `discounts-service`, there is an N+1 query:
 
-![N+1 Query](https://github.com/DataDog/ecommerce-workshop/raw/master/images/nplus-query.png)
+![N+1 Query](https://github.com/DataDog/ecommerce-workshop/raw/main/images/nplus-query.png)
 
 The problem is a lazy lookup on a relational database.
 
@@ -160,7 +160,7 @@ discounts = Discount.query.options(joinedload('*')).all()
 
 We eager load the `discount_type` relation on the `discount`, and can grab all information without multiple trips to the database:
 
-![N+1 Solved](https://github.com/DataDog/ecommerce-workshop/raw/master/images/solved-nplus.png)
+![N+1 Solved](https://github.com/DataDog/ecommerce-workshop/raw/main/images/solved-nplus.png)
 
 The N+1 query example lives in `discounts-service/`, and the fixed version lives in `discounts-service-fixed/`.
 
@@ -200,7 +200,7 @@ This version deploys version `2.0` of the advertisements version. This version a
 
 This keeps both deployments (v1 and v2) in the cluster, making a simple 50/50 canary deployment. As the service selectors are the same, 50% of the time, it will show an advertisement coming from version `1.0` and sometimes it will serve a banner coming from version `2.0`.
 
-![2 versions of the ads service](https://github.com/DataDog/ecommerce-workshop/raw/master/images/2-ads-versions.gif)
+![2 versions of the ads service](https://github.com/DataDog/ecommerce-workshop/raw/main/images/2-ads-versions.gif)
 
 3. Compare versions during the canary
 
@@ -208,7 +208,7 @@ Show in Datadog that even though the new version deploys the correct feature, it
 
 To compare both versions, you can use the "Deployments" section of the `advertisements` service:
 
-![Version 2.0 extra latency](https://github.com/DataDog/ecommerce-workshop/raw/master/images/extra-latency-ads.jpg)
+![Version 2.0 extra latency](https://github.com/DataDog/ecommerce-workshop/raw/main/images/extra-latency-ads.jpg)
 
 4. Deploy a patch release to fix the issue
 
@@ -222,7 +222,7 @@ This versions has the same functionality as `2.0` but it doesn't have the increa
 
 You can now compare version `1.0` and `2.1` and see that the increased latency is gone and things seems to be working fine.
 
-![Version 2.1 solves extra latency](https://github.com/DataDog/ecommerce-workshop/raw/master/images/extra-latency-solved.jpg)
+![Version 2.1 solves extra latency](https://github.com/DataDog/ecommerce-workshop/raw/main/images/extra-latency-solved.jpg)
 
 ## How to run synthetics locally
 
