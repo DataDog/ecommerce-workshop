@@ -1,0 +1,784 @@
+diff -urN store-frontend-initial-state/Gemfile store-frontend-otel-fixed/Gemfile
+--- store-frontend-initial-state/Gemfile	2022-11-15 15:54:18.000000000 +0100
++++ store-frontend-otel-fixed/Gemfile	2023-01-30 10:52:08.000000000 +0100
+@@ -31,6 +31,11 @@
+   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+ end
+ 
++
++gem 'opentelemetry-sdk'
++gem 'opentelemetry-exporter-otlp'
++gem 'opentelemetry-instrumentation-all'
++
+ group :development do
+   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+   gem 'web-console', '>= 3.3.0'
+diff -urN store-frontend-initial-state/Gemfile.lock store-frontend-otel-fixed/Gemfile.lock
+--- store-frontend-initial-state/Gemfile.lock	2022-11-15 15:54:18.000000000 +0100
++++ store-frontend-otel-fixed/Gemfile.lock	2023-01-30 10:52:08.000000000 +0100
+@@ -190,6 +190,9 @@
+     globalid (0.4.2)
+       activesupport (>= 4.2.0)
+     glyphicons (1.0.2)
++    google-protobuf (3.21.12)
++    googleapis-common-protos-types (1.5.0)
++      google-protobuf (~> 3.14)
+     highline (2.0.3)
+     htmlentities (4.3.4)
+     httparty (0.18.1)
+@@ -244,6 +247,191 @@
+     nokogiri (1.11.7)
+       mini_portile2 (~> 2.5.0)
+       racc (~> 1.4)
++    opentelemetry-api (1.1.0)
++    opentelemetry-common (0.19.6)
++      opentelemetry-api (~> 1.0)
++    opentelemetry-exporter-otlp (0.24.0)
++      google-protobuf (~> 3.19)
++      googleapis-common-protos-types (~> 1.3)
++      opentelemetry-api (~> 1.1)
++      opentelemetry-common (~> 0.19.6)
++      opentelemetry-sdk (~> 1.2)
++      opentelemetry-semantic_conventions
++    opentelemetry-instrumentation-action_pack (0.3.2)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++      opentelemetry-instrumentation-rack (~> 0.21)
++    opentelemetry-instrumentation-action_view (0.3.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-active_support (~> 0.1)
++      opentelemetry-instrumentation-base (~> 0.20)
++    opentelemetry-instrumentation-active_job (0.3.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-active_model_serializers (0.19.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-active_record (0.4.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++      ruby2_keywords
++    opentelemetry-instrumentation-active_support (0.2.2)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-all (0.29.0)
++      opentelemetry-instrumentation-active_job (~> 0.3.0)
++      opentelemetry-instrumentation-active_model_serializers (~> 0.19.0)
++      opentelemetry-instrumentation-aws_sdk (~> 0.3.1)
++      opentelemetry-instrumentation-bunny (~> 0.19.0)
++      opentelemetry-instrumentation-concurrent_ruby (~> 0.20.0)
++      opentelemetry-instrumentation-dalli (~> 0.22.0)
++      opentelemetry-instrumentation-delayed_job (~> 0.19.0)
++      opentelemetry-instrumentation-ethon (~> 0.20.0)
++      opentelemetry-instrumentation-excon (~> 0.20.0)
++      opentelemetry-instrumentation-faraday (~> 0.22.0)
++      opentelemetry-instrumentation-graphql (~> 0.20.0)
++      opentelemetry-instrumentation-http (~> 0.21.0)
++      opentelemetry-instrumentation-http_client (~> 0.20.0)
++      opentelemetry-instrumentation-koala (~> 0.19.0)
++      opentelemetry-instrumentation-lmdb (~> 0.21.0)
++      opentelemetry-instrumentation-mongo (~> 0.21.0)
++      opentelemetry-instrumentation-mysql2 (~> 0.22.0)
++      opentelemetry-instrumentation-net_http (~> 0.21.0)
++      opentelemetry-instrumentation-pg (~> 0.23.0)
++      opentelemetry-instrumentation-que (~> 0.5.0)
++      opentelemetry-instrumentation-racecar (~> 0.1.0)
++      opentelemetry-instrumentation-rack (~> 0.22.0)
++      opentelemetry-instrumentation-rails (~> 0.23.1)
++      opentelemetry-instrumentation-rake (~> 0.1.0)
++      opentelemetry-instrumentation-rdkafka (~> 0.2.1)
++      opentelemetry-instrumentation-redis (~> 0.24.0)
++      opentelemetry-instrumentation-resque (~> 0.3.0)
++      opentelemetry-instrumentation-restclient (~> 0.21.0)
++      opentelemetry-instrumentation-ruby_kafka (~> 0.19.0)
++      opentelemetry-instrumentation-sidekiq (~> 0.22.0)
++      opentelemetry-instrumentation-sinatra (~> 0.21.1)
++      opentelemetry-instrumentation-trilogy (~> 0.51.0)
++    opentelemetry-instrumentation-aws_sdk (0.3.2)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-base (0.21.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-registry (~> 0.1)
++    opentelemetry-instrumentation-bunny (0.19.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-concurrent_ruby (0.20.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-dalli (0.22.2)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-common (~> 0.19.3)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-delayed_job (0.19.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-ethon (0.20.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-common (~> 0.19.3)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-excon (0.20.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-common (~> 0.19.3)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-faraday (0.22.0)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-common (~> 0.19.3)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-graphql (0.20.0)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-http (0.21.0)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-http_client (0.20.0)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-common (~> 0.19.3)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-koala (0.19.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-common (~> 0.19.3)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-lmdb (0.21.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-mongo (0.21.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-mysql2 (0.22.0)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-net_http (0.21.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-common (~> 0.19.3)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-pg (0.23.0)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-que (0.5.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-racecar (0.1.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-rack (0.22.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-common (~> 0.19.3)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-rails (0.23.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-action_pack (~> 0.3.1)
++      opentelemetry-instrumentation-action_view (~> 0.3.0)
++      opentelemetry-instrumentation-active_record (~> 0.4.0)
++      opentelemetry-instrumentation-active_support (~> 0.2.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-rake (0.1.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-rdkafka (0.2.2)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-common (~> 0.19.3)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-redis (0.24.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-common (~> 0.19.3)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-resque (0.3.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-restclient (0.21.0)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-common (~> 0.19.3)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-ruby_kafka (0.19.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-sidekiq (0.22.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-common (~> 0.19.3)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++    opentelemetry-instrumentation-sinatra (0.21.2)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-common (~> 0.19.3)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++      opentelemetry-instrumentation-rack (~> 0.21)
++    opentelemetry-instrumentation-trilogy (0.51.1)
++      opentelemetry-api (~> 1.0)
++      opentelemetry-instrumentation-base (~> 0.21.0)
++      opentelemetry-semantic_conventions (>= 1.8.0)
++    opentelemetry-registry (0.2.0)
++      opentelemetry-api (~> 1.1)
++    opentelemetry-sdk (1.2.0)
++      opentelemetry-api (~> 1.1)
++      opentelemetry-common (~> 0.19.3)
++      opentelemetry-registry (~> 0.2)
++      opentelemetry-semantic_conventions
++    opentelemetry-semantic_conventions (1.8.0)
++      opentelemetry-api (~> 1.0)
+     orm_adapter (0.5.0)
+     paranoia (2.4.3)
+       activerecord (>= 4.0, < 6.2)
+@@ -311,6 +499,7 @@
+     responders (3.0.1)
+       actionpack (>= 5.0)
+       railties (>= 5.0)
++    ruby2_keywords (0.0.5)
+     ruby_dep (1.5.0)
+     sass (3.7.4)
+       sass-listen (~> 4.0.0)
+@@ -386,6 +575,9 @@
+   httparty
+   jbuilder (~> 2.5)
+   listen (>= 3.0.5, < 3.2)
++  opentelemetry-exporter-otlp
++  opentelemetry-instrumentation-all
++  opentelemetry-sdk
+   pry-byebug
+   puma (~> 3.12)
+   rails (~> 5.2.5)
+Binary files store-frontend-initial-state/app/assets/images/logo.png and store-frontend-otel-fixed/app/assets/images/logo.png differ
+diff -urN store-frontend-initial-state/app/views/layouts/application.html.erb store-frontend-otel-fixed/app/views/layouts/application.html.erb
+--- store-frontend-initial-state/app/views/layouts/application.html.erb	2022-11-15 15:54:18.000000000 +0100
++++ store-frontend-otel-fixed/app/views/layouts/application.html.erb	2023-01-30 10:52:08.000000000 +0100
+@@ -2,6 +2,30 @@
+ <html>
+   <head>
+     <title>Sandbox</title>
++    <script src="https://www.datadoghq-browser-agent.com/datadog-rum-v3.js" type="text/javascript"></script>
++    <script  type="text/javascript">
++      window.DD_RUM && window.DD_RUM.init({
++        clientToken: '<%= ENV['DD_CLIENT_TOKEN'] %>',
++        applicationId: '<%= ENV['DD_APPLICATION_ID'] %>',
++        site: '<%= ENV['DD_SITE'] %>',
++        service: '<%= ENV['DD_SERVICE'] %>',
++        env: '<%= ENV['DD_ENV'] %>',
++        version: '1.0.0',
++        sampleRate: 100,
++        trackInteractions: true,
++        defaultPrivacyLevel: 'mask-user-input'
++      });
++      
++      window.DD_RUM && window.DD_RUM.startSessionReplayRecording();
++      
++      if (!window._DATADOG_SYNTHETICS_BROWSER) {
++        window.DD_RUM.setRumGlobalContext({'usr.handle': 'john@storedog.com'});
++      };
++      
++      if (window.location.href.includes('utm')) {
++        window.DD_RUM.addRumGlobalContext({'fromUtm': true});
++      };
++    </script>
+     <%= csrf_meta_tags %>
+     <%= csp_meta_tag %>
+ 
+diff -urN store-frontend-initial-state/app/views/layouts/application.html.erb.orig store-frontend-otel-fixed/app/views/layouts/application.html.erb.orig
+--- store-frontend-initial-state/app/views/layouts/application.html.erb.orig	1970-01-01 01:00:00.000000000 +0100
++++ store-frontend-otel-fixed/app/views/layouts/application.html.erb.orig	2023-01-30 10:52:08.000000000 +0100
+@@ -0,0 +1,38 @@
++<!DOCTYPE html>
++<html>
++  <head>
++    <title>Sandbox</title>
++    <script src="https://www.datadoghq-browser-agent.com/datadog-rum-v3.js" type="text/javascript"></script>
++    <script  type="text/javascript">
++      window.DD_RUM && window.DD_RUM.init({
++        clientToken: '<%= ENV['DD_CLIENT_TOKEN'] %>',
++        applicationId: '<%= ENV['DD_APPLICATION_ID'] %>',
++        site: '<%= ENV['DD_SITE'] %>',
++        service: '<%= ENV['DD_SERVICE'] %>',
++        env: '<%= ENV['DD_ENV'] %>',
++        version: '1.0.0',
++        sampleRate: 100,
++        trackInteractions: true,
++        defaultPrivacyLevel: 'mask-user-input'
++      });
++      
++      window.DD_RUM && window.DD_RUM.startSessionReplayRecording();
++      
++      if (!window._DATADOG_SYNTHETICS_BROWSER) {
++        window.DD_RUM.setRumGlobalContext({'usr.handle': 'john@storedog.com'});
++      };
++      
++      if (window.location.href.includes('utm')) {
++        window.DD_RUM.addRumGlobalContext({'fromUtm': true});
++      };
++    </script>
++    <%= csrf_meta_tags %>
++    <%= csp_meta_tag %>
++
++    <%= stylesheet_link_tag    'application', media: 'all' %>
++  </head>
++
++  <body>
++    <%= yield %>
++  </body>
++</html>
+diff -urN store-frontend-initial-state/app/views/spree/home/index.html.erb store-frontend-otel-fixed/app/views/spree/home/index.html.erb
+--- store-frontend-initial-state/app/views/spree/home/index.html.erb	2022-11-15 15:54:18.000000000 +0100
++++ store-frontend-otel-fixed/app/views/spree/home/index.html.erb	2023-01-30 10:52:08.000000000 +0100
+@@ -9,6 +9,7 @@
+ <% end %>
+ 
+ <div data-hook="homepage_products">
++<br /><center><a href="<%= @ads['url'] %>"><img src="data:image/png;base64,<%= @ads['base64'] %>" /></a></center>
+   <% cache(cache_key_for_products) do %>
+     <%= render partial: 'spree/shared/products', locals: { products: @products } %>
+   <% end %>
+diff -urN store-frontend-initial-state/app/views/spree/home/index.html.erb.orig store-frontend-otel-fixed/app/views/spree/home/index.html.erb.orig
+--- store-frontend-initial-state/app/views/spree/home/index.html.erb.orig	1970-01-01 01:00:00.000000000 +0100
++++ store-frontend-otel-fixed/app/views/spree/home/index.html.erb.orig	2023-01-30 10:52:08.000000000 +0100
+@@ -0,0 +1,17 @@
++<% @body_id = 'home-page' %>
++<% content_for :sidebar do %>
++  <p>
++  <h3><%= @discounts['name'] %>!</h3><br /> <strong>Enter coupon code '<%= @discounts['code']%>'
++  at checkout for a $<%= '%.2f' % @discounts['value'] %> discount</strong></p>
++  <div data-hook="homepage_sidebar_navigation">
++    <%= render partial: 'spree/shared/taxonomies' %>
++  </div>
++<% end %>
++
++<div data-hook="homepage_products">
++<br /><center><a href="<%= @ads['url'] %>"><img src="data:image/png;base64,<%= @ads['base64'] %>" /></a></center>
++  <% cache(cache_key_for_products) do %>
++    <%= render partial: 'spree/shared/products', locals: { products: @products } %>
++  <% end %>
++</div>
++
+diff -urN store-frontend-initial-state/app/views/spree/layouts/spree_application.html.erb store-frontend-otel-fixed/app/views/spree/layouts/spree_application.html.erb
+--- store-frontend-initial-state/app/views/spree/layouts/spree_application.html.erb	2022-11-15 15:54:18.000000000 +0100
++++ store-frontend-otel-fixed/app/views/spree/layouts/spree_application.html.erb	2023-01-30 10:52:08.000000000 +0100
+@@ -5,14 +5,37 @@
+ <!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
+ <!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
+   <head data-hook="inside_head">
++  <script src="https://www.datadoghq-browser-agent.com/datadog-rum-v3.js" type="text/javascript"></script>
++  <script type="text/javascript">
++    window.DD_RUM && window.DD_RUM.init({
++      clientToken: '<%= ENV['DD_CLIENT_TOKEN'] %>',
++      applicationId: '<%= ENV['DD_APPLICATION_ID'] %>',
++      site: '<%= ENV['DD_SITE'] %>',
++      service: '<%= ENV['DD_SERVICE'] %>',
++      env: '<%= ENV['DD_ENV'] %>',
++      version: '1.0.0',
++      sampleRate: 100,
++      trackInteractions: true,
++      defaultPrivacyLevel: 'mask-user-input'
++    });
++    
++    window.DD_RUM && window.DD_RUM.startSessionReplayRecording();
++    
++    if (!window._DATADOG_SYNTHETICS_BROWSER) {
++      window.DD_RUM.setRumGlobalContext({'usr.handle': 'john@storedog.com'});
++    };
++    
++    if (window.location.href.includes('utm')) {
++      window.DD_RUM.addRumGlobalContext({'fromUtm': true});
++    };
++  </script>
+     <%= render partial: 'spree/shared/head' %>
+   </head>
+   <body class="<%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body">
+     <%= render partial: 'spree/shared/header' %>
+ 
+     <div class="container">
+-     <br /><center><a href="<%= @ads['url'] %>"><img src="data:image/png;base64,<%= @ads['base64'] %>" /></a></center>
+-      <div class="row" data-hook>
++     <div class="row" data-hook>
+         <%= spree_breadcrumbs(@taxon) %>
+ 
+         <%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>
+diff -urN store-frontend-initial-state/app/views/spree/layouts/spree_application.html.erb.orig store-frontend-otel-fixed/app/views/spree/layouts/spree_application.html.erb.orig
+--- store-frontend-initial-state/app/views/spree/layouts/spree_application.html.erb.orig	1970-01-01 01:00:00.000000000 +0100
++++ store-frontend-otel-fixed/app/views/spree/layouts/spree_application.html.erb.orig	2023-01-30 10:52:08.000000000 +0100
+@@ -0,0 +1,55 @@
++<!doctype html>
++<!--[if lt IE 7 ]> <html class="ie ie6" lang="<%= I18n.locale %>"> <![endif]-->
++<!--[if IE 7 ]>    <html class="ie ie7" lang="<%= I18n.locale %>"> <![endif]-->
++<!--[if IE 8 ]>    <html class="ie ie8" lang="<%= I18n.locale %>"> <![endif]-->
++<!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
++<!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
++  <head data-hook="inside_head">
++  <script src="https://www.datadoghq-browser-agent.com/datadog-rum-v3.js" type="text/javascript"></script>
++  <script type="text/javascript">
++    window.DD_RUM && window.DD_RUM.init({
++      clientToken: '<%= ENV['DD_CLIENT_TOKEN'] %>',
++      applicationId: '<%= ENV['DD_APPLICATION_ID'] %>',
++      site: '<%= ENV['DD_SITE'] %>',
++      service: '<%= ENV['DD_SERVICE'] %>',
++      env: '<%= ENV['DD_ENV'] %>',
++      version: '1.0.0',
++      sampleRate: 100,
++      trackInteractions: true,
++      defaultPrivacyLevel: 'mask-user-input'
++    });
++    
++    window.DD_RUM && window.DD_RUM.startSessionReplayRecording();
++    
++    if (!window._DATADOG_SYNTHETICS_BROWSER) {
++      window.DD_RUM.setRumGlobalContext({'usr.handle': 'john@storedog.com'});
++    };
++    
++    if (window.location.href.includes('utm')) {
++      window.DD_RUM.addRumGlobalContext({'fromUtm': true});
++    };
++  </script>
++    <%= render partial: 'spree/shared/head' %>
++  </head>
++  <body class="<%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body">
++    <%= render partial: 'spree/shared/header' %>
++
++    <div class="container">
++     <div class="row" data-hook>
++        <%= spree_breadcrumbs(@taxon) %>
++
++        <%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>
++
++        <main
++          id="content"
++          class="mt-4 <%= !content_for?(:sidebar) ? "col-sm-12" : "col-sm-12 col-md-9" %>"
++          data-hook>
++          <%= flash_messages %>
++          <%= yield %>
++        </main>
++
++        <%= yield :templates %>
++      </div>
++    </div>
++  </body>
++</html>
+diff -urN store-frontend-initial-state/app/views/spree/products/show.html.erb store-frontend-otel-fixed/app/views/spree/products/show.html.erb
+--- store-frontend-initial-state/app/views/spree/products/show.html.erb	2022-11-15 15:54:18.000000000 +0100
++++ store-frontend-otel-fixed/app/views/spree/products/show.html.erb	2023-01-30 10:52:08.000000000 +0100
+@@ -45,3 +45,4 @@
+     </div>
+   </div>
+ <% end %>
++<br /><center><a href="<%= @ads['url'] %>"><img src="data:image/png;base64,<%= @ads['base64'] %>" /></a></center>
+diff -urN store-frontend-initial-state/app/views/spree/products/show.html.erb.orig store-frontend-otel-fixed/app/views/spree/products/show.html.erb.orig
+--- store-frontend-initial-state/app/views/spree/products/show.html.erb.orig	1970-01-01 01:00:00.000000000 +0100
++++ store-frontend-otel-fixed/app/views/spree/products/show.html.erb.orig	2023-01-30 10:52:08.000000000 +0100
+@@ -0,0 +1,48 @@
++<% @body_id = 'product-details' %>
++<% cache cache_key_for_product do %>
++  <div data-hook="product_show" class="row" itemscope itemtype="https://schema.org/Product">
++    <div class="col-lg-4 col-md-5" data-hook="product_left_part">
++      <div data-hook="product_left_part_wrap">
++        <div id="product-images" data-hook="product_images">
++          <div id="main-image" class="card  " data-hook>
++            <div class="card-body text-center">
++              <%= product_image(@product, itemprop: "image") %>
++            </div>
++          </div>
++          <div id="thumbnails" data-hook>
++            <%= render partial: 'thumbnails' %>
++          </div>
++        </div>
++
++        <div data-hook="product_properties">
++          <%= render partial: 'properties' %>
++        </div>
++
++        <div data-hook="promotions">
++          <%= render partial: 'promotions' %>
++        </div>
++      </div>
++    </div>
++
++    <div class="col-lg-8 col-md-7" data-hook="product_right_part">
++      <div data-hook="product_right_part_wrap">
++        <div id="product-description" data-hook="product_description">
++          <h1 class="product-title mt-2" itemprop="name"><%= @product.name %></h1>
++
++          <div itemprop="description" data-hook="description">
++            <%= sanitize product_description(@product) %>
++          </div>
++
++          <div id="cart-form" data-hook="cart_form">
++            <%= render partial: 'cart_form' %>
++          </div>
++        </div>
++
++        <div id="taxon-crumbs" class="mt-4" data-hook="product_taxons">
++          <%= render partial: 'taxons' %>
++        </div>
++      </div>
++    </div>
++  </div>
++<% end %>
++<br /><center><a href="<%= @ads['url'] %>"><img src="data:image/png;base64,<%= @ads['base64'] %>" /></a></center>
+diff -urN store-frontend-initial-state/config/environments/development.rb store-frontend-otel-fixed/config/environments/development.rb
+--- store-frontend-initial-state/config/environments/development.rb	2022-11-15 15:54:18.000000000 +0100
++++ store-frontend-otel-fixed/config/environments/development.rb	2023-01-30 10:52:08.000000000 +0100
+@@ -89,6 +89,11 @@
+         log_hash[:level] = "ERROR"
+       end
+     end
++    if ENV["RAILS_HIDE_STACKTRACE"].present?
++      if log_hash.has_key?(:exception)
++        log_hash[:exception][:stack_trace] = [""]
++      end
++    end
+     log_hash.to_json
+   end
+   config.rails_semantic_logger.format = payload_formatter
+@@ -109,6 +114,7 @@
+     config.log_to = %w[stdout file]
+   end
+ 
++
+   # Show the logging configuration on STDOUT
+   config.show_log_configuration = true
+ end
+diff -urN store-frontend-initial-state/config/environments/development.rb.orig store-frontend-otel-fixed/config/environments/development.rb.orig
+--- store-frontend-initial-state/config/environments/development.rb.orig	1970-01-01 01:00:00.000000000 +0100
++++ store-frontend-otel-fixed/config/environments/development.rb.orig	2023-01-30 10:52:08.000000000 +0100
+@@ -0,0 +1,114 @@
++Rails.application.configure do
++  # Settings specified here will take precedence over those in config/application.rb.
++
++  # In the development environment your application's code is reloaded on
++  # every request. This slows down response time but is perfect for development
++  # since you don't have to restart the web server when you make code changes.
++  config.cache_classes = false
++
++  # Silence the web console warnings
++  config.web_console.whiny_requests = false
++
++  # Do not eager load code on boot.
++  config.eager_load = false
++
++  # Show full error reports.
++  config.consider_all_requests_local = true
++
++  # Enable/disable caching. By default caching is disabled.
++  # Run rails dev:cache to toggle caching.
++  if Rails.root.join('tmp', 'caching-dev.txt').exist?
++    config.action_controller.perform_caching = true
++
++    config.cache_store = :memory_store
++    config.public_file_server.headers = {
++      'Cache-Control' => "public, max-age=#{2.days.to_i}"
++    }
++  else
++    config.action_controller.perform_caching = false
++
++    config.cache_store = :null_store
++  end
++
++  # Store uploaded files on the local file system (see config/storage.yml for options)
++  config.active_storage.service = :local
++
++  # Don't care if the mailer can't send.
++  config.action_mailer.raise_delivery_errors = false
++
++  config.action_mailer.perform_caching = false
++
++  # Print deprecation notices to the Rails logger.
++  config.active_support.deprecation = :log
++
++  # Raise an error on page load if there are pending migrations.
++  config.active_record.migration_error = :page_load
++
++  # Highlight code that triggered database queries in logs.
++  config.active_record.verbose_query_logs = true
++
++  # Debug mode disables concatenation and preprocessing of assets.
++  # This option may cause significant delays in view rendering with a large
++  # number of complex assets.
++  config.assets.debug = true
++
++  # Suppress logger output for asset requests.
++  config.assets.quiet = true
++
++  # Suppress logger output for ActiveRecord and ActionView
++  config.active_record.logger = nil
++  config.action_view.logger = nil
++
++  # Raises error for missing translations
++  # config.action_view.raise_on_missing_translations = true
++
++  # Use an evented file watcher to asynchronously detect changes in source code,
++  # routes, locales, etc. This feature depends on the listen gem.
++
++  ## Commenting out this line to fix build for M1 Macs: https://github.com/evilmartians/terraforming-rails/issues/34#issuecomment-872021786
++  # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
++
++  # Quiet down logger level and disable fragment logging
++  config.log_level = :info
++  config.colorize_logging = false
++  config.action_controller.enable_fragment_cache_logging = false
++
++  # Flatten out the payload key for easier parsing
++  payload_formatter = Proc.new do |log, logger|
++    log_hash = log.to_h
++    # The delete method can potentially return nil
++    log_hash.merge!(log_hash.delete(:payload) || {})
++    # Make sure the log level reflects the HTTP status
++    if log_hash.has_key?(:status)
++      case log_hash[:status]
++      when 200
++        log_hash[:level] = "INFO"
++      when 302
++        log_hash[:level] = "WARN"
++      else
++        log_hash[:level] = "ERROR"
++      end
++    end
++    log_hash.to_json
++  end
++  config.rails_semantic_logger.format = payload_formatter
++
++  # Set the logging destination(s)
++  if ENV["RAILS_LOG_TO_STDOUT"].present?
++    config.log_to = %w[stdout]
++    STDOUT.sync = true
++    config.rails_semantic_logger.add_file_appender = false
++    config.semantic_logger.add_appender(
++      io: STDOUT,
++      level: config.log_level,
++      formatter: config.rails_semantic_logger.format,
++      # We don't want any of the deface messages here for now
++      filter: -> log { !log.message.to_s.match(/Deface: /) }
++    )
++  else
++    config.log_to = %w[stdout file]
++  end
++
++  # Show the logging configuration on STDOUT
++  config.show_log_configuration = true
++end
+diff -urN store-frontend-initial-state/config/environments/production.rb.orig store-frontend-otel-fixed/config/environments/production.rb.orig
+--- store-frontend-initial-state/config/environments/production.rb.orig	1970-01-01 01:00:00.000000000 +0100
++++ store-frontend-otel-fixed/config/environments/production.rb.orig	2023-01-30 10:52:08.000000000 +0100
+@@ -0,0 +1,95 @@
++Rails.application.configure do
++  # Settings specified here will take precedence over those in config/application.rb.
++
++  # Code is not reloaded between requests.
++  config.cache_classes = true
++
++  # Eager load code on boot. This eager loads most of Rails and
++  # your application in memory, allowing both threaded web servers
++  # and those relying on copy on write to perform better.
++  # Rake tasks automatically ignore this option for performance.
++  config.eager_load = true
++
++  # Full error reports are disabled and caching is turned on.
++  config.consider_all_requests_local       = false
++  config.action_controller.perform_caching = true
++
++  # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
++  # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
++  # config.require_master_key = true
++
++  # Disable serving static files from the `/public` folder by default since
++  # Apache or NGINX already handles this.
++  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
++
++  # Compress CSS.
++  # config.assets.css_compressor = :sass
++
++  # Do not fallback to assets pipeline if a precompiled asset is missed.
++  config.assets.compile = false
++  config.assets.debug = true
++
++  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
++
++  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
++  # config.action_controller.asset_host = 'http://assets.example.com'
++
++  # Specifies the header that your server uses for sending files.
++  # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
++  # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
++
++  # Store uploaded files on the local file system (see config/storage.yml for options)
++  config.active_storage.service = :local
++
++  # Mount Action Cable outside main process or domain
++  # config.action_cable.mount_path = nil
++  # config.action_cable.url = 'wss://example.com/cable'
++  # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
++
++  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
++  # config.force_ssl = true
++
++  # Use the lowest log level to ensure availability of diagnostic information
++  # when problems arise.
++  config.log_level = :warn
++
++  # Prepend all log lines with the following tags.
++  config.log_tags = [proc { Datadog.tracer.active_correlation.to_s }]
++
++  # Use a different cache store in production.
++  # config.cache_store = :mem_cache_store
++
++  # Use a real queuing backend for Active Job (and separate queues per environment)
++  # config.active_job.queue_adapter     = :resque
++  # config.active_job.queue_name_prefix = "sandbox_#{Rails.env}"
++
++  config.action_mailer.perform_caching = false
++
++  # Ignore bad email addresses and do not raise email delivery errors.
++  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
++  # config.action_mailer.raise_delivery_errors = false
++
++  # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
++  # the I18n.default_locale when a translation cannot be found).
++  config.i18n.fallbacks = true
++
++  # Send deprecation notices to registered listeners.
++  config.active_support.deprecation = :notify
++
++  # Use default logging formatter so that PID and timestamp are not suppressed.
++  config.log_formatter = ::Logger::Formatter.new
++
++  # Use a different logger for distributed setups.
++  # require 'syslog/logger'
++  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
++
++
++  # Do not dump schema after migrations.
++  config.active_record.dump_schema_after_migration = false
++
++  # Set the logging destination(s)
++  config.log_to = %w[file]
++
++  # Show the logging configuration on STDOUT
++  config.show_log_configuration = false
++end
+diff -urN store-frontend-initial-state/config/initializers/opentelemetry.rb store-frontend-otel-fixed/config/initializers/opentelemetry.rb
+--- store-frontend-initial-state/config/initializers/opentelemetry.rb	1970-01-01 01:00:00.000000000 +0100
++++ store-frontend-otel-fixed/config/initializers/opentelemetry.rb	2023-01-30 10:52:08.000000000 +0100
+@@ -0,0 +1,8 @@
++require 'opentelemetry/sdk'
++require 'opentelemetry/exporter/otlp'
++require 'opentelemetry/instrumentation/all'
++OpenTelemetry::SDK.configure do |c|
++  c.service_name = 'frontend'
++  c.service_version = '1.0'
++  c.use_all() # enables all instrumentation!
++end
+diff -urN store-frontend-initial-state/config/initializers/spree.rb store-frontend-otel-fixed/config/initializers/spree.rb
+--- store-frontend-initial-state/config/initializers/spree.rb	2022-11-15 15:54:18.000000000 +0100
++++ store-frontend-otel-fixed/config/initializers/spree.rb	2023-01-30 10:52:08.000000000 +0100
+@@ -13,6 +13,8 @@
+   # Example:
+   # Uncomment to stop tracking inventory levels in the application
+   # config.track_inventory_levels = false
++
++  config.logo = 'logo.png'
+ end
+ 
+ # Configure Spree Dependencies
+diff -urN store-frontend-initial-state/docker-entrypoint.sh store-frontend-otel-fixed/docker-entrypoint.sh
+--- store-frontend-initial-state/docker-entrypoint.sh	2022-11-15 15:54:18.000000000 +0100
++++ store-frontend-otel-fixed/docker-entrypoint.sh	2023-01-30 10:52:08.000000000 +0100
+@@ -8,6 +8,6 @@
+ # TODO: Remove this once we upgrade to Ruby 3.0 and Rails 6.1
+ export RUBYOPT='-W0'
+ # Force semantic-logger to report itself as the storefront app
+-export SEMANTIC_LOGGER_APP='store-frontend'
++export SEMANTIC_LOGGER_APP='frontend'
+ 
+ puma --config config/puma.rb

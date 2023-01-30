@@ -5,8 +5,24 @@ from flask import Flask, Response, jsonify, send_from_directory
 from flask import request as flask_request
 from flask_cors import CORS
 
-from bootstrap import create_app
+from bootstrap import initialize_database
 from models import Advertisement, db
+
+import os
+DB_USERNAME = os.environ['POSTGRES_USER']
+DB_PASSWORD = os.environ['POSTGRES_PASSWORD']
+DB_HOST = os.environ['POSTGRES_HOST']
+
+def create_app():
+    """Create a Flask application"""
+    app = Flask(__name__)
+    #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://' + DB_USERNAME + ':' + DB_PASSWORD + '@' + DB_HOST + '/' + DB_USERNAME
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+    db.init_app(app)
+    initialize_database(app, db)
+    return app
 
 app = create_app()
 CORS(app)
@@ -73,3 +89,6 @@ def status():
         err = jsonify({'error': 'Invalid request method'})
         err.status_code = 405
         return err
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5002, debug=True, use_reloader=False)

@@ -21,7 +21,11 @@ helm-values.yaml
 # Frontend version
 store-frontend/src/store-frontend-instrumented-fixed
 store-frontend/src/store-frontend-broken-instrumented
+store-frontend/src/store-frontend-otel-fixed
 
 # Vim swp files
 *.swp
+
+# rbevn
+.ruby-version
 

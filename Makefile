@@ -67,12 +67,21 @@ recreate-frontend-code:
 	cp -R store-frontend-initial-state store-frontend-instrumented-fixed && \
 	cd store-frontend-instrumented-fixed && \
 	patch -t -p1 < ../instrumented-fixed.patch
-
+	cd .. && \
+	cp -R store-frontend-initial-state store-frontend-otel-fixed && \
+	cd store-frontend-otel-fixed && \
+	patch -t -p1 < ../otel-fixed.patch
 
 create-frontend-fixed-diff:
 	cd store-frontend/src/ && \
 	rm instrumented-fixed.patch && \
 	diff -urN store-frontend-initial-state store-frontend-instrumented-fixed | tee instrumented-fixed.patch
+
+
+create-frontend-otel-diff:
+	cd store-frontend/src/ && \
+	rm otel-fixed.patch && \
+	diff -urN store-frontend-initial-state store-frontend-otel-fixed | tee otel-fixed.patch
 
 
 create-broken-instrumented-diff:
