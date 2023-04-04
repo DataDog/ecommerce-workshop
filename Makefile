@@ -100,6 +100,8 @@ local-attack-scenario-start:
 	ATTACK_HYDRA_INTERVAL=120 \
 	ATTACK_SSH=$(RUN_ATTACKS) \
 	ATTACK_SSH_INTERVAL=90 \
+	STOREDOG_URL=http://nginx:80 \
+	PUPPETEER_TIMEOUT=30000 \
 	docker-compose -f deploy/docker-compose/docker-compose-fixed-instrumented-attack.yml up --force-recreate -d
 	@echo 'The local attack scenario has been started.  To live tail the logs run the target for local-attack-scenario-logs.'
 
@@ -154,19 +156,10 @@ latest-start:
 	ATTACK_HYDRA_INTERVAL=120 \
 	ATTACK_SSH=$(ENABLE_ATTACKS) \
 	ATTACK_SSH_INTERVAL=90 \
+	STOREDOG_URL=${STOREDOG_URL} \
+	PUPPETEER_TIMEOUT=${PUPPETEER_TIMEOUT} \
 	docker-compose -f deploy/docker-compose/docker-compose-latest.yml up --build -d
 
 .PHONY: latest-stop
 latest-stop:
-	POSTGRES_USER=postgres \
-	POSTGRES_PASSWORD=postgres \
-	ATTACK_HOST=nginx \
-	ATTACK_PORT=80 \
-	DD_API_KEY=${DD_API_KEY} \
-	ATTACK_GOBUSTER=$(ENABLE_ATTACKS) \
-	ATTACK_GOBUSTER_INTERVAL=180 \
-	ATTACK_HYDRA=$(ENABLE_ATTACKS) \
-	ATTACK_HYDRA_INTERVAL=120 \
-	ATTACK_SSH=$(ENABLE_ATTACKS) \
-	ATTACK_SSH_INTERVAL=90 \
 	docker-compose -f deploy/docker-compose/docker-compose-latest.yml down
