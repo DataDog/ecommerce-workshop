@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    # We should really call this "store" since that is what it does
+    service: frontend
+    tags.datadoghq.com/service: frontend
+    {{- include "ecommerce.labels" . | nindent 4 }}
+  name: frontend
+spec:
+  replicas: {{ .Values.frontend.replicas }}
+  selector:
+    matchLabels:
+      service: frontend
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        service: frontend
+        tags.datadoghq.com/service: frontend
+        {{- include "ecommerce.labels" . | nindent 8 }}
+    spec:
+      containers:
+      - args:
+        - docker-entrypoint.sh
+        command:
+        - sh
+        env:
+        - name: DB_USERNAME
+          value: user
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: pw
+              name: db-password
+        - name: DD_AGENT_HOST
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: DD_LOGS_INJECTION
+          value: "true"
+        - name: DD_ANALYTICS_ENABLED
+          value: "true"
+        - name: DD_ENV
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/env']
+        - name: DD_SERVICE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/service']
+        {{- if .Values.frontend.rum.enabled }}
+        - name: DD_CLIENT_TOKEN
+          value: {{ .Values.frontend.rum.ddClientToken }}
+        - name: DD_APPLICATION_ID
+          value: {{ .Values.frontend.rum.ddClientApplicationId }}
+        {{- end }}
+        image: {{ .Values.frontend.container.image }}:{{ .Values.frontend.container.version }}
+        imagePullPolicy: {{ .Values.frontend.container.pullPolicy }}
+        name: {{ .Values.frontend.container.name }}
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: frontend
+    tags.datadoghq.com/service: frontend
+  name: frontend
+spec:
+  type: {{ .Values.frontend.service.type }}
+  ports:
+    - port: {{ .Values.frontend.service.port }}
+      targetPort: 3000
+      protocol: TCP
+  selector:
+    service: frontend

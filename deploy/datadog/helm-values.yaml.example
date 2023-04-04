@@ -3,18 +3,23 @@
 # Tested with version 2.4.31, if your release is 2.5.x or newer, check for
 # changes in the original chart values
 
+# registry -- Registry to use for all Agent images (default gcr.io)
+## Currently we offer Datadog Agent images on:
+## GCR - use gcr.io/datadoghq (default)
+## DockerHub - use docker.io/datadog
+## AWS - use public.ecr.aws/datadog
+registry: gcr.io/datadoghq
+
 # Enable this block if you want to use the newest agent
 # agents:
   # image:
-  #   repository: datadog/agent
   #   tag: latest
   #   pullPolicy: Always
 
-# Enable this block to get Kubernetes Beta metrics (https://www.datadoghq.com/blog/explore-kubernetes-resources-with-datadog/)
+# Enable this block to get the latest Cluster Agent
 # clusterAgent:
 #   enabled: true
 #   image:
-#     repository: datadog/cluster-agent
 #     tag: latest
 #     pullPolicy: Always
 
@@ -23,6 +28,14 @@ datadog:
 
   apm:
     enabled: true
+
+  # Can be enabled if you are using Cluster Agent 1.12+
+  # kubeStateMetricsCore:
+    # enabled: false
+
+  ## This is already enabled by default and not recommended to disable
+  # clusterChecks:
+  #  enabled: true
 
   # Enable this block to get all logs from the pods/containers
   # logs:
@@ -38,6 +51,14 @@ datadog:
   #   processCollection: true
 
   # Enable this block for network and DNS metric collection
-  # systemProbe:
+  # networkMonitoring:
   #   enabled: true
+  #
+  # systemProbe:
   #   collectDNSStats: true
+  #   enableOOMKill: true
+  #   enableTCPQueueLength: true
+# Enable if you want to setup the Datadog Agent on GKE Autopilot
+# providers:
+#  gke:
+#    autopilot: true

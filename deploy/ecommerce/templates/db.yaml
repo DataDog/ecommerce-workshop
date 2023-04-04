@@ -1,0 +1,99 @@
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: postgres
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: db-password
+  labels:
+    service: db
+type: Opaque
+data:
+  pw: password
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ecommerce-postgres-database
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: db
+    tags.datadoghq.com/service: db
+    {{- include "ecommerce.labels" . | nindent 4 }}
+  name: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: db
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        service: db
+        {{- include "ecommerce.labels" . | nindent 8 }}
+    spec:
+      containers:
+      - image: postgres:11-alpine
+        name: postgres
+        securityContext:
+          privileged: true
+        ports:
+          - containerPort: 5432
+        env:
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: pw
+              name: db-password
+        - name: POSTGRES_USER
+          value: "user"
+        - name: PGDATA
+          value: "/var/lib/postgresql/data/pgdata"
+        - name: DD_ENV
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/env']
+        - name: DD_SERVICE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/service']
+        resources: {}
+        volumeMounts:
+          - name: postgresdb
+            mountPath: /var/lib/postgresql/data
+      serviceAccountName: postgres
+      volumes:
+        - name: postgresdb
+          persistentVolumeClaim:
+            claimName: ecommerce-postgres-database
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    service: db
+    tags.datadoghq.com/service: db
+    {{- include "ecommerce.labels" . | nindent 4 }}
+  name: db
+spec:
+  ports:
+  - port: 5432
+    protocol: TCP
+    targetPort: 5432
+  selector:
+    service: db
+status:
+  loadBalancer: {}

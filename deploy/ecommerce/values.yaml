@@ -1,0 +1,51 @@
+# Default values for the ecommerce app
+# Follow the comments for the options you can deploy
+
+# Which environment is this being deployed to?
+# Options are: development | staging | production
+environment: development
+
+frontend:
+  replicas: 1
+  container:
+    image: ddtraining/storefront
+    version: latest
+    pullPolicy: Always
+    name: storefront
+  # Enable and configure for Real User Monitoring (RUM)
+  rum:
+    enabled: false
+    ddClientToken: DataDogClientToken
+    ddClientApplicationId: DataDogApplicationID
+  service:
+    type: ClusterIP
+    port: 80
+
+advertisements:
+  replicas: 1
+  container:
+    image: ddtraining/advertisements
+    version: latest
+    pullPolicy: Always
+    name: advertisements
+  service:
+    port: 5002
+
+discounts:
+  replicas: 1
+  container:
+    image: ddtraining/discounts
+    version: latest
+    pullPolicy: Always
+    name: discounts
+  service:
+    port: 5001
+
+traffic:
+  enabled: true
+  replicas: 1
+  container:
+    image: ddtraining/traffic-replay
+    version: latest
+    pullPolicy: Always
+    name: traffic-replay
