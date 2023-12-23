@@ -12,7 +12,7 @@
     "react-dom": "^17.0.0"
   },
   "devDependencies": {
-    "@datadog/datadog-ci": "^0.17.6",
+    "@datadog/datadog-ci": "^2.14.0",
     "@types/node": "^16.10.3",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
