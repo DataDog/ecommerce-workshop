@@ -1,0 +1,99 @@
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: postgres
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: db-password
+  labels:
+    app: ecommerce
+    service: db
+type: Opaque
+data:
+  pw: password
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: task-pvc-volume
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: "standard"
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: db
+  labels:
+    service: db
+    app: ecommerce
+spec:
+  serviceName: db
+  replicas: 1
+  selector:
+    matchLabels:
+      service: db
+      app: ecommerce
+  template:
+    metadata:
+      labels:
+        service: db
+        app: ecommerce
+    spec:
+      containers:
+      - image: postgres:11-alpine
+        name: postgres
+        ports:
+          - containerPort: 5432
+        env:
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: pw
+              name: db-password
+        - name: POSTGRES_USER
+          value: "user"
+        - name: PGDATA
+          value: "/var/lib/postgresql/data/mydata"
+        resources:
+          requests:
+            cpu: 2000m
+            memory: 2Gi
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: postgresdb
+  volumeClaimTemplates:
+  - metadata:
+      name: postgresdb
+    spec:
+      accessModes:
+      - "ReadWriteOnce"
+      resources:
+        requests:
+          storage: 1Gi
+      storageClassName: "standard"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ecommerce
+    service: db
+  name: db
+spec:
+  ports:
+  - port: 5432
+    protocol: TCP
+    targetPort: 5432
+  selector:
+    app: ecommerce
+    service: db
+status:
+  loadBalancer: {}
