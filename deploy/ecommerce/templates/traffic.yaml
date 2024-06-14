@@ -1,0 +1,3 @@
+{{- if .Values.traffic.enabled }}
+{{ include "ecommerce.traffic-replay" . }}
+{{- end }}
