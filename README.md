@@ -34,6 +34,26 @@ Follow the [specific guide for building the images](./development.md#Building)
 
 The `deploy` folder contains the different tested ways in which this application can be deployed.
 
+## Choosing the destination site
+
+You can decide to send metrics, traces and logs either to `datadoghq.com` or `datadoghq.eu`. By default, the data is sent to `datadoghq.com`.
+
+If you want to change the destination, please change the `DD_SITE` value.
+
+For instance, for the Google Kubernetes Engine deployment, edit the file `deploy/gcp/gke/datadog-agent.yaml` and change:
+
+```
+- name: DD_SITE
+  value: datadoghq.com
+```
+
+to:
+
+```
+- name: DD_SITE
+  value: datadoghq.eu
+```
+
 ## Enabling Real User Monitoring (RUM)
 
 Real User Monitoring is enabled for the `docker-compose-fixed-instrumented.yml` docker compose and the Kubernetes `frontend.yaml` deployment.

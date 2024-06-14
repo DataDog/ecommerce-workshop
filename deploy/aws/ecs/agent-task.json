@@ -35,6 +35,10 @@
                     "value": "true"
                 },
                 {
+                    "name": "DD_SITE",
+                    "value": "datadoghq.com"
+                },
+                {
                     "name": "DD_API_KEY",
                     "value": "<INSERT YOUR API KEY HERE>"
                 },

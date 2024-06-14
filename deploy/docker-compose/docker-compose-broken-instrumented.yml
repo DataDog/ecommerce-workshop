@@ -3,7 +3,8 @@ services:
   agent:
     image: "datadog/agent:7.29.0"
     environment:
-      - DD_API_KEY
+      - DD_API_KEY=yourDatadogApiKey
+      - DD_SITE=datadoghq.com
       - DD_APM_ENABLED=true
       - DD_LOGS_ENABLED=true
       - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
